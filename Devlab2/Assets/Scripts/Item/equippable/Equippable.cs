@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Item/Equippable")]
+[CreateAssetMenu(fileName = "Equippable", menuName = "Items/Equippable")]
 public class Equippable : Item {
-    public int protection;
-    public int heatBonus;
+    public int damage;
+
+    public enum CanGather {
+        WoodGather,
+        StonesGather,
+        LandGather,
+        HandGather
+    }
+
+    public CanGather myGathering;
 }

@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06e9096c5da4ccc47afabf987edced3e, type: 3}
-  m_Name: Berries
+  m_Name: Bread
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Bread
+  craftable: 0
   item2D: {fileID: 0}
   item3D: 
-  food: 0
+  food: 10
   water: 0

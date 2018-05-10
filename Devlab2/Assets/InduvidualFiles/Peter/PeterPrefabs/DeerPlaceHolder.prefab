@@ -25,6 +25,9 @@ GameObject:
   - component: {fileID: 114081655028002258}
   - component: {fileID: 64380633483550482}
   - component: {fileID: 195321735485243896}
+  - component: {fileID: 114412758017423750}
+  - component: {fileID: 54766122356729068}
+  - component: {fileID: 65328940804643916}
   m_Layer: 0
   m_Name: DeerPlaceHolder
   m_TagString: Untagged
@@ -88,6 +91,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205167464727204}
   m_Mesh: {fileID: 0}
+--- !u!54 &54766122356729068
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205167464727204}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!64 &64380633483550482
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -102,6 +120,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!65 &65328940804643916
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205167464727204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6255555, y: 3.3866668, z: 4.0624223}
+  m_Center: {x: 0.49166667, y: 0.67444444, z: 0.7712099}
 --- !u!114 &114081655028002258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4333,25 +4363,31 @@ MonoBehaviour:
     areaError: 15
   asset_guid: 
   dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 5100000052000000
-  m_SelectedEdges:
-  - x: 324
-    y: 325
-  - x: 326
-    y: 324
-  - x: 325
-    y: 327
-  - x: 327
-    y: 326
-  - x: 328
-    y: 329
-  - x: 330
-    y: 328
-  - x: 329
-    y: 331
-  - x: 331
-    y: 330
-  m_selectedTriangles: 44010000450100004601000045010000470100004601000048010000490100004a010000490100004b0100004a010000
+  m_selectedFaces: 
+  m_SelectedEdges: []
+  m_selectedTriangles: 
+--- !u!114 &114412758017423750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205167464727204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0580aef448795a48b2392cf487e3c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  state: 0
+  wanderRadius: 16
+  patience: 9
+  idling: 0
+  canWander: 0
+  wandering: 0
+  hasTarget: 0
+  agent: {fileID: 0}
+  idleTime: 1
+  runAwayRange: 5
 --- !u!114 &114440431844752712
 MonoBehaviour:
   m_ObjectHideFlags: 1

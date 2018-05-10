@@ -6,14 +6,9 @@ using UnityEngine.AI;
 public class Chicken : Animal {
 
     public float idleTime = 2;
-    public float patience = 9; //How long it takes if agent can't find path to generate a new one
-    private bool idling;
-    private bool canWander;
-    private bool wandering;
-    private bool hasTarget;
+   
     private bool canLayEgg = true;
 
-    private NavMeshAgent agent;
 	// Use this for initialization
 	void Start () {
         state = States.Idle;
@@ -43,44 +38,17 @@ public class Chicken : Animal {
     {
         if (canWander)
         {
-            Move();
+            Wander();
         }
 
     }
 
     public override void Move()
     {
-        if (!hasTarget)
-        {
-            float x = Random.Range(-wanderRadius, wanderRadius);
-            float z = Random.Range(-wanderRadius, wanderRadius);
-
-            Vector3 target = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
-
-            agent.SetDestination(target);
-            hasTarget = true;
-            if (!wandering)
-            {
-                wandering = true;
-                StartCoroutine(TimeBeforeNewTarget());
-            }
-        }
-        else
-        {
-            if(transform.position == agent.destination)
-            {
-                state = States.Idle;
-            }
-        }
-      
+      //Not neccesary here 
     }
 
-    private IEnumerator TimeBeforeNewTarget()
-    {
-        yield return new WaitForSeconds(patience);
-        hasTarget = false;
-        wandering = false;
-    }
+    
 
     private IEnumerator Idle()
     {

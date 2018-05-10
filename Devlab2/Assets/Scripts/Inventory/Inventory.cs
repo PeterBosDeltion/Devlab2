@@ -78,7 +78,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public void InspectorCraftingSwitch() {
-        craftInspectAnimator.SetBool("Switch",!craftInspectAnimator.GetBool("Switch"));
+        craftInspectAnimator.SetBool("Switch", !craftInspectAnimator.GetBool("Switch"));
     }
 
     #region Inspector Buttons
@@ -108,9 +108,28 @@ public class Inventory : MonoBehaviour {
     public InventorySlot productSlot;
 
     public void CheckRecipe() {
-        if(productSlot.myItem != null) {
-            return;
+        productSlot.RemoveItem();
+
+        /*int fullSlots = 0;
+        for(int r = 0; r < craftingSlots.Count; r++) {
+            if(craftingSlots[r].myItem != null) {
+                fullSlots++;
+            }
         }
+
+        for(int rr = 0; rr < CraftingRecipes.Count; rr++) {
+            if(CraftingRecipes[rr].ingredients.Count == fullSlots) {
+                for(int ii = 0; ii < CraftingRecipes[rr].ingredients.Count; ii++) {
+                    for(int i = 0; i < craftingSlots.Count; i++) {
+                        if(craftingSlots[i].myItem != null) {
+                            if(CraftingRecipes[rr].ingredients[ii] == craftingSlots[i].myItem.itemName) {
+                                productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
+                            }
+                        }
+                    }
+                }
+            }
+        }*/
 
         int fullSlots = 0;
         for(int r = 0; r < craftingSlots.Count; r++) {
@@ -119,22 +138,17 @@ public class Inventory : MonoBehaviour {
             }
         }
 
-        Debug.Log("bugg");
-
         for(int rr = 0; rr < CraftingRecipes.Count; rr++) {
-            if(CraftingRecipes[rr].ingredients.Count - 1 == fullSlots) {
-                for(int ii = 0; ii < CraftingRecipes[rr].ingredients.Count; ii++) {
-                    for(int i = 0; i < craftingSlots.Count; i++) {
-                        if(craftingSlots[i].myItem != null) {
-                            if(CraftingRecipes[rr].ingredients[ii] == craftingSlots[i].myItem.name && craftingSlots.Count - 1 != i) {
-                                productSlot.SetItem(CraftingRecipes[rr].product);
-                                for(int c = 0; c < craftingSlots.Count; c++) {
-                                    if(craftingSlots[c].myItem.amount - 1 <= 0) {
-                                        craftingSlots[c].myItem = null;
-                                    }
-                                    else {
-                                        craftingSlots[c].myItem.amount -= 1;
-                                    }
+            int k = 0;
+            if(CraftingRecipes[rr].ingredients.Count == fullSlots) {
+                for(int r = 0; r < craftingSlots.Count; r++) {
+                    if(craftingSlots[r].myItem != null) {
+                        for(int ii = 0; ii < CraftingRecipes[rr].ingredients.Count; ii++) {
+                            if(craftingSlots[r].myItem.itemName == CraftingRecipes[rr].ingredients[ii]) {
+                                k++;
+                                if(k == fullSlots) {
+                                    productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
+                                    return;
                                 }
                             }
                         }
@@ -144,7 +158,21 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-
+    public void CraftProduct() {
+        if(productSlot.myItem != null) {
+            for(int c = 0; c < craftingSlots.Count; c++) {
+                if(craftingSlots[c].myItem != null) {
+                    if(craftingSlots[c].myItem.amount - 1 <= 0) {
+                        craftingSlots[c].RemoveItem();
+                    }
+                    else {
+                        craftingSlots[c].myItem.amount -= 1;
+                    }
+                }
+            }
+        }
+        CheckRecipe();
+    }
     #endregion
 
     [System.Serializable]

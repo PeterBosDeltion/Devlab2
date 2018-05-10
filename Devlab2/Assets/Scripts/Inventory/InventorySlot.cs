@@ -33,7 +33,7 @@ public class InventorySlot : MonoBehaviour {
         //posible animation
     }
 
-    void RemoveItem() {
+    public void RemoveItem() {
         myItem = null;
         itemImage.gameObject.SetActive(false);
     }
@@ -49,6 +49,7 @@ public class InventorySlot : MonoBehaviour {
         if(myItem != null) {
             if(Inventory.Instance.mouseOver != null){
                 if(Inventory.Instance.mouseOver.myItem != null) {
+
                     Item otherItem = Instantiate(Inventory.Instance.mouseOver.myItem);
                     if(otherItem.itemName == myItem.name && otherItem.amount < otherItem.amountCap) {
                         int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
@@ -71,7 +72,7 @@ public class InventorySlot : MonoBehaviour {
                     Inventory.Instance.mouseOver.SetItem(Instantiate(myItem));
                     RemoveItem();
                 }
-                if(Inventory.Instance.mouseOver.craftingSlot == true) {
+                if(Inventory.Instance.mouseOver.craftingSlot == true || craftingSlot == true) {
                     Inventory.Instance.CheckRecipe();
                 }
             }
@@ -101,10 +102,5 @@ public class InventorySlot : MonoBehaviour {
         if(Inventory.Instance.mouseOver == this) {
             Inventory.Instance.mouseOver = null;
         }
-    }
-
-    public void CraftingUpdate() {
-        Inventory.Instance.CheckRecipe();
-        StopItemDrag();
     }
 }

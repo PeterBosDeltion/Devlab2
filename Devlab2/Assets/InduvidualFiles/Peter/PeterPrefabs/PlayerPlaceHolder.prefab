@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114882269062164376}
   m_Layer: 0
   m_Name: PlayerPlaceHolder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  rotateSpeed: 16
 --- !u!136 &136605181511742728
 CapsuleCollider:
   m_ObjectHideFlags: 1

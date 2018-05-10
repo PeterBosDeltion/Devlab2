@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody rb;
     public float moveSpeed;
+    public float rotateSpeed = 16;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         Move();
-        //LookAtMouse();
+        LookAtMouse();
 	}
 
     public void Move()
@@ -22,23 +23,23 @@ public class PlayerMovement : MonoBehaviour {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.left *- x * moveSpeed * Time.deltaTime);
-        transform.Translate(Vector3.forward * y * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.left *- x * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * y * moveSpeed * Time.deltaTime, Space.World);
     }
 
     public void LookAtMouse()
     {
 
-        //Can't remember how this fucking mouse bullshit works right now, need to fix it later
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        //Vector3 pos = Input.mousePosition;
-        //pos = Camera.main.ScreenToWorldPoint(pos);
-
-        //Vector3 dir = transform.position - pos;
-
-        //float f = Vector3.Angle(transform.position, dir);
-
-        //transform.Rotate(Vector3.up, f);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 999))
+        {
+            Vector3 lookPos = hit.point - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+        }
     }
 
 }

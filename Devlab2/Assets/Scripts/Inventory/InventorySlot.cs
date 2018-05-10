@@ -7,22 +7,24 @@ public class InventorySlot : MonoBehaviour {
     public Item myItem;
     public Image itemImage;
     public Text amountText;
+    public bool craftingSlot;
 
     void Start() {
         if(myItem != null) {
             SetItem(myItem);
         }
         else {
-            itemImage.enabled = false;
+            itemImage.gameObject.SetActive(false);
         }
     }
 
     public void SetItem(Item newItem) {
         myItem = Instantiate(newItem);
         itemImage.sprite = myItem.item2D;
-        itemImage.enabled = true;
-        /*.text = myItem.amount.ToString();
-        if(myItem.amountCap > 0) {
+        itemImage.gameObject.SetActive(true);
+
+        /*if(myItem.amountCap > 0) {
+            amountText.text = myItem.amount.ToString();
             amountText.enabled = true;
         }
         else {
@@ -33,48 +35,51 @@ public class InventorySlot : MonoBehaviour {
 
     void RemoveItem() {
         myItem = null;
-        itemImage.enabled = false;
+        itemImage.gameObject.SetActive(false);
     }
 
     public void StartItemDrag() {
         if(myItem != null) {
-            itemImage.enabled = false;
+            itemImage.gameObject.SetActive(false);
             Inventory.Instance.StartDrag(myItem);
         }
     }
 
     public void StopItemDrag() {
-        Debug.Log(gameObject);
-        if(Inventory.Instance.mouseOver != null) {
-            Item otherItem = Instantiate(Inventory.Instance.mouseOver.myItem);
-            if(otherItem != null) {
-                if(otherItem.itemName == myItem.name && otherItem.amount < otherItem.amountCap) {
-                    int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
-                    if(leftOver >= 0) {
-                        myItem.amount = leftOver;
-                        Inventory.Instance.mouseOver.ChangeItemAmount(otherItem.amountCap);
-                        itemImage.enabled = true;
+        if(myItem != null) {
+            if(Inventory.Instance.mouseOver != null){
+                if(Inventory.Instance.mouseOver.myItem != null) {
+                    Item otherItem = Instantiate(Inventory.Instance.mouseOver.myItem);
+                    if(otherItem.itemName == myItem.name && otherItem.amount < otherItem.amountCap) {
+                        int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
+                        if(leftOver >= 0) {
+                            myItem.amount = leftOver;
+                            Inventory.Instance.mouseOver.ChangeItemAmount(otherItem.amountCap);
+                            itemImage.gameObject.SetActive(true);
+                        }
+                        else {
+                            otherItem.amount += myItem.amount;
+                            RemoveItem();
+                        }
                     }
                     else {
-                        otherItem.amount += myItem.amount;
-                        RemoveItem();
+                        Inventory.Instance.mouseOver.SetItem(myItem);
+                        SetItem(otherItem);
                     }
                 }
                 else {
-                    Inventory.Instance.mouseOver.SetItem(myItem);
-                    SetItem(otherItem);
+                    Inventory.Instance.mouseOver.SetItem(Instantiate(myItem));
+                    RemoveItem();
+                }
+                if(Inventory.Instance.mouseOver.craftingSlot == true) {
+                    Inventory.Instance.CheckRecipe();
                 }
             }
             else {
-                Inventory.Instance.mouseOver.SetItem(myItem);
-                myItem = null;
+                itemImage.gameObject.SetActive(true);
             }
-
+            Inventory.Instance.StopDrag();
         }
-        else {
-            itemImage.enabled = true;
-        }
-        Inventory.Instance.StopDrag();
     }
 
     public void HighlightItem() {
@@ -96,5 +101,10 @@ public class InventorySlot : MonoBehaviour {
         if(Inventory.Instance.mouseOver == this) {
             Inventory.Instance.mouseOver = null;
         }
+    }
+
+    public void CraftingUpdate() {
+        Inventory.Instance.CheckRecipe();
+        StopItemDrag();
     }
 }

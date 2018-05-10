@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour {
-    public ResourceManager instance;
+    public static ResourceManager instance;
 
     void Awake() {
         instance = this;

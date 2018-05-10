@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-    [HideInInspector]
-    public UIManager instance;
+    public static UIManager instance;
 
     enum UIState {
         BaseCanvas,

@@ -7,6 +7,10 @@ public class Item : ScriptableObject {
     public string itemName;
     public bool craftable;
     public Sprite item2D;
-    public string item3D;
+    public string itemDiscription;
 
+    public List<string> myButtons = new List<string>();
+
+    public int amount;
+    public int amountCap;
 }

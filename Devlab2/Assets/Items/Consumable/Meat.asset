@@ -13,7 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Meat
   craftable: 0
-  item2D: {fileID: 0}
-  item3D: 
+  item2D: {fileID: 21300000, guid: 4a39cb4b272639541b7bd5ac0649acf7, type: 3}
+  itemDiscription: 
+  myButtons: []
+  amount: 0
+  amountCap: 0
   food: 10
   water: -5

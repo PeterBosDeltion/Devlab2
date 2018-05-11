@@ -9,6 +9,7 @@ public class InventorySlot : MonoBehaviour {
     public Image itemImage;
     public TextMeshProUGUI amountText;
     public bool craftingSlot;
+    public Animator slotAnimator;
 
     void Start() {
         if(myItem != null) {
@@ -96,10 +97,12 @@ public class InventorySlot : MonoBehaviour {
     }
 
     public void MouseEnter() {
+        slotAnimator.SetBool("Enter",true);
         Inventory.Instance.mouseOver = this;
     }
 
     public void MouseExit() {
+        slotAnimator.SetBool("Enter", false);
         if(Inventory.Instance.mouseOver == this) {
             Inventory.Instance.mouseOver = null;
         }

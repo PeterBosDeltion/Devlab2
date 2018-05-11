@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114871167517372344}
   - component: {fileID: 114160839607264898}
   - component: {fileID: 114937769944483814}
+  - component: {fileID: 95515302540537186}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -64,6 +65,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95515302540537186
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317706783792188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d788278ec7708c4abd6c34cbdc2f65a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114015405633544786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +213,7 @@ MonoBehaviour:
   itemImage: {fileID: 114645730241044990}
   amountText: {fileID: 114015405633544786}
   craftingSlot: 0
+  slotAnimator: {fileID: 95515302540537186}
 --- !u!114 &114645730241044990
 MonoBehaviour:
   m_ObjectHideFlags: 1

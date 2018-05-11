@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class Explainer : MonoBehaviour {
     public GameObject explainText;
 
-    public void OnButtonClick(){
+    public void MouseEnter(){
         explainText.SetActive(true);
     }
 
-    public void Deselect() {
+    public void MouseExit() {
         explainText.SetActive(false);
     }
 }

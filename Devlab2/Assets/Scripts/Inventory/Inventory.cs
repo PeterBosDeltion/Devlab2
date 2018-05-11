@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour {
     public static Inventory Instance;
@@ -14,19 +15,23 @@ public class Inventory : MonoBehaviour {
     public Image dragImage;
 
     [Header("Inventory Inspector")]
-    public Text inspectorItemText;
+    public TextMeshProUGUI inspectorItemText;
     public Image inspectorItemImage;
-    public Text inspectorItemAmount;
+    public TextMeshProUGUI inspectorItemAmount;
     public List<InspectorButton> buttons = new List<InspectorButton>();
 
     [Header("Animations")]
     public Animator craftInspectAnimator;
 
-    private void Awake() {
+    void Awake() {
         Instance = this;
     }
 
-    private void Update() {
+    void Start() {
+        dragImage.enabled = false;
+    }
+
+    void Update() {
         if(currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
         }
@@ -44,14 +49,16 @@ public class Inventory : MonoBehaviour {
     }
 
     public void HighlightItem(Item HighlightItem) {
-        /*inspectorText.text = _HighlightItem.itemDiscription;
+        inspectorItemText.text = HighlightItem.itemDiscription;
+
         if(HighlightItem.amountCap > 0) {
             inspectorItemAmount.enabled = true;
             inspectorItemAmount.text = HighlightItem.amount.ToString();
         }
         else {
             inspectorItemAmount.enabled = false;
-        }*/
+        }
+
         inspectorItemImage.sprite = HighlightItem.item2D;
         for(int i = 0; i < buttons.Count; i++) {
             buttons[i].myButton.SetActive(false);
@@ -110,27 +117,6 @@ public class Inventory : MonoBehaviour {
     public void CheckRecipe() {
         productSlot.RemoveItem();
 
-        /*int fullSlots = 0;
-        for(int r = 0; r < craftingSlots.Count; r++) {
-            if(craftingSlots[r].myItem != null) {
-                fullSlots++;
-            }
-        }
-
-        for(int rr = 0; rr < CraftingRecipes.Count; rr++) {
-            if(CraftingRecipes[rr].ingredients.Count == fullSlots) {
-                for(int ii = 0; ii < CraftingRecipes[rr].ingredients.Count; ii++) {
-                    for(int i = 0; i < craftingSlots.Count; i++) {
-                        if(craftingSlots[i].myItem != null) {
-                            if(CraftingRecipes[rr].ingredients[ii] == craftingSlots[i].myItem.itemName) {
-                                productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
         int fullSlots = 0;
         for(int r = 0; r < craftingSlots.Count; r++) {
             if(craftingSlots[r].myItem != null) {
@@ -159,14 +145,19 @@ public class Inventory : MonoBehaviour {
     }
 
     public void CraftProduct() {
-        if(productSlot.myItem != null) {
-            for(int c = 0; c < craftingSlots.Count; c++) {
-                if(craftingSlots[c].myItem != null) {
-                    if(craftingSlots[c].myItem.amount - 1 <= 0) {
-                        craftingSlots[c].RemoveItem();
-                    }
-                    else {
-                        craftingSlots[c].myItem.amount -= 1;
+
+        if(productSlot.myItem != null && mouseOver != null) {
+            if(mouseOver.myItem == null || mouseOver.myItem != null && mouseOver.myItem.amountCap > 0 && mouseOver.myItem.amount + productSlot.myItem.amount <= mouseOver.myItem.amountCap) {
+                for(int c = 0; c < craftingSlots.Count; c++) {
+                    if(craftingSlots[c].myItem != null) {
+                        productSlot.StopItemDrag();
+                        if(craftingSlots[c].myItem.amount - 1 <= 0) {
+                            craftingSlots[c].RemoveItem();
+                        }
+                        else {
+                            craftingSlots[c].myItem.amount -= 1;
+                            craftingSlots[c].amountText.text = craftingSlots[c].myItem.amount.ToString();
+                        }
                     }
                 }
             }
@@ -185,5 +176,6 @@ public class Inventory : MonoBehaviour {
     public class Recipe {
         public List<string> ingredients = new List<string>();
         public Item product;
+        public int amount;
     }
 }

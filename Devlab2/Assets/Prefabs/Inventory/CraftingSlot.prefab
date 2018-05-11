@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 222235165296696532}
   - component: {fileID: 114822099891760980}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: Amount Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myItem: {fileID: 0}
   itemImage: {fileID: 114037264978357118}
-  amountText: {fileID: 0}
+  amountText: {fileID: 114822099891760980}
   craftingSlot: 1
 --- !u!114 &114990027069791030
 MonoBehaviour:

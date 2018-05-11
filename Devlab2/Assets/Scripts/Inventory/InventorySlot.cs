@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour {
     public Item myItem;
     public Image itemImage;
-    public Text amountText;
+    public TextMeshProUGUI amountText;
     public bool craftingSlot;
 
     void Start() {
@@ -23,13 +24,13 @@ public class InventorySlot : MonoBehaviour {
         itemImage.sprite = myItem.item2D;
         itemImage.gameObject.SetActive(true);
 
-        /*if(myItem.amountCap > 0) {
+        if(myItem.amountCap > 0) {
             amountText.text = myItem.amount.ToString();
             amountText.enabled = true;
         }
         else {
             amountText.enabled = false;
-        }*/
+        }
         //posible animation
     }
 
@@ -91,7 +92,7 @@ public class InventorySlot : MonoBehaviour {
 
     public void ChangeItemAmount(int amount) {
         myItem.amount = amount;
-        //amountText.text = _amount.ToString();
+        amountText.text = amount.ToString();
     }
 
     public void MouseEnter() {

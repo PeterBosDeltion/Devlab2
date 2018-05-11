@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13bcdb4910d28b240a968312044de3cd, type: 3}
-  m_Name: Stone
+  m_Name: Viber
   m_EditorClassIdentifier: 
-  itemName: Stone
-  item2D: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  itemDiscription: It's Mad Of Rocks
+  itemName: Viber
+  item2D: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
+  itemDiscription: Made Of Things
   myButtons:
+  - Equipe
   - Drop
-  amount: 1
-  amountCap: 32
+  amount: 4
+  amountCap: 16

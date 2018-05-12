@@ -12,4 +12,14 @@ public class Item : ScriptableObject {
 
     public int amount;
     public int amountCap;
+
+    public TypeOffItem itemType;
+    public enum TypeOffItem{
+        None,
+        Helmet,
+        ChestPiece,
+        LegPeice,
+        FootWear,
+        Weapon
+    }
 }

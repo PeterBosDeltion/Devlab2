@@ -9,9 +9,9 @@ public class Inventory : MonoBehaviour {
 
     public List<InventorySlot> theInventory = new List<InventorySlot>();
 
-    Item currentlyDragged;
+    Slot currentlyDragged;
 
-    public InventorySlot mouseOver;
+    public Slot mouseOver;
     public Image dragImage;
 
     [Header("Inventory Inspector")]
@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour {
     public Image inspectorItemImage;
     public TextMeshProUGUI inspectorItemAmount;
     public List<InspectorButton> buttons = new List<InspectorButton>();
+    Slot currentInspected;
 
     [Header("Animations")]
     public Animator craftInspectAnimator;
@@ -37,41 +38,15 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void StartDrag(Item draggedItem) {
+    public void StartDrag(Slot draggedItem) {
         currentlyDragged = draggedItem;
-        dragImage.sprite = draggedItem.item2D;
+        dragImage.sprite = draggedItem.myItem.item2D;
         dragImage.enabled = true;
     }
 
     public void StopDrag() {
         currentlyDragged = null;
         dragImage.enabled = false;
-    }
-
-    public void HighlightItem(Item HighlightItem) {
-        inspectorItemText.text = HighlightItem.itemDiscription;
-
-        if(HighlightItem.amountCap > 0) {
-            inspectorItemAmount.enabled = true;
-            inspectorItemAmount.text = HighlightItem.amount.ToString();
-        }
-        else {
-            inspectorItemAmount.enabled = false;
-        }
-
-        inspectorItemImage.sprite = HighlightItem.item2D;
-        for(int i = 0; i < buttons.Count; i++) {
-            buttons[i].myButton.SetActive(false);
-        }
-
-        for(int b = 0; b < HighlightItem.myButtons.Count; b++) {
-            for(int bb = 0; bb < buttons.Count; bb++) {
-                if(HighlightItem.myButtons[b] == buttons[bb].myTag) {
-                    buttons[bb].myButton.SetActive(true);
-                    break;
-                }
-            }
-        }
     }
 
     public bool AddItem(Item newItem) {
@@ -84,35 +59,87 @@ public class Inventory : MonoBehaviour {
         return (false);
     }
 
+    //Removes Given Item
+    void RemoveItem(Slot itemToRemove) {
+        if(itemToRemove != null && itemToRemove.myItem != null) {
+            ObjectPooler.instance.GetFromPool(itemToRemove.myItem.itemName, Vector3.zero, Quaternion.Euler(Vector3.zero)); //No Place Choosen Yet
+            itemToRemove.RemoveItem();
+            InspectorReset();
+        }
+
+    }
+
+    public void RemoveCurrentItem() {
+        RemoveItem(currentlyDragged);
+    }
+
     public void InspectorCraftingSwitch() {
         craftInspectAnimator.SetBool("Switch", !craftInspectAnimator.GetBool("Switch"));
     }
 
+    #region Inspector
+
     #region Inspector Buttons
     public void DropItem() {
-        if(mouseOver != null && mouseOver.myItem != null) {
-
-        }
+        RemoveItem(currentInspected);
     }
 
     public void EquipeItem() {
-        if(mouseOver != null && mouseOver.myItem != null) {
 
-        }
     }
 
     public void ConsumeItem() {
-        if(mouseOver != null && mouseOver.myItem != null) {
 
+    }
+    #endregion
+
+    //Inspects Given Item
+    public void InspectItem(InventorySlot itemToInspect) {
+        currentInspected = itemToInspect;
+
+        inspectorItemText.text = itemToInspect.myItem.itemDiscription;
+
+        if(itemToInspect.myItem.amountCap > 0) {
+            inspectorItemAmount.enabled = true;
+            inspectorItemAmount.text = itemToInspect.myItem.amount.ToString();
         }
+        else {
+            inspectorItemAmount.enabled = false;
+        }
+
+        inspectorItemImage.sprite = itemToInspect.myItem.item2D;
+        inspectorItemImage.enabled = true;
+        for(int i = 0; i < buttons.Count; i++) {
+            buttons[i].myButton.SetActive(false);
+        }
+
+        for(int b = 0; b < itemToInspect.myItem.myButtons.Count; b++) {
+            for(int bb = 0; bb < buttons.Count; bb++) {
+                if(itemToInspect.myItem.myButtons[b] == buttons[bb].myTag) {
+                    buttons[bb].myButton.SetActive(true);
+                    break;
+                }
+            }
+        }
+    }
+
+    //Reset The Inspector To Basic
+    void InspectorReset() {
+        for(int i = 0; i < buttons.Count; i++) {
+            buttons[i].myButton.SetActive(false);
+        }
+
+        inspectorItemImage.enabled = false;
+        inspectorItemAmount.enabled = false;
+        inspectorItemText.text = "";
     }
     #endregion
 
     #region Crafting
     [Header("Crafting")]
-    public List<InventorySlot> craftingSlots = new List<InventorySlot>();
+    public List<CraftingSlot> craftingSlots = new List<CraftingSlot>();
     public List<Recipe> CraftingRecipes = new List<Recipe>();
-    public InventorySlot productSlot;
+    public CraftingSlot productSlot;
 
     public void CheckRecipe() {
         productSlot.RemoveItem();
@@ -127,16 +154,15 @@ public class Inventory : MonoBehaviour {
         for(int rr = 0; rr < CraftingRecipes.Count; rr++) {
             int k = 0;
             if(CraftingRecipes[rr].ingredients.Count == fullSlots) {
-                for(int r = 0; r < craftingSlots.Count; r++) {
-                    if(craftingSlots[r].myItem != null) {
-                        for(int ii = 0; ii < CraftingRecipes[rr].ingredients.Count; ii++) {
-                            if(craftingSlots[r].myItem.itemName == CraftingRecipes[rr].ingredients[ii]) {
-                                k++;
-                                if(k == fullSlots) {
-                                    productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
-                                    return;
-                                }
+                for(int r = 0; r < CraftingRecipes[rr].ingredients.Count; r++) {
+                    for(int ii = 0; ii < craftingSlots.Count; ii++) {
+                        if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipes[rr].ingredients[r]) {
+                            k++;
+                            if(k == fullSlots) {
+                                productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
+                                return;
                             }
+                            break;
                         }
                     }
                 }
@@ -150,7 +176,6 @@ public class Inventory : MonoBehaviour {
             if(mouseOver.myItem == null || mouseOver.myItem != null && mouseOver.myItem.amountCap > 0 && mouseOver.myItem.amount + productSlot.myItem.amount <= mouseOver.myItem.amountCap) {
                 for(int c = 0; c < craftingSlots.Count; c++) {
                     if(craftingSlots[c].myItem != null) {
-                        productSlot.StopItemDrag();
                         if(craftingSlots[c].myItem.amount - 1 <= 0) {
                             craftingSlots[c].RemoveItem();
                         }

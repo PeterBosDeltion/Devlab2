@@ -32,65 +32,65 @@ public class ObjectPooler : MonoBehaviour {
         poolDicrionary = new Dictionary<string, int>();
 
         for(int i = 0; i < Pools.Count; i++) {
-            Queue<GameObject> _objectPool = new Queue<GameObject>();
+            Queue<GameObject> objectPool = new Queue<GameObject>();
 
             for(int ii = 0; ii < Pools[i].startSize; ii++) {
-                GameObject _prefab = Instantiate(Pools[i].prefab);
-                _prefab.SetActive(false);
-                _objectPool.Enqueue(_prefab);
+                GameObject prefab = Instantiate(Pools[i].prefab);
+                prefab.SetActive(false);
+                objectPool.Enqueue(prefab);
             }
 
-            Pools[i].myQueue = _objectPool;
+            Pools[i].myQueue = objectPool;
             poolDicrionary.Add(Pools[i].poolTag, i);
         }
     }
 
     //call This Void To Get A Object From The Desired Pool
-    public GameObject GetFromPool(string _poolTag, Vector3 _position, Quaternion _rotation) {
+    public GameObject GetFromPool(string poolTag, Vector3 position, Quaternion rotation) {
 
-        if(!poolDicrionary.ContainsKey(_poolTag)) {
+        if(!poolDicrionary.ContainsKey(poolTag)) {
             Debug.Log("Dictionary does not contain" + tag);
             return (null);
         }
 
-        Pool _currentPool = Pools[poolDicrionary[_poolTag]];
-        GameObject _objectToGet = null;
+        Pool currentPool = Pools[poolDicrionary[poolTag]];
+        GameObject objectToGet = null;
 
-        if(_currentPool.myQueue.Count == 0) {
-            if(_currentPool.autoExpand == true){
-                _objectToGet = Instantiate(_currentPool.prefab);
-                _currentPool.startSize++;
-                Debug.Log("ObjectPooler: Pool Expanded(" + _poolTag + ")");
+        if(currentPool.myQueue.Count == 0) {
+            if(currentPool.autoExpand == true){
+                objectToGet = Instantiate(currentPool.prefab);
+                currentPool.startSize++;
+                Debug.Log("ObjectPooler: Pool Expanded(" + poolTag + ")");
             }
             else {
-                _objectToGet = _currentPool.myQueue.Dequeue();
-                _currentPool.myQueue.Enqueue(_objectToGet);
+                objectToGet = currentPool.myQueue.Dequeue();
+                currentPool.myQueue.Enqueue(objectToGet);
             }
         }
         else {
-            _objectToGet = _currentPool.myQueue.Dequeue();
+            objectToGet = currentPool.myQueue.Dequeue();
         }
 
-        _objectToGet.SetActive(true);
-        _objectToGet.transform.SetPositionAndRotation(_position, _rotation);
+        objectToGet.SetActive(true);
+        objectToGet.transform.SetPositionAndRotation(position, rotation);
 
-        return (_objectToGet);
+        return (objectToGet);
     }
 
     //call This Void To Retrieve A Object To The Desired Pool
-    public void AddToPool(string _poolTag, GameObject _ObjectToAdd) {
+    public void AddToPool(string poolTag, GameObject ObjectToAdd) {
 
-        if(!poolDicrionary.ContainsKey(_poolTag)) {
+        if(!poolDicrionary.ContainsKey(poolTag)) {
             Debug.Log("Dictionary does not contain" + tag);
             return;
         }
 
-        Pool currentPool = Pools[poolDicrionary[_poolTag]];
+        Pool currentPool = Pools[poolDicrionary[poolTag]];
 
-        _ObjectToAdd.SetActive(false);
+        ObjectToAdd.SetActive(false);
 
         if(currentPool.autoExpand == false) {
-            currentPool.myQueue.Enqueue(_ObjectToAdd);
+            currentPool.myQueue.Enqueue(ObjectToAdd);
         }
     }
 }

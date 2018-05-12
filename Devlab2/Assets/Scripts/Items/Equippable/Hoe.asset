@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Name: Hoe
   m_EditorClassIdentifier: 
   itemName: Hoe
-  craftable: 0
   item2D: {fileID: 0}
-  item3D: 
+  itemDiscription: 
+  myButtons: []
+  amount: 0
+  amountCap: 0
+  itemType: 5
   damage: 0
   myGathering: 0

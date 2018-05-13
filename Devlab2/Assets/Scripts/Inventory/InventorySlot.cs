@@ -7,12 +7,6 @@ using UnityEngine.UI;
 public class InventorySlot : Slot {
     public Animator slotAnimator;
 
-    public void InspectItem() {
-        if(myItem != null) {
-            Inventory.Instance.InspectItem(this);
-        }
-    }
-
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);
         base.MouseEnter();

@@ -23,7 +23,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -60,7 +60,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.z
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -80,7 +80,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -126,7 +126,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -136,7 +136,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.z
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -148,14 +148,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4024603401
+      path: 3891196097
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1704695241
+      path: 4029469480
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
@@ -190,7 +190,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -227,7 +227,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -237,7 +237,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.z
-    path: Inventory And Crafting/Crafting
+    path: Crafting
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -247,7 +247,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -293,7 +293,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -303,7 +303,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.z
-    path: Inventory And Crafting/Inspector
+    path: Inspector
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

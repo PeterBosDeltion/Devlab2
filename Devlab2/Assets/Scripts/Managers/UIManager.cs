@@ -20,17 +20,21 @@ public class UIManager : MonoBehaviour {
         instance = this;
     }
 
+    void Start() {
+        pauseMenu.enabled = false;
+        inventory.enabled = false;
+    }
+
     void Update() {
         if(Input.GetButtonDown("Cancel")) {
             SetCanvas(CancelCanvas());
         }
-        if(Input.GetButtonDown("Inventory") && currentUI == UIState.BaseCanvas) {
+        if(Input.GetButtonDown("Inventory")) {
             if(currentUI == UIState.Inventory) {
                 SetCanvas(CancelCanvas());
             }
             else {
                 SetCanvas(UIState.Inventory);
-                Debug.Log("s");
             }
         }
     }
@@ -51,12 +55,14 @@ public class UIManager : MonoBehaviour {
         switch(currentUI) {
             case UIState.BaseCanvas:
             pauseMenu.enabled = false;
-            inventory.enabled = false;
+            if(inventory.enabled == true) {
+                Inventory.EnableInventory(false);
+            }
             baseCanvas.enabled = true;
             //        ***changeToAnimation Later
             break;
             case UIState.Inventory:
-            inventory.enabled = true;
+            Inventory.EnableInventory(true);
             baseCanvas.enabled = false;
             //        ***changeToAnimation Later
             break;

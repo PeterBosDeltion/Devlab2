@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
     public static Inventory Instance;
 
     public List<InventorySlot> theInventory = new List<InventorySlot>();
+    public List<CharacterSlot> characterSlots = new List<CharacterSlot>();
     public Image dragImage;
     Slot currentlyDragged;
     public static Slot mouseOver;
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour {
 
     [Header("Animations")]
     public Animator craftInspectAnimator;
+    public Animator InventoryAnimator;
 
     void Awake() {
         Instance = this;
@@ -34,6 +36,10 @@ public class Inventory : MonoBehaviour {
         if(currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
         }
+    }
+
+    public static void EnableInventory(bool state) {
+        Instance.InventoryAnimator.SetBool("Enabled", state);
     }
 
     //Enables Inventory Drag Elements
@@ -89,17 +95,32 @@ public class Inventory : MonoBehaviour {
 
     //Equipes Currently Inspected Item
     public void EquipeItem() {
-
+        for(int i = 0; i < characterSlots.Count; i++) {
+            if(characterSlots[i].myType == currentInspected.myItem.itemType) {
+                if(characterSlots[i].myItem != null) {
+                    Item localItem = characterSlots[i].myItem;
+                    characterSlots[i].SetItem(currentInspected.myItem);
+                    currentInspected.SetItem(localItem);
+                    InspectorReset();
+                }
+                else {
+                    characterSlots[i].SetItem(currentInspected.myItem);
+                    currentInspected.RemoveItem();
+                    InspectorReset();
+                }
+                break;
+            }
+        }
     }
 
     //Consumes Currently Inspected Item
     public void ConsumeItem() {
-
+        //          ***add food and or water to stats
     }
     #endregion
 
     //Inspects Given Item
-    public void InspectItem(InventorySlot itemToInspect) {
+    public void InspectItem(Slot itemToInspect) {
         currentInspected = itemToInspect;
 
         inspectorItemText.text = itemToInspect.myItem.itemDiscription;
@@ -136,7 +157,7 @@ public class Inventory : MonoBehaviour {
 
         inspectorItemImage.enabled = false;
         inspectorItemAmount.enabled = false;
-        inspectorItemText.text = "";
+        inspectorItemText.text = "Select item to inspect";
     }
     #endregion
 

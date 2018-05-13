@@ -18,4 +18,11 @@ public class CharacterSlot : Slot {
         myItem = Instantiate(newItem);
         itemImage.sprite = myItem.item2D;
     }
+
+    public override void StartItemDrag() {
+        if(myItem != null) {
+            itemImage.sprite = baseImage;
+            Inventory.Instance.StartDrag(this);
+        }
+    }
 }

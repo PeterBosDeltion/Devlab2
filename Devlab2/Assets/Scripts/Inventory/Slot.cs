@@ -10,6 +10,12 @@ public class Slot : MonoBehaviour {
     public TextMeshProUGUI amountText;
     public Item.TypeOffItem myType;
 
+    public void InspectItem() {
+        if(myItem != null) {
+            Inventory.Instance.InspectItem(this);
+        }
+    }
+
     void Start() {
         if(myItem != null) {
             SetItem(myItem);
@@ -53,7 +59,7 @@ public class Slot : MonoBehaviour {
                 if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
                     Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
-                    if(otherItem.itemName == myItem.name) { //bugggg
+                    if(otherItem.itemName == myItem.name) { //          ***bugggg Same names are not true
                         int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
                         if(leftOver > 0) {
                             myItem.amount = leftOver;
@@ -75,8 +81,11 @@ public class Slot : MonoBehaviour {
                 }
             }
             else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
-                    Inventory.mouseOver.SetItem(Instantiate(myItem));
-                    RemoveItem();
+                Inventory.mouseOver.SetItem(Instantiate(myItem));
+                RemoveItem();
+            }
+            else {
+                itemImage.gameObject.SetActive(true);
             }
             if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
                 Inventory.Instance.CheckRecipe();
@@ -88,7 +97,7 @@ public class Slot : MonoBehaviour {
         Inventory.Instance.StopDrag();
     }
 
-    //Starts Item Dragg
+    //Starts Item Drag
     public virtual void StartItemDrag() {
         if(myItem != null) {
             itemImage.gameObject.SetActive(false);

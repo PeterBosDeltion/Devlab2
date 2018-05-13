@@ -8,11 +8,9 @@ public class Inventory : MonoBehaviour {
     public static Inventory Instance;
 
     public List<InventorySlot> theInventory = new List<InventorySlot>();
-
-    Slot currentlyDragged;
-
-    public Slot mouseOver;
     public Image dragImage;
+    Slot currentlyDragged;
+    public static Slot mouseOver;
 
     [Header("Inventory Inspector")]
     public TextMeshProUGUI inspectorItemText;
@@ -38,17 +36,20 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //Enables Inventory Drag Elements
     public void StartDrag(Slot draggedItem) {
         currentlyDragged = draggedItem;
         dragImage.sprite = draggedItem.myItem.item2D;
         dragImage.enabled = true;
     }
 
+    //Disables Inventory Drag Elements
     public void StopDrag() {
         currentlyDragged = null;
         dragImage.enabled = false;
     }
 
+    //Adds Given Item And Returns True If Posible Otherwise Returns False
     public bool AddItem(Item newItem) {
         for(int i = 0; i < theInventory.Count; i++) {
             if(theInventory[i].myItem == null) {
@@ -60,17 +61,18 @@ public class Inventory : MonoBehaviour {
     }
 
     //Removes Given Item
-    void RemoveItem(Slot itemToRemove) {
-        if(itemToRemove != null && itemToRemove.myItem != null) {
-            ObjectPooler.instance.GetFromPool(itemToRemove.myItem.itemName, Vector3.zero, Quaternion.Euler(Vector3.zero)); //No Place Choosen Yet
-            itemToRemove.RemoveItem();
+    void DropItem(Slot itemToDrop) {
+        if(itemToDrop != null && itemToDrop.myItem != null) {
+            ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, Vector3.zero, Quaternion.Euler(Vector3.zero)); //No Place Choosen Yet
+            itemToDrop.RemoveItem();
             InspectorReset();
         }
 
     }
 
+    //Drops Currently Dragged Item
     public void RemoveCurrentItem() {
-        RemoveItem(currentlyDragged);
+        DropItem(currentlyDragged);
     }
 
     public void InspectorCraftingSwitch() {
@@ -80,14 +82,17 @@ public class Inventory : MonoBehaviour {
     #region Inspector
 
     #region Inspector Buttons
+    //Drops Currently Inspected Item
     public void DropItem() {
-        RemoveItem(currentInspected);
+        DropItem(currentInspected);
     }
 
+    //Equipes Currently Inspected Item
     public void EquipeItem() {
 
     }
 
+    //Consumes Currently Inspected Item
     public void ConsumeItem() {
 
     }
@@ -141,6 +146,7 @@ public class Inventory : MonoBehaviour {
     public List<Recipe> CraftingRecipes = new List<Recipe>();
     public CraftingSlot productSlot;
 
+    //Checks If Recipe Is Correct        ***NON EFFICIENT
     public void CheckRecipe() {
         productSlot.RemoveItem();
 
@@ -170,8 +176,8 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //Crafts Product
     public void CraftProduct() {
-
         if(productSlot.myItem != null && mouseOver != null) {
             if(mouseOver.myItem == null || mouseOver.myItem != null && mouseOver.myItem.amountCap > 0 && mouseOver.myItem.amount + productSlot.myItem.amount <= mouseOver.myItem.amountCap) {
                 for(int c = 0; c < craftingSlots.Count; c++) {
@@ -191,12 +197,14 @@ public class Inventory : MonoBehaviour {
     }
     #endregion
 
+    //Button For Inspector
     [System.Serializable]
     public struct InspectorButton {
         public string myTag;
         public GameObject myButton;
     }
 
+    //Recipe To Check
     [System.Serializable]
     public class Recipe {
         public List<string> ingredients = new List<string>();

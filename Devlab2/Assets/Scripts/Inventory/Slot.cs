@@ -19,11 +19,13 @@ public class Slot : MonoBehaviour {
         }
     }
 
+    //Removes Currently Held Item
     public virtual void RemoveItem() {
         myItem = null;
         itemImage.gameObject.SetActive(false);
     }
 
+    //Changes Item And Item Components
     public virtual void SetItem(Item newItem) {
         myItem = Instantiate(newItem);
         itemImage.sprite = myItem.item2D;
@@ -36,25 +38,26 @@ public class Slot : MonoBehaviour {
         else {
             amountText.enabled = false;
         }
-        //posible animation
     }
 
+    //Changes The Amount Of Current Item And Updates Text
     public void ChangeItemAmount(int amount) {
         myItem.amount = amount;
         amountText.text = amount.ToString();
     }
 
+    //Stops Item Drag
     public virtual void StopItemDrag() {
-        if(myItem != null && Inventory.Instance.mouseOver != null) {
-            if(Inventory.Instance.mouseOver.myItem != null) {
-                if(Inventory.Instance.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.Instance.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.Instance.mouseOver.myItem.itemType == myItem.itemType) {
-                    Item otherItem = Instantiate(Inventory.Instance.mouseOver.myItem);
+        if(myItem != null && Inventory.mouseOver != null) {
+            if(Inventory.mouseOver.myItem != null) {
+                if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
+                    Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
                     if(otherItem.itemName == myItem.name) { //bugggg
                         int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
                         if(leftOver > 0) {
                             myItem.amount = leftOver;
-                            Inventory.Instance.mouseOver.ChangeItemAmount(otherItem.amountCap);
+                            Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
                             itemImage.gameObject.SetActive(true);
                         }
                         else {
@@ -63,7 +66,7 @@ public class Slot : MonoBehaviour {
                         }
                     }
                     else {
-                        Inventory.Instance.mouseOver.SetItem(myItem);
+                        Inventory.mouseOver.SetItem(myItem);
                         SetItem(otherItem);
                     }
                 }
@@ -71,11 +74,11 @@ public class Slot : MonoBehaviour {
                     itemImage.gameObject.SetActive(true);
                 }
             }
-            else if(Inventory.Instance.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.Instance.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.Instance.mouseOver.myType == myItem.itemType) {
-                    Inventory.Instance.mouseOver.SetItem(Instantiate(myItem));
+            else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
+                    Inventory.mouseOver.SetItem(Instantiate(myItem));
                     RemoveItem();
             }
-            if(Inventory.Instance.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
+            if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
                 Inventory.Instance.CheckRecipe();
             }
         }
@@ -85,6 +88,7 @@ public class Slot : MonoBehaviour {
         Inventory.Instance.StopDrag();
     }
 
+    //Starts Item Dragg
     public virtual void StartItemDrag() {
         if(myItem != null) {
             itemImage.gameObject.SetActive(false);
@@ -93,12 +97,12 @@ public class Slot : MonoBehaviour {
     }
 
     public virtual void MouseEnter() {
-        Inventory.Instance.mouseOver = this;
+        Inventory.mouseOver = this;
     }
 
     public virtual void MouseExit() {
-        if(Inventory.Instance.mouseOver == this) {
-            Inventory.Instance.mouseOver = null;
+        if(Inventory.mouseOver == this) {
+            Inventory.mouseOver = null;
         }
     }
 }

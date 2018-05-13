@@ -17,6 +17,5 @@ public class CharacterSlot : Slot {
     public override void SetItem(Item newItem) {
         myItem = Instantiate(newItem);
         itemImage.sprite = myItem.item2D;
-        //posible animation
     }
 }

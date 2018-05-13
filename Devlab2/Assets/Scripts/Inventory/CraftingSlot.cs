@@ -8,14 +8,12 @@ public class CraftingSlot : Slot {
 
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);
-        Inventory.Instance.mouseOver = this;
+        base.MouseEnter();
     }
 
     public override void MouseExit() {
         slotAnimator.SetBool("Enter", false);
-        if(Inventory.Instance.mouseOver == this) {
-            Inventory.Instance.mouseOver = null;
-        }
+        base.MouseExit();
     }
 
     public override void StopItemDrag() {
@@ -24,22 +22,22 @@ public class CraftingSlot : Slot {
             return;
         }
 
-        if(myItem != null && Inventory.Instance.mouseOver != null) {
-            if(Inventory.Instance.mouseOver.myItem != null) {
+        if(myItem != null && Inventory.mouseOver != null) {
+            if(Inventory.mouseOver.myItem != null) {
                 itemImage.gameObject.SetActive(true);
             }
-            else if(Inventory.Instance.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.Instance.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.Instance.mouseOver.myType == myItem.itemType) {
-                if(Inventory.Instance.mouseOver.GetType() != typeof(CraftingSlot)) {
+            else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
+                if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
                     Item newitem = myItem;
                     Inventory.Instance.CraftProduct();
-                    Inventory.Instance.mouseOver.SetItem(Instantiate(newitem));
+                    Inventory.mouseOver.SetItem(Instantiate(newitem));
                     RemoveItem();
                 }
                 else {
                     itemImage.gameObject.SetActive(true);
                 }
             }
-            if(Inventory.Instance.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
+            if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
                 Inventory.Instance.CheckRecipe();
             }
         }

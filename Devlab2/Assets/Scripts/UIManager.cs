@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    //Steps Back A Canvas When Cancel Button Is Pressed
     UIState CancelCanvas() {
         switch(currentUI) {
             case UIState.BaseCanvas:
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    //Changes Current Canvas
     void SetCanvas(UIState _newState) {
         currentUI = _newState;
         switch(currentUI) {
@@ -51,17 +53,17 @@ public class UIManager : MonoBehaviour {
             pauseMenu.enabled = false;
             inventory.enabled = false;
             baseCanvas.enabled = true;
-            //changeToAnimation Later
+            //        ***changeToAnimation Later
             break;
             case UIState.Inventory:
             inventory.enabled = true;
             baseCanvas.enabled = false;
-            //changeToAnimation Later
+            //        ***changeToAnimation Later
             break;
             case UIState.PauseMenu:
             pauseMenu.enabled = true;
             baseCanvas.enabled = false;
-            //change To Animation Later
+            //        ***changeToAnimation Later
             break;
             default:
             break;

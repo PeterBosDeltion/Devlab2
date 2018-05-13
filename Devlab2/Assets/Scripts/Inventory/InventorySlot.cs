@@ -15,13 +15,11 @@ public class InventorySlot : Slot {
 
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);
-        Inventory.Instance.mouseOver = this;
+        base.MouseEnter();
     }
 
     public override void MouseExit() {
         slotAnimator.SetBool("Enter", false);
-        if(Inventory.Instance.mouseOver == this) {
-            Inventory.Instance.mouseOver = null;
-        }
+        base.MouseExit();
     }
 }

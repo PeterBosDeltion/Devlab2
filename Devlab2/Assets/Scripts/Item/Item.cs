@@ -6,12 +6,10 @@ using UnityEngine;
 public class Item : ScriptableObject {
     public string itemName;
     public Sprite item2D;
-    public string itemDiscription;
+    public int amount, amountCap;
 
     public List<string> myButtons = new List<string>();
-
-    public int amount;
-    public int amountCap;
+    public string itemDiscription;
 
     public TypeOffItem itemType;
     public enum TypeOffItem{

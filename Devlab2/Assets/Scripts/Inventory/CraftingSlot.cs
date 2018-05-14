@@ -22,28 +22,30 @@ public class CraftingSlot : Slot {
             return;
         }
 
-        if(myItem != null && Inventory.mouseOver != null) {
-            if(Inventory.mouseOver.myItem != null) {
-                itemImage.gameObject.SetActive(true);
-            }
-            else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
-                if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
-                    Item newitem = myItem;
-                    Inventory.Instance.CraftProduct();
-                    Inventory.mouseOver.SetItem(Instantiate(newitem));
-                    RemoveItem();
-                }
-                else {
+        if(myItem != null) {
+            if(Inventory.mouseOver != null) {
+                if(Inventory.mouseOver.myItem != null) {
                     itemImage.gameObject.SetActive(true);
                 }
+                else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
+                    if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
+                        Item newitem = myItem;
+                        Inventory.Instance.CraftProduct();
+                        Inventory.mouseOver.SetItem(Instantiate(newitem));
+                        RemoveItem();
+                    }
+                    else {
+                        itemImage.gameObject.SetActive(true);
+                    }
+                }
+                if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
+                    Inventory.Instance.CheckRecipe();
+                }
             }
-            if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
-                Inventory.Instance.CheckRecipe();
+            else {
+                itemImage.gameObject.SetActive(true);
             }
+            Inventory.Instance.StopDrag();
         }
-        else {
-            itemImage.gameObject.SetActive(true);
-        }
-        Inventory.Instance.StopDrag();
     }
 }

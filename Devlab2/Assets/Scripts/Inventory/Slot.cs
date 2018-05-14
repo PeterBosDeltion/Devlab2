@@ -54,47 +54,49 @@ public class Slot : MonoBehaviour {
 
     //Stops Item Drag
     public virtual void StopItemDrag() {
-        if(myItem != null && Inventory.mouseOver != null) {
-            if(Inventory.mouseOver.myItem != null) {
-                if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
-                    Item otherItem = Instantiate(Inventory.mouseOver.myItem);
+        if(myItem != null) {
+            if(Inventory.mouseOver != null) {
+                if(Inventory.mouseOver.myItem != null) {
+                    if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
+                        Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
-                    if(otherItem.itemName == myItem.name) { //          ***bugggg Same names are not true
-                        int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
-                        if(leftOver > 0) {
-                            myItem.amount = leftOver;
-                            Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
-                            itemImage.gameObject.SetActive(true);
+                        if(otherItem.itemName == myItem.name) { //          ***bugggg Same names are not true
+                            int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
+                            if(leftOver > 0) {
+                                myItem.amount = leftOver;
+                                Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
+                                itemImage.gameObject.SetActive(true);
+                            }
+                            else {
+                                otherItem.amount += myItem.amount;
+                                RemoveItem();
+                            }
                         }
                         else {
-                            otherItem.amount += myItem.amount;
-                            RemoveItem();
+                            Inventory.mouseOver.SetItem(myItem);
+                            SetItem(otherItem);
                         }
                     }
                     else {
-                        Inventory.mouseOver.SetItem(myItem);
-                        SetItem(otherItem);
+                        itemImage.gameObject.SetActive(true);
                     }
+                }
+                else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
+                    Inventory.mouseOver.SetItem(Instantiate(myItem));
+                    RemoveItem();
                 }
                 else {
                     itemImage.gameObject.SetActive(true);
                 }
-            }
-            else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
-                Inventory.mouseOver.SetItem(Instantiate(myItem));
-                RemoveItem();
+                if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
+                    Inventory.Instance.CheckRecipe();
+                }
             }
             else {
                 itemImage.gameObject.SetActive(true);
             }
-            if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
-                Inventory.Instance.CheckRecipe();
-            }
+            Inventory.Instance.StopDrag();
         }
-        else {
-            itemImage.gameObject.SetActive(true);
-        }
-        Inventory.Instance.StopDrag();
     }
 
     //Starts Item Drag

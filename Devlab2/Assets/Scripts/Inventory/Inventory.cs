@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour {
 
     void Awake() {
         Instance = this;
+        SortRecipes();
     }
 
     void Start() {
@@ -159,13 +160,32 @@ public class Inventory : MonoBehaviour {
         inspectorItemAmount.enabled = false;
         inspectorItemText.text = "Select item to inspect";
     }
+
+    //Button For Inspector
+    [System.Serializable]
+    public struct InspectorButton {
+        public string myTag;
+        public GameObject myButton;
+    }
     #endregion
 
     #region Crafting
     [Header("Crafting")]
     public List<CraftingSlot> craftingSlots = new List<CraftingSlot>();
     public List<Recipe> CraftingRecipes = new List<Recipe>();
+    List<Recipe>[] CraftingRecipesList = new List<Recipe>[5];
+    //List<List<Recipe>> CraftingRecipesList = new List<List<Recipe>>();
     public CraftingSlot productSlot;
+
+    void SortRecipes() {
+        for(int i = 0; i < CraftingRecipesList.Length; i++) {
+            CraftingRecipesList[i] = new List<Recipe>();
+        }
+
+        foreach(Recipe aRecipe in CraftingRecipes) {
+            CraftingRecipesList[aRecipe.ingredients.Count].Add(aRecipe);
+        }
+    }
 
     //Checks If Recipe Is Correct        ***NON EFFICIENT
     public void CheckRecipe() {
@@ -178,19 +198,17 @@ public class Inventory : MonoBehaviour {
             }
         }
 
-        for(int rr = 0; rr < CraftingRecipes.Count; rr++) {
+        for(int rr = 0; rr < CraftingRecipesList[fullSlots].Count; rr++) {
             int k = 0;
-            if(CraftingRecipes[rr].ingredients.Count == fullSlots) {
-                for(int r = 0; r < CraftingRecipes[rr].ingredients.Count; r++) {
-                    for(int ii = 0; ii < craftingSlots.Count; ii++) {
-                        if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipes[rr].ingredients[r]) {
-                            k++;
-                            if(k == fullSlots) {
-                                productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
-                                return;
-                            }
-                            break;
+            for(int r = 0; r < CraftingRecipes[rr].ingredients.Count; r++) {
+                for(int ii = 0; ii < craftingSlots.Count; ii++) {
+                    if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipes[rr].ingredients[r]) {
+                        k++;
+                        if(k == fullSlots) {
+                            productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
+                            return;
                         }
+                        break;
                     }
                 }
             }
@@ -216,14 +234,6 @@ public class Inventory : MonoBehaviour {
         }
         CheckRecipe();
     }
-    #endregion
-
-    //Button For Inspector
-    [System.Serializable]
-    public struct InspectorButton {
-        public string myTag;
-        public GameObject myButton;
-    }
 
     //Recipe To Check
     [System.Serializable]
@@ -232,4 +242,5 @@ public class Inventory : MonoBehaviour {
         public Item product;
         public int amount;
     }
+    #endregion
 }

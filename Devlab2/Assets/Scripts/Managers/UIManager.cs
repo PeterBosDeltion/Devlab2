@@ -21,8 +21,7 @@ public class UIManager : MonoBehaviour {
     }
 
     void Start() {
-        pauseMenu.enabled = false;
-        inventory.enabled = false;
+        SetCanvas(UIState.BaseCanvas);
     }
 
     void Update() {

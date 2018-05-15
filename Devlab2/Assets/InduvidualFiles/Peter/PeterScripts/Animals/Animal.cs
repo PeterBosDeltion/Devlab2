@@ -67,7 +67,7 @@ public abstract class Animal : MonoBehaviour {
         }
         else
         {
-            if (transform.position == agent.destination)
+            if (transform.position == agent.destination.normalized)
             {
                 state = States.Idle;
             }
@@ -79,6 +79,8 @@ public abstract class Animal : MonoBehaviour {
         yield return new WaitForSeconds(patience);
         hasTarget = false;
         wandering = false;
+
+        state = States.Idle;
     }
 
 

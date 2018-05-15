@@ -24,16 +24,21 @@ public class Gather : MonoBehaviour {
     {
         //Debug.Log(col.name);
 
-        if(col.transform.tag == "Resource")
+        if (anim.isPlaying)
         {
-            col.transform.GetComponent<Resource>().Harvest();
+            if (col.transform.tag == "Resource")
+            {
+                col.transform.GetComponent<Resource>().Harvest();
+            }
+
+            Animal a = col.transform.GetComponent<Animal>();
+            if (a != null)
+            {
+                Destroy(a.gameObject);
+            }
         }
 
-        Animal a = col.transform.GetComponent<Animal>();
-        if(a != null)
-        {
-            Destroy(a.gameObject);
-        }
+       
 
     }
 }

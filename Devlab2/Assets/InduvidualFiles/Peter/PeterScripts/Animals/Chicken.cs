@@ -31,6 +31,7 @@ public class Chicken : Animal {
         else if(state != States.Wander && canWander)
         {
             canWander = false;
+            state = States.Idle;
         }
 	}
 
@@ -53,7 +54,10 @@ public class Chicken : Animal {
     private IEnumerator Idle()
     {
         yield return new WaitForSeconds(idleTime);
-        LayEgg();
+        if (canLayEgg)
+        {
+            LayEgg();
+        }
 
         state = States.Wander;
 
@@ -71,6 +75,11 @@ public class Chicken : Animal {
                 canLayEgg = false;
                 //Egg logic here
             }
+            
+        }
+        else
+        {
+            canLayEgg = true;
         }
     }
 

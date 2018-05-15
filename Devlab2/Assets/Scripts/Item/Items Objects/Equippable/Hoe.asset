@@ -11,12 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79de0eade370ee74ea32418da79d04d8, type: 3}
   m_Name: Hoe
   m_EditorClassIdentifier: 
+  itemID: 6
   itemName: Hoe
   item2D: {fileID: 0}
-  itemDiscription: 
-  myButtons: []
   amount: 0
   amountCap: 0
+  myButtons: []
+  itemDiscription: 
   itemType: 5
   damage: 0
-  myGathering: 0
+  myGathering: 2

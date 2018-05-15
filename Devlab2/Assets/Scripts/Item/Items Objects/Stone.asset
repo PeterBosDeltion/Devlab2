@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bcdb4910d28b240a968312044de3cd, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
+  itemID: 7
   itemName: Stone
   item2D: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
-  itemDiscription: It's Mad Of Rocks
-  myButtons:
-  - Drop
   amount: 6
   amountCap: 32
+  myButtons:
+  - Drop
+  itemDiscription: It's Mad Of Rocks
+  itemType: 0

@@ -7,7 +7,6 @@ using TMPro;
 public class Inventory : MonoBehaviour {
     public static Inventory Instance;
 
-    public static Equippable itemInHand;
     public List<InventorySlot> theInventory = new List<InventorySlot>();
     public List<CharacterSlot> characterSlots = new List<CharacterSlot>();
     public Image dragImage;
@@ -175,6 +174,7 @@ public class Inventory : MonoBehaviour {
     public List<CraftingSlot> craftingSlots = new List<CraftingSlot>();
     public List<Recipe> CraftingRecipes = new List<Recipe>();
     List<Recipe>[] CraftingRecipesList = new List<Recipe>[5];
+    //List<List<Recipe>> CraftingRecipesList = new List<List<Recipe>>();
     public CraftingSlot productSlot;
 
     void SortRecipes() {

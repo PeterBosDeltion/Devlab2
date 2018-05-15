@@ -11,11 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bcdb4910d28b240a968312044de3cd, type: 3}
   m_Name: Viber
   m_EditorClassIdentifier: 
+  itemID: 3
   itemName: Viber
   item2D: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
-  itemDiscription: Made Of Things
+  amount: 4
+  amountCap: 16
   myButtons:
   - Equipe
   - Drop
-  amount: 4
-  amountCap: 16
+  itemDiscription: Made Of Things
+  itemType: 0

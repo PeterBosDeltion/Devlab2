@@ -11,9 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9096c5da4ccc47afabf987edced3e, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
+  itemID: 1
   itemName: Bread
-  craftable: 0
   item2D: {fileID: 0}
-  item3D: 
+  amount: 0
+  amountCap: 0
+  myButtons: []
+  itemDiscription: 
+  itemType: 0
   food: 10
   water: 0

@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour {
     public Image dragImage;
     Slot currentlyDragged;
     public static Slot mouseOver;
+    public static Equippable itemInHand;
 
     [Header("Inventory Inspector")]
     public TextMeshProUGUI inspectorItemText;

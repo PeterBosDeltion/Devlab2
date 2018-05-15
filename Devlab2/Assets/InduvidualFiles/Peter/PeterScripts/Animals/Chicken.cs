@@ -17,6 +17,8 @@ public class Chicken : Animal {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Egg?" + canLayEgg);
+
 		if(state == States.Idle)
         {
             if (!idling)
@@ -53,11 +55,10 @@ public class Chicken : Animal {
 
     private IEnumerator Idle()
     {
+        Debug.Log("Idle");
         yield return new WaitForSeconds(idleTime);
-        if (canLayEgg)
-        {
-            LayEgg();
-        }
+
+        LayEgg();
 
         state = States.Wander;
 
@@ -67,7 +68,7 @@ public class Chicken : Animal {
     {
         float chance = Random.value;
 
-        if(chance > .7F) //0.7F = 30% chance
+        if(chance > .99F) //0.7F = 30% chance
         {
             if (canLayEgg)
             {
@@ -75,12 +76,14 @@ public class Chicken : Animal {
                 canLayEgg = false;
                 //Egg logic here
             }
-            
+            else
+            {
+                canLayEgg = true;
+                return;
+            }
+
         }
-        else
-        {
-            canLayEgg = true;
-        }
+       
     }
 
 }

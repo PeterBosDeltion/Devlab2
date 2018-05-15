@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23562137788533774}
   - component: {fileID: 65862731732802654}
   m_Layer: 0
-  m_Name: PlaceHolderAntiDeletionCube
+  m_Name: Burger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

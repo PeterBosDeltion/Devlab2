@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public static UIManager instance;
 
-    enum UIState {
+    public enum UIState {
         BaseCanvas,
         Inventory,
         PauseMenu,
+        Builder
     }
 
-    public Canvas pauseMenu, inventory,baseCanvas;
+    public Canvas pauseMenu, inventory, baseCanvas, builderCanvas;
 
-    UIState currentUI;
+    public UIState currentUI;
 
     void Awake() {
         instance = this;
@@ -49,29 +50,48 @@ public class UIManager : MonoBehaviour {
     }
 
     //Changes Current Canvas
-    void SetCanvas(UIState _newState) {
+    public void SetCanvas(UIState _newState) {
         currentUI = _newState;
         switch(currentUI) {
             case UIState.BaseCanvas:
-            pauseMenu.enabled = false;
-            if(inventory.enabled == true) {
-                Inventory.EnableInventory(false);
-            }
-            baseCanvas.enabled = true;
-            //        ***changeToAnimation Later
+            SetpauseCanvas(false);
+            SetInventoryCanvas(false);
+            SetBuilderCanvas(false);
+            SetBaseCanvas(true);
             break;
             case UIState.Inventory:
             Inventory.EnableInventory(true);
-            baseCanvas.enabled = false;
-            //        ***changeToAnimation Later
+            SetBaseCanvas(false);
             break;
             case UIState.PauseMenu:
-            pauseMenu.enabled = true;
-            baseCanvas.enabled = false;
-            //        ***changeToAnimation Later
+            SetpauseCanvas(true);
+            SetBaseCanvas(false);
+            break;
+            case UIState.Builder:
+            SetInventoryCanvas(false);
+            SetBuilderCanvas(true);
             break;
             default:
             break;
         }
+    }
+
+    void SetBaseCanvas(bool state) {
+        baseCanvas.enabled = state;
+    }
+
+    void SetBuilderCanvas(bool state) {
+        builderCanvas.enabled = state;
+    }
+
+    void SetInventoryCanvas(bool state) {
+        if(inventory.enabled == !state) {
+            Inventory.EnableInventory(state);
+        }
+    }
+
+    void SetpauseCanvas(bool state) {
+        //Time.timeScale = state == true ? 0 : 1;
+        pauseMenu.enabled = state;
     }
 }

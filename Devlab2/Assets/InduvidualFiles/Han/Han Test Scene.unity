@@ -487,25 +487,13 @@ GameObject:
   m_Component:
   - component: {fileID: 59610302}
   - component: {fileID: 59610301}
-  - component: {fileID: 59610300}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &59610300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 59610299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4b1cb08d5aed442b82cc586b67509c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &59610301
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3079,7 +3067,7 @@ GameObject:
   - component: {fileID: 623439399}
   - component: {fileID: 623439398}
   - component: {fileID: 623439397}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3627,7 +3615,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 733966732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1545905576}
+        m_MethodName: PlaceBuild
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &733966732
@@ -4625,10 +4624,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pools:
-  - poolTag: Stick
+  - poolTag: Stick Display
     prefab: {fileID: 1584071544769840, guid: 28178f726dee34644a6bfab74aea47a7, type: 2}
     autoExpand: 1
-    startSize: 5
+    startSize: 2
+  - poolTag: Stick
+    prefab: {fileID: 1561266827183886, guid: 67cb96623a1fd1149a2a6d02c31258d4, type: 2}
+    autoExpand: 1
+    startSize: 2
 --- !u!1001 &942388741
 Prefab:
   m_ObjectHideFlags: 0
@@ -5523,7 +5526,7 @@ MonoBehaviour:
   m_margin: {x: 6.387521, y: -2.7498019, z: -1.5778269, w: -9.695141}
   m_textInfo:
     textComponent: {fileID: 1100678808}
-    characterCount: 7
+    characterCount: 5
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -5913,7 +5916,7 @@ GameObject:
   - component: {fileID: 1163045648}
   - component: {fileID: 1163045647}
   - component: {fileID: 1163045646}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7468,7 +7471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92a15876b0c69a48879a1f4516451a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentlyBuilding: {fileID: 0}
   mainCamera: {fileID: 2086587355}
   buildRayMask:
     serializedVersion: 2
@@ -7476,6 +7478,7 @@ MonoBehaviour:
   buildCollisionMask:
     serializedVersion: 2
     m_Bits: 1
+  scrollweelSpeed: 10000
 --- !u!224 &1550846017 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224076310848185786, guid: b310ceb212d4c7a49871605fa0383dab,
@@ -7741,6 +7744,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 1876993218}
   inventory: {fileID: 1126770736}
   baseCanvas: {fileID: 1784125792}
+  builderCanvas: {fileID: 1545905575}
+  currentUI: 0
 --- !u!4 &1619218301
 Transform:
   m_ObjectHideFlags: 0
@@ -9439,7 +9444,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1813184574}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1545905576}
+        m_MethodName: StopBuild
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1813184574
@@ -11933,7 +11949,7 @@ GameObject:
   - component: {fileID: 2109433306}
   - component: {fileID: 2109433305}
   - component: {fileID: 2109433304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

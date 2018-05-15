@@ -102,6 +102,7 @@ public class Inventory : MonoBehaviour {
         Builder.instance.StartBuilder(currentInspected.myItem);
         InspectorReset();
         currentInspected.RemoveItem();
+        UIManager.instance.SetCanvas(UIManager.UIState.Builder);
     }
 
     //Equipes Currently Inspected Item

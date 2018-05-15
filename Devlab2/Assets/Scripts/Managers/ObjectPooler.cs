@@ -12,12 +12,10 @@ public class Pool {
 }
 
 public class ObjectPooler : MonoBehaviour {
-    [HideInInspector]
     public static ObjectPooler instance;
 
     public List<Pool> Pools = new List<Pool>();
     Dictionary<string, int> poolDicrionary;
-    int poolsInt;
 
     //This Creates The Pools And Creates The Objects That You Can Pool
     void Awake() {

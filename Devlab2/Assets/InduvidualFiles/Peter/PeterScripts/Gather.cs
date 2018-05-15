@@ -31,11 +31,6 @@ public class Gather : MonoBehaviour {
                 col.transform.GetComponent<Resource>().Harvest();
             }
 
-            Animal a = col.transform.GetComponent<Animal>();
-            if (a != null)
-            {
-                Destroy(a.gameObject);
-            }
         }
 
        

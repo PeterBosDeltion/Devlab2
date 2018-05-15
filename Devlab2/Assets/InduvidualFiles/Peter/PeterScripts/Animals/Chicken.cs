@@ -17,7 +17,6 @@ public class Chicken : Animal {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Egg?" + canLayEgg);
 
 		if(state == States.Idle)
         {
@@ -55,7 +54,6 @@ public class Chicken : Animal {
 
     private IEnumerator Idle()
     {
-        Debug.Log("Idle");
         yield return new WaitForSeconds(idleTime);
 
         LayEgg();

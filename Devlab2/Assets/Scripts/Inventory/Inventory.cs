@@ -59,10 +59,12 @@ public class Inventory : MonoBehaviour {
 
     //Adds Given Item And Returns True If Posible Otherwise Returns False
     public bool AddItem(Item newItem) {
-        for(int i = 0; i < theInventory.Count; i++) {
-            if(theInventory[i].myItem == null) {
-                theInventory[i].SetItem(newItem);
-                return (true);
+        if(newItem != null) {
+            for(int i = 0; i < theInventory.Count; i++) {
+                if(theInventory[i].myItem == null) {
+                    theInventory[i].SetItem(newItem);
+                    return (true);
+                }
             }
         }
         return (false);
@@ -93,6 +95,13 @@ public class Inventory : MonoBehaviour {
     //Drops Currently Inspected Item
     public void DropItem() {
         DropItem(currentInspected);
+    }
+
+    //Starts The Builder
+    public void PlaceItem(){
+        Builder.instance.StartBuilder(currentInspected.myItem);
+        InspectorReset();
+        currentInspected.RemoveItem();
     }
 
     //Equipes Currently Inspected Item

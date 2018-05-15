@@ -47,7 +47,14 @@ public class ObjectPooler : MonoBehaviour {
 
     //call This Void To Get A Object From The Desired Pool
     public GameObject GetFromPool(string poolTag, Vector3 position, Quaternion rotation) {
+        return (TakeFromPool(poolTag, position, rotation));
+    }
 
+    public GameObject GetFromPool(string poolTag) {
+        return (TakeFromPool(poolTag, Vector3.zero, Quaternion.Euler(Vector3.zero)));
+    }
+
+    GameObject TakeFromPool(string poolTag, Vector3 position, Quaternion rotation) {
         if(!poolDicrionary.ContainsKey(poolTag)) {
             Debug.Log("Dictionary does not contain" + tag);
             return (null);
@@ -57,7 +64,7 @@ public class ObjectPooler : MonoBehaviour {
         GameObject objectToGet = null;
 
         if(currentPool.myQueue.Count == 0) {
-            if(currentPool.autoExpand == true){
+            if(currentPool.autoExpand == true) {
                 objectToGet = Instantiate(currentPool.prefab);
                 currentPool.startSize++;
                 Debug.Log("ObjectPooler: Pool Expanded(" + poolTag + ")");
@@ -81,7 +88,11 @@ public class ObjectPooler : MonoBehaviour {
     public void AddToPool(string poolTag, GameObject ObjectToAdd) {
 
         if(!poolDicrionary.ContainsKey(poolTag)) {
-            Debug.Log("Dictionary does not contain" + tag);
+            Debug.Log("Dictionary does not contain " + tag);
+            return;
+        }
+        else if(ObjectToAdd == null){
+            Debug.Log("Object Is (Null) " + tag);
             return;
         }
 

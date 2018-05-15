@@ -81,7 +81,7 @@ public class Deer : Animal {
             agent.speed *= 5;
         }
 
-        agent.SetDestination(transform.position + transform.forward);
+        agent.SetDestination(transform.position + dir);
 
     }
 }

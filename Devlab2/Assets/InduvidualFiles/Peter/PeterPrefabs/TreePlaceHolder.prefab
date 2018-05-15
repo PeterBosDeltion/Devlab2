@@ -25,9 +25,10 @@ GameObject:
   - component: {fileID: 114157956085409694}
   - component: {fileID: 64002845724124698}
   - component: {fileID: 65444082303298366}
+  - component: {fileID: 114851362928612968}
   m_Layer: 0
   m_Name: TreePlaceHolder
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -860,3 +861,16 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114851362928612968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526738920827206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8120e819068688d41aa3b68a791d840d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myResource: {fileID: 11400000, guid: 8ea05583ef01431449cc8e897f91f799, type: 2}
+  type: 0

@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4093954829842192}
   - component: {fileID: 23371870176929684}
   - component: {fileID: 33879986467334970}
-  - component: {fileID: 64800029922219202}
   - component: {fileID: 114008821307821782}
   - component: {fileID: 114491651877294376}
   - component: {fileID: 195780419072389078}
   - component: {fileID: 114046899835964138}
+  - component: {fileID: 65782390565332700}
   m_Layer: 0
   m_Name: ChickenPlaceHolder
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779056786834020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.468, y: 0.455, z: -15.000001}
+  m_LocalPosition: {x: 12.650001, y: 0.455, z: -17.210001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,8 +90,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779056786834020}
   m_Mesh: {fileID: 0}
---- !u!64 &64800029922219202
-MeshCollider:
+--- !u!65 &65782390565332700
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -99,11 +99,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.6659994, y: 2.7896113, z: 0.87143284}
+  m_Center: {x: 0.24800062, y: 0.7808058, z: -0.26428434}
 --- !u!114 &114008821307821782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,8 +128,13 @@ MonoBehaviour:
   type: 0
   state: 0
   wanderRadius: 9
-  idleTime: 1.2
   patience: 5
+  idling: 0
+  canWander: 0
+  wandering: 0
+  hasTarget: 0
+  agent: {fileID: 0}
+  idleTime: 1.2
 --- !u!114 &114491651877294376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4356,7 +4359,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  userCollisions: 0
+  userCollisions: 1
   isSelectable: 1
   unwrapParameters:
     hardAngle: 88

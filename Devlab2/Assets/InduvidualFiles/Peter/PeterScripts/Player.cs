@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
         UpdateUIValues();
         InvokeSurvival();
 
-        Debug.Log(hunger);
+//        Debug.Log(hunger);
     }
 
     private void UpdateUIValues()

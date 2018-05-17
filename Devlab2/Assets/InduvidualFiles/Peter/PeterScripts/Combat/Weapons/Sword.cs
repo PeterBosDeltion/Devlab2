@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Sword : Weapon {
     public Animator anim;
+    private bool waiting;
     // Use this for initialization
     void Start () {
-		
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -17,22 +18,36 @@ public class Sword : Weapon {
         }
     }
 
-    public override void Use()
-    {
-        anim.SetBool("Using", true);
-    }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (anim.GetBool("Using"))
+        if (anim.GetBool("using"))
         {
             Entity en = other.GetComponent<Entity>();
             if (en != null && en.transform.tag != "Player")
             {
                 en.TakeDamage(damage);
             }
-            anim.SetBool("Using", false);
-
         }
+    }
+
+    public override void Use()
+    {
+        if (!waiting)
+        {
+            anim.SetBool("using", true);
+            beingUsed = true;
+            StartCoroutine(WaitForAnim());
+        }
+
+    }
+
+    private IEnumerator WaitForAnim()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        anim.SetBool("using", false);
+        beingUsed = false;
+        waiting = false;
     }
 }

@@ -23,7 +23,6 @@ public class Inventory : MonoBehaviour {
 
     [Header("Animations")]
     public Animator craftInspectAnimator;
-    public Animator InventoryAnimator;
 
     void Awake() {
         Instance = this;
@@ -38,10 +37,6 @@ public class Inventory : MonoBehaviour {
         if(currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
         }
-    }
-
-    public static void EnableInventory(bool state) {
-        Instance.InventoryAnimator.SetBool("Enabled", state);
     }
 
     //Enables Inventory Drag Elements

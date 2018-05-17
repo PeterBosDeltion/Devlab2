@@ -6,16 +6,18 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public static UIManager instance;
 
+    public UIState currentUI;
     public enum UIState {
-        BaseCanvas,
-        Inventory,
-        PauseMenu,
-        Builder
+        BaseCanvas = 0,
+        PauseMenu = 1,
+        Inventory = 2,
+        Builder = 3
     }
 
     public Canvas pauseMenu, inventory, baseCanvas, builderCanvas;
 
-    public UIState currentUI;
+    [Header("Animation")]
+    public Animator CanvasAnimator;
 
     void Awake() {
         instance = this;
@@ -23,6 +25,11 @@ public class UIManager : MonoBehaviour {
 
     void Start() {
         SetCanvas(UIState.BaseCanvas);
+        SetCanvas(UIState.BaseCanvas);
+        pauseMenu.enabled = false;
+        inventory.enabled = false;
+        builderCanvas.enabled = false;
+        baseCanvas.enabled = true;
     }
 
     void Update() {
@@ -44,54 +51,46 @@ public class UIManager : MonoBehaviour {
         switch(currentUI) {
             case UIState.BaseCanvas:
             return (UIState.PauseMenu);
+            case UIState.Builder:
+            return (UIState.Inventory);
             default:
             return (UIState.BaseCanvas);
         }
     }
 
     //Changes Current Canvas
-    public void SetCanvas(UIState _newState) {
-        currentUI = _newState;
+    public void SetCanvas(UIState newState) {
         switch(currentUI) {
             case UIState.BaseCanvas:
-            SetpauseCanvas(false);
-            SetInventoryCanvas(false);
-            SetBuilderCanvas(false);
-            SetBaseCanvas(true);
             break;
             case UIState.Inventory:
-            Inventory.EnableInventory(true);
-            SetBaseCanvas(false);
             break;
             case UIState.PauseMenu:
-            SetpauseCanvas(true);
-            SetBaseCanvas(false);
             break;
             case UIState.Builder:
-            SetInventoryCanvas(false);
-            SetBuilderCanvas(true);
+            SetBuilderCanvas(newState);
             break;
             default:
             break;
         }
+
+        currentUI = newState;
+        CanvasAnimator.SetInteger("UIState", (int)currentUI);
     }
 
-    void SetBaseCanvas(bool state) {
-        baseCanvas.enabled = state;
+    void SetBaseCanvas() {
+
     }
 
-    void SetBuilderCanvas(bool state) {
-        builderCanvas.enabled = state;
+    void SetBuilderCanvas(UIState State) {
+        Builder.instance.StopBuild();
     }
 
-    void SetInventoryCanvas(bool state) {
-        if(inventory.enabled == !state) {
-            Inventory.EnableInventory(state);
-        }
+    void SetInventoryCanvas() {
+
     }
 
-    void SetpauseCanvas(bool state) {
-        //Time.timeScale = state == true ? 0 : 1;
-        pauseMenu.enabled = state;
+    void SetpauseCanvas() {
+
     }
 }

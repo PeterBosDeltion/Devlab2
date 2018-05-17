@@ -9,8 +9,8 @@ public class Builder : MonoBehaviour {
     public Camera mainCamera;
     public LayerMask buildRayMask;
     public LayerMask buildCollisionMask;
-    public static Mesh displayMesh;
-    public static Material displayMaterial;
+    public BoxCollider displayCollider;
+    public Material displayMaterial;
     static GameObject CurrentBuild;
     public float scrollweelSpeed;
     static int buildRotation;
@@ -20,7 +20,7 @@ public class Builder : MonoBehaviour {
     }
 
 
-    public static void CheckBuilderDisplay() {
+    public void CheckBuilderDisplay() {
         if(CurrentlyBuilding != null) {
             RaycastHit rayHit;
             if(Physics.Raycast(instance.mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, instance.buildRayMask)) {
@@ -28,7 +28,7 @@ public class Builder : MonoBehaviour {
                 buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * instance.scrollweelSpeed);
 
                 DisplayBuild(new Vector3(0, buildRotation, 0), rayHit.point);
-                if(Physics.CheckBox(CurrentBuild.transform.position, displayMesh.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
+                if(Physics.CheckBox(displayCollider.bounds.center, displayCollider.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
                     displayMaterial.color = Color.red;
                 }
                 else {
@@ -49,7 +49,7 @@ public class Builder : MonoBehaviour {
     }
 
     public void PlaceBuild() {
-        if(CurrentBuild != null && !Physics.CheckBox(CurrentBuild.transform.position, displayMesh.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
+        if(CurrentBuild != null && !Physics.CheckBox(displayCollider.bounds.center, displayCollider.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
             ObjectPooler.instance.GetFromPool(CurrentlyBuilding.itemName, CurrentBuild.transform.position, CurrentBuild.transform.rotation);
             ObjectPooler.instance.AddToPool(CurrentlyBuilding.itemName + " Display", CurrentBuild);
 
@@ -59,16 +59,19 @@ public class Builder : MonoBehaviour {
         }
     }
 
+    public void CancelBuild() {
+        StopBuild();
+        UIManager.instance.SetCanvas(UIManager.UIState.Inventory);
+    }
+
     public void StopBuild() {
         buildRotation = 0;
         if(CurrentlyBuilding != null) {
             ObjectPooler.instance.AddToPool(CurrentlyBuilding.itemName + " Display", CurrentBuild);
             Inventory.Instance.AddItem(CurrentlyBuilding);
-        }
-        UIManager.instance.SetCanvas(UIManager.UIState.BaseCanvas);
-    }
+            CurrentlyBuilding = null;
+            UIManager.instance.SetCanvas(UIManager.UIState.BaseCanvas);
 
-    void OnDisable() {
-        StopBuild();
+        }
     }
 }

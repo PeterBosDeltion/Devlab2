@@ -2878,11 +2878,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3436,7 +3436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -242.43}
+  m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 300, y: 64.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683829850
@@ -3574,7 +3574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190.00002, y: 0.000015258789}
+  m_AnchoredPosition: {x: 190.00002, y: 0}
   m_SizeDelta: {x: 69.35, y: 64.855}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733966731
@@ -5571,7 +5571,6 @@ GameObject:
   - component: {fileID: 1126770735}
   - component: {fileID: 1126770734}
   - component: {fileID: 1126770738}
-  - component: {fileID: 1126770737}
   m_Layer: 5
   m_Name: Inventory Canvas
   m_TagString: Untagged
@@ -5659,24 +5658,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!95 &1126770737
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1126770732}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86a8fb0d3258a3143b1265b8e2d815a8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1126770738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5737,7 +5718,6 @@ MonoBehaviour:
   - myTag: Place
     myButton: {fileID: 792293251}
   craftInspectAnimator: {fileID: 367187634}
-  InventoryAnimator: {fileID: 1126770737}
   craftingSlots:
   - {fileID: 27325504}
   - {fileID: 963568589}
@@ -7197,6 +7177,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1431501909}
+  - component: {fileID: 1431501910}
   m_Layer: 0
   m_Name: Canvases
   m_TagString: Untagged
@@ -7221,6 +7202,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1431501910
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431501908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86a8fb0d3258a3143b1265b8e2d815a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &1452137573 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224885484476039180, guid: 2101a8422a12df54880cc89040b008d2,
@@ -7446,7 +7445,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545905571}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7478,6 +7477,8 @@ MonoBehaviour:
   buildCollisionMask:
     serializedVersion: 2
     m_Bits: 1
+  displayCollider: {fileID: 0}
+  displayMaterial: {fileID: 0}
   scrollweelSpeed: 10000
 --- !u!224 &1550846017 stripped
 RectTransform:
@@ -7741,11 +7742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b843344b2300642afec48dd7c51dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentUI: 0
   pauseMenu: {fileID: 1876993218}
   inventory: {fileID: 1126770736}
   baseCanvas: {fileID: 1784125792}
   builderCanvas: {fileID: 1545905575}
-  currentUI: 0
+  CanvasAnimator: {fileID: 1431501910}
 --- !u!4 &1619218301
 Transform:
   m_ObjectHideFlags: 0
@@ -9403,7 +9405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -190.00002, y: -0.070007324}
+  m_AnchoredPosition: {x: -190.00002, y: 0}
   m_SizeDelta: {x: 69.35, y: 64.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813184573
@@ -9446,7 +9448,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1545905576}
-        m_MethodName: StopBuild
+        m_MethodName: CancelBuild
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

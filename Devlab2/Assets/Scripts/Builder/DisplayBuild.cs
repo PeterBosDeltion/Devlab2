@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DisplayBuild : MonoBehaviour {
     public Material myMaterial;
-    public Mesh myMesh;
+    public BoxCollider myCollider;
 
-    private void OnEnable() {
-        Builder.displayMesh = myMesh;
-        Builder.displayMaterial = myMaterial;
+    void OnEnable() {
+        Builder.instance.displayCollider = myCollider;
+        Builder.instance.displayMaterial = myMaterial;
     }
 
-    private void OnMouseDrag() {
-        Builder.CheckBuilderDisplay();
+    void OnMouseDrag() {
+        Builder.instance.CheckBuilderDisplay();
     }
 }

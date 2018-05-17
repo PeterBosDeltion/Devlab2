@@ -89,17 +89,14 @@ public class ObjectPooler : MonoBehaviour {
             Debug.Log("Dictionary does not contain " + tag);
             return;
         }
-        else if(ObjectToAdd == null){
+        else if(ObjectToAdd == null) {
             Debug.Log("Object Is (Null) " + tag);
             return;
         }
 
         Pool currentPool = Pools[poolDicrionary[poolTag]];
-
         ObjectToAdd.SetActive(false);
 
-        if(currentPool.autoExpand == false) {
-            currentPool.myQueue.Enqueue(ObjectToAdd);
-        }
+        currentPool.myQueue.Enqueue(ObjectToAdd);
     }
 }

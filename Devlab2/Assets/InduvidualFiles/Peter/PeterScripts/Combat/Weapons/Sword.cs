@@ -26,7 +26,7 @@ public class Sword : Weapon {
             Entity en = other.GetComponent<Entity>();
             if (en != null && en.transform.tag != "Player")
             {
-                en.TakeDamage(damage);
+                en.TakeDamage(equippable.damage);
             }
         }
     }

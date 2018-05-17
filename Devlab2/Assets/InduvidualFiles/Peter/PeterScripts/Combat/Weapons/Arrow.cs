@@ -24,7 +24,7 @@ public class Arrow : Weapon {
         Entity en = other.GetComponent<Entity>();
         if (en != null && en.transform.tag != "Player")
         {
-            en.TakeDamage(damage);
+            en.TakeDamage(equippable.damage);
 
             if(en.GetComponent<Animal>().type == Animal.Types.Aggresive)
             {

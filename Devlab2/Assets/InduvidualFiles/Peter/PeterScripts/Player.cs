@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
                 if (i == items.IndexOf(g))
                 {
                     g.SetActive(true);
-                    //Inventory.itemInHand = g.GetComponent<Equippable>();
+                    Inventory.itemInHand = g.GetComponent<Weapon>().equippable;
                     currentWeapon = g.GetComponent<Weapon>();
                 }
                 else

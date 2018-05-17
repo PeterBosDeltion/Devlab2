@@ -23,15 +23,15 @@ GameObject:
   - component: {fileID: 23174799478488692}
   - component: {fileID: 33917406967751190}
   - component: {fileID: 114157956085409694}
-  - component: {fileID: 64002845724124698}
   - component: {fileID: 65444082303298366}
   - component: {fileID: 114851362928612968}
+  - component: {fileID: 208544759011768036}
   m_Layer: 0
   m_Name: TreePlaceHolder
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4485921195009954
 Transform:
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526738920827206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.8000007, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,20 +89,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526738920827206}
   m_Mesh: {fileID: 0}
---- !u!64 &64002845724124698
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1526738920827206}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
 --- !u!65 &65444082303298366
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -126,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityType: 0
+  _entityType: 4
 --- !u!114 &114157956085409694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,7 +846,7 @@ MonoBehaviour:
   dontDestroyMeshOnDelete: 0
   m_selectedFaces: 
   m_SelectedEdges: []
-  m_selectedTriangles: 
+  m_selectedTriangles: 05000000
 --- !u!114 &114851362928612968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -875,3 +861,18 @@ MonoBehaviour:
   myResource: {fileID: 11400000, guid: 8ea05583ef01431449cc8e897f91f799, type: 2}
   type: 0
   toughness: 1
+--- !u!208 &208544759011768036
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526738920827206}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3000001, y: 3.0000002, z: 1.3000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.5, y: 3.0000002, z: -0.5}
+  m_TimeToStationary: 0.5

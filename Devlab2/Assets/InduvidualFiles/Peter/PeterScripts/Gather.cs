@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Gather : Weapon {
 
-    public Equippable axe;
+    public Equippable tool;
 
     public Animator anim;
 
     private bool waiting;
 	// Use this for initialization
 	void Start () {
-        Inventory.itemInHand = axe;
+        Inventory.itemInHand = tool;
         anim = GetComponent<Animator>();
 	}
 	

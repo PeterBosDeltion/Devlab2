@@ -20,8 +20,10 @@ public class Resource : MonoBehaviour {
 
     public void Harvest()
     {
+        Debug.Log("Harvest");
         if(Inventory.itemInHand.myGathering == type)
         {
+            Debug.Log("CorrectTool");
             //Inventory.Instance.AddItem(myResource); //Uncomment when there is inventory in scene pl0x
 
             if(toughness > 0)

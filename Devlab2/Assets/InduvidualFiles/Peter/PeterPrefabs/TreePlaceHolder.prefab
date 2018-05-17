@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526738920827206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.8000007, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -874,3 +874,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: 8ea05583ef01431449cc8e897f91f799, type: 2}
   type: 0
+  toughness: 1

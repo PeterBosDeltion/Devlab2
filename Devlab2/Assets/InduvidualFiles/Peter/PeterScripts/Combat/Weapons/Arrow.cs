@@ -25,6 +25,15 @@ public class Arrow : Weapon {
         if (en != null && en.transform.tag != "Player")
         {
             en.TakeDamage(damage);
+
+            if(en.GetComponent<Animal>().type == Animal.Types.Aggresive)
+            {
+                en.GetComponent<Animal>().state = Animal.States.Attack;
+            }
+            else if (en.GetComponent<Animal>().type == Animal.Types.Passive)
+            {
+                en.GetComponent<Animal>().state = Animal.States.Run;
+            }
         }
 
         if(other.tag != "Player")

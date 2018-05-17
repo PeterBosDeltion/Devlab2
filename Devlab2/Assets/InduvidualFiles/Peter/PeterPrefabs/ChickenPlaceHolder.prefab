@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 195780419072389078}
   - component: {fileID: 114046899835964138}
   - component: {fileID: 65782390565332700}
+  - component: {fileID: 114851923218815886}
   m_Layer: 0
   m_Name: ChickenPlaceHolder
   m_TagString: Untagged
@@ -39,13 +40,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1779056786834020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.650001, y: 0.455, z: -17.210001}
+  m_LocalRotation: {x: -0, y: 0.7450073, z: -0, w: 0.6670563}
+  m_LocalPosition: {x: 12.900001, y: 0.5, z: -17.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 96.31901, z: 0}
 --- !u!23 &23371870176929684
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -4387,6 +4388,19 @@ MonoBehaviour:
   - x: 107
     y: 106
   m_selectedTriangles: 64000000650000006600000065000000670000006600000068000000690000006a000000690000006b0000006a000000
+--- !u!114 &114851923218815886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779056786834020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384906203ce13c44e803d327ab8a18b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  armor: 0
 --- !u!195 &195780419072389078
 NavMeshAgent:
   m_ObjectHideFlags: 1

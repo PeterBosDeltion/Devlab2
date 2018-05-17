@@ -23,11 +23,11 @@ GameObject:
   - component: {fileID: 23885338035045190}
   - component: {fileID: 33187972756464490}
   - component: {fileID: 114081655028002258}
-  - component: {fileID: 64380633483550482}
   - component: {fileID: 195321735485243896}
   - component: {fileID: 114412758017423750}
   - component: {fileID: 54766122356729068}
   - component: {fileID: 65328940804643916}
+  - component: {fileID: 114325838287502604}
   m_Layer: 0
   m_Name: DeerPlaceHolder
   m_TagString: Untagged
@@ -106,20 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!64 &64380633483550482
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1205167464727204}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
 --- !u!65 &65328940804643916
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4366,6 +4352,19 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114325838287502604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205167464727204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384906203ce13c44e803d327ab8a18b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  armor: 0
 --- !u!114 &114412758017423750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4380,14 +4379,14 @@ MonoBehaviour:
   type: 1
   state: 0
   wanderRadius: 16
-  patience: 9
+  patience: 2
   idling: 0
   canWander: 0
   wandering: 0
   hasTarget: 0
   agent: {fileID: 0}
   idleTime: 1
-  runAwayRange: 5
+  runAwayRange: 12
 --- !u!114 &114440431844752712
 MonoBehaviour:
   m_ObjectHideFlags: 1

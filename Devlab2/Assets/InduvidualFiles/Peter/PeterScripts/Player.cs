@@ -26,6 +26,18 @@ public class Player : MonoBehaviour {
         {
             ChangeEquippedItem(2);
         }
+        else if (Input.GetKeyDown("4"))
+        {
+            ChangeEquippedItem(3);
+        }
+        else if (Input.GetKeyDown("5"))
+        {
+            ChangeEquippedItem(4);
+        }
+        else if (Input.GetKeyDown("0"))
+        {
+            ChangeEquippedItem(99);
+        }
     }
 
     public void ChangeEquippedItem(int i)

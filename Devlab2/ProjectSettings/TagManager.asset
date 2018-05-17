@@ -18,9 +18,9 @@ TagManager:
   - PostProcessing
   - InventoryCameraDisplay
   - ground
-  - 
-  - 
-  - 
+  - DisplayBuild
+  - DroppedItem
+  - Player
   - 
   - 
   - 

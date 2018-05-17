@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
+    public static Player instance;
+
     public List<GameObject> items = new List<GameObject>();
     public Weapon currentWeapon;
     public static int arrows = 50;
@@ -30,21 +32,25 @@ public class Player : MonoBehaviour {
 
     private Entity myEnt;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake() {
+        instance = this;
+    }
+
+    // Use this for initialization
+    void Start() {
         myEnt = GetComponent<Entity>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
 
 
-        if (Input.GetKeyDown("v")) //Eat cheat button
+        if(Input.GetKeyDown("v")) //Eat cheat button
         {
             Eat(20);
         }
 
-        if (Input.GetKeyDown("b")) //Drink cheat button
+        if(Input.GetKeyDown("b")) //Drink cheat button
         {
             Drink(20);
         }
@@ -53,105 +59,84 @@ public class Player : MonoBehaviour {
         UpdateUIValues();
         InvokeSurvival();
 
-//        Debug.Log(hunger);
+        //        Debug.Log(hunger);
     }
 
-    private void UpdateUIValues()
-    {
+    private void UpdateUIValues() {
 
         hungerBar.fillAmount = hunger / 100F;
         thirstBar.fillAmount = thirst / 100F;
         healthBar.fillAmount = myEnt.hp / 100F;
     }
 
-    private void InvokeSurvival()
-    {
-        if (!dorst)
-        {
+    private void InvokeSurvival() {
+        if(!dorst) {
             StartCoroutine(GetThirsty());
         }
 
-        if (!honger)
-        {
+        if(!honger) {
             StartCoroutine(GetHungry());
         }
     }
 
-    private void ChangeEquip()
-    {
-        if (Input.GetKeyDown("1"))
-        {
+    private void ChangeEquip() {
+        if(Input.GetKeyDown("1")) {
             ChangeEquippedItem(0);
         }
-        else if (Input.GetKeyDown("2"))
-        {
+        else if(Input.GetKeyDown("2")) {
             ChangeEquippedItem(1);
         }
-        else if (Input.GetKeyDown("3"))
-        {
+        else if(Input.GetKeyDown("3")) {
             ChangeEquippedItem(2);
         }
-        else if (Input.GetKeyDown("4"))
-        {
+        else if(Input.GetKeyDown("4")) {
             ChangeEquippedItem(3);
         }
-        else if (Input.GetKeyDown("5"))
-        {
+        else if(Input.GetKeyDown("5")) {
             ChangeEquippedItem(4);
         }
-        else if (Input.GetKeyDown("0"))
-        {
+        else if(Input.GetKeyDown("0")) {
             ChangeEquippedItem(99);
         }
     }
 
-    public void ChangeEquippedItem(int i)
-    {
-        if (!currentWeapon.beingUsed)
-        {
-            foreach (GameObject g in items)
-            {
-                if (i == items.IndexOf(g))
-                {
+    public void ChangeEquippedItem(int i) {
+        if(!currentWeapon.beingUsed) {
+            foreach(GameObject g in items) {
+                if(i == items.IndexOf(g)) {
                     g.SetActive(true);
                     Inventory.itemInHand = g.GetComponent<Weapon>().equippable;
                     currentWeapon = g.GetComponent<Weapon>();
                 }
-                else
-                {
+                else {
                     g.SetActive(false);
                 }
             }
         }
-       
+
     }
 
-    public IEnumerator GetHungry()
-    {
+    public IEnumerator GetHungry() {
         honger = true;
-        if (!ateRecently)
-        {
+        if(!ateRecently) {
             hunger--;
         }
         yield return new WaitForSeconds(hungerInterval);
         honger = false;
     }
 
-    private IEnumerator TimeUntilHungryAgain()
-    {
+    private IEnumerator TimeUntilHungryAgain() {
         ate = true;
         yield return new WaitForSeconds(420); //420 = 7 minutes
         ateRecently = false;
         ate = false;
     }
 
-    public IEnumerator GetThirsty()
-    {
+    public IEnumerator GetThirsty() {
         dorst = true;
         yield return new WaitForSeconds(thirstInterval);
 
-        if (!drankRecently)
-        {
+        if(!drankRecently) {
             thirst--;
         }
 
@@ -159,45 +144,36 @@ public class Player : MonoBehaviour {
 
     }
 
-    private IEnumerator TimeUntilThirstyAgain()
-    {
+    private IEnumerator TimeUntilThirstyAgain() {
         yield return new WaitForSeconds(240); //4 minutes
         drankRecently = false;
         drank = false;
     }
 
-    public void Eat(float nutrition)
-    {
-        if(hunger < 100)
-        {
+    public void Eat(float nutrition) {
+        if(hunger < 100) {
             hunger += nutrition;
         }
-        if(hunger > 100)
-        {
+        if(hunger > 100) {
             hunger = 100;
         }
 
         ateRecently = true;
-        if (!ate)
-        {
+        if(!ate) {
             StartCoroutine(TimeUntilHungryAgain());
         }
     }
 
-    public void Drink(float nutrition)
-    {
-        if (thirst < 100)
-        {
+    public void Drink(float nutrition) {
+        if(thirst < 100) {
             thirst += nutrition;
         }
-        if(thirst > 100)
-        {
+        if(thirst > 100) {
             thirst = 100;
         }
 
         drankRecently = true;
-        if (!drank)
-        {
+        if(!drank) {
             StartCoroutine(TimeUntilThirstyAgain());
         }
     }

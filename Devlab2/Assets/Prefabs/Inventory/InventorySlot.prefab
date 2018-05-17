@@ -209,10 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588c61d93ecc59544911f69eec16609d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myItem: {fileID: 11400000, guid: e771a219cf9477046bf55460884ed8b2, type: 2}
+  myItem: {fileID: 0}
   itemImage: {fileID: 114645730241044990}
   amountText: {fileID: 114015405633544786}
-  craftingSlot: 0
+  myType: 0
   slotAnimator: {fileID: 95515302540537186}
 --- !u!114 &114645730241044990
 MonoBehaviour:

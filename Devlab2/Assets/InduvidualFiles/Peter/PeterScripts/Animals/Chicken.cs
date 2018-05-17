@@ -70,7 +70,6 @@ public class Chicken : Animal {
         {
             if (canLayEgg)
             {
-                Debug.Log(transform.name + "Laid an egg");
                 canLayEgg = false;
                 //Egg logic here
             }

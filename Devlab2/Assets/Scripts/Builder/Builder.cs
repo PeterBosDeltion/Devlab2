@@ -29,10 +29,10 @@ public class Builder : MonoBehaviour {
 
                 DisplayBuild(new Vector3(0, buildRotation, 0), rayHit.point);
                 if(Physics.CheckBox(displayCollider.bounds.center, displayCollider.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
-                    displayMaterial.color = Color.red;
+                    displayMaterial.color = Color.red + new Color(0, 0, 0, -0.5f);
                 }
                 else {
-                    displayMaterial.color = Color.green;
+                    displayMaterial.color = Color.green + new Color(0, 0, 0, -0.5f);
                 }
             }
         }

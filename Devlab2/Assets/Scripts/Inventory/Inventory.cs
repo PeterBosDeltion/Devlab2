@@ -122,7 +122,19 @@ public class Inventory : MonoBehaviour {
 
     //Consumes Currently Inspected Item
     public void ConsumeItem() {
-        //          ***add food and or water to stats
+        Consumable consumedItem = (Consumable)currentInspected.myItem;
+
+        Player.instance.Eat(consumedItem.food);
+        Player.instance.Drink(consumedItem.water);
+
+        if(consumedItem.amount - 1 < 1) {
+            currentInspected.RemoveItem();
+            InspectorReset();
+        }
+        else{
+            currentInspected.ChangeItemAmount(consumedItem.amount - 1);
+            inspectorItemAmount.text = currentInspected.myItem.amount.ToString();
+        }
     }
     #endregion
 

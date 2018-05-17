@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 7
   itemName: Stone
-  item2D: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
+  item2D: {fileID: 21300000, guid: b7be3c7a3eca114408823d414d1b65d7, type: 3}
   amount: 6
   amountCap: 32
   myButtons:

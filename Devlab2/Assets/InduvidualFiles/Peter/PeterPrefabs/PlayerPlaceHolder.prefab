@@ -875,10 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8a714b36cc79458a8c003f6b66c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Axe
-  damage: 0
-  beingUsed: 0
   equippable: {fileID: 11400000, guid: e771a219cf9477046bf55460884ed8b2, type: 2}
+  beingUsed: 0
   anim: {fileID: 0}
 --- !u!114 &114079072537735448
 MonoBehaviour:
@@ -1625,10 +1623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8a714b36cc79458a8c003f6b66c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Hand
-  damage: 5
-  beingUsed: 0
   equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
+  beingUsed: 0
   anim: {fileID: 0}
 --- !u!114 &114160294740040660
 MonoBehaviour:
@@ -1641,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384906203ce13c44e803d327ab8a18b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 150
+  hp: 100
   armor: 0
 --- !u!114 &114180643285544664
 MonoBehaviour:
@@ -1673,6 +1669,13 @@ MonoBehaviour:
   - {fileID: 1676497218046280}
   - {fileID: 1443403100642446}
   currentWeapon: {fileID: 114036595132918452}
+  hungerInterval: 5
+  thirstInterval: 5
+  ateRecently: 0
+  drankRecently: 0
+  hungerBar: {fileID: 0}
+  thirstBar: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &114293595894341722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1696,10 +1699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e38d12492987c548bf23b34a1aa6e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Sword
-  damage: 25
-  beingUsed: 0
   equippable: {fileID: 0}
+  beingUsed: 0
   anim: {fileID: 95008554320412710}
 --- !u!114 &114554319715491942
 MonoBehaviour:
@@ -1712,10 +1713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8a714b36cc79458a8c003f6b66c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: PickAxe
-  damage: 0
-  beingUsed: 0
   equippable: {fileID: 11400000, guid: 9f48c103a3cdb3d4eaac9816230fa1ff, type: 2}
+  beingUsed: 0
   anim: {fileID: 0}
 --- !u!114 &114616044512290758
 MonoBehaviour:
@@ -4408,10 +4407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5901a2914d6a57b4e8d0477b7fc1ec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Bow
-  damage: 0
-  beingUsed: 0
   equippable: {fileID: 0}
+  beingUsed: 0
   arrowPrefab: {fileID: 1782961716168784, guid: 7385dd5e146ca924f8fb0926624f8a18,
     type: 2}
   shootforce: 70000

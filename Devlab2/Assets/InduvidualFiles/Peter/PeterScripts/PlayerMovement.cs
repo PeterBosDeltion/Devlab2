@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
         Move();
         LookAtMouse();
-        ClickMove();
+        //ClickMove();
 	}
 
     public void Move()

@@ -139,8 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1705f07240d86347ac695dd19ea9fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Arrow
-  damage: 20
+  equippable: {fileID: 11400000, guid: dd1badb34e30ffd4fbbe853bed29268f, type: 2}
   beingUsed: 0
 --- !u!114 &114847649882407330
 MonoBehaviour:

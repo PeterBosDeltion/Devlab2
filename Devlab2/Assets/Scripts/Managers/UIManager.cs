@@ -78,8 +78,7 @@ public class UIManager : MonoBehaviour {
         CanvasAnimator.SetInteger("UIState", (int)currentUI);
     }
 
-    void SetBaseCanvas() {
-
+    void SetBaseCanvas(bool State) {
     }
 
     void SetBuilderCanvas(UIState State) {

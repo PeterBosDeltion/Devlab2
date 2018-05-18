@@ -124,7 +124,9 @@ MonoBehaviour:
   myItem: {fileID: 0}
   itemImage: {fileID: 114037264978357118}
   amountText: {fileID: 114822099891760980}
+  myType: 0
   slotAnimator: {fileID: 95945535503107084}
+  productSlot: 0
 --- !u!114 &114755542031944480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,14 +346,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.39607844, b: 0.15147674, a: 1}
+  m_Color: {r: 0.8301887, g: 0.65237296, b: 0.4503382, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8bba60bd272ff4978982a12a88f56b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3205b198e5fa4cf449584056715c52bb, type: 3}
   m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
         Move();
         LookAtMouse();
-        //ClickMove();
+        ClickMove();
 	}
 
     public void Move()
@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
         transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
+
+       
     }
 
     public void LookAtMouse()
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
     {
        
         RaycastHit hit;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {

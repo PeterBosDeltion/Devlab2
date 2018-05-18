@@ -44,7 +44,6 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-
         if(Input.GetKeyDown("v")) //Eat cheat button
         {
             Eat(20);
@@ -156,12 +155,12 @@ public class Player : MonoBehaviour {
         }
         if(hunger > 100) {
             hunger = 100;
+            ateRecently = true;
+            if(!ate) {
+                StartCoroutine(TimeUntilHungryAgain());
+            }
         }
 
-        ateRecently = true;
-        if(!ate) {
-            StartCoroutine(TimeUntilHungryAgain());
-        }
     }
 
     public void Drink(float nutrition) {
@@ -170,11 +169,11 @@ public class Player : MonoBehaviour {
         }
         if(thirst > 100) {
             thirst = 100;
+            drankRecently = true;
+            if(!drank) {
+                StartCoroutine(TimeUntilThirstyAgain());
+            }
         }
 
-        drankRecently = true;
-        if(!drank) {
-            StartCoroutine(TimeUntilThirstyAgain());
-        }
     }
 }

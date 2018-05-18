@@ -8,6 +8,7 @@ public class Chicken : Animal {
     public float idleTime = 2;
    
     private bool canLayEgg = true;
+    public GameObject eggPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -66,11 +67,12 @@ public class Chicken : Animal {
     {
         float chance = Random.value;
 
-        if(chance > .99F) //0.7F = 30% chance
+        if(chance > .999F) //0.7F = 30% chance
         {
             if (canLayEgg)
             {
                 canLayEgg = false;
+                Instantiate(eggPrefab, transform.position, Quaternion.identity);
                 //Egg logic here
             }
             else

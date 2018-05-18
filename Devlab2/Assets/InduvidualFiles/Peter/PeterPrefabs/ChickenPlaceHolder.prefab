@@ -150,7 +150,7 @@ MonoBehaviour:
   hasTarget: 0
   agent: {fileID: 0}
   idleTime: 1.2
-  eggPrefab: {fileID: 0}
+  eggPrefab: {fileID: 1820014552843294, guid: 0c17054a69b9cae4e99325d299eab92c, type: 2}
 --- !u!114 &114131751216858570
 MonoBehaviour:
   m_ObjectHideFlags: 1

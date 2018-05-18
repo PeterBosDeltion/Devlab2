@@ -23,14 +23,18 @@ public class CameraPlayerFollow : MonoBehaviour {
 
     public void FollowPlayer()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.localPosition.z - zOffset), speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - zOffset), speed * Time.deltaTime);
     }
 
     public void Rotate()
     {
         Vector3 mPos = Input.mousePosition;
+        if (Input.GetMouseButton(2))
+        {
+            transform.Rotate(0, Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime, 0, Space.World);
 
-       
-            transform.Rotate(0, Input.GetAxis("RotateCam") * rotSpeed * Time.deltaTime, 0, Space.World);
+        }
+
+        transform.Rotate(0, Input.GetAxis("RotateCam") * rotSpeed * Time.deltaTime, 0, Space.World);
     }
 }

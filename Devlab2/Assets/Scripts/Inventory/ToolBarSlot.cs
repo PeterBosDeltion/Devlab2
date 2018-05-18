@@ -4,56 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Slot : MonoBehaviour {
-    public Item myItem;
-    public Image itemImage;
-    public TextMeshProUGUI amountText;
-    public Item.TypeOffItem myType;
-
-    public void InspectItem() {
-        if(myItem != null) {
-            Inventory.Instance.InspectItem(this);
-        }
-    }
+public class ToolBarSlot : InventorySlot {
+    public Image ToolbarImage;
+    public TextMeshProUGUI ToolbarAmountText;
 
     void Start() {
         if(myItem != null) {
             SetItem(myItem);
         }
         else {
+            ToolbarImage.gameObject.SetActive(false);
             itemImage.gameObject.SetActive(false);
         }
     }
 
-    //Removes Currently Held Item
-    public virtual void RemoveItem() {
-        myItem = null;
-        itemImage.gameObject.SetActive(false);
-    }
-
-    //Changes Item And Item Components
-    public virtual void SetItem(Item newItem) {
-        myItem = Instantiate(newItem);
-        itemImage.sprite = myItem.item2D;
-        itemImage.gameObject.SetActive(true);
-
-        if(myItem.amountCap > 0) {
-            amountText.text = myItem.amount.ToString();
-            amountText.enabled = true;
-        }
-        else {
-            amountText.enabled = false;
-        }
-    }
-
-    //Changes The Amount Of Current Item And Updates Text
-    public virtual void ChangeItemAmount(int amount) {
-        myItem.amount = amount;
-        amountText.text = amount.ToString();
-    }
-
-    //Stops Item Drag
-    public virtual void StopItemDrag() {
+    public override void StopItemDrag() {
         if(myItem != null) {
             if(Inventory.mouseOver != null) {
                 if(Inventory.mouseOver.myItem != null) {
@@ -66,6 +31,7 @@ public class Slot : MonoBehaviour {
                                 myItem.amount = leftOver;
                                 Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
                                 itemImage.gameObject.SetActive(true);
+                                ToolbarImage.gameObject.SetActive(true);
                             }
                             else {
                                 otherItem.amount += myItem.amount;
@@ -79,6 +45,7 @@ public class Slot : MonoBehaviour {
                     }
                     else {
                         itemImage.gameObject.SetActive(true);
+                        ToolbarImage.gameObject.SetActive(true);
                     }
                 }
                 else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
@@ -99,21 +66,52 @@ public class Slot : MonoBehaviour {
         }
     }
 
-    //Starts Item Drag
-    public virtual void StartItemDrag() {
-        if(myItem != null) {
-            itemImage.gameObject.SetActive(false);
-            Inventory.Instance.StartDrag(this);
+    public override void RemoveItem() {
+        myItem = null;
+        ToolbarImage.gameObject.SetActive(false);
+        itemImage.gameObject.SetActive(false);
+    }
+
+    //Changes Item And Item Components
+    public override void SetItem(Item newItem) {
+        Inventory.Instance.ChangeToolBarSelected();
+
+        myItem = Instantiate(newItem);
+
+        itemImage.sprite = myItem.item2D;
+        ToolbarImage.sprite = myItem.item2D;
+
+        itemImage.gameObject.SetActive(true);
+        ToolbarImage.gameObject.SetActive(true);
+
+        if(myItem.amountCap > 0) {
+            amountText.text = myItem.amount.ToString();
+            ToolbarAmountText.text = myItem.amount.ToString();
+
+            amountText.enabled = true;
+            ToolbarAmountText.enabled = true;
+        }
+        else {
+            amountText.enabled = false;
+            ToolbarAmountText.enabled = false;
         }
     }
 
-    public virtual void MouseEnter() {
-        Inventory.mouseOver = this;
+    //Changes The Amount Of Current Item And Updates Text
+    public override void ChangeItemAmount(int amount) {
+        myItem.amount = amount;
+
+        ToolbarAmountText.text = amount.ToString();
+        amountText.text = amount.ToString();
     }
 
-    public virtual void MouseExit() {
-        if(Inventory.mouseOver == this) {
-            Inventory.mouseOver = null;
+    //Starts Item Drag
+    public override void StartItemDrag() {
+        if(myItem != null) {
+            itemImage.gameObject.SetActive(false);
+            ToolbarImage.gameObject.SetActive(false);
+
+            Inventory.Instance.StartDrag(this);
         }
     }
 }

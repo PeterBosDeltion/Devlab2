@@ -81,25 +81,34 @@ public class Player : MonoBehaviour {
     private void ChangeEquip() {
         if(Input.GetKeyDown("1")) {
             ChangeEquippedItem(0);
+            Inventory.Instance.ChangeToolBarSelected();
         }
         else if(Input.GetKeyDown("2")) {
             ChangeEquippedItem(1);
+            Inventory.Instance.ChangeToolBarSelected();
         }
         else if(Input.GetKeyDown("3")) {
             ChangeEquippedItem(2);
+            Inventory.Instance.ChangeToolBarSelected();
         }
         else if(Input.GetKeyDown("4")) {
             ChangeEquippedItem(3);
+            Inventory.Instance.ChangeToolBarSelected();
         }
         else if(Input.GetKeyDown("5")) {
             ChangeEquippedItem(4);
+            Inventory.Instance.ChangeToolBarSelected();
         }
         else if(Input.GetKeyDown("0")) {
             ChangeEquippedItem(99);
+            Inventory.Instance.ChangeToolBarSelected();
         }
     }
 
     public void ChangeEquippedItem(int i) {
+        if(i <Inventory.Instance.toolBar.Count) {
+            Inventory.Instance.SelectedToolbarSlot = i;
+        }
         if(!currentWeapon.beingUsed) {
             foreach(GameObject g in items) {
                 if(i == items.IndexOf(g)) {

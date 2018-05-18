@@ -15,6 +15,7 @@ MonoBehaviour:
   item2D: {fileID: 21300000, guid: 5fa15af72dd526e408c5bd52f5eafb02, type: 3}
   amount: 0
   amountCap: 0
+  placaBle: 1
   myButtons:
   - Place
   itemDiscription: This Is A Campfire

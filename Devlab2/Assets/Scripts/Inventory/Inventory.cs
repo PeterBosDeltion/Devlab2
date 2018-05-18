@@ -9,10 +9,15 @@ public class Inventory : MonoBehaviour {
 
     public List<InventorySlot> theInventory = new List<InventorySlot>();
     public List<CharacterSlot> characterSlots = new List<CharacterSlot>();
+    public static Equippable itemInHand;
+    public static Slot mouseOver;
     public Image dragImage;
     Slot currentlyDragged;
-    public static Slot mouseOver;
-    public static Equippable itemInHand;
+
+    [Header("ToolBar")]
+    public Image toolBarSelectedImage;
+    public List<ToolBarSlot> toolBar = new List<ToolBarSlot>();
+    public int SelectedToolbarSlot;
 
     [Header("Inventory Inspector")]
     public TextMeshProUGUI inspectorItemText;
@@ -36,6 +41,34 @@ public class Inventory : MonoBehaviour {
     void Update() {
         if(currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
+        }
+        if(toolBar[SelectedToolbarSlot].myItem != null) {
+            if(Input.GetButtonDown("Fire1")) {
+                if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Equippable)) {
+                    EquipeItem();
+                }
+                else if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Consumable)) {
+                    ConsumeItem();
+                }
+                else if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Wearable)) {
+                    EquipeItem();
+                }
+            }
+
+            if(Input.GetButtonDown("DropItem")) {
+                if(toolBar[SelectedToolbarSlot].myItem.placaBle != true) {
+                    DropItem();
+                }
+            }
+        }
+    }
+
+    public void ChangeToolBarSelected() {
+        currentInspected = toolBar[SelectedToolbarSlot];
+        toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
+        Builder.instance.StopBuild();
+        if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
+            Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
         }
     }
 
@@ -92,14 +125,6 @@ public class Inventory : MonoBehaviour {
         DropItem(currentInspected);
     }
 
-    //Starts The Builder
-    public void PlaceItem(){
-        Builder.instance.StartBuilder(currentInspected.myItem);
-        InspectorReset();
-        currentInspected.RemoveItem();
-        UIManager.instance.SetCanvas(UIManager.UIState.Builder);
-    }
-
     //Equipes Currently Inspected Item
     public void EquipeItem() {
         for(int i = 0; i < characterSlots.Count; i++) {
@@ -131,7 +156,7 @@ public class Inventory : MonoBehaviour {
             currentInspected.RemoveItem();
             InspectorReset();
         }
-        else{
+        else {
             currentInspected.ChangeItemAmount(consumedItem.amount - 1);
             inspectorItemAmount.text = currentInspected.myItem.amount.ToString();
         }

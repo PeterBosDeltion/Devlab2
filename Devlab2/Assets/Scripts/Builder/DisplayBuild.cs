@@ -8,8 +8,4 @@ public class DisplayBuild : MonoBehaviour {
     void OnEnable() {
         Builder.instance.displayCollider = myCollider;
     }
-
-    void OnMouseDrag() {
-        Builder.instance.CheckBuilderDisplay();
-    }
 }

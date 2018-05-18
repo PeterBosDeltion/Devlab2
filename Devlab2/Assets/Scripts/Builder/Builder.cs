@@ -20,7 +20,7 @@ public class Builder : MonoBehaviour {
     }
 
 
-    public void CheckBuilderDisplay() {
+    void Update() {
         if(CurrentlyBuilding != null) {
             RaycastHit rayHit;
             if(Physics.Raycast(instance.mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, instance.buildRayMask)) {
@@ -33,6 +33,9 @@ public class Builder : MonoBehaviour {
                 }
                 else {
                     displayMaterial.color = Color.green + new Color(0, 0, 0, -0.5f);
+                    if(Input.GetButtonDown("Fire1")) {
+                        PlaceBuild();
+                    }
                 }
             }
         }
@@ -41,7 +44,6 @@ public class Builder : MonoBehaviour {
     public void StartBuilder(Item build) {
         CurrentlyBuilding = build;
         CurrentBuild = ObjectPooler.instance.GetFromPool(CurrentlyBuilding.itemName + " Display");
-        CheckBuilderDisplay();
     }
 
     static void DisplayBuild(Vector3 rotation, Vector3 position) {
@@ -53,25 +55,18 @@ public class Builder : MonoBehaviour {
             ObjectPooler.instance.GetFromPool(CurrentlyBuilding.itemName, CurrentBuild.transform.position, CurrentBuild.transform.rotation);
             ObjectPooler.instance.AddToPool(CurrentlyBuilding.itemName + " Display", CurrentBuild);
 
-            buildRotation = 0;
             CurrentlyBuilding = null;
-            UIManager.instance.SetCanvas(UIManager.UIState.BaseCanvas);
+            Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].RemoveItem();
+            StopBuild();
         }
     }
 
-    public void CancelBuild() {
-        StopBuild();
-        UIManager.instance.SetCanvas(UIManager.UIState.Inventory);
-    }
 
     public void StopBuild() {
         buildRotation = 0;
         if(CurrentlyBuilding != null) {
             ObjectPooler.instance.AddToPool(CurrentlyBuilding.itemName + " Display", CurrentBuild);
-            Inventory.Instance.AddItem(CurrentlyBuilding);
             CurrentlyBuilding = null;
-            UIManager.instance.SetCanvas(UIManager.UIState.BaseCanvas);
-
         }
     }
 }

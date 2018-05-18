@@ -15828,7 +15828,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -15872,7 +15872,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 582638291}
   speed: 3
-  zOffset: 5
+  rotSpeed: 60
+  zOffset: 0
+  rotateOffset: 0
 --- !u!114 &1402267077 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114435827234209620, guid: 382b942771307b446ae5385d7c1c4692,

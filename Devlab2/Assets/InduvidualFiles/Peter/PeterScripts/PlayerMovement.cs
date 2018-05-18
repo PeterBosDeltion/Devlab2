@@ -32,8 +32,8 @@ public class PlayerMovement : MonoBehaviour {
             agent.updatePosition = false;
         }
 
-        transform.Translate(Vector3.left *- x * moveSpeed * Time.deltaTime, Space.World);
-        transform.Translate(Vector3.forward * y * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
     }
 
     public void LookAtMouse()

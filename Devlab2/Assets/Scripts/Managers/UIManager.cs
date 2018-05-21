@@ -23,10 +23,10 @@ public class UIManager : MonoBehaviour {
     }
 
     void Start() {
-        SetCanvas(UIState.BaseCanvas);
         pauseMenu.enabled = false;
         inventory.enabled = false;
         baseCanvas.enabled = true;
+        SetCanvas(UIState.BaseCanvas);
     }
 
     void Update() {
@@ -48,8 +48,6 @@ public class UIManager : MonoBehaviour {
         switch(currentUI) {
             case UIState.BaseCanvas:
             return (UIState.PauseMenu);
-            case UIState.PauseMenu:
-            return (UIState.BaseCanvas);
             default:
             return (UIState.BaseCanvas);
         }
@@ -70,21 +68,5 @@ public class UIManager : MonoBehaviour {
 
         currentUI = newState;
         CanvasAnimator.SetInteger("UIState", (int)currentUI);
-    }
-
-    void SetBaseCanvas(bool State) {
-
-    }
-
-    void SetBuilderCanvas(UIState State) {
-        Builder.instance.StopBuild();
-    }
-
-    void SetInventoryCanvas() {
-
-    }
-
-    void SetpauseCanvas() {
-
     }
 }

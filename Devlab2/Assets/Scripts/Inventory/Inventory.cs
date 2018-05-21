@@ -22,7 +22,6 @@ public class Inventory : MonoBehaviour {
     [Header("Inventory Inspector")]
     public TextMeshProUGUI inspectorItemText;
     public Image inspectorItemImage;
-    public TextMeshProUGUI inspectorItemAmount;
     public List<InspectorButton> buttons = new List<InspectorButton>();
     Slot currentInspected;
 
@@ -44,10 +43,7 @@ public class Inventory : MonoBehaviour {
         }
         if(toolBar[SelectedToolbarSlot].myItem != null) {
             if(Input.GetButtonDown("Fire1")) {
-                if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Equippable)) {
-                    EquipeItem();
-                }
-                else if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Consumable)) {
+                if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Consumable)) {
                     ConsumeItem();
                 }
                 else if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Wearable)) {
@@ -152,14 +148,8 @@ public class Inventory : MonoBehaviour {
         Player.instance.Eat(consumedItem.food);
         Player.instance.Drink(consumedItem.water);
 
-        if(consumedItem.amount - 1 < 1) {
-            currentInspected.RemoveItem();
-            InspectorReset();
-        }
-        else {
-            currentInspected.ChangeItemAmount(consumedItem.amount - 1);
-            inspectorItemAmount.text = currentInspected.myItem.amount.ToString();
-        }
+        currentInspected.RemoveItem();
+        InspectorReset();
     }
     #endregion
 
@@ -168,14 +158,6 @@ public class Inventory : MonoBehaviour {
         currentInspected = itemToInspect;
 
         inspectorItemText.text = itemToInspect.myItem.itemDiscription;
-
-        if(itemToInspect.myItem.amountCap > 0) {
-            inspectorItemAmount.enabled = true;
-            inspectorItemAmount.text = itemToInspect.myItem.amount.ToString();
-        }
-        else {
-            inspectorItemAmount.enabled = false;
-        }
 
         inspectorItemImage.sprite = itemToInspect.myItem.item2D;
         inspectorItemImage.enabled = true;
@@ -200,7 +182,6 @@ public class Inventory : MonoBehaviour {
         }
 
         inspectorItemImage.enabled = false;
-        inspectorItemAmount.enabled = false;
         inspectorItemText.text = "Select item to inspect";
     }
 
@@ -243,12 +224,12 @@ public class Inventory : MonoBehaviour {
 
         for(int rr = 0; rr < CraftingRecipesList[fullSlots].Count; rr++) {
             int k = 0;
-            for(int r = 0; r < CraftingRecipes[rr].ingredients.Count; r++) {
+            for(int r = 0; r < CraftingRecipesList[fullSlots][rr].ingredients.Count; r++) {
                 for(int ii = 0; ii < craftingSlots.Count; ii++) {
-                    if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipes[rr].ingredients[r]) {
+                    if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r]) {
                         k++;
                         if(k == fullSlots) {
-                            productSlot.SetItem(Instantiate(CraftingRecipes[rr].product));
+                            productSlot.SetItem(Instantiate(CraftingRecipesList[fullSlots][rr].product));
                             return;
                         }
                         break;
@@ -261,16 +242,10 @@ public class Inventory : MonoBehaviour {
     //Crafts Product
     public void CraftProduct() {
         if(productSlot.myItem != null && mouseOver != null) {
-            if(mouseOver.myItem == null || mouseOver.myItem != null && mouseOver.myItem.amountCap > 0 && mouseOver.myItem.amount + productSlot.myItem.amount <= mouseOver.myItem.amountCap) {
+            if(mouseOver.myItem == null) {
                 for(int c = 0; c < craftingSlots.Count; c++) {
                     if(craftingSlots[c].myItem != null) {
-                        if(craftingSlots[c].myItem.amount - 1 <= 0) {
-                            craftingSlots[c].RemoveItem();
-                        }
-                        else {
-                            craftingSlots[c].myItem.amount -= 1;
-                            craftingSlots[c].amountText.text = craftingSlots[c].myItem.amount.ToString();
-                        }
+                        craftingSlots[c].RemoveItem();
                     }
                 }
             }

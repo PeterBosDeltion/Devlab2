@@ -5,7 +5,6 @@ using UnityEngine;
 public class Item : ScriptableObject {
     public string itemName;
     public Sprite item2D;
-    public int amount, amountCap;
     public bool placaBle;
 
     public List<string> myButtons = new List<string>();

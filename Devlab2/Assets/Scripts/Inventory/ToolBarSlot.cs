@@ -6,7 +6,6 @@ using TMPro;
 
 public class ToolBarSlot : InventorySlot {
     public Image ToolbarImage;
-    public TextMeshProUGUI ToolbarAmountText;
 
     void Start() {
         if(myItem != null) {
@@ -25,23 +24,8 @@ public class ToolBarSlot : InventorySlot {
                     if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
                         Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
-                        if(otherItem.itemName == myItem.name) { //          ***bugggg Same names are not true
-                            int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
-                            if(leftOver > 0) {
-                                myItem.amount = leftOver;
-                                Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
-                                itemImage.gameObject.SetActive(true);
-                                ToolbarImage.gameObject.SetActive(true);
-                            }
-                            else {
-                                otherItem.amount += myItem.amount;
-                                RemoveItem();
-                            }
-                        }
-                        else {
-                            Inventory.mouseOver.SetItem(myItem);
-                            SetItem(otherItem);
-                        }
+                        Inventory.mouseOver.SetItem(myItem);
+                        SetItem(otherItem);
                     }
                     else {
                         itemImage.gameObject.SetActive(true);
@@ -83,26 +67,6 @@ public class ToolBarSlot : InventorySlot {
 
         itemImage.gameObject.SetActive(true);
         ToolbarImage.gameObject.SetActive(true);
-
-        if(myItem.amountCap > 0) {
-            amountText.text = myItem.amount.ToString();
-            ToolbarAmountText.text = myItem.amount.ToString();
-
-            amountText.enabled = true;
-            ToolbarAmountText.enabled = true;
-        }
-        else {
-            amountText.enabled = false;
-            ToolbarAmountText.enabled = false;
-        }
-    }
-
-    //Changes The Amount Of Current Item And Updates Text
-    public override void ChangeItemAmount(int amount) {
-        myItem.amount = amount;
-
-        ToolbarAmountText.text = amount.ToString();
-        amountText.text = amount.ToString();
     }
 
     //Starts Item Drag

@@ -7,7 +7,6 @@ using TMPro;
 public class Slot : MonoBehaviour {
     public Item myItem;
     public Image itemImage;
-    public TextMeshProUGUI amountText;
     public Item.TypeOffItem myType;
 
     public void InspectItem() {
@@ -36,20 +35,6 @@ public class Slot : MonoBehaviour {
         myItem = Instantiate(newItem);
         itemImage.sprite = myItem.item2D;
         itemImage.gameObject.SetActive(true);
-
-        if(myItem.amountCap > 0) {
-            amountText.text = myItem.amount.ToString();
-            amountText.enabled = true;
-        }
-        else {
-            amountText.enabled = false;
-        }
-    }
-
-    //Changes The Amount Of Current Item And Updates Text
-    public virtual void ChangeItemAmount(int amount) {
-        myItem.amount = amount;
-        amountText.text = amount.ToString();
     }
 
     //Stops Item Drag
@@ -60,22 +45,8 @@ public class Slot : MonoBehaviour {
                     if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
                         Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
-                        if(otherItem.itemName == myItem.name) { //          ***bugggg Same names are not true
-                            int leftOver = otherItem.amount + myItem.amount - otherItem.amountCap;
-                            if(leftOver > 0) {
-                                myItem.amount = leftOver;
-                                Inventory.mouseOver.ChangeItemAmount(otherItem.amountCap);
-                                itemImage.gameObject.SetActive(true);
-                            }
-                            else {
-                                otherItem.amount += myItem.amount;
-                                RemoveItem();
-                            }
-                        }
-                        else {
-                            Inventory.mouseOver.SetItem(myItem);
-                            SetItem(otherItem);
-                        }
+                        Inventory.mouseOver.SetItem(myItem);
+                        SetItem(otherItem);
                     }
                     else {
                         itemImage.gameObject.SetActive(true);

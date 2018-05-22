@@ -213,8 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8a714b36cc79458a8c003f6b66c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Hand
-  damage: 5
+  equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   beingUsed: 0
-  tool: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   anim: {fileID: 0}

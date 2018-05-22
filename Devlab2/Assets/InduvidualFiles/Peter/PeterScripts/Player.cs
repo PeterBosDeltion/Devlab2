@@ -99,8 +99,28 @@ public class Player : MonoBehaviour {
             ChangeEquippedItem(4);
             Inventory.Instance.ChangeToolBarSelected();
         }
+        else if (Input.GetKeyDown("6"))
+        {
+            ChangeEquippedItem(5);
+            Inventory.Instance.ChangeToolBarSelected();
+        }
+        else if (Input.GetKeyDown("7"))
+        {
+            ChangeEquippedItem(6);
+            Inventory.Instance.ChangeToolBarSelected();
+        }
+        else if (Input.GetKeyDown("8"))
+        {
+            ChangeEquippedItem(7);
+            Inventory.Instance.ChangeToolBarSelected();
+        }
+        else if (Input.GetKeyDown("9"))
+        {
+            ChangeEquippedItem(8);
+            Inventory.Instance.ChangeToolBarSelected();
+        }
         else if(Input.GetKeyDown("0")) {
-            ChangeEquippedItem(99);
+            ChangeEquippedItem(9);
             Inventory.Instance.ChangeToolBarSelected();
         }
     }
@@ -111,14 +131,27 @@ public class Player : MonoBehaviour {
         }
         if(!currentWeapon.beingUsed) {
             foreach(GameObject g in items) {
-                if(i == items.IndexOf(g)) {
-                    g.SetActive(true);
-                    Inventory.itemInHand = g.GetComponent<Weapon>().equippable;
-                    currentWeapon = g.GetComponent<Weapon>();
+                Weapon e = g.GetComponent<Weapon>();
+
+                if(e != null)
+                {
+                    if (i == items.IndexOf(g))
+                    {
+                        g.SetActive(true);
+                        Inventory.itemInHand = g.GetComponent<Weapon>().equippable;
+                        currentWeapon = g.GetComponent<Weapon>();
+                    }
+                    else
+                    {
+                        g.SetActive(false);
+                    }
                 }
-                else {
-                    g.SetActive(false);
+                else
+                {
+                    break;
                 }
+                
+                
             }
         }
 

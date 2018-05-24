@@ -32,6 +32,17 @@ public class Player : MonoBehaviour {
 
     private Entity myEnt;
 
+    private KeyCode[] keyCodes = {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8,
+     };
+
     private void Awake() {
         instance = this;
     }
@@ -44,7 +55,7 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if(Input.GetKeyDown("v")) //Eat cheat button
+        if (Input.GetKeyDown("v")) //Eat cheat button
         {
             Eat(20);
         }
@@ -79,79 +90,45 @@ public class Player : MonoBehaviour {
     }
 
     private void ChangeEquip() {
-        if(Input.GetKeyDown("1")) {
-            ChangeEquippedItem(0);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if(Input.GetKeyDown("2")) {
-            ChangeEquippedItem(1);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if(Input.GetKeyDown("3")) {
-            ChangeEquippedItem(2);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if(Input.GetKeyDown("4")) {
-            ChangeEquippedItem(3);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if(Input.GetKeyDown("5")) {
-            ChangeEquippedItem(4);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if (Input.GetKeyDown("6"))
+        for (int i = 0; i < keyCodes.Length; i++)
         {
-            ChangeEquippedItem(5);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if (Input.GetKeyDown("7"))
-        {
-            ChangeEquippedItem(6);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if (Input.GetKeyDown("8"))
-        {
-            ChangeEquippedItem(7);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if (Input.GetKeyDown("9"))
-        {
-            ChangeEquippedItem(8);
-            Inventory.Instance.ChangeToolBarSelected();
-        }
-        else if(Input.GetKeyDown("0")) {
-            ChangeEquippedItem(9);
-            Inventory.Instance.ChangeToolBarSelected();
+            if (Input.GetKeyDown(keyCodes[i]))
+            {
+                int numberPressed = i + 1;
+
+                Debug.Log("Key pressed: " + numberPressed);
+
+                Inventory.Instance.SelectedToolbarSlot = numberPressed - 1;
+
+                Debug.Log("Selected slot: " + Inventory.Instance.SelectedToolbarSlot);
+
+                Inventory.Instance.ChangeToolBarSelected();
+
+                ChangeEquippedItem(Inventory.Instance.SelectedToolbarSlot);
+            }
         }
     }
 
     public void ChangeEquippedItem(int i) {
-        if(i <Inventory.Instance.toolBar.Count) {
+        Debug.Log("i: " + i);
+
+        if (i <Inventory.Instance.toolBar.Count) {
             Inventory.Instance.SelectedToolbarSlot = i;
         }
-        if(!currentWeapon.beingUsed) {
-            foreach(GameObject g in items) {
-                Weapon e = g.GetComponent<Weapon>();
 
-                if(e != null)
+        if(!currentWeapon.beingUsed) {
+           
+            if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
+            {
+                items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
+            }
+
+            foreach (GameObject n in items)
+            {
+                if(items.IndexOf(n) != Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex)
                 {
-                    if (i == items.IndexOf(g))
-                    {
-                        g.SetActive(true);
-                        Inventory.itemInHand = g.GetComponent<Weapon>().equippable;
-                        currentWeapon = g.GetComponent<Weapon>();
-                    }
-                    else
-                    {
-                        g.SetActive(false);
-                    }
+                    n.SetActive(false);
                 }
-                else
-                {
-                    break;
-                }
-                
-                
             }
         }
 

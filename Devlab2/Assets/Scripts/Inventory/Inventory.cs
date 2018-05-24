@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour {
     public TextMeshProUGUI inspectorItemText;
     public Image inspectorItemImage;
     public List<InspectorButton> buttons = new List<InspectorButton>();
-    Slot currentInspected;
+    public Slot currentInspected;
 
     [Header("Animations")]
     public Animator craftInspectAnimator;

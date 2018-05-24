@@ -3766,17 +3766,9 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1769319581}
-    - target: {fileID: 0}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 1769319581}
     - target: {fileID: 1526738920827206, guid: 3ad2e75e213d2ab4ab69e2523f1d6eec, type: 2}
       propertyPath: m_Name
       value: TreePlaceHolder (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1526738920827206, guid: 3ad2e75e213d2ab4ab69e2523f1d6eec, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ad2e75e213d2ab4ab69e2523f1d6eec, type: 2}
@@ -10993,11 +10985,16 @@ Prefab:
     - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
       propertyPath: CraftingRecipes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
       propertyPath: CraftingRecipes.Array.data[2].ingredients.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[3].ingredients.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224746311313677570, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
@@ -13249,6 +13246,27 @@ Prefab:
       propertyPath: myItem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[3].ingredients.Array.data[0]
+      value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[3].ingredients.Array.data[1]
+      value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[3].product
+      value: 
+      objectReference: {fileID: 11400000, guid: abe2e21aaaae4274cae9c2fd9bc4f7f2,
+        type: 2}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[3].amount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cb4b4f7ac1664a4280b04c592d1cb78, type: 2}
   m_IsPrefabParent: 0
@@ -13375,6 +13393,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4656957424930988, guid: 82fa18650ec549145ad2007d31667e7c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 459.60675
@@ -13427,6 +13450,48 @@ Prefab:
       propertyPath: baseCanvas
       value: 
       objectReference: {fileID: 1959431627}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[4].poolTag
+      value: Fence Display
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 1355014501766688, guid: 6bc49e34a5f56664886e3de09523da3c,
+        type: 2}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[4].autoExpand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[4].startSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[5].poolTag
+      value: Fence
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 1562642143501420, guid: 437e4bc993a80b04a947f843cc216e9a,
+        type: 2}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[5].autoExpand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[5].startSize
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82fa18650ec549145ad2007d31667e7c, type: 2}
   m_IsPrefabParent: 0
@@ -16476,7 +16541,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh15574
+  m_Name: pb_Mesh-1340
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16872,11 +16937,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1643640963}
     m_Modifications:
-    - target: {fileID: 114884713947144192, guid: 437e4bc993a80b04a947f843cc216e9a,
-        type: 2}
-      propertyPath: m_selectedTriangles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4752490035248470, guid: 437e4bc993a80b04a947f843cc216e9a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 5.4
@@ -16914,10 +16974,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1920069523}
-    - target: {fileID: 1562642143501420, guid: 437e4bc993a80b04a947f843cc216e9a, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 437e4bc993a80b04a947f843cc216e9a, type: 2}
   m_IsPrefabParent: 0
@@ -19148,8 +19204,8 @@ GameObject:
   - component: {fileID: 1686349409}
   - component: {fileID: 1686349408}
   - component: {fileID: 1686349407}
-  - component: {fileID: 1686349406}
   - component: {fileID: 1686349405}
+  - component: {fileID: 1686349412}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Untagged
@@ -19169,20 +19225,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 8.337212, z: 17.803864}
   m_Center: {x: 0.5, y: 4.104664, z: -8.901932}
---- !u!64 &1686349406
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1686349404}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 828814506}
 --- !u!114 &1686349407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21514,6 +21556,18 @@ Transform:
   m_Father: {fileID: 1643640963}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &1686349412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686349404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ecc32c2a4e1f9744972c90733d84c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 0}
 --- !u!1 &1700539575
 GameObject:
   m_ObjectHideFlags: 0

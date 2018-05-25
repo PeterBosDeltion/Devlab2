@@ -5347,7 +5347,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-20666
+  m_Name: pb_Mesh-3180
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -21283,10 +21283,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   edgeOffset: 1
-  islandMinSize: 400
+  islandMinSize: 100
   islandMaxSize: 0
-  xSize: 100
-  ySize: 100
+  xSize: 35
+  ySize: 35
   xStepSize: 3.375
   yStepSize: 1.95
   tile: {fileID: 1802327301417490, guid: 62059ca1e7cc5494496d9366e81bdb93, type: 2}
@@ -21296,7 +21296,7 @@ MonoBehaviour:
   - state: 2
     tex: {fileID: 2100000, guid: 0a58916009d0c4c45b0f760b9f4a7ffd, type: 2}
   - state: 3
-    tex: {fileID: 2100000, guid: 1e82e806dbc92d54bbd64a23dcd54956, type: 2}
+    tex: {fileID: 2100000, guid: 2c35ee18d432c564ea615a22b0896d0a, type: 3}
   - state: 4
     tex: {fileID: 2100000, guid: a40e6741efc67e54da515c362877ec2a, type: 2}
   - state: 5

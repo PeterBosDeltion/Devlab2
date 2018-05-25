@@ -74,6 +74,7 @@ public class EcoManager : MonoBehaviour {
         startTile.ChangeMaterial(GroundState.Grass);
 
         Queue<Tile> toCheck = new Queue<Tile>();
+        List<Tile> grassTiles = new List<Tile>();
 
         for(int i = -1; i < 2; i++) {
             for(int ii = -1; ii < 2; ii++) {
@@ -96,8 +97,9 @@ public class EcoManager : MonoBehaviour {
             }
 
             if(dequeueTile != null) {
-                if(Random.Range(0, 100) <= 10 && dequeueTile.currentState == GroundState.Water) {
+                if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
                     dequeueTile.ChangeMaterial(GroundState.Grass);
+                    grassTiles.Add(dequeueTile);
                     landAmounts++;
                     for(int i = -1; i < 2; i++) {
                         for(int ii = -1; ii < 2; ii++) {
@@ -107,12 +109,26 @@ public class EcoManager : MonoBehaviour {
                         }
                     }
                 }
-                else {
+                else if(Random.Range(0, 100) <= 80) {
                     toCheck.Enqueue(dequeueTile);
                 }
             }
         }
 
+        foreach(Tile t in grassTiles) {
+            for(int i = -1; i < 2; i++) {
+                for(int ii = -1; ii < 2; ii++) {
+                    if(i == 0 || ii == 0) {
+                    if(Grid[t.gridPosX + i,t.gridPosY + ii].currentState == GroundState.Water) {
+                        if(Random.Range(0,100) <= 70) {
+                            t.ChangeMaterial(GroundState.Sand);
+                        }
+                        break;
+                    }
+                    }
+                }
+            }
+        }
     }
 
     public void DestroyMap() {
@@ -128,10 +144,10 @@ public class EcoManager : MonoBehaviour {
     [System.Serializable]
     public class Tile {
         public List<GroundState> myTimeLine = new List<GroundState>();
-        public GameObject myTile;
-        public int gridPosX, gridPosY;
-        Renderer myRenderer;
         public GroundState currentState;
+        public int gridPosX, gridPosY;
+        public GameObject myTile;
+        Renderer myRenderer;
 
         public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
             myTile = newTile;

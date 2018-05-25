@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
     public static Player instance;
 
+    public Equippable hand;
     public List<GameObject> items = new List<GameObject>();
     public Weapon currentWeapon;
     public static int arrows = 50;
@@ -117,10 +118,12 @@ public class Player : MonoBehaviour {
             if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
             {
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
+                Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
             }
             else
             {
                 items[4].SetActive(true); //Hand index
+                Inventory.itemInHand = hand;
                 foreach (GameObject n in items)
                 {
                     if(n != items[4])

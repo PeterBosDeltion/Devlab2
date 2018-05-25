@@ -19,6 +19,7 @@ MonoBehaviour:
   - Drop
   - Equipe
   itemDiscription: Very handy!
+  equippable: {fileID: 11400000}
   itemType: 5
   damage: 5
   myGathering: 3

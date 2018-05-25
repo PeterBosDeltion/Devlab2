@@ -11,6 +11,8 @@ public class Item : ScriptableObject {
     public List<string> myButtons = new List<string>();
     public string itemDiscription;
 
+    public Equippable equippable;
+
     public TypeOffItem itemType;
     public enum TypeOffItem{
         None,

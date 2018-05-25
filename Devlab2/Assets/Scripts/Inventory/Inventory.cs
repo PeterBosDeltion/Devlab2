@@ -60,12 +60,34 @@ public class Inventory : MonoBehaviour {
     }
 
     public void ChangeToolBarSelected() {
+
+
         currentInspected = toolBar[SelectedToolbarSlot];
-        toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
-        Builder.instance.StopBuild();
-        if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
-            Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
+
+        Gather g = currentInspected.GetComponent<Gather>();
+
+        if(g != null)
+        {
+            if (!g.beingUsed)
+            {
+                toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
+                Builder.instance.StopBuild();
+                if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true)
+                {
+                    Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
+                }
+            }
         }
+        else
+        {
+            toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
+            Builder.instance.StopBuild();
+            if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true)
+            {
+                Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
+            }
+        }
+      
     }
 
     //Enables Inventory Drag Elements

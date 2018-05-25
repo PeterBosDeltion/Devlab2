@@ -19,6 +19,7 @@ MonoBehaviour:
   - Drop
   - Equipe
   itemDiscription: This is a axe
+  equippable: {fileID: 11400000}
   itemType: 5
   damage: 10
   myGathering: 0

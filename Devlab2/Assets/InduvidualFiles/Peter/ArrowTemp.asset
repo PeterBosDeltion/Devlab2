@@ -19,6 +19,7 @@ MonoBehaviour:
   - Drop
   - Equipe
   itemDiscription: Sharp
+  equippable: {fileID: 11400000}
   itemType: 5
   damage: 20
   myGathering: 3

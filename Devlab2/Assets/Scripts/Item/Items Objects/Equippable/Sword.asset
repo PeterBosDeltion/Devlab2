@@ -13,12 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   item2D: {fileID: 21300000, guid: 5fd50594014b70e48bd6993443d46b32, type: 3}
-  amount: 0
-  amountCap: 0
+  itemListIndex: 0
+  placaBle: 0
   myButtons:
   - Equipe
   - Drop
   itemDiscription: Sharp As A Sharp Knife.
+  equippable: {fileID: 11400000}
   itemType: 5
   damage: 20
   myGathering: 3

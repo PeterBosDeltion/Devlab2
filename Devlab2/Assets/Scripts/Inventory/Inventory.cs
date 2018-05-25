@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour {
     }
 
     //Removes Given Item
-    void DropItem(Slot itemToDrop) {
+    public void DropItem(Slot itemToDrop) {
         if(itemToDrop != null && itemToDrop.myItem != null) {
             ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, Vector3.zero, Quaternion.Euler(Vector3.zero)); //No Place Choosen Yet
             itemToDrop.RemoveItem();

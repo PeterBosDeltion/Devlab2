@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item : ScriptableObject {
     public string itemName;
     public Sprite item2D;
-    public int itemListIndex;
+    public int itemListIndex; //If item should not be holdable, give hand index(Found in the items list of the Player script)
     public bool placaBle;
 
     public List<string> myButtons = new List<string>();

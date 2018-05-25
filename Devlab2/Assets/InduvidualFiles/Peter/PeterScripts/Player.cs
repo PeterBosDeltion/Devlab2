@@ -106,7 +106,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void ChangeEquippedItem(int i) {
+    public void ChangeEquippedItem(int i) { //Item's listIndex variable must be equal to its place in the item list in this script
 
         if (i <Inventory.Instance.toolBar.Count) {
             Inventory.Instance.SelectedToolbarSlot = i;

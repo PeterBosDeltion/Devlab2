@@ -6325,7 +6325,8 @@ Prefab:
         type: 2}
       propertyPath: myItem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: dd1badb34e30ffd4fbbe853bed29268f,
+        type: 2}
     - target: {fileID: 114073255556504454, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
       propertyPath: myItem

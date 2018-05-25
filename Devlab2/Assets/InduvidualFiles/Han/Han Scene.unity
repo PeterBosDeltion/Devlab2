@@ -21282,8 +21282,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e993e82d3468c3942bda7c9cc952e5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSize: 50
-  ySize: 50
+  edgeOffset: 1
+  islandMinSize: 400
+  islandMaxSize: 0
+  xSize: 100
+  ySize: 100
   xStepSize: 3.375
   yStepSize: 1.95
   tile: {fileID: 1802327301417490, guid: 62059ca1e7cc5494496d9366e81bdb93, type: 2}

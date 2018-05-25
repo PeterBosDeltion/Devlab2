@@ -14,21 +14,26 @@ public class EcoManager : MonoBehaviour {
         fertile = 5,
     }
 
+    public int edgeOffset;
+    public int islandMinSize;
+    public int islandMaxSize;
     public int xSize, ySize;
     public float xStepSize, yStepSize;
     public GameObject tile;
     Tile[,] Grid;
 
-    Material[] groundTextures;
+    static Material[] groundTextures;
 
     public List<Ground> groundTexturesInput = new List<Ground>();
 
     void Awake() {
-        instance = this;
-    }
-
-    void Start() {
-        GenerateMap();
+        if(instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else {
+            Destroy(gameObject);
+        }
     }
 
     public void GenerateMap() {
@@ -37,8 +42,11 @@ public class EcoManager : MonoBehaviour {
             groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;
         }
 
+        DestroyMap();
+
         Grid = new Tile[xSize, ySize];
         bool pos = false;
+
         for(int x = 0; x < xSize; x++) {
             for(int y = 0; y < ySize; y++) {
                 Vector3 positionInWorld = Vector3.zero;
@@ -51,27 +59,92 @@ public class EcoManager : MonoBehaviour {
                 }
 
                 GameObject newTile = Instantiate(tile, positionInWorld, tile.transform.rotation);
-                Grid[x, y] = new Tile(newTile, (GroundState)Random.Range(0,5)); //          ***Not Random
+                Grid[x, y] = new Tile(newTile, GroundState.Water, x, y);
             }
             pos = !pos;
+        }
+
+        if(islandMinSize > xSize * ySize - (edgeOffset * 4)) {
+
+            Debug.Log("The Size Of The Island Is To Big For The Map Size");
+            return;
+        }
+
+        Tile startTile = Grid[xSize / 2, ySize / 2];
+        startTile.ChangeMaterial(GroundState.Grass);
+
+        Queue<Tile> toCheck = new Queue<Tile>();
+
+        for(int i = -1; i < 2; i++) {
+            for(int ii = -1; ii < 2; ii++) {
+                if(Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
+                    toCheck.Enqueue(Grid[startTile.gridPosX + i, startTile.gridPosY + ii]);
+                }
+            }
+        }
+
+
+        int landAmounts = 0;
+
+        while(islandMinSize > landAmounts) {
+            Tile dequeueTile = null;
+            if(toCheck.Count > 0) {
+                dequeueTile = toCheck.Dequeue();
+            }
+            else {
+                return;
+            }
+
+            if(dequeueTile != null) {
+                if(Random.Range(0, 100) <= 10 && dequeueTile.currentState == GroundState.Water) {
+                    dequeueTile.ChangeMaterial(GroundState.Grass);
+                    landAmounts++;
+                    for(int i = -1; i < 2; i++) {
+                        for(int ii = -1; ii < 2; ii++) {
+                            if(Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
+                                toCheck.Enqueue(Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii]);
+                            }
+                        }
+                    }
+                }
+                else {
+                    toCheck.Enqueue(dequeueTile);
+                }
+            }
+        }
+
+    }
+
+    public void DestroyMap() {
+        if(Grid != null) {
+            foreach(Tile tile in Grid) {
+                if(tile.myTile != null) {
+                    DestroyImmediate(tile.myTile);
+                }
+            }
         }
     }
 
     [System.Serializable]
     public class Tile {
         public List<GroundState> myTimeLine = new List<GroundState>();
-        GameObject myTile;
+        public GameObject myTile;
+        public int gridPosX, gridPosY;
         Renderer myRenderer;
+        public GroundState currentState;
 
-        public Tile(GameObject newTile,GroundState newState) {
+        public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
             myTile = newTile;
             myRenderer = myTile.GetComponent<Renderer>();
             ChangeMaterial(newState);
+            gridPosX = gridX;
+            gridPosY = gridY;
         }
 
-        public void ChangeMaterial(GroundState newState){
-            myRenderer.material = instance.groundTextures[(int)newState];
+        public void ChangeMaterial(GroundState newState) {
+            myRenderer.material = groundTextures[(int)newState - 1];
             myTimeLine.Add(newState);
+            currentState = newState;
         }
 
     }

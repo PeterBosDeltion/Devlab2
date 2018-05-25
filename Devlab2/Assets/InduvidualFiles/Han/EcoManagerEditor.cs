@@ -6,10 +6,16 @@ using UnityEditor;
 [CustomEditor(typeof(EcoManager))]
 public class EcoManagerEditor : Editor {
 
+    public EcoManager ecoMan;
+
+    void OnEnable() {
+        ecoMan = (EcoManager)target;
+    }
+
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
         if(GUILayout.Button("Generate Map")) {
-            EcoManager.instance.GenerateMap();
+            ecoMan.GenerateMap();
         }
     }
 }

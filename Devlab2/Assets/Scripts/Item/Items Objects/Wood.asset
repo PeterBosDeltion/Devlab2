@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Wood
   item2D: {fileID: 21300000, guid: 350f2e489c1d0458db18e969f67cb28a, type: 3}
-  amount: 4
-  amountCap: 8
+  itemListIndex: 4
+  placaBle: 0
   myButtons:
   - Drop
   itemDiscription: Made Of The Tears Of Cows.

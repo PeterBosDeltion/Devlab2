@@ -18,6 +18,7 @@ public class Item : ScriptableObject {
         ChestPiece,
         LegPeice,
         FootWear,
-        Weapon
+        Weapon,
+        Crop
     }
 }

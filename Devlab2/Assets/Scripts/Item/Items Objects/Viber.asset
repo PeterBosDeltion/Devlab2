@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Viber
   item2D: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
-  amount: 4
-  amountCap: 32
+  itemListIndex: 4
+  placaBle: 0
   myButtons:
   - Drop
   itemDiscription: Made Of Things

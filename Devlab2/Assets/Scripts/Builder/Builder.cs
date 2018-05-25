@@ -21,7 +21,16 @@ public class Builder : MonoBehaviour {
 
 
     void Update() {
+
+        //Debug.Log(LayerMask.GetMask("ground"));
+
         if(CurrentlyBuilding != null) {
+
+            if(CurrentlyBuilding.itemType == Item.TypeOffItem.Crop)
+            {
+                buildRayMask = 16384; //Farmland layer
+            }
+
             RaycastHit rayHit;
             if(Physics.Raycast(instance.mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, instance.buildRayMask)) {
                 buildRotation += Input.GetButtonDown("Fire3") == true ? 90 : 0;
@@ -67,6 +76,11 @@ public class Builder : MonoBehaviour {
         if(CurrentlyBuilding != null) {
             ObjectPooler.instance.AddToPool(CurrentlyBuilding.itemName + " Display", CurrentBuild);
             CurrentlyBuilding = null;
+
+            if(buildRayMask != 1024) //1024 = regular ground layer index
+            {
+                buildRayMask = 1024;
+            }
         }
     }
 }

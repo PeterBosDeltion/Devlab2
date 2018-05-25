@@ -11,11 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e9096c5da4ccc47afabf987edced3e, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
-  itemID: 1
   itemName: Bread
   item2D: {fileID: 0}
-  amount: 0
-  amountCap: 0
+  itemListIndex: 4
+  placaBle: 0
   myButtons: []
   itemDiscription: 
   itemType: 0

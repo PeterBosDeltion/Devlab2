@@ -96,11 +96,8 @@ public class Player : MonoBehaviour {
             {
                 int numberPressed = i + 1;
 
-                Debug.Log("Key pressed: " + numberPressed);
 
                 Inventory.Instance.SelectedToolbarSlot = numberPressed - 1;
-
-                Debug.Log("Selected slot: " + Inventory.Instance.SelectedToolbarSlot);
 
                 Inventory.Instance.ChangeToolBarSelected();
 
@@ -110,7 +107,6 @@ public class Player : MonoBehaviour {
     }
 
     public void ChangeEquippedItem(int i) {
-        Debug.Log("i: " + i);
 
         if (i <Inventory.Instance.toolBar.Count) {
             Inventory.Instance.SelectedToolbarSlot = i;
@@ -122,13 +118,29 @@ public class Player : MonoBehaviour {
             {
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
             }
+            else
+            {
+                items[4].SetActive(true); //Hand index
+                foreach (GameObject n in items)
+                {
+                    if(n != items[4])
+                    {
+                        n.SetActive(false);
+                    }
+                }
+            }
 
             foreach (GameObject n in items)
             {
-                if(items.IndexOf(n) != Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex)
+
+                if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
                 {
-                    n.SetActive(false);
+                    if (items.IndexOf(n) != Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex)
+                    {
+                        n.SetActive(false);
+                    }
                 }
+              
             }
         }
 

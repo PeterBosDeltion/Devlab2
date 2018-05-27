@@ -17,5 +17,9 @@ public class EcoManagerEditor : Editor {
         if(GUILayout.Button("Generate Map")) {
             ecoMan.GenerateMap();
         }
+
+        if(GUILayout.Button("Destroy Map")) {
+            ecoMan.DestroyMap();
+        }
     }
 }

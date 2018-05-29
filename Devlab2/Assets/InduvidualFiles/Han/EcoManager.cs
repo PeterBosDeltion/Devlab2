@@ -12,18 +12,20 @@ public class EcoManager : MonoBehaviour {
         Water = 3,
         burned = 4,
         fertile = 5,
+        driedGround = 2
     }
 
     public int edgeOffset;
-    public int islandMinSize;
-    public int islandMaxSize;
+    public int islandSize;
+    public int amountOfTrees;
     public int xSize, ySize;
     public float xStepSize, yStepSize;
     public GameObject tile;
+    public GameObject tree;
     Tile[,] Grid;
+    GameObject[] treesInScene;
 
     static Material[] groundTextures;
-
     public List<Ground> groundTexturesInput = new List<Ground>();
 
     void Awake() {
@@ -37,6 +39,7 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void GenerateMap() {
+
         groundTextures = new Material[groundTexturesInput.Count];
         for(int i = 0; i < groundTexturesInput.Count; i++) {
             groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;
@@ -64,7 +67,7 @@ public class EcoManager : MonoBehaviour {
             pos = !pos;
         }
 
-        if(islandMinSize > xSize * ySize - (edgeOffset * 4)) {
+        if(islandSize > xSize * ySize - (edgeOffset * 4)) {
 
             Debug.Log("The Size Of The Island Is To Big For The Map Size");
             return;
@@ -87,7 +90,7 @@ public class EcoManager : MonoBehaviour {
 
         int landAmounts = 0;
 
-        while(islandMinSize > landAmounts) {
+        while(islandSize > landAmounts) {
             Tile dequeueTile = null;
             if(toCheck.Count > 0) {
                 dequeueTile = toCheck.Dequeue();
@@ -119,19 +122,41 @@ public class EcoManager : MonoBehaviour {
             for(int i = -1; i < 2; i++) {
                 for(int ii = -1; ii < 2; ii++) {
                     if(i == 0 || ii == 0) {
-                    if(Grid[t.gridPosX + i,t.gridPosY + ii].currentState == GroundState.Water) {
-                        if(Random.Range(0,100) <= 70) {
-                            t.ChangeMaterial(GroundState.Sand);
+                        if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
+                            if(Random.Range(0, 100) <= 70) {
+                                t.ChangeMaterial(GroundState.Sand);
+                            }
+                            break;
                         }
-                        break;
-                    }
                     }
                 }
             }
         }
+
+        int treesToPlanted = amountOfTrees;
+        treesInScene = new GameObject[amountOfTrees];
+
+        while(treesToPlanted > 0) {
+            Tile toPlant = grassTiles[Random.Range(0, grassTiles.Count)];
+
+            if(toPlant != null && toPlant.currentState == GroundState.Grass) {
+                treesInScene[amountOfTrees - treesToPlanted] = Instantiate(tree, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(0, Random.Range(0, 360))));
+                treesToPlanted--;
+            }
+
+            grassTiles.Remove(toPlant);
+        }
     }
 
     public void DestroyMap() {
+        if(treesInScene != null) {
+            for(int i = 0; i < treesInScene.Length; i++) {
+                if(treesInScene[i] != null) {
+                    DestroyImmediate(treesInScene[i]);
+                }
+            }
+        }
+
         if(Grid != null) {
             foreach(Tile tile in Grid) {
                 if(tile.myTile != null) {

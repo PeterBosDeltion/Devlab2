@@ -4508,7 +4508,7 @@ Prefab:
     - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
       propertyPath: CraftingRecipes.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
@@ -4528,6 +4528,11 @@ Prefab:
     - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
         type: 2}
       propertyPath: CraftingRecipes.Array.data[5].ingredients.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[6].ingredients.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224746311313677570, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
@@ -6879,6 +6884,22 @@ Prefab:
       propertyPath: displayCollider
       value: 
       objectReference: {fileID: 1333505350}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[6].ingredients.Array.data[0]
+      value: Corn
+      objectReference: {fileID: 0}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[6].product
+      value: 
+      objectReference: {fileID: 11400000, guid: d3b1ec0788ee73f4ea155833a89e9bbc,
+        type: 2}
+    - target: {fileID: 114228992720562282, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: CraftingRecipes.Array.data[6].amount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cb4b4f7ac1664a4280b04c592d1cb78, type: 2}
   m_IsPrefabParent: 0

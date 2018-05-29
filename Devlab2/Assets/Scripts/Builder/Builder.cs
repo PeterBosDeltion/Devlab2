@@ -18,7 +18,12 @@ public class Builder : MonoBehaviour {
     private Player player;
 
     private void Awake() {
-        instance = this;
+        if(instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(this);
+        }
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
@@ -40,6 +45,7 @@ public class Builder : MonoBehaviour {
                 buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * instance.scrollweelSpeed);
 
                 DisplayBuild(new Vector3(0, buildRotation, 0), rayHit.point);
+
                 if(Physics.CheckBox(displayCollider.bounds.center, displayCollider.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
                     displayMaterial.color = Color.red + new Color(0, 0, 0, -0.5f);
                 }

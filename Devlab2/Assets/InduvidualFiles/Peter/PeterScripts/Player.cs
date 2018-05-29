@@ -117,13 +117,15 @@ public class Player : MonoBehaviour {
            
             if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
             {
+                //Debug.Log(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem);
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
                 Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
             }
             else
             {
-                items[4].SetActive(true); //Hand index
                 Inventory.itemInHand = hand;
+
+                items[4].SetActive(true); //Hand index
                 foreach (GameObject n in items)
                 {
                     if(n != items[4])
@@ -146,6 +148,8 @@ public class Player : MonoBehaviour {
               
             }
         }
+
+        //Debug.Log(Inventory.itemInHand);
 
     }
 

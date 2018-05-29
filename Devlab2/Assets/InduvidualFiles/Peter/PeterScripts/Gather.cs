@@ -8,7 +8,7 @@ public class Gather : Weapon {
 
     public Animator anim;
 
-    private bool waiting;
+    public bool waiting;
 	// Use this for initialization
 	void Start () {
 
@@ -33,7 +33,7 @@ public class Gather : Weapon {
         {
             if (col.transform.tag == "Resource")
             {
-                col.transform.GetComponent<Resource>().Harvest();
+                col.transform.GetComponent<Resource>().Harvest(this);
             }
           
 

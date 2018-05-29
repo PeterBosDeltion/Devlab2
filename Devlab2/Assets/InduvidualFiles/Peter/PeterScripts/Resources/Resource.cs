@@ -18,7 +18,7 @@ public class Resource : MonoBehaviour {
 		
 	}
 
-    public void Harvest()
+    public void Harvest(Gather g)
     {
         Debug.Log("Harvest");
         if(Inventory.itemInHand.myGathering == type)
@@ -32,6 +32,9 @@ public class Resource : MonoBehaviour {
             }
             else
             {
+                g.anim.SetBool("using", false);
+                g.beingUsed = false;
+                g.waiting = false;
                 Destroy(gameObject);
             }
         }

@@ -6790,6 +6790,11 @@ Prefab:
       propertyPath: CraftingRecipes.Array.data[5].amount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114420585272640266, guid: 8cb4b4f7ac1664a4280b04c592d1cb78,
+        type: 2}
+      propertyPath: displayCollider
+      value: 
+      objectReference: {fileID: 1333505350}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cb4b4f7ac1664a4280b04c592d1cb78, type: 2}
   m_IsPrefabParent: 0
@@ -9636,6 +9641,11 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!65 &1333505350 stripped
+BoxCollider:
+  m_PrefabParentObject: {fileID: 65310519762368938, guid: 3e8e27ce0c4d8434fbd11427a689737e,
+    type: 2}
+  m_PrefabInternal: {fileID: 615977192}
 --- !u!1001 &1344398717
 Prefab:
   m_ObjectHideFlags: 0

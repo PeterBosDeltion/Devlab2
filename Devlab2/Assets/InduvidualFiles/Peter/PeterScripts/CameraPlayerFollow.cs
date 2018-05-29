@@ -31,10 +31,14 @@ public class CameraPlayerFollow : MonoBehaviour {
         Vector3 mPos = Input.mousePosition;
         if (Input.GetMouseButton(2))
         {
+            Cursor.lockState = CursorLockMode.Locked;
             transform.Rotate(0, Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime, 0, Space.World);
 
         }
-
+        if (Input.GetMouseButtonUp(2))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
         transform.Rotate(0, Input.GetAxis("RotateCam") * rotSpeed * Time.deltaTime, 0, Space.World);
     }
 }

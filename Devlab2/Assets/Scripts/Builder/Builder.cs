@@ -15,8 +15,11 @@ public class Builder : MonoBehaviour {
     public float scrollweelSpeed;
     static int buildRotation;
 
+    private Player player;
+
     private void Awake() {
         instance = this;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
 
@@ -67,6 +70,8 @@ public class Builder : MonoBehaviour {
             CurrentlyBuilding = null;
             Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].RemoveItem();
             StopBuild();
+            player.ChangeEquippedItem(Inventory.Instance.SelectedToolbarSlot);
+
         }
     }
 
@@ -81,6 +86,7 @@ public class Builder : MonoBehaviour {
             {
                 buildRayMask = 1024;
             }
+
         }
     }
 }

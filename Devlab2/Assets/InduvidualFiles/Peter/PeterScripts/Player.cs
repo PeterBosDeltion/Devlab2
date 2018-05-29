@@ -107,6 +107,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void EquipHand()
+    {
+        Inventory.itemInHand = hand;
+        Debug.Log(Inventory.itemInHand);
+    }
+
     public void ChangeEquippedItem(int i) { //Item's listIndex variable must be equal to its place in the item list in this script
 
         if (i <Inventory.Instance.toolBar.Count) {

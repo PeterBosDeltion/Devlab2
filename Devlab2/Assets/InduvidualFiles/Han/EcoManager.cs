@@ -12,16 +12,9 @@ public class EcoManager : MonoBehaviour {
         Water = 3,
         burned = 4,
         fertile = 5,
-        driedGround = 2
+        driedGround = 6
     }
 
-    public int edgeOffset;
-    public int islandSize;
-    public int amountOfTrees;
-    public int xSize, ySize;
-    public float xStepSize, yStepSize;
-    public GameObject tile;
-    public GameObject tree;
     Tile[,] Grid;
     GameObject[] treesInScene;
 
@@ -36,6 +29,22 @@ public class EcoManager : MonoBehaviour {
         else {
             Destroy(gameObject);
         }
+    }
+
+    #region Tile Genorator
+    public int edgeOffset;
+    public int islandSize;
+    public int amountOfTrees;
+    public int xSize, ySize;
+    public float xStepSize, yStepSize;
+    public GameObject tile;
+    public List<ToSpawn> toSpawnList = new List<ToSpawn>();
+
+    [System.Serializable]
+    public class ToSpawn {
+        public List<GameObject> spawnedObjects = new List<GameObject>();
+        public int amountToSpawn;
+        public GameObject objectToSpawn;
     }
 
     public void GenerateMap() {
@@ -102,8 +111,11 @@ public class EcoManager : MonoBehaviour {
             if(dequeueTile != null) {
                 if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
                     dequeueTile.ChangeMaterial(GroundState.Grass);
+                    dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
+
                     grassTiles.Add(dequeueTile);
                     landAmounts++;
+
                     for(int i = -1; i < 2; i++) {
                         for(int ii = -1; ii < 2; ii++) {
                             if(Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
@@ -117,6 +129,7 @@ public class EcoManager : MonoBehaviour {
                 }
             }
         }
+        List<Tile> phase2GrassTiles = new List<Tile>();
 
         foreach(Tile t in grassTiles) {
             for(int i = -1; i < 2; i++) {
@@ -125,36 +138,47 @@ public class EcoManager : MonoBehaviour {
                         if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
                             if(Random.Range(0, 100) <= 70) {
                                 t.ChangeMaterial(GroundState.Sand);
+                                t.myTile.layer = LayerMask.NameToLayer("NonGrass");
                             }
                             break;
                         }
                     }
                 }
             }
-        }
-
-        int treesToPlanted = amountOfTrees;
-        treesInScene = new GameObject[amountOfTrees];
-
-        while(treesToPlanted > 0) {
-            Tile toPlant = grassTiles[Random.Range(0, grassTiles.Count)];
-
-            if(toPlant != null && toPlant.currentState == GroundState.Grass) {
-                treesInScene[amountOfTrees - treesToPlanted] = Instantiate(tree, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(0, Random.Range(0, 360))));
-                treesToPlanted--;
+            if(Grid[t.gridPosX, t.gridPosY].currentState == GroundState.Grass) {
+                phase2GrassTiles.Add(t);
             }
-
-            grassTiles.Remove(toPlant);
         }
+
+        for(int i = 0; i < toSpawnList.Count; i++) {
+            int localToSpawn = toSpawnList[i].amountToSpawn;
+
+            while(localToSpawn > 0) {
+                if(phase2GrassTiles.Count == 0) {
+                    Debug.Log("Not enough space for trees");
+                    return;
+                }
+
+                Tile toPlant = phase2GrassTiles[Random.Range(0, phase2GrassTiles.Count)];
+
+                toSpawnList[i].spawnedObjects.Add(Instantiate(toSpawnList[i].objectToSpawn, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(0, Random.Range(0, 360)))));
+                localToSpawn--;
+
+                phase2GrassTiles.Remove(toPlant);
+            }
+        }
+
+        grassTiles = phase2GrassTiles;
     }
 
     public void DestroyMap() {
-        if(treesInScene != null) {
-            for(int i = 0; i < treesInScene.Length; i++) {
-                if(treesInScene[i] != null) {
-                    DestroyImmediate(treesInScene[i]);
+        for(int i = 0; i < toSpawnList.Count; i++) {
+            for(int ii = 0; ii < toSpawnList[i].spawnedObjects.Count; ii++) {
+                if(toSpawnList[i].spawnedObjects[ii] != null) {
+                    DestroyImmediate(toSpawnList[i].spawnedObjects[ii]);
                 }
             }
+            toSpawnList[i].spawnedObjects.Clear();
         }
 
         if(Grid != null) {
@@ -165,6 +189,8 @@ public class EcoManager : MonoBehaviour {
             }
         }
     }
+
+    #endregion
 
     [System.Serializable]
     public class Tile {
@@ -196,4 +222,3 @@ public class EcoManager : MonoBehaviour {
         public Material tex;
     }
 }
-

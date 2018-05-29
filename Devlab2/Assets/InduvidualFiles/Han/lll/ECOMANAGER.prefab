@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1068911683357974}
+  m_IsPrefabParent: 1
+--- !u!1 &1068911683357974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4224438866636538}
+  - component: {fileID: 114881706027761648}
+  m_Layer: 0
+  m_Name: ECOMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4224438866636538
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068911683357974}
+  m_LocalRotation: {x: 0.7071067, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -2.25, y: 0, z: 1.3}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114881706027761648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068911683357974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e993e82d3468c3942bda7c9cc952e5f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundTexturesInput:
+  - state: 1
+    tex: {fileID: 2100000, guid: 1446697b29123714eaa0c94f9a9df60f, type: 2}
+  - state: 2
+    tex: {fileID: 2100000, guid: 0a58916009d0c4c45b0f760b9f4a7ffd, type: 2}
+  - state: 3
+    tex: {fileID: 2100000, guid: 1e82e806dbc92d54bbd64a23dcd54956, type: 2}
+  - state: 4
+    tex: {fileID: 2100000, guid: a40e6741efc67e54da515c362877ec2a, type: 2}
+  - state: 5
+    tex: {fileID: 2100000, guid: d664382834f900a41a312fdc715a44c4, type: 2}
+  - state: 6
+    tex: {fileID: 2100000, guid: 7a1769890089f8643befe84abc6c07dd, type: 2}
+  edgeOffset: 1
+  islandSize: 4000
+  amountOfTrees: 0
+  xSize: 100
+  ySize: 100
+  xStepSize: 3.375
+  yStepSize: 1.95
+  tile: {fileID: 1802327301417490, guid: 62059ca1e7cc5494496d9366e81bdb93, type: 2}
+  toSpawnList:
+  - spawnedObjects: []
+    amountToSpawn: 200
+    objectToSpawn: {fileID: 1526738920827206, guid: 3ad2e75e213d2ab4ab69e2523f1d6eec,
+      type: 2}
+  - spawnedObjects: []
+    amountToSpawn: 100
+    objectToSpawn: {fileID: 1866815905018192, guid: f1ff723519f5f28498aa4604631ae24f,
+      type: 2}
+  - spawnedObjects: []
+    amountToSpawn: 100
+    objectToSpawn: {fileID: 100000, guid: 4c3d62ff29bf46b49ab2920424c381ce, type: 3}

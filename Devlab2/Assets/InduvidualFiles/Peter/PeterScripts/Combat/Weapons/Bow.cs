@@ -30,43 +30,75 @@ public class Bow : Weapon {
 
 
         //Find slot with arrow
+        int arrs = 0;
 
-
-        foreach (Slot s in Inventory.Instance.theInventory)
+        foreach (Slot w in Inventory.Instance.toolBar)
         {
-            if(s.myItem != null)
+            if(w.myItem != null)
             {
-                    Debug.Log("Not null");
-                if (s.myItem.itemName == "Arrow")
+                if(w.myItem.itemName == "Arrow")
                 {
-                    Debug.Log("Arrow found");
-                    s.RemoveItem();
-                    GameObject arrow = Instantiate(arrowPrefab, transform.position + transform.forward, transform.rotation);
-
-                    Debug.Log("Arrow Removed");
-                    Rigidbody rb = arrow.GetComponent<Rigidbody>();
-                    Debug.Log("rb found");
-                    rb.AddForce(transform.forward * shootforce * Time.deltaTime);
-                    Debug.Log("rb force");
-
-                    Destroy(arrow, destroyTimer);
-                    Debug.Log("Destroyed");
-
-                    break;
+                    arrs++;
                 }
             }
-            else
-            {
-                Debug.Log("Null");
+        }
 
+
+        if(arrs > 0)
+        {
+            foreach (Slot q in Inventory.Instance.toolBar)
+            {
+                if (q.myItem != null)
+                {
+                    Debug.Log("Not null");
+                    if (q.myItem.itemName == "Arrow")
+                    {
+                        q.RemoveItem();
+                        GameObject arrow = Instantiate(arrowPrefab, transform.position + transform.forward, transform.rotation);
+
+                        Rigidbody rb = arrow.GetComponent<Rigidbody>();
+                        rb.AddForce(transform.forward * shootforce * Time.deltaTime);
+
+                        Destroy(arrow, destroyTimer);
+
+                        break;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Null");
+
+                }
             }
 
         }
+        else
+        {
+            foreach (Slot s in Inventory.Instance.theInventory)
+            {
+                if (s.myItem != null)
+                {
+                    if (s.myItem.itemName == "Arrow")
+                    {
+                        s.RemoveItem();
+                        GameObject arrow = Instantiate(arrowPrefab, transform.position + transform.forward, transform.rotation);
 
-       
+                        Rigidbody rb = arrow.GetComponent<Rigidbody>();
+                        rb.AddForce(transform.forward * shootforce * Time.deltaTime);
 
-    
-         
+                        Destroy(arrow, destroyTimer);
+
+                        break;
+                    }
+                }
+                else
+                {
+                    Debug.Log("Null");
+
+                }
+
+            }
+        }
 
     }
 }

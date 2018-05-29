@@ -6,8 +6,10 @@ using TMPro;
 
 public class ToolBarSlot : InventorySlot {
     public Image ToolbarImage;
-
+    private Player player;
     void Start() {
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         if(myItem != null) {
             SetItem(myItem);
         }
@@ -54,6 +56,7 @@ public class ToolBarSlot : InventorySlot {
         myItem = null;
         ToolbarImage.gameObject.SetActive(false);
         itemImage.gameObject.SetActive(false);
+        player.ChangeEquippedItem(Inventory.Instance.SelectedToolbarSlot);
     }
 
     //Changes Item And Item Components

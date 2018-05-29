@@ -6,6 +6,7 @@ using TMPro;
 
 public class Inventory : MonoBehaviour {
     public static Inventory Instance;
+    private GameObject player;
 
     public List<InventorySlot> theInventory = new List<InventorySlot>();
     public List<CharacterSlot> characterSlots = new List<CharacterSlot>();
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour {
 
     void Awake() {
         Instance = this;
+        player = GameObject.FindGameObjectWithTag("Player");
         SortRecipes();
     }
 
@@ -119,7 +121,7 @@ public class Inventory : MonoBehaviour {
     //Removes Given Item
     public void DropItem(Slot itemToDrop) {
         if(itemToDrop != null && itemToDrop.myItem != null) {
-            ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, Vector3.zero, Quaternion.Euler(Vector3.zero)); //No Place Choosen Yet
+            ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Choosen Yet
             itemToDrop.RemoveItem();
             InspectorReset();
         }

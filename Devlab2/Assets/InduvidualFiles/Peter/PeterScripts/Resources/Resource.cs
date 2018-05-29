@@ -53,6 +53,7 @@ public class Resource : MonoBehaviour {
                 if(itemsInInv >= Inventory.Instance.theInventory.Count)
                 {
                     Debug.Log("Inventory full");
+                    ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Choosen Yet
                     //Drop resource on floor
                 }
                 Destroy(gameObject);

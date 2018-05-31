@@ -2661,6 +2661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e993e82d3468c3942bda7c9cc952e5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pollution: 0
+  endGamePollution: 0
   groundTexturesInput:
   - state: 1
     tex: {fileID: 2100000, guid: 1446697b29123714eaa0c94f9a9df60f, type: 2}
@@ -7696,7 +7698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pools:
   - poolTag: Stick Display
-    prefab: {fileID: 1584071544769840, guid: 28178f726dee34644a6bfab74aea47a7, type: 2}
+    prefab: {fileID: 241829957}
     autoExpand: 1
     startSize: 2
   - poolTag: Stick

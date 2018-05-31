@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EcoManager : MonoBehaviour {
     public static EcoManager instance;
+    public int pollution;
+    public int endGamePollution;
 
     [System.Serializable]
     public enum GroundState {
@@ -28,6 +30,14 @@ public class EcoManager : MonoBehaviour {
         }
         else {
             Destroy(gameObject);
+        }
+    }
+
+    public void AddPollution(int PollutionToAdd) {
+        pollution += PollutionToAdd;
+
+        if(pollution >= endGamePollution){
+            //          ***EndGame
         }
     }
 

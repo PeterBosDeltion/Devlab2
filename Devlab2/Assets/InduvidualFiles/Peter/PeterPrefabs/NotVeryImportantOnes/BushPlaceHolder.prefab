@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 114337936399346094}
   - component: {fileID: 65244934844141370}
   - component: {fileID: 208046865969255394}
+  - component: {fileID: 114667875698607090}
   m_Layer: 0
   m_Name: BushPlaceHolder
   m_TagString: Resource
@@ -1358,6 +1359,18 @@ MonoBehaviour:
   myResource: {fileID: 11400000, guid: e456fa2056a84354895ce00374f3f062, type: 2}
   type: 3
   toughness: 0
+--- !u!114 &114667875698607090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1866815905018192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4d513e8ae736947923d6e4e0045dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pollution: -1
 --- !u!208 &208046865969255394
 NavMeshObstacle:
   m_ObjectHideFlags: 1

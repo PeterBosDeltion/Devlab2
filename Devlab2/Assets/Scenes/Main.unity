@@ -845,6 +845,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1955408230}
+    - target: {fileID: 195780419072389078, guid: 1bbb002f79826ae4b89d69260e17231f,
+        type: 2}
+      propertyPath: m_WalkableMask
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1bbb002f79826ae4b89d69260e17231f, type: 2}
   m_IsPrefabParent: 0
@@ -2662,7 +2667,7 @@ MonoBehaviour:
   - state: 2
     tex: {fileID: 2100000, guid: 0a58916009d0c4c45b0f760b9f4a7ffd, type: 2}
   - state: 3
-    tex: {fileID: 2100000, guid: 1e82e806dbc92d54bbd64a23dcd54956, type: 2}
+    tex: {fileID: 2100000, guid: 99141149373e55e4a841459fe64d12ef, type: 2}
   - state: 4
     tex: {fileID: 2100000, guid: a40e6741efc67e54da515c362877ec2a, type: 2}
   - state: 5
@@ -2683,14 +2688,14 @@ MonoBehaviour:
     objectToSpawn: {fileID: 1526738920827206, guid: 3ad2e75e213d2ab4ab69e2523f1d6eec,
       type: 2}
     x: 0
-    y: 0
+    y: 1
     z: 0
   - spawnedObjects: []
     amountToSpawn: 200
-    objectToSpawn: {fileID: 1376211068573380, guid: 800df4faa95e33c449afabb71da80a2e,
+    objectToSpawn: {fileID: 1636621363437938, guid: d51e2438f996ad449a7104df4e59092e,
       type: 2}
     x: 0
-    y: 0
+    y: 1
     z: 0
   - spawnedObjects: []
     amountToSpawn: 100
@@ -5134,7 +5139,7 @@ Prefab:
         type: 2}
       propertyPath: toSpawnList.Array.data[1].objectToSpawn
       value: 
-      objectReference: {fileID: 1376211068573380, guid: 800df4faa95e33c449afabb71da80a2e,
+      objectReference: {fileID: 1636621363437938, guid: d51e2438f996ad449a7104df4e59092e,
         type: 2}
     - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
         type: 2}
@@ -5166,8 +5171,23 @@ Prefab:
     - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
         type: 2}
       propertyPath: toSpawnList.Array.data[1].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
+        type: 2}
+      propertyPath: toSpawnList.Array.data[0].x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
+        type: 2}
+      propertyPath: toSpawnList.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[2].tex
+      value: 
+      objectReference: {fileID: 2100000, guid: 99141149373e55e4a841459fe64d12ef, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a37afec73b43fec40923bba1667bd389, type: 2}
   m_IsPrefabParent: 0
@@ -15717,7 +15737,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-8322
+  m_Name: pb_Mesh-448226
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

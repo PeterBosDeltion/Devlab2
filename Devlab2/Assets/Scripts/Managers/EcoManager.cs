@@ -162,7 +162,7 @@ public class EcoManager : MonoBehaviour {
 
                 Tile toPlant = phase2GrassTiles[Random.Range(0, phase2GrassTiles.Count)];
 
-                toSpawnList[i].spawnedObjects.Add(Instantiate(toSpawnList[i].objectToSpawn, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(toSpawnList[i].x == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.rotation.x, toSpawnList[i].y == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.rotation.y, toSpawnList[i].z == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.rotation.z))));
+                toSpawnList[i].spawnedObjects.Add(Instantiate(toSpawnList[i].objectToSpawn, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(toSpawnList[i].x == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.x, toSpawnList[i].y == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.y, toSpawnList[i].z == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.z))));
                 localToSpawn--;
 
                 phase2GrassTiles.Remove(toPlant);

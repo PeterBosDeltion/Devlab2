@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     public float moveSpeed;
     public float rotateSpeed = 16;
     private NavMeshAgent agent;
+
+    private bool mouseDown;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -24,18 +26,36 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        if(x != 0 || y != 0)
+        if (Input.GetMouseButton(1))
         {
-            agent.updatePosition = false;
+            mouseDown = true;
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            mouseDown = false;
         }
 
-        transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
-        transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
 
-       
+        if (!mouseDown)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float y = Input.GetAxis("Vertical");
+
+            transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
+
+            if (x != 0 || y != 0)
+            {
+                agent.updatePosition = false;
+            }
+
+        }
+
+
+
+
+
+
     }
 
     public void LookAtMouse()

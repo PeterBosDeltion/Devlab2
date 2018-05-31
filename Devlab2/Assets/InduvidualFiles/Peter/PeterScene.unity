@@ -7353,6 +7353,12 @@ Prefab:
       propertyPath: Pools.Array.data[12].startSize
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114673235432955970, guid: 82fa18650ec549145ad2007d31667e7c,
+        type: 2}
+      propertyPath: Pools.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 1561266827183886, guid: 67cb96623a1fd1149a2a6d02c31258d4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82fa18650ec549145ad2007d31667e7c, type: 2}
   m_IsPrefabParent: 0

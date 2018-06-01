@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 114835797353939602}
   - component: {fileID: 64671473144340320}
   - component: {fileID: 208357870738711374}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: CabinPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844931464072762}
   m_LocalRotation: {x: -0, y: 0.832844, z: -0, w: 0.5535078}
-  m_LocalPosition: {x: 180.83054, y: 7.68, z: 200.39435}
+  m_LocalPosition: {x: 38.532036, y: 1.75, z: -15.831459}
   m_LocalScale: {x: 14, y: 1, z: 14}
   m_Children:
   - {fileID: 4711425668972698}

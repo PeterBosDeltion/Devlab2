@@ -5484,11 +5484,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 656800367}
@@ -12857,7 +12857,7 @@ MonoBehaviour:
     m_Bits: 1024
   buildCollisionMask:
     serializedVersion: 2
-    m_Bits: 4294960127
+    m_Bits: 4294747135
   displayCollider: {fileID: 1074337510}
   displayMaterial: {fileID: 2100000, guid: 4f3a655631ef844448f434f066bd3b20, type: 2}
   scrollweelSpeed: 10000

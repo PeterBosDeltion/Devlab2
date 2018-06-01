@@ -8,6 +8,7 @@ public class Item : ScriptableObject {
     public int itemListIndex; //If item should not be holdable, give hand index(Found in the items list of the Player script)
     public bool placaBle;
     public float placeAbleYoffset;
+    public bool furniture;
 
     public List<string> myButtons = new List<string>();
     public string itemDiscription;

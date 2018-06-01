@@ -30,13 +30,17 @@ public class Builder : MonoBehaviour {
 
     void Update() {
 
-        //Debug.Log(LayerMask.GetMask("ground"));
+        //Debug.Log(LayerMask.GetMask("Building"));
 
         if(CurrentlyBuilding != null) {
 
             if(CurrentlyBuilding.itemType == Item.TypeOffItem.Crop)
             {
                 buildRayMask = 16384; //Farmland layer
+            }
+            if (CurrentlyBuilding.furniture)
+            {
+                buildRayMask = 131072; //Building layer
             }
 
             RaycastHit rayHit;

@@ -20,5 +20,4 @@ public class AddPolution : MonoBehaviour {
     }
 
 
-    //          *** add Polution
 }

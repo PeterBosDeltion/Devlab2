@@ -13,5 +13,5 @@ public class Equippable : Item {
         HandGather
     }
 
-    public CanGather myGathering;
+    public CanGather myGathering = CanGather.HandGather;
 }

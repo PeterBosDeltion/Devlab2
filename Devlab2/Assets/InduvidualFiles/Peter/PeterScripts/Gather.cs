@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gather : Weapon {
 
-    private Equippable tool;
+    public Equippable tool;
 
     public Animator anim;
 
@@ -42,10 +42,12 @@ public class Gather : Weapon {
 
     public override void Use()
     {
+
+        anim.SetBool("using", true);
+        beingUsed = true;
         if (!waiting)
         {
-            anim.SetBool("using", true);
-            beingUsed = true;
+          
             StartCoroutine(WaitForAnim());
         }
       

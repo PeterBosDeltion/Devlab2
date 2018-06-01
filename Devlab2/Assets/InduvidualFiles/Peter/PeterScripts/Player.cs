@@ -93,16 +93,20 @@ public class Player : MonoBehaviour {
     private void ChangeEquip() {
         for (int i = 0; i < keyCodes.Length; i++)
         {
-            if (Input.GetKeyDown(keyCodes[i]))
+            if (!currentWeapon.beingUsed)
             {
-                int numberPressed = i + 1;
+                if (Input.GetKeyDown(keyCodes[i]))
+                {
+                    int numberPressed = i + 1;
 
 
-                Inventory.Instance.SelectedToolbarSlot = numberPressed - 1;
+                    Inventory.Instance.SelectedToolbarSlot = numberPressed - 1;
 
-                Inventory.Instance.ChangeToolBarSelected();
+                    Inventory.Instance.ChangeToolBarSelected();
 
-                ChangeEquippedItem(Inventory.Instance.SelectedToolbarSlot);
+                    ChangeEquippedItem(Inventory.Instance.SelectedToolbarSlot);
+                }
+
             }
         }
     }
@@ -126,12 +130,14 @@ public class Player : MonoBehaviour {
                 //Debug.Log(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem);
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
                 Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
+                currentWeapon = items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].GetComponent<Weapon>();
             }
             else
             {
                 Inventory.itemInHand = hand;
 
                 items[4].SetActive(true); //Hand index
+                currentWeapon = items[4].GetComponent<Weapon>();
                 foreach (GameObject n in items)
                 {
                     if(n != items[4])

@@ -877,7 +877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippable: {fileID: 11400000, guid: e771a219cf9477046bf55460884ed8b2, type: 2}
   beingUsed: 0
+  tool: {fileID: 0}
   anim: {fileID: 0}
+  waiting: 0
 --- !u!114 &114079072537735448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1625,7 +1627,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   beingUsed: 0
+  tool: {fileID: 0}
   anim: {fileID: 0}
+  waiting: 0
 --- !u!114 &114160294740040660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1662,6 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfd30b0f6399774aa67f7021025a6e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   items:
   - {fileID: 1446055668121890}
   - {fileID: 1511172071467422}
@@ -1715,7 +1720,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippable: {fileID: 11400000, guid: 9f48c103a3cdb3d4eaac9816230fa1ff, type: 2}
   beingUsed: 0
+  tool: {fileID: 0}
   anim: {fileID: 0}
+  waiting: 0
 --- !u!114 &114616044512290758
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2693,21 +2693,21 @@ MonoBehaviour:
     z: 0
   - spawnedObjects: []
     amountToSpawn: 200
-    objectToSpawn: {fileID: 1636621363437938, guid: d51e2438f996ad449a7104df4e59092e,
+    objectToSpawn: {fileID: 1976017506939008, guid: 54ab7bb9b97ba384a97c790267024390,
       type: 2}
     x: 0
     y: 1
     z: 0
   - spawnedObjects: []
     amountToSpawn: 100
-    objectToSpawn: {fileID: 1623536343820510, guid: 7f9d9b36909841948af75fb6e312fc2d,
+    objectToSpawn: {fileID: 1946776794685664, guid: fb84ce56ff4c531498a4ba20cb63a364,
       type: 2}
     x: 0
     y: 0
     z: 0
   - spawnedObjects: []
     amountToSpawn: 100
-    objectToSpawn: {fileID: 1009705263114402, guid: 5622f59234d6fcc42b8a036ab1ad51e8,
+    objectToSpawn: {fileID: 1996373661550292, guid: 939e22a5f2c5fb043b2033662e223875,
       type: 2}
     x: 0
     y: 0
@@ -5140,7 +5140,7 @@ Prefab:
         type: 2}
       propertyPath: toSpawnList.Array.data[1].objectToSpawn
       value: 
-      objectReference: {fileID: 1636621363437938, guid: d51e2438f996ad449a7104df4e59092e,
+      objectReference: {fileID: 1976017506939008, guid: 54ab7bb9b97ba384a97c790267024390,
         type: 2}
     - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
         type: 2}
@@ -5151,13 +5151,13 @@ Prefab:
         type: 2}
       propertyPath: toSpawnList.Array.data[2].objectToSpawn
       value: 
-      objectReference: {fileID: 1623536343820510, guid: 7f9d9b36909841948af75fb6e312fc2d,
+      objectReference: {fileID: 1946776794685664, guid: fb84ce56ff4c531498a4ba20cb63a364,
         type: 2}
     - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
         type: 2}
       propertyPath: toSpawnList.Array.data[3].objectToSpawn
       value: 
-      objectReference: {fileID: 1009705263114402, guid: 5622f59234d6fcc42b8a036ab1ad51e8,
+      objectReference: {fileID: 1996373661550292, guid: 939e22a5f2c5fb043b2033662e223875,
         type: 2}
     - target: {fileID: 114881706027761648, guid: a37afec73b43fec40923bba1667bd389,
         type: 2}
@@ -6045,7 +6045,8 @@ Prefab:
         type: 2}
       propertyPath: myItem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 9f48c103a3cdb3d4eaac9816230fa1ff,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2101a8422a12df54880cc89040b008d2, type: 2}
   m_IsPrefabParent: 0
@@ -7772,7 +7773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pools:
   - poolTag: Stick Display
-    prefab: {fileID: 241829957}
+    prefab: {fileID: 1561266827183886, guid: 67cb96623a1fd1149a2a6d02c31258d4, type: 2}
     autoExpand: 1
     startSize: 2
   - poolTag: Stick
@@ -7785,6 +7786,50 @@ MonoBehaviour:
     startSize: 2
   - poolTag: Campfire Display
     prefab: {fileID: 1282472695808210, guid: 31b84548b94d6cc4296a007b61c5a66d, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Fence Display
+    prefab: {fileID: 1355014501766688, guid: 6bc49e34a5f56664886e3de09523da3c, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Fence
+    prefab: {fileID: 1562642143501420, guid: 437e4bc993a80b04a947f843cc216e9a, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Farm Ground
+    prefab: {fileID: 1052123114926136, guid: e3fbf425a84c2a44791654bd21475c0f, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Farm Ground Display
+    prefab: {fileID: 1586218625971626, guid: ab8d974b1f9be074bb09f8f13cfabb68, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Corn Seed
+    prefab: {fileID: 1470504907244248, guid: f614b84446710e2479d5029790875300, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Corn Seed Display
+    prefab: {fileID: 1125165067146702, guid: 5da87542b1fc2eb40b3db11c2bfe401d, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Berries
+    prefab: {fileID: 1024127971081672, guid: dccf20c322ad5744dacae58cbeaa627e, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Stone
+    prefab: {fileID: 1647925381941998, guid: c72254e0649d86142b8f6e0946e98c12, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Cabin
+    prefab: {fileID: 1844931464072762, guid: b2bd49a823a1a8641ac55c11e49733ac, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Corn
+    prefab: {fileID: 1297846796001564, guid: 55961a69b98ac594a88e6c8c89a95d8c, type: 2}
+    autoExpand: 1
+    startSize: 2
+  - poolTag: Cabin Display
+    prefab: {fileID: 1612941149297684, guid: da869b8a7ebfff940bf82447046fc044, type: 2}
     autoExpand: 1
     startSize: 2
 --- !u!1001 &942388741
@@ -7900,7 +7945,8 @@ Prefab:
         type: 2}
       propertyPath: myItem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 10cdd906f82fe4e4db3819469fc8d9cf,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2101a8422a12df54880cc89040b008d2, type: 2}
   m_IsPrefabParent: 0
@@ -9808,6 +9854,36 @@ MonoBehaviour:
     - Viber
     product: {fileID: 11400000, guid: e771a219cf9477046bf55460884ed8b2, type: 2}
     amount: 1
+  - ingredients:
+    - Stone
+    - Stick
+    product: {fileID: 11400000, guid: dd1badb34e30ffd4fbbe853bed29268f, type: 2}
+    amount: 1
+  - ingredients:
+    - Stick
+    - Stick
+    product: {fileID: 11400000, guid: abe2e21aaaae4274cae9c2fd9bc4f7f2, type: 2}
+    amount: 1
+  - ingredients:
+    - Stone
+    - Stone
+    product: {fileID: 11400000, guid: 92653719a3ecc074bbd51477d4074e8d, type: 2}
+    amount: 1
+  - ingredients:
+    - Berries
+    product: {fileID: 11400000, guid: 3a0af13e092904d40aa686ec2d157af7, type: 2}
+    amount: 1
+  - ingredients:
+    - Corn
+    product: {fileID: 11400000, guid: d3b1ec0788ee73f4ea155833a89e9bbc, type: 2}
+    amount: 1
+  - ingredients:
+    - Stone
+    - Stick
+    - Stone
+    - Stick
+    product: {fileID: 11400000, guid: 84132a82a6c2d3a49b770b3b84d60808, type: 2}
+    amount: 1
   productSlot: {fileID: 2101803476}
   dropTimer: 1000
 --- !u!1 &1136604171
@@ -10427,6 +10503,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7212d78e4c2fe504d999cae3bf6566c8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1193131317 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1790278854663668, guid: 7212d78e4c2fe504d999cae3bf6566c8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1193131316}
+--- !u!114 &1193131318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193131317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5404d86cd4bc4a0408abf2a9906dc6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1199932109 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114119300135558620, guid: 4a7aa826d12c4474f8ccb95b34155c9e,

@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3517,6 +3517,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 33331011329994930, guid: 3e8e27ce0c4d8434fbd11427a689737e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2039653762}
+    - target: {fileID: 33162759356481424, guid: 3e8e27ce0c4d8434fbd11427a689737e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2142861195}
+    - target: {fileID: 33389310200401436, guid: 3e8e27ce0c4d8434fbd11427a689737e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 333959817}
+    - target: {fileID: 33023527232957340, guid: 3e8e27ce0c4d8434fbd11427a689737e,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 284367047}
     - target: {fileID: 114243685927790506, guid: 3e8e27ce0c4d8434fbd11427a689737e,
         type: 2}
       propertyPath: hungerBar
@@ -3532,32 +3552,6 @@ Prefab:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1402267077}
-    - target: {fileID: 33023527232957340, guid: 3e8e27ce0c4d8434fbd11427a689737e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 284367047}
-    - target: {fileID: 33389310200401436, guid: 3e8e27ce0c4d8434fbd11427a689737e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 333959817}
-    - target: {fileID: 33162759356481424, guid: 3e8e27ce0c4d8434fbd11427a689737e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 2142861195}
-    - target: {fileID: 33331011329994930, guid: 3e8e27ce0c4d8434fbd11427a689737e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 2039653762}
-    - target: {fileID: 114243685927790506, guid: 3e8e27ce0c4d8434fbd11427a689737e,
-        type: 2}
-      propertyPath: hand
-      value: 
-      objectReference: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e8e27ce0c4d8434fbd11427a689737e, type: 2}
   m_IsPrefabParent: 0

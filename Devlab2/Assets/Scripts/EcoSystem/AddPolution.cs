@@ -18,4 +18,7 @@ public class AddPolution : MonoBehaviour {
     void OnDisable() {
         EcoManager.instance.AddPollution(-pollution);
     }
+
+
+    //          *** add Polution
 }

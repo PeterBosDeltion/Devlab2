@@ -44,7 +44,6 @@ public class EcoManager : MonoBehaviour {
     #region Tile Genorator
     public int edgeOffset;
     public int islandSize;
-    public int amountOfTrees;
     public int xSize, ySize;
     public float xStepSize, yStepSize;
     public GameObject tile;

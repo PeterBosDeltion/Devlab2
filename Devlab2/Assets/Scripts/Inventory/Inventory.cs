@@ -40,9 +40,12 @@ public class Inventory : MonoBehaviour {
     }
 
     void Update() {
+        CheckDropTimer();
+
         if(currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
         }
+
         if(toolBar[SelectedToolbarSlot].myItem != null) {
             if(Input.GetButtonDown("Fire1")) {
                 if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Consumable)) {
@@ -62,34 +65,27 @@ public class Inventory : MonoBehaviour {
     }
 
     public void ChangeToolBarSelected() {
-
-
         currentInspected = toolBar[SelectedToolbarSlot];
 
         Gather g = currentInspected.GetComponent<Gather>();
 
-        if(g != null)
-        {
-            if (!g.beingUsed)
-            {
+        if(g != null) {
+            if(!g.beingUsed) {
                 toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
                 Builder.instance.StopBuild();
-                if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true)
-                {
+                if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
                     Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
                 }
             }
         }
-        else
-        {
+        else {
             toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
             Builder.instance.StopBuild();
-            if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true)
-            {
+            if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
                 Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
             }
         }
-      
+
     }
 
     //Enables Inventory Drag Elements
@@ -121,9 +117,11 @@ public class Inventory : MonoBehaviour {
     //Removes Given Item
     public void DropItem(Slot itemToDrop) {
         if(itemToDrop != null && itemToDrop.myItem != null) {
-            ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Choosen Yet
+            GameObject toDrop = ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Choosen Yet
             itemToDrop.RemoveItem();
             InspectorReset();
+
+            AddToDropTimer(itemToDrop.myItem.itemName,toDrop);
         }
 
     }
@@ -283,6 +281,57 @@ public class Inventory : MonoBehaviour {
         public List<string> ingredients = new List<string>();
         public Item product;
         public int amount;
+    }
+    #endregion
+
+    #region DropTimer
+    List<Todrop> stageOne = new List<Todrop>();
+    List<Todrop> stageTwo = new List<Todrop>();
+    bool dropStage;
+    float currentDropTimer;
+    public float dropTimer;
+
+    void CheckDropTimer() {
+        currentDropTimer += Time.deltaTime;
+
+        if(currentDropTimer >= dropTimer) {
+            currentDropTimer = 0;
+            if(dropStage == false) {
+                for(int i = 0; i < stageOne.Count; i++) {
+                    ObjectPooler.instance.AddToPool(stageOne[i].itemName, stageOne[i].itemObject);
+                }
+
+                stageOne.Clear();
+            }
+            else {
+                for(int i = 0; i < stageTwo.Count; i++) {
+                    ObjectPooler.instance.AddToPool(stageTwo[i].itemName, stageTwo[i].itemObject);
+                }
+
+                stageTwo.Clear();
+            }
+        }
+    }
+
+    void AddToDropTimer(string itemName, GameObject toAdd) {
+        if(toAdd != null) {
+            Todrop newToDrop;
+
+            newToDrop.itemName = itemName;
+            newToDrop.itemObject = toAdd;
+
+            if(dropStage == false) {
+                stageOne.Add(newToDrop);
+            }
+            else {
+                stageTwo.Add(newToDrop);
+            }
+        }
+    }
+
+    struct Todrop {
+        public string itemName;
+        public GameObject itemObject;
     }
     #endregion
 }

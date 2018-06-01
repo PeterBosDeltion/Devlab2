@@ -43,11 +43,11 @@ public class Gather : Weapon {
     public override void Use()
     {
 
-        anim.SetBool("using", true);
-        beingUsed = true;
+       
         if (!waiting)
         {
-          
+            anim.SetBool("using", true);
+            beingUsed = true;
             StartCoroutine(WaitForAnim());
         }
       

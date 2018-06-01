@@ -7,6 +7,7 @@ public class Item : ScriptableObject {
     public Sprite item2D;
     public int itemListIndex; //If item should not be holdable, give hand index(Found in the items list of the Player script)
     public bool placaBle;
+    public float placeAbleYoffset;
 
     public List<string> myButtons = new List<string>();
     public string itemDiscription;

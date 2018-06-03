@@ -13,6 +13,12 @@ public class ThisTile : MonoBehaviour {
     }
 
     void OnMouseDown(){
-        
+        if(Input.GetMouseButtonDown(1) && UIManager.instance.currentUI == UIManager.UIState.BaseCanvas) {
+            Inspect();
+        }
+    }
+
+    void Inspect() {
+        UIManager.instance.SetCanvas(UIManager.UIState.TileInspector);
     }
 }

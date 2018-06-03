@@ -17,10 +17,13 @@ public class EcoManager : MonoBehaviour {
         driedGround = 6
     }
 
-    Tile[,] Grid;
+    public Tile[,] Grid;
     GameObject[] treesInScene;
 
-    static Material[] groundTextures;
+    public static Material[] groundTextures;
+    public static Sprite[] groundSprites;
+    public static string[] groundDescription;
+    public static string[] groundName;
     public List<Ground> groundTexturesInput = new List<Ground>();
 
     void Awake() {
@@ -31,6 +34,8 @@ public class EcoManager : MonoBehaviour {
         else {
             Destroy(gameObject);
         }
+
+        GenerateMap();
     }
 
     public void AddPollution(int PollutionToAdd) {
@@ -39,6 +44,10 @@ public class EcoManager : MonoBehaviour {
         if(pollution >= endGamePollution){
             //          ***EndGame
         }
+    }
+
+    public Tile GetTile(Vector3 pos) {
+        return (Grid[Mathf.RoundToInt(pos.x / xStepSize) / 2, Mathf.RoundToInt(pos.z / yStepSize) / 2]);
     }
 
     #region Tile Genorator
@@ -64,6 +73,21 @@ public class EcoManager : MonoBehaviour {
             groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;
         }
 
+        groundSprites = new Sprite[groundTexturesInput.Count];
+        for(int i = 0; i < groundTexturesInput.Count; i++) {
+            groundSprites[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].groundSprite;
+        }
+
+        groundDescription = new string[groundTexturesInput.Count];
+        for(int i = 0; i < groundTexturesInput.Count; i++) {
+            groundDescription[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].description;
+        }
+
+        groundName = new string[groundTexturesInput.Count];
+        for(int i = 0; i < groundTexturesInput.Count; i++) {
+            groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
+        }
+
         DestroyMap();
 
         Grid = new Tile[xSize, ySize];
@@ -81,6 +105,9 @@ public class EcoManager : MonoBehaviour {
                 }
 
                 GameObject newTile = Instantiate(tile, positionInWorld, tile.transform.rotation);
+                ThisTile t = newTile.GetComponent<ThisTile>();
+                t.x = x;
+                t.y = y;
                 Grid[x, y] = new Tile(newTile, GroundState.Water, x, y);
             }
             pos = !pos;
@@ -93,7 +120,8 @@ public class EcoManager : MonoBehaviour {
         }
 
         Tile startTile = Grid[xSize / 2, ySize / 2];
-        startTile.ChangeMaterial(GroundState.Grass);
+        startTile.myTimeLine.Clear();
+        startTile.ChangeMaterial(GroundState.Grass, "No Reason At All");
 
         Queue<Tile> toCheck = new Queue<Tile>();
         List<Tile> grassTiles = new List<Tile>();
@@ -120,7 +148,8 @@ public class EcoManager : MonoBehaviour {
 
             if(dequeueTile != null) {
                 if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
-                    dequeueTile.ChangeMaterial(GroundState.Grass);
+                    dequeueTile.myTimeLine.Clear();
+                    dequeueTile.ChangeMaterial(GroundState.Grass, "No Reason At All");
                     dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
 
                     grassTiles.Add(dequeueTile);
@@ -147,7 +176,8 @@ public class EcoManager : MonoBehaviour {
                     if(i == 0 || ii == 0) {
                         if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
                             if(Random.Range(0, 100) <= 70) {
-                                t.ChangeMaterial(GroundState.Sand);
+                                t.myTimeLine.Clear();
+                                t.ChangeMaterial(GroundState.Sand, "No Reason At All");
                                 t.myTile.layer = LayerMask.NameToLayer("NonGrass");
                             }
                             break;
@@ -204,7 +234,7 @@ public class EcoManager : MonoBehaviour {
 
     [System.Serializable]
     public class Tile {
-        public List<GroundState> myTimeLine = new List<GroundState>();
+        public List<State> myTimeLine = new List<State>();
         public GroundState currentState;
         public int gridPosX, gridPosY;
         public GameObject myTile;
@@ -213,22 +243,34 @@ public class EcoManager : MonoBehaviour {
         public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
             myTile = newTile;
             myRenderer = myTile.GetComponent<Renderer>();
-            ChangeMaterial(newState);
+            ChangeMaterial(newState, "No Reason At All");
             gridPosX = gridX;
             gridPosY = gridY;
         }
 
-        public void ChangeMaterial(GroundState newState) {
-            myRenderer.material = groundTextures[(int)newState - 1];
-            myTimeLine.Add(newState);
-            currentState = newState;
-        }
+        public void ChangeMaterial(GroundState newState, string newReason) {
+            State s = new State();
+            s.state = newState;
+            s.reason = newReason;
 
+            myTimeLine.Add(s);
+            currentState = newState;
+            myRenderer.material = groundTextures[(int)newState - 1];
+        }
     }
 
     [System.Serializable]
-    public class Ground {
+    public struct State {
+        public GroundState state;
+        public string reason;
+    }
+
+    [System.Serializable]
+    public struct Ground {
         public GroundState state;
         public Material tex;
+        public Sprite groundSprite;
+        public string description;
+        public string tileName;
     }
 }

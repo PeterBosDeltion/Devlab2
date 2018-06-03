@@ -9,10 +9,8 @@ public class Resource : MonoBehaviour {
    
     public void Harvest(Gather g)
     {
-        Debug.Log("Harvest");
         if(Inventory.itemInHand.myGathering == type)
         {
-            Debug.Log("CorrectTool");
 
             if(toughness > 0)
             {
@@ -41,7 +39,6 @@ public class Resource : MonoBehaviour {
 
                 if(itemsInInv >= Inventory.Instance.theInventory.Count)
                 {
-                    Debug.Log("Inventory full");
                     ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Choosen Yet
                     //Drop resource on floor
                 }

@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour {
         BaseCanvas = 0,
         PauseMenu = 1,
         Inventory = 2,
-        Interactor = 3,
-        TileInspector = 4
+        Interactor = -1,
+        TileInspector = -2
     }
 
     public Canvas pauseMenu, inventory, baseCanvas;
@@ -83,6 +83,6 @@ public class UIManager : MonoBehaviour {
         }
 
         currentUI = newState;
-        CanvasAnimator.SetInteger("UIState", (int)currentUI);
+        CanvasAnimator.SetInteger("UIState", (int)currentUI < 0 ? 0: (int)currentUI);
     }
 }

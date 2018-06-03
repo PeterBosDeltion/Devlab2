@@ -5,20 +5,22 @@ using UnityEngine.AI;
 
 public class ThisTile : MonoBehaviour {
     public NavMeshObstacle myObstavle;
+    public int x, y;
 
-    void OnEnable() {
+    private void Start() {
         if(gameObject.layer == LayerMask.NameToLayer("Water")) {
             myObstavle.enabled = true;
         }
     }
 
     void OnMouseDown(){
-        if(Input.GetMouseButtonDown(1) && UIManager.instance.currentUI == UIManager.UIState.BaseCanvas) {
+        if(Input.GetMouseButtonDown(0) && (int)UIManager.instance.currentUI <= 0) {
             Inspect();
         }
     }
 
     void Inspect() {
         UIManager.instance.SetCanvas(UIManager.UIState.TileInspector);
+        EcoInspector.instance.ChangeInspectorUI(EcoManager.instance.Grid[x,y]);
     }
 }

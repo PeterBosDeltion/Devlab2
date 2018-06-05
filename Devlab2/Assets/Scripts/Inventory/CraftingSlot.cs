@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class CraftingSlot : Slot {
     public Animator slotAnimator;
     public bool productSlot;
-    public Image fillBar;
-    public CraftMachine myCraft;
-    bool isDone;
 
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);
@@ -26,10 +23,6 @@ public class CraftingSlot : Slot {
             return;
         }
 
-        if(isDone == false) {
-            return;
-        }
-
         if(myItem != null) {
             if(Inventory.mouseOver != null) {
                 if(Inventory.mouseOver.myItem != null) {
@@ -38,7 +31,6 @@ public class CraftingSlot : Slot {
                 else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
                     if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
                         Item newitem = myItem;
-                        isDone = false;
                         Inventory.mouseOver.SetItem(Instantiate(newitem));
                         RemoveItem();
                     }
@@ -55,10 +47,5 @@ public class CraftingSlot : Slot {
             }
             Inventory.Instance.StopDrag();
         }
-    }
-
-    public IEnumerator Processing() {
-        yield return new WaitForSeconds(myCraft.timeToConvert);
-        isDone = true;
     }
 }

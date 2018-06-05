@@ -1,4 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+<<<<<<< HEAD
 # File Created: 05.06.2018 13:59:43
 
 newmtl Box_default
@@ -12,3 +13,16 @@ newmtl Box_default
 	Kd 1.0000 1.0000 1.0000
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
+=======
+# File Created: 05.06.2018 10:09:13
+
+newmtl wire_225143087
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.8824 0.5608 0.3412
+	Kd 0.8824 0.5608 0.3412
+	Ks 0.3500 0.3500 0.3500
+>>>>>>> b8f1f27dc2715dee3dd6d781c5b7c8632eeb45ff

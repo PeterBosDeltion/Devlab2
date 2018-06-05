@@ -6,10 +6,15 @@ public class Resource : MonoBehaviour {
     public Item myResource;
     public Equippable.CanGather type;
     public int toughness = 1;
-   
+
+    private bool isGrowing;
+    private bool canGather = true;
+    public bool berries;
+    public GameObject berryChild;
+    public float berryGrowTime = 7;
     public void Harvest(Gather g)
     {
-        if(Inventory.itemInHand.myGathering == type)
+        if(Inventory.itemInHand.myGathering == type && canGather)
         {
 
             if(toughness > 0)
@@ -42,8 +47,29 @@ public class Resource : MonoBehaviour {
                     ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Choosen Yet
                     //Drop resource on floor
                 }
-                Destroy(gameObject);
+                if (!berries)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    berryChild.SetActive(false);
+                    if (!isGrowing)
+                    {
+                        StartCoroutine(RegrowBerries());
+                        canGather = false;
+                    }
+                }
             }
         }
+    }
+
+    private IEnumerator RegrowBerries()
+    {
+        isGrowing = true;
+        yield return new WaitForSeconds(berryGrowTime);
+        berryChild.SetActive(true);
+        isGrowing = false;
+        canGather = true;
     }
 }

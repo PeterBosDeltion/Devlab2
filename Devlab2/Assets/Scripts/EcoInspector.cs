@@ -25,14 +25,14 @@ public class EcoInspector : MonoBehaviour {
     }
 
     public void ButtonRight() {
-        if(currentlyInspected.myTimeLine.Count != currentlySelected) {
+        if(currentlyInspected.myTimeLine.Count - 1 != currentlySelected) {
             currentlySelected++;
             UpdateUI();
         }
     }
 
     public void ButtonLeft() {
-        if(currentlySelected != -1) {
+        if(currentlySelected != 0) {
             currentlySelected--;
             UpdateUI();
         }
@@ -41,14 +41,11 @@ public class EcoInspector : MonoBehaviour {
     void UpdateUI() {
 
         int i = (int)currentlyInspected.myTimeLine[currentlySelected].state - 1;
-        Debug.Log(currentlyInspected.currentState);
 
         tileImage2.sprite = EcoManager.groundSprites[i];
-
         description.text = EcoManager.groundDescription[i];
 
         reason.text = currentlyInspected.myTimeLine[currentlySelected].reason;
-
         tileName.text = EcoManager.groundName[i];
 
         if(currentlySelected == 0) {

@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802327301417490}
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0.14, z: -4}
+  m_LocalPosition: {x: 6.34, y: 0.14, z: 2.26}
   m_LocalScale: {x: 4.51, y: 4.51, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 1e82e806dbc92d54bbd64a23dcd54956, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,11 +93,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802327301417490}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8660252, z: 0.01}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.97832745, y: 0.8521395, z: 0.24766621}
+  m_Center: {x: -0.003989467, y: -0.0041195136, z: -0.12883331}
 --- !u!114 &114040549344180868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myObstavle: {fileID: 208176765196764398}
+  x: 0
+  y: 0
 --- !u!208 &208176765196764398
 NavMeshObstacle:
   m_ObjectHideFlags: 1

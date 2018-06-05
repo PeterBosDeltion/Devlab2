@@ -44,6 +44,11 @@ public class PlayerMovement : MonoBehaviour {
             transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
             transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
 
+            if(agent.nextPosition != transform.position)
+            {
+                agent.nextPosition = transform.position; //Updates the agents position to the objects position
+            }
+
             if (x != 0 || y != 0)
             {
                 agent.updatePosition = false;

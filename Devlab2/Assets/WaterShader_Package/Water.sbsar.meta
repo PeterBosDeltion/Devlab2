@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0e2e518abe4c64428a9b99b74c778e4
+guid: 5456a654cdb179e4cbeef2812c3bd47a
 ScriptedImporter:
   fileIDToRecycleName:
     100000: Water/Water
@@ -26,21 +26,9 @@ ScriptedImporter:
     generateAllOutputs: 0
     generateMipMaps: 1
     preset: " <sbspreset pkgurl=\"pkg://Water\" label=\"\" >\n </sbspreset>\n"
-    shaderName: Standard
+    shaderName: LightweightPipeline/Standard (Physically Based)
     outputNames: Base Color,Normal,Metallic,Height
-    texturePackingList:
-    - outputName: Base Color
-      alphaSource: Opacity
-    - outputName: Normal
-      alphaSource: Normal
-    - outputName: Roughness
-      alphaSource: Roughness
-    - outputName: Metallic
-      alphaSource: Smoothness
-    - outputName: Height
-      alphaSource: Height
-    - outputName: Opacity
-      alphaSource: Opacity
+    texturePackingList: []
     colorSpaceList:
     - outputName: Base Color
       bLinear: 0
@@ -80,4 +68,4 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       loadBehavior: 0
-    material: {instanceID: 0}
+    material: {fileID: 2100000, guid: 5456a654cdb179e4cbeef2812c3bd47a, type: 3}

@@ -21,7 +21,6 @@ public class InteractionManager : MonoBehaviour {
 
     public void StartInteraction(Buildable toInteract) {
         currentInteracting = toInteract;
-        UIManager.instance.SetCanvas(UIManager.UIState.Interactor);
     }
 
     public void StopInteraction() {

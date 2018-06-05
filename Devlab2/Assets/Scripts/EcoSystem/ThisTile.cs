@@ -20,7 +20,6 @@ public class ThisTile : MonoBehaviour {
     }
 
     void Inspect() {
-        UIManager.instance.SetCanvas(UIManager.UIState.TileInspector);
         EcoInspector.instance.ChangeInspectorUI(EcoManager.instance.Grid[x,y]);
     }
 }

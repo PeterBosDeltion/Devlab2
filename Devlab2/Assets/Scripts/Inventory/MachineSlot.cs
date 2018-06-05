@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CraftingSlot : Slot {
+public class MachineSlot : Slot {
     public Animator slotAnimator;
     public bool productSlot;
-    public Image fillBar;
     public CraftMachine myCraft;
-    bool isDone;
+    public bool productDone;
 
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);
@@ -26,7 +24,7 @@ public class CraftingSlot : Slot {
             return;
         }
 
-        if(isDone == false) {
+        if(productDone != true){
             return;
         }
 
@@ -37,8 +35,8 @@ public class CraftingSlot : Slot {
                 }
                 else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
                     if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
+                        productDone = false;
                         Item newitem = myItem;
-                        isDone = false;
                         Inventory.mouseOver.SetItem(Instantiate(newitem));
                         RemoveItem();
                     }
@@ -47,7 +45,7 @@ public class CraftingSlot : Slot {
                     }
                 }
                 if(Inventory.mouseOver.GetType() == typeof(CraftingSlot) || GetType() == typeof(CraftingSlot)) {
-                    Inventory.Instance.CheckRecipe();
+                    myCraft.CheckResipe();
                 }
             }
             else {
@@ -57,8 +55,8 @@ public class CraftingSlot : Slot {
         }
     }
 
-    public IEnumerator Processing() {
+    public IEnumerator Processing(){
         yield return new WaitForSeconds(myCraft.timeToConvert);
-        isDone = true;
+        productDone = true;
     }
 }

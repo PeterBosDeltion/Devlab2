@@ -6,20 +6,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public static UIManager instance;
 
-    public UIState currentUI;
+    public UIState currentUI = UIState.BaseCanvas;
     public enum UIState {
         BaseCanvas = 0,
         PauseMenu = 1,
         Inventory = 2,
-        Interactor = -1,
-        TileInspector = -2
     }
 
     public Canvas pauseMenu, inventory, baseCanvas;
 
     [Header("Animation")]
     public Animator CanvasAnimator;
-    public Animator interactionCanvas;
     public Animator tileInspector;
 
     void Awake() {
@@ -63,20 +60,10 @@ public class UIManager : MonoBehaviour {
             case UIState.BaseCanvas:
             break;
             case UIState.Inventory:
-            interactionCanvas.SetBool("Enabled", false);
             tileInspector.SetBool("Enabled", false);
             break;
             case UIState.PauseMenu:
-            interactionCanvas.SetBool("Enabled", false);
             tileInspector.SetBool("Enabled", false);
-            break;
-            case UIState.Interactor:
-            interactionCanvas.SetBool("Enabled", true);
-            tileInspector.SetBool("Enabled", false);
-            break;
-            case UIState.TileInspector:
-            interactionCanvas.SetBool("Enabled", false);
-            tileInspector.SetBool("Enabled", true);
             break;
             default:
             break;

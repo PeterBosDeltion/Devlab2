@@ -121,7 +121,7 @@ public class EcoManager : MonoBehaviour {
 
         Tile startTile = Grid[xSize / 2, ySize / 2];
         startTile.myTimeLine.Clear();
-        startTile.ChangeMaterial(GroundState.Grass, "No Reason At All");
+        startTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow On Planes If There Is Enough Water");
 
         Queue<Tile> toCheck = new Queue<Tile>();
         List<Tile> grassTiles = new List<Tile>();
@@ -149,7 +149,7 @@ public class EcoManager : MonoBehaviour {
             if(dequeueTile != null) {
                 if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
                     dequeueTile.myTimeLine.Clear();
-                    dequeueTile.ChangeMaterial(GroundState.Grass, "No Reason At All");
+                    dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Grows On Ground When There Is Enough Moist In The Area");
                     dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
 
                     grassTiles.Add(dequeueTile);
@@ -177,8 +177,8 @@ public class EcoManager : MonoBehaviour {
                         if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
                             if(Random.Range(0, 100) <= 70) {
                                 t.myTimeLine.Clear();
-                                t.ChangeMaterial(GroundState.Sand, "No Reason At All");
-                                t.myTile.layer = LayerMask.NameToLayer("NonGrass");
+                                t.ChangeMaterial(GroundState.Sand, "Because Of Water Waves The Sand Gets Pushed To Land And Blocks Other Life Forms");
+                                t.myTile.layer = LayerMask.NameToLayer("ground");
                             }
                             break;
                         }

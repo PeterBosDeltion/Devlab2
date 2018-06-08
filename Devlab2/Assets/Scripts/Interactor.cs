@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class Interactor : MonoBehaviour
-{
+public class Interactor : MonoBehaviour {
     public static Interactor instance;
 
     public Machine myMachine;
+    public CraftMachine myCraftingMachine;
     public TextMeshProUGUI machineName;
     public Image machineImage;
 
@@ -20,17 +20,31 @@ public class Interactor : MonoBehaviour
     [Header("Crafter")]
     public List<MachineSlot> craftSlots = new List<MachineSlot>();
     public List<MachineSlot> productSlots = new List<MachineSlot>();
+    public List<MachineSlot> craftFuelSlots = new List<MachineSlot>();
+    public List<MachineSlot> productFuelSlots = new List<MachineSlot>();
+    public MachineSlot burnSlot;
     public Image crafterMachineUseImage;
     public GameObject crafter;
     #endregion
 
-    private void Awake()
-    {
+    private void Awake() {
         instance = this;
+
+        for (int i = 0; i < craftSlots.Count; i++) {
+            craftSlots[i].myIndex = i;
+        }
+        for (int i = 0; i < craftFuelSlots.Count; i++) {
+            craftFuelSlots[i].myIndex = i;
+        }
+        for (int i = 0; i < productSlots.Count; i++) {
+            productSlots[i].myIndex = i;
+        }
+        for (int i = 0; i < productFuelSlots.Count; i++) {
+            productFuelSlots[i].myIndex = i;
+        }
     }
 
-    public void ChangeInteractor(Machine newMachine)
-    {
+    public void ChangeInteractor(Machine newMachine) {
         myMachine = newMachine;
 
         machineImage.sprite = myMachine.machineImage;
@@ -39,47 +53,21 @@ public class Interactor : MonoBehaviour
         Basic.SetActive(false);
         crafter.SetActive(false);
 
-        if (myMachine.GetType() == typeof(CraftMachine))
-        {
+        if (myMachine.GetType()== typeof(CraftMachine)) {
+            myCraftingMachine = ((CraftMachine)newMachine);
             crafter.SetActive(true);
             crafterMachineUseImage.sprite = myMachine.machineImage;
-        }
-        else
-        {
+        } else {
             Basic.SetActive(true);
             basicMachineUseImage.sprite = myMachine.machineImage;
         }
     }
 
-    public void CheckResipe(List<CraftMachine.Resipe> validItems)
-    {
-        if (myMachine.isTurnedOn == false)
-        {
-            return;
-        }
-
-        for (int i = 0; i < craftSlots.Count; i++)
-        {
-            for (int ii = 0; ii < validItems.Count; ii++)
-            {
-                if (craftSlots[i].myItem != null && craftSlots[i].myItem.itemName == validItems[ii].ingredient.itemName)
-                {
-                    for (int x = 0; x < productSlots.Count; x++)
-                    {
-                        if (productSlots[x].myItem == null)
-                        {
-                            productSlots[x].SetItem(validItems[ii].product);
-                            StartCoroutine(productSlots[x].Processing());
-                            craftSlots[i].RemoveItem();
-                            break;
-                        }
-                        else if (x == productSlots.Count - 1)
-                        {
-                            return;
-                        }
-                    }
-                }
-            }
+    public MachineSlot GetMachineSlot(bool isFuel, int myIndex) {
+        if (isFuel == true) {
+            return productFuelSlots[myIndex];
+        } else {
+            return productSlots[myIndex];
         }
     }
 }

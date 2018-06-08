@@ -87,12 +87,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4457537817764386}
-  - component: {fileID: 114171896117670692}
   - component: {fileID: 65855325287921322}
   - component: {fileID: 208070957672348288}
+  - component: {fileID: 114709831157637804}
+  - component: {fileID: 114824521710017542}
+  - component: {fileID: 65471798949708384}
   m_Layer: 0
   m_Name: Campfire
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877965040349574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.51, y: 6.1040046e-17, z: 6.78}
+  m_LocalPosition: {x: 155.19434, y: 3.308343, z: 184.51277}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4875401369380928}
@@ -409,6 +411,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1985694445461334}
   m_Mesh: {fileID: 4300002, guid: 21b5beff8fda2d2408433c173eaa4e50, type: 3}
+--- !u!65 &65471798949708384
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877965040349574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.80258954, z: 1}
+  m_Center: {x: 0, y: 0.09870523, z: 0}
 --- !u!65 &65855325287921322
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -421,7 +435,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 1.5, z: 0.4}
   m_Center: {x: -0.03, y: 0.4, z: -0.03}
---- !u!114 &114171896117670692
+--- !u!114 &114709831157637804
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -429,10 +443,66 @@ MonoBehaviour:
   m_GameObject: {fileID: 1877965040349574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4d513e8ae736947923d6e4e0045dd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee7456ce277ad941a89909bb830d330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pollution: 0
+  myPollution: 0
+  myItem: {fileID: 0}
+  firePartical: {fileID: 0}
+--- !u!114 &114824521710017542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877965040349574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: CampFire
+  machineImage: {fileID: 21300000, guid: 8451371996a6c5045829084fa06e15af, type: 3}
+  isTurnedOn: 0
+  validItems:
+  - product: {fileID: 11400000, guid: 03f0933f3102a3d42b436481613e2108, type: 2}
+    ingredient: {fileID: 11400000, guid: 47b634956854f8f4a9485645a2c30cf0, type: 2}
+    timeToConvert: 25
+  validFuelItems:
+  - product: {fileID: 11400000, guid: 0541fb7249f7971449b0b880da727173, type: 2}
+    ingredient: {fileID: 11400000, guid: ebd7fb140edfa5f438ed4027a7c2ebd9, type: 2}
+    timeToConvert: 60
+  - product: {fileID: 11400000, guid: 0541fb7249f7971449b0b880da727173, type: 2}
+    ingredient: {fileID: 11400000, guid: 8ea05583ef01431449cc8e897f91f799, type: 2}
+    timeToConvert: 20
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  craftFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 15
 --- !u!208 &208070957672348288
 NavMeshObstacle:
   m_ObjectHideFlags: 1

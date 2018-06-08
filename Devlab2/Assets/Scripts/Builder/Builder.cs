@@ -44,9 +44,9 @@ public class Builder : MonoBehaviour {
             }
 
             RaycastHit rayHit;
-            if(Physics.Raycast(instance.mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, instance.buildRayMask)) {
+            if(Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, buildRayMask)) {
                 buildRotation += Input.GetButtonDown("Fire3") == true ? 90 : 0;
-                buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * instance.scrollweelSpeed);
+                buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * scrollweelSpeed);
 
                 DisplayBuild(new Vector3(0, buildRotation, 0), new Vector3(rayHit.point.x, rayHit.point.y + CurrentlyBuilding.placeAbleYoffset, rayHit.point.z));
 

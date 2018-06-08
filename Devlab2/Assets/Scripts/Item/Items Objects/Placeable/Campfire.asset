@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Campfire
   m_EditorClassIdentifier: 
   itemName: Campfire
-  item2D: {fileID: 21300000, guid: 5fa15af72dd526e408c5bd52f5eafb02, type: 3}
+  item2D: {fileID: 21300000, guid: 8451371996a6c5045829084fa06e15af, type: 3}
   itemListIndex: 4
   placaBle: 1
   placeAbleYoffset: 0
-  furniture: 1
+  furniture: 0
   myButtons:
   - Place
   itemDiscription: This Is A Campfire

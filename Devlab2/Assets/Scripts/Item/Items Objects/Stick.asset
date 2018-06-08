@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   itemName: Stick
-  item2D: {fileID: 21300000, guid: 6b76eb2c0ed25c74abcba6c852d54f44, type: 3}
+  item2D: {fileID: 21300000, guid: ee735f9bf8b301042ae3919ce132b695, type: 3}
   itemListIndex: 4
   placaBle: 0
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons:
   - Drop
   itemDiscription: This Is A Stick
+  equippable: {fileID: 0}
   itemType: 0

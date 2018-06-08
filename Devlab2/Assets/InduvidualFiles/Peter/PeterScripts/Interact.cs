@@ -6,18 +6,9 @@ using UnityEngine.UI;
 public class Interact : MonoBehaviour {
     public Canvas craftingStationCanvas;
     public static InteractableObject currentlyInteracting;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public void InteractWithObject(InteractableObject intob)                                                                              
+    public void InteractWithObject(InteractableObject intob)
     {
-        
+
     }
 }

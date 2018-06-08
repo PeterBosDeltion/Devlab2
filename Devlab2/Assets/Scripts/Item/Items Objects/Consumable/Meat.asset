@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Name: Meat
   m_EditorClassIdentifier: 
   itemName: Meat
-  item2D: {fileID: 21300000, guid: 4a39cb4b272639541b7bd5ac0649acf7, type: 3}
+  item2D: {fileID: 21300000, guid: 5d397b3b2f48b314eaa62db4b2950bd2, type: 3}
   itemListIndex: 4
   placaBle: 0
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons:
   - Drop
   - Consume
   itemDiscription: Made Of Animals.
+  equippable: {fileID: 0}
   itemType: 0
   food: 10
   water: -5

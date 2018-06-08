@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bcdb4910d28b240a968312044de3cd, type: 3}
   m_Name: Char Coal
   m_EditorClassIdentifier: 
-  itemName: Char Coal
-  item2D: {fileID: 21300000, guid: b6adf1cf14f6d464194562461987edf1, type: 3}
+  itemName: CharCoal
+  item2D: {fileID: 21300000, guid: 9511fe24be759b1458a57064c1ce1088, type: 3}
   itemListIndex: 4
   placaBle: 0
   placeAbleYoffset: 0

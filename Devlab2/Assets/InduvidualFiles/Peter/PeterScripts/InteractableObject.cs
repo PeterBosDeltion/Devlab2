@@ -6,7 +6,7 @@ public class InteractableObject : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && Input.GetButtonDown("Interact"))
         {
             Interact intr = other.GetComponent<Interact>();
             StartInteract(intr);
@@ -16,8 +16,5 @@ public class InteractableObject : MonoBehaviour {
     public void StartInteract(Interact intr)
     {
         Interact.currentlyInteracting = this;
-        intr.craftingStationCanvas.enabled = true;
-        //xxxtra-logic.com right here
-
     }
 }

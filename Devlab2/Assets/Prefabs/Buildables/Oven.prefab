@@ -53,9 +53,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4277850892789722}
+  - component: {fileID: 114917547297556120}
+  - component: {fileID: 135044170456224400}
+  - component: {fileID: 65742891233801632}
+  - component: {fileID: 208693267169474516}
   m_Layer: 0
   m_Name: Oven
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,3 +189,68 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344777434850048}
   m_Mesh: {fileID: 4300000, guid: 83983b829365a8440a3eb72455e4ba6c, type: 3}
+--- !u!65 &65742891233801632
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354036978649454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3836408, z: 1}
+  m_Center: {x: 0, y: 0.63320565, z: 0}
+--- !u!114 &114917547297556120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354036978649454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: 
+  machineImage: {fileID: 0}
+  isTurnedOn: 0
+  validItems: []
+  validFuelItems: []
+  craftSlots: []
+  productSlots: []
+  craftFuelSlots: []
+  productFuelSlots: []
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 0
+--- !u!135 &135044170456224400
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354036978649454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.9787409
+  m_Center: {x: 0, y: 0.14343977, z: 0}
+--- !u!208 &208693267169474516
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354036978649454}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.6918205, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.6332057, z: 0}
+  m_TimeToStationary: 0.5

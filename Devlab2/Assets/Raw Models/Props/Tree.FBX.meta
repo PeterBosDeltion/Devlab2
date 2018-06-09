@@ -1,14 +1,37 @@
 fileFormatVersion: 2
-guid: 82a4c0c756f68b9499c34995e271b1c7
+guid: 84aeb63f621cf8c429d666e8da4a7b09
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: BigLeaves01
+    100002: BigLeaves02
+    100004: SmallLeaves01
+    100006: SmallLeaves02
+    100008: //RootNode
+    100010: Tree
+    400000: BigLeaves01
+    400002: BigLeaves02
+    400004: SmallLeaves01
+    400006: SmallLeaves02
+    400008: //RootNode
+    400010: Tree
     2100000: 02 - Default
-    2300000: //RootNode
-    3300000: //RootNode
+    2100002: 01 - Default
+    2300000: BigLeaves01
+    2300002: BigLeaves02
+    2300004: SmallLeaves01
+    2300006: SmallLeaves02
+    2300008: Tree
+    3300000: BigLeaves01
+    3300002: BigLeaves02
+    3300004: SmallLeaves01
+    3300006: SmallLeaves02
+    3300008: Tree
     4300000: Tree
+    4300002: BigLeaves02
+    4300004: SmallLeaves02
+    4300006: BigLeaves01
+    4300008: SmallLeaves01
   externalObjects: {}
   materials:
     importMaterials: 1

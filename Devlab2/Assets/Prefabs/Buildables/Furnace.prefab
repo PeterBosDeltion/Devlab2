@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4506583766000312}
   - component: {fileID: 33849300079715906}
   - component: {fileID: 23197913319360452}
+  - component: {fileID: 114347552962032956}
+  - component: {fileID: 135070468962663366}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -83,3 +85,41 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716861101984100}
   m_Mesh: {fileID: 4300000, guid: 0eeda195098ce304ea4e3e8ba6f06667, type: 3}
+--- !u!114 &114347552962032956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716861101984100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: 
+  machineImage: {fileID: 0}
+  isTurnedOn: 1
+  validItems: []
+  validFuelItems: []
+  craftSlots: []
+  productSlots: []
+  craftFuelSlots: []
+  productFuelSlots: []
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 0
+--- !u!135 &135070468962663366
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716861101984100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.9787409
+  m_Center: {x: 0, y: 0.14343977, z: 0}

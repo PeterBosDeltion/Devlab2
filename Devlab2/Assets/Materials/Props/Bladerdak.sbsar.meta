@@ -1,0 +1,68 @@
+fileFormatVersion: 2
+guid: ea400dc5c234f18488b819bf00498a15
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Bladerdak/Bladerdak
+    400000: Bladerdak/Bladerdak/Transform
+    2100000: mat.Bladerdak
+    2300000: Bladerdak/Bladerdak/MeshRenderer
+    2800000: Bladerdak_Base Color
+    2800002: Bladerdak_Normal
+    2800004: Bladerdak_Height
+    3300000: Bladerdak/Bladerdak/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: Bladerdak/Bladerdak/SphereCollider
+    100100000: Bladerdak
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  mGraphInstanceData:
+  - graphLabel: Bladerdak
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Bladerdak\" label=\"\" >\n </sbspreset>\n"
+    shaderName: LightweightPipeline/Standard (Physically Based)
+    outputNames: Base Color,Normal,Height
+    texturePackingList: []
+    colorSpaceList:
+    - outputName: Base Color
+      bLinear: 0
+    - outputName: Normal
+      bLinear: 1
+    - outputName: Roughness
+      bLinear: 1
+    - outputName: Height
+      bLinear: 1
+    - outputName: Opacity
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: Standalone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: iPhone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    material: {fileID: 2100000, guid: ea400dc5c234f18488b819bf00498a15, type: 3}

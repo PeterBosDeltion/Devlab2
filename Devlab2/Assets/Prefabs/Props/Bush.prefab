@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401980967065580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.84, y: 0, z: 16.23}
+  m_LocalPosition: {x: 12.960001, y: 0.77500004, z: 24.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4750634320410746}
@@ -300,6 +300,9 @@ MonoBehaviour:
   myResource: {fileID: 11400000, guid: e456fa2056a84354895ce00374f3f062, type: 2}
   type: 3
   toughness: 0
+  berries: 1
+  berryChild: {fileID: 0}
+  berryGrowTime: 7
 --- !u!208 &208605688499824152
 NavMeshObstacle:
   m_ObjectHideFlags: 1

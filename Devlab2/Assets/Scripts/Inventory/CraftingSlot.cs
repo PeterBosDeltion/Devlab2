@@ -31,6 +31,9 @@ public class CraftingSlot : Slot {
                 else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
                     if(Inventory.mouseOver.GetType() != typeof(CraftingSlot)) {
                         Item newitem = myItem;
+                        if(productSlot == true){
+                            Inventory.Instance.CraftProduct();
+                        }
                         Inventory.mouseOver.SetItem(Instantiate(newitem));
                         RemoveItem();
                     }

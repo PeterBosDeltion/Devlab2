@@ -1,0 +1,69 @@
+fileFormatVersion: 2
+guid: a5e8eee6f9552a24e8ba86a3ccada4c2
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: Grass/Grass
+    400000: Grass/Grass/Transform
+    2100000: mat.Leaves
+    2300000: Grass/Grass/MeshRenderer
+    2800000: Leaves_Base Color
+    2800002: Leaves_Normal
+    3300000: Grass/Grass/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: Grass/Grass/SphereCollider
+    100100000: Grass
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  mGraphInstanceData:
+  - graphLabel: Leaves
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Leaves\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: Base Color,Normal
+    texturePackingList:
+    - outputName: Base Color
+      alphaSource: Base Color
+    - outputName: Normal
+      alphaSource: Normal
+    - outputName: Roughness
+      alphaSource: Roughness
+    colorSpaceList:
+    - outputName: Base Color
+      bLinear: 0
+    - outputName: Normal
+      bLinear: 1
+    - outputName: Roughness
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: Standalone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: iPhone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    material: {instanceID: 0}

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CraftMachine : Machine {
+    public string StartText;
+    public string stopText;
+
     public List<Resipe> validItems = new List<Resipe>();
     public List<Resipe> validFuelItems = new List<Resipe>();
 
@@ -13,10 +16,7 @@ public class CraftMachine : Machine {
     public Item burnSlot;
     public Resipe burnSlotResipe;
     public int coolDownTime;
-
-    private void Start() {
-        //Interactor.instance.ChangeInteractor(this);           ***For Testing
-    }
+    public bool needsFuel;
 
     public void TurnOn() {
         isTurnedOn = true;
@@ -28,7 +28,7 @@ public class CraftMachine : Machine {
     }
 
     public void CheckResipe() {
-        if (CheckFuelResipe()== false) {
+        if (needsFuel == true && CheckFuelResipe()== false) {
             if (isTurnedOn == true) {
                 TurnOff();
             }

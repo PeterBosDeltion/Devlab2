@@ -25,6 +25,8 @@ public class Interactor : MonoBehaviour {
     public MachineSlot burnSlot;
     public Image crafterMachineUseImage;
     public GameObject crafter;
+    public TextMeshProUGUI startText;
+    public GameObject fuelForCrafting;
     #endregion
 
     private void Awake() {
@@ -57,6 +59,13 @@ public class Interactor : MonoBehaviour {
             myCraftingMachine = ((CraftMachine)newMachine);
             crafter.SetActive(true);
             crafterMachineUseImage.sprite = myMachine.machineImage;
+            startText.text = myCraftingMachine.StartText;
+            if(myCraftingMachine.needsFuel == true){
+                fuelForCrafting.SetActive(true);
+            }
+            else{
+                fuelForCrafting.SetActive(false);
+            }
         } else {
             Basic.SetActive(true);
             basicMachineUseImage.sprite = myMachine.machineImage;
@@ -75,8 +84,10 @@ public class Interactor : MonoBehaviour {
         if (myCraftingMachine != null) {
             if (myCraftingMachine.isTurnedOn == true) {
                 myCraftingMachine.TurnOff();
+            startText.text = myCraftingMachine.StartText;
             } else {
                 myCraftingMachine.TurnOn();
+            startText.text = myCraftingMachine.stopText;
             }
         }
     }

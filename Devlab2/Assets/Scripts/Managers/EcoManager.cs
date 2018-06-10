@@ -120,8 +120,7 @@ public class EcoManager : MonoBehaviour {
         }
 
         Tile startTile = Grid[xSize / 2, ySize / 2];
-        startTile.myTimeLine.Clear();
-        startTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow On Planes If There Is Enough Water");
+        startTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
 
         Queue<Tile> toCheck = new Queue<Tile>();
         List<Tile> grassTiles = new List<Tile>();
@@ -148,8 +147,7 @@ public class EcoManager : MonoBehaviour {
 
             if(dequeueTile != null) {
                 if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
-                    dequeueTile.myTimeLine.Clear();
-                    dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Grows On Ground When There Is Enough Moist In The Area");
+                    dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
                     dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
 
                     grassTiles.Add(dequeueTile);
@@ -176,8 +174,7 @@ public class EcoManager : MonoBehaviour {
                     if(i == 0 || ii == 0) {
                         if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
                             if(Random.Range(0, 100) <= 70) {
-                                t.myTimeLine.Clear();
-                                t.ChangeMaterial(GroundState.Sand, "Because Of Water Waves The Sand Gets Pushed To Land And Blocks Other Life Forms");
+                                t.ChangeMaterial(GroundState.Sand, "Water Pushes The Small Rocks To Land Witch Formes Beaches");
                                 t.myTile.layer = LayerMask.NameToLayer("ground");
                             }
                             break;
@@ -239,11 +236,12 @@ public class EcoManager : MonoBehaviour {
         public int gridPosX, gridPosY;
         public GameObject myTile;
         Renderer myRenderer;
+        public AddPolution myOccupant;
 
         public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
             myTile = newTile;
             myRenderer = myTile.GetComponent<Renderer>();
-            ChangeMaterial(newState, "No Reason At All");
+            ChangeMaterial(newState, "How Did This Get Here.");
             gridPosX = gridX;
             gridPosY = gridY;
         }
@@ -272,5 +270,17 @@ public class EcoManager : MonoBehaviour {
         public Sprite groundSprite;
         public string description;
         public string tileName;
+    }
+
+    public void DryGrounds(Vector3 dryPosition){
+
+    }
+
+    public void BurnGrounds(Vector3 burnPosition){
+
+    }
+
+    public void StartFire(Vector3 pos){
+
     }
 }

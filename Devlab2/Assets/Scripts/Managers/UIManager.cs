@@ -56,14 +56,16 @@ public class UIManager : MonoBehaviour {
 
     //Changes Current Canvas
     public void SetCanvas(UIState newState) {
-        switch(currentUI) {
+        switch(newState) {
             case UIState.BaseCanvas:
+            tileInspector.SetBool("Interactor", false);
             break;
             case UIState.Inventory:
-            tileInspector.SetBool("Enabled", false);
+            tileInspector.SetBool("Inspector", false);
             break;
             case UIState.PauseMenu:
-            tileInspector.SetBool("Enabled", false);
+            tileInspector.SetBool("Interactor", false);
+            tileInspector.SetBool("Inspector", false);
             break;
             default:
             break;

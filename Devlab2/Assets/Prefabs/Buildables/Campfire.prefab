@@ -89,7 +89,6 @@ GameObject:
   - component: {fileID: 4457537817764386}
   - component: {fileID: 65855325287921322}
   - component: {fileID: 208070957672348288}
-  - component: {fileID: 114709831157637804}
   - component: {fileID: 114824521710017542}
   - component: {fileID: 65471798949708384}
   m_Layer: 0
@@ -136,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877965040349574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 155.19434, y: 3.308343, z: 184.51277}
+  m_LocalPosition: {x: 426.50006, y: 630.70905, z: -703.02344}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4875401369380928}
@@ -435,20 +434,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 1.5, z: 0.4}
   m_Center: {x: -0.03, y: 0.4, z: -0.03}
---- !u!114 &114709831157637804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1877965040349574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee7456ce277ad941a89909bb830d330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myPollution: 0
-  myItem: {fileID: 0}
-  firePartical: {fileID: 0}
 --- !u!114 &114824521710017542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,6 +448,8 @@ MonoBehaviour:
   machineName: CampFire
   machineImage: {fileID: 21300000, guid: 8451371996a6c5045829084fa06e15af, type: 3}
   isTurnedOn: 0
+  StartText: 
+  stopText: 
   validItems:
   - product: {fileID: 11400000, guid: 03f0933f3102a3d42b436481613e2108, type: 2}
     ingredient: {fileID: 11400000, guid: 47b634956854f8f4a9485645a2c30cf0, type: 2}
@@ -503,6 +490,14 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 15
+  drysGround: 1
+  dryRadius: 3
+  burnsGround: 1
+  burnRadius: 2
+  needsFuel: 1
+  PollutionToAdd: 15
+  myPartical: {fileID: 0}
+  myAnimator: {fileID: 0}
 --- !u!208 &208070957672348288
 NavMeshObstacle:
   m_ObjectHideFlags: 1

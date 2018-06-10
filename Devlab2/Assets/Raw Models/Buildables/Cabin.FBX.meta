@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 07453dfe161b8b74680c3622d03a226d
+guid: 92ed46b5bdf66554c8d45c56da46e839
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -9,10 +9,7 @@ ModelImporter:
     400000: //RootNode
     400002: Cabin
     400004: Roof
-    2100000: WoodBase
-    2100002: PillarWood
-    2100004: Rock
-    2100006: Roof
+    2100000: 'Material #153'
     2300000: Cabin
     2300002: Roof
     3300000: Cabin

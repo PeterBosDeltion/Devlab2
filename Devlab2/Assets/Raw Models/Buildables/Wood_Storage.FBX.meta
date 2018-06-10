@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 75c622d5c62a88e4b9f7cbc245f2ffe3
+guid: 6a0b074df4a1022449c4b56812ac3e5f
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Wood2
-    2100002: Wood3
-    2100004: Wood
-    2100006: Metal
+    2100000: Metal
     2300000: //RootNode
     3300000: //RootNode
     4300000: Box005

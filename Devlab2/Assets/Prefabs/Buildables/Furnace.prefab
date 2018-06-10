@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4506583766000312}
   - component: {fileID: 33849300079715906}
   - component: {fileID: 23197913319360452}
-  - component: {fileID: 114347552962032956}
-  - component: {fileID: 135070468962663366}
-  m_Layer: 0
+  - component: {fileID: 65816276895939122}
+  - component: {fileID: 114043619395372938}
+  - component: {fileID: 65117605633506970}
+  m_Layer: 11
   m_Name: Furnace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0eeda195098ce304ea4e3e8ba6f06667, type: 3}
+  - {fileID: 2100000, guid: 0d5840751daebf24384c89404b43608b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +86,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716861101984100}
   m_Mesh: {fileID: 4300000, guid: 0eeda195098ce304ea4e3e8ba6f06667, type: 3}
---- !u!114 &114347552962032956
+--- !u!65 &65117605633506970
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716861101984100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8732052, z: 1.2084281}
+  m_Center: {x: -0.00000001691614, y: -0.036602616, z: 0.6042141}
+--- !u!65 &65816276895939122
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716861101984100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8732052, z: 1.2084281}
+  m_Center: {x: -0.00000001691614, y: -0.036602616, z: 0.6042141}
+--- !u!114 &114043619395372938
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,33 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716861101984100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ecc32c2a4e1f9744972c90733d84c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineName: 
-  machineImage: {fileID: 0}
-  isTurnedOn: 1
-  validItems: []
-  validFuelItems: []
-  craftSlots: []
-  productSlots: []
-  craftFuelSlots: []
-  productFuelSlots: []
-  burnSlot: {fileID: 0}
-  burnSlotResipe:
-    product: {fileID: 0}
-    ingredient: {fileID: 0}
-    timeToConvert: 0
-  coolDownTime: 0
---- !u!135 &135070468962663366
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1716861101984100}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.9787409
-  m_Center: {x: 0, y: 0.14343977, z: 0}
+  myCollider: {fileID: 65816276895939122}

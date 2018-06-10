@@ -215,6 +215,8 @@ MonoBehaviour:
   machineName: 
   machineImage: {fileID: 0}
   isTurnedOn: 0
+  StartText: 
+  stopText: 
   validItems: []
   validFuelItems: []
   craftSlots: []
@@ -227,6 +229,7 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 0
+  needsFuel: 0
 --- !u!135 &135044170456224400
 SphereCollider:
   m_ObjectHideFlags: 1

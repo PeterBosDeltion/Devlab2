@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800861738870112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 171.9373, y: 20.678974, z: 201.4596}
+  m_LocalPosition: {x: 171.9373, y: 21.448975, z: 201.4596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4014282790672350}
@@ -250,7 +250,7 @@ MonoBehaviour:
     tileName: 
   - state: 2
     tex: {fileID: 2100000, guid: 0a58916009d0c4c45b0f760b9f4a7ffd, type: 2}
-    groundSprite: {fileID: 21300000, guid: db7c09044601a0141bcaed627a577d97, type: 3}
+    groundSprite: {fileID: 21300000, guid: c9c17660203f94d44866c8b00059eb18, type: 3}
     description: This Is Sand
     tileName: 
   - state: 3
@@ -392,66 +392,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pools:
-  - poolTag: Stick Display
-    prefab: {fileID: 1561266827183886, guid: 67cb96623a1fd1149a2a6d02c31258d4, type: 2}
-    autoExpand: 1
-    startSize: 2
-  - poolTag: Stick
-    prefab: {fileID: 1561266827183886, guid: 67cb96623a1fd1149a2a6d02c31258d4, type: 2}
-    autoExpand: 1
-    startSize: 2
   - poolTag: Campfire
     prefab: {fileID: 1877965040349574, guid: 368855ea60907da449c7fb6dfc1b108b, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 3
   - poolTag: Campfire Display
     prefab: {fileID: 1172125740895894, guid: 26a94dcafb8c572488a2347d782b1631, type: 2}
-    autoExpand: 1
-    startSize: 2
+    autoExpand: 0
+    startSize: 1
   - poolTag: Fence Display
     prefab: {fileID: 1355014501766688, guid: 6bc49e34a5f56664886e3de09523da3c, type: 2}
-    autoExpand: 1
-    startSize: 2
+    autoExpand: 0
+    startSize: 1
   - poolTag: Fence
     prefab: {fileID: 1562642143501420, guid: 437e4bc993a80b04a947f843cc216e9a, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 3
   - poolTag: Farm Ground
     prefab: {fileID: 1052123114926136, guid: e3fbf425a84c2a44791654bd21475c0f, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 3
   - poolTag: Farm Ground Display
     prefab: {fileID: 1586218625971626, guid: ab8d974b1f9be074bb09f8f13cfabb68, type: 2}
-    autoExpand: 1
-    startSize: 2
+    autoExpand: 0
+    startSize: 1
   - poolTag: Corn Seed
     prefab: {fileID: 1470504907244248, guid: f614b84446710e2479d5029790875300, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 3
   - poolTag: Corn Seed Display
     prefab: {fileID: 1125165067146702, guid: 5da87542b1fc2eb40b3db11c2bfe401d, type: 2}
-    autoExpand: 1
-    startSize: 2
+    autoExpand: 0
+    startSize: 1
   - poolTag: Berries
     prefab: {fileID: 1024127971081672, guid: dccf20c322ad5744dacae58cbeaa627e, type: 2}
     autoExpand: 1
     startSize: 2
   - poolTag: Stone
-    prefab: {fileID: 1647925381941998, guid: c72254e0649d86142b8f6e0946e98c12, type: 2}
+    prefab: {fileID: 1025877609990912, guid: b921e348d4c47cb4bac564a4f300621c, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 5
+  - poolTag: Stick
+    prefab: {fileID: 1895422488239784, guid: d059b185b8fe2e045afd68084587143e, type: 2}
+    autoExpand: 1
+    startSize: 5
+  - poolTag: Logs
+    prefab: {fileID: 1117627554504758, guid: 629929dbbaedb0e40bffe95cfcb8c296, type: 2}
+    autoExpand: 1
+    startSize: 5
+  - poolTag: Axe
+    prefab: {fileID: 1723970162182326, guid: 4829225049580ac468d565aca726d563, type: 2}
+    autoExpand: 1
+    startSize: 5
+  - poolTag: Meat
+    prefab: {fileID: 1634357712265568, guid: dec012c327a77b441944c8c3a0615a71, type: 2}
+    autoExpand: 1
+    startSize: 5
+  - poolTag: Char Coal
+    prefab: {fileID: 1674707781274928, guid: ffa26c84567516747a0a95c6fdd3ae52, type: 2}
+    autoExpand: 1
+    startSize: 5
+  - poolTag: Coal
+    prefab: {fileID: 1648020493030778, guid: 55c940ea1527ff144ab12465b02e248f, type: 2}
+    autoExpand: 1
+    startSize: 5
   - poolTag: Cabin
-    prefab: {fileID: 1844931464072762, guid: b2bd49a823a1a8641ac55c11e49733ac, type: 2}
+    prefab: {fileID: 1309592557379640, guid: 9e525386dd7b721468a0233c01a22d66, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 5
+  - poolTag: Cabin Display
+    prefab: {fileID: 1612941149297684, guid: da869b8a7ebfff940bf82447046fc044, type: 2}
+    autoExpand: 0
+    startSize: 1
   - poolTag: Corn
     prefab: {fileID: 1297846796001564, guid: 55961a69b98ac594a88e6c8c89a95d8c, type: 2}
     autoExpand: 1
-    startSize: 2
-  - poolTag: Cabin Display
-    prefab: {fileID: 1612941149297684, guid: da869b8a7ebfff940bf82447046fc044, type: 2}
+    startSize: 1
+  - poolTag: Wood Storage
+    prefab: {fileID: 1142195375210498, guid: 146c24a3ab82c3d48998d629aabbabfb, type: 2}
     autoExpand: 1
-    startSize: 2
+    startSize: 3
+  - poolTag: Wood Storage Display
+    prefab: {fileID: 1069510551562748, guid: 64627b3bd1ada4742b8cf48e3dbf9567, type: 2}
+    autoExpand: 0
+    startSize: 1
+  - poolTag: Furnace
+    prefab: {fileID: 1716861101984100, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
+    autoExpand: 1
+    startSize: 3
+  - poolTag: Furnace Display
+    prefab: {fileID: 1529361931548572, guid: fd41a268c4f6bb8499d881d2eb44b4aa, type: 2}
+    autoExpand: 0
+    startSize: 1
+  - poolTag: Oven
+    prefab: {fileID: 1354036978649454, guid: 5206f8b75c49cc44d8b1c73b6517ed3e, type: 2}
+    autoExpand: 1
+    startSize: 3
+  - poolTag: Oven Display
+    prefab: {fileID: 1777574413600906, guid: 97b49a4d13992994f81b5ccb6d18c52e, type: 2}
+    autoExpand: 0
+    startSize: 1
 --- !u!114 &114760496888396196
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class EcoInspector : MonoBehaviour {
     public EcoManager.Tile currentlyInspected;
     public Sprite x;
     public Image tileImage1, tileImage2, tileImage3;
+    public Image mainTile;
     public TextMeshProUGUI description;
     public TextMeshProUGUI reason;
     public TextMeshProUGUI tileName;
@@ -38,11 +39,18 @@ public class EcoInspector : MonoBehaviour {
         }
     }
 
-    void UpdateUI() {
+    public void Update(){
+        if(Input.GetButtonDown("Tile Manager") && UIManager.instance.currentUI == UIManager.UIState.BaseCanvas){
+            UIManager.instance.tileInspector.SetBool("Inspector", !UIManager.instance.tileInspector.GetBool("Inspector"));
+            UIManager.instance.tileInspector.SetBool("Interactor", false);
+        }
+    }
 
+    void UpdateUI() {
         int i = (int)currentlyInspected.myTimeLine[currentlySelected].state - 1;
 
         tileImage2.sprite = EcoManager.groundSprites[i];
+        mainTile.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[1].state];
         description.text = EcoManager.groundDescription[i];
 
         reason.text = currentlyInspected.myTimeLine[currentlySelected].reason;

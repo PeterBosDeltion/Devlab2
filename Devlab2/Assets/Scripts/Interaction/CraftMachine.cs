@@ -16,7 +16,14 @@ public class CraftMachine : Machine {
     public Item burnSlot;
     public Resipe burnSlotResipe;
     public int coolDownTime;
+    public bool drysGround;
+    public int dryRadius;
+    public bool burnsGround;
+    public int burnRadius;
     public bool needsFuel;
+    public int PollutionToAdd;
+    public ParticleSystem myPartical;
+    public Animator myAnimator;
 
     public void TurnOn() {
         isTurnedOn = true;
@@ -185,6 +192,9 @@ public class CraftMachine : Machine {
     void OnTriggerStay(Collider other) {
         if (other.tag == "Player" && Input.GetButtonDown("Interact")) {
             Interactor.instance.ChangeInteractor(this);
+            UIManager.instance.SetCanvas(UIManager.UIState.Inventory);
+            UIManager.instance.tileInspector.SetBool("Inspector", false);
+            UIManager.instance.tileInspector.SetBool("Interactor", true);
         }
     }
 }

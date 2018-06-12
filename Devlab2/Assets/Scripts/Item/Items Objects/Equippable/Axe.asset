@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   itemName: Axe
-  item2D: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+  item2D: {fileID: 21300000, guid: ffb61c08b632c62439a12bc0a925186c, type: 3}
   itemListIndex: 1
   placaBle: 0
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons:
   - Drop
   - Equipe

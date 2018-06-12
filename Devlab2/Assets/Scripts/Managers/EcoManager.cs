@@ -17,7 +17,7 @@ public class EcoManager : MonoBehaviour {
         driedGround = 6
     }
 
-    public Tile[,] Grid;
+    public Tile[, ] Grid;
     GameObject[] treesInScene;
 
     public static Material[] groundTextures;
@@ -27,11 +27,10 @@ public class EcoManager : MonoBehaviour {
     public List<Ground> groundTexturesInput = new List<Ground>();
 
     void Awake() {
-        if(instance == null) {
+        if (instance == null) {
             instance = this;
             DontDestroyOnLoad(this);
-        }
-        else {
+        } else {
             Destroy(gameObject);
         }
 
@@ -41,13 +40,13 @@ public class EcoManager : MonoBehaviour {
     public void AddPollution(int PollutionToAdd) {
         pollution += PollutionToAdd;
 
-        if(pollution >= endGamePollution){
+        if (pollution >= endGamePollution) {
             //          ***EndGame
         }
     }
 
     public Tile GetTile(Vector3 pos) {
-        return (Grid[Mathf.RoundToInt(pos.x / xStepSize) / 2, Mathf.RoundToInt(pos.z / yStepSize) / 2]);
+        return (Grid[Mathf.RoundToInt(pos.x / xStepSize)/ 2, Mathf.RoundToInt(pos.z / yStepSize)/ 2]);
     }
 
     #region Tile Genorator
@@ -69,22 +68,22 @@ public class EcoManager : MonoBehaviour {
     public void GenerateMap() {
 
         groundTextures = new Material[groundTexturesInput.Count];
-        for(int i = 0; i < groundTexturesInput.Count; i++) {
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;
         }
 
         groundSprites = new Sprite[groundTexturesInput.Count];
-        for(int i = 0; i < groundTexturesInput.Count; i++) {
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundSprites[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].groundSprite;
         }
 
         groundDescription = new string[groundTexturesInput.Count];
-        for(int i = 0; i < groundTexturesInput.Count; i++) {
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundDescription[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].description;
         }
 
         groundName = new string[groundTexturesInput.Count];
-        for(int i = 0; i < groundTexturesInput.Count; i++) {
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
         }
 
@@ -93,14 +92,13 @@ public class EcoManager : MonoBehaviour {
         Grid = new Tile[xSize, ySize];
         bool pos = false;
 
-        for(int x = 0; x < xSize; x++) {
-            for(int y = 0; y < ySize; y++) {
+        for (int x = 0; x < xSize; x++) {
+            for (int y = 0; y < ySize; y++) {
                 Vector3 positionInWorld = Vector3.zero;
 
-                if(pos == true) {
+                if (pos == true) {
                     positionInWorld = new Vector3(x * xStepSize, 0, y * yStepSize * 2);
-                }
-                else {
+                } else {
                     positionInWorld = new Vector3(x * xStepSize, 0, y * yStepSize * 2 + yStepSize);
                 }
 
@@ -113,67 +111,67 @@ public class EcoManager : MonoBehaviour {
             pos = !pos;
         }
 
-        if(islandSize > xSize * ySize - (edgeOffset * 4)) {
+        if (islandSize > xSize * ySize - (edgeOffset * 4)) {
 
             Debug.Log("The Size Of The Island Is To Big For The Map Size");
             return;
         }
 
         Tile startTile = Grid[xSize / 2, ySize / 2];
+        startTile.myTimeLine.Clear();
         startTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
 
         Queue<Tile> toCheck = new Queue<Tile>();
         List<Tile> grassTiles = new List<Tile>();
 
-        for(int i = -1; i < 2; i++) {
-            for(int ii = -1; ii < 2; ii++) {
-                if(Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
+        for (int i = -1; i < 2; i++) {
+            for (int ii = -1; ii < 2; ii++) {
+                if (Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY > edgeOffset && Grid[startTile.gridPosX + i, startTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
                     toCheck.Enqueue(Grid[startTile.gridPosX + i, startTile.gridPosY + ii]);
                 }
             }
         }
 
-
         int landAmounts = 0;
 
-        while(islandSize > landAmounts) {
+        while (islandSize > landAmounts) {
             Tile dequeueTile = null;
-            if(toCheck.Count > 0) {
+            if (toCheck.Count > 0) {
                 dequeueTile = toCheck.Dequeue();
-            }
-            else {
+            } else {
                 return;
             }
 
-            if(dequeueTile != null) {
-                if(dequeueTile.currentState == GroundState.Water && Random.Range(0, 100) <= 10) {
+            if (dequeueTile != null) {
+                if (dequeueTile.currentState == GroundState.Water && Random.Range(0, 100)<= 10) {
+                    dequeueTile.myTimeLine.Clear();
                     dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
                     dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
 
                     grassTiles.Add(dequeueTile);
                     landAmounts++;
 
-                    for(int i = -1; i < 2; i++) {
-                        for(int ii = -1; ii < 2; ii++) {
-                            if(Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
+                    for (int i = -1; i < 2; i++) {
+                        for (int ii = -1; ii < 2; ii++) {
+                            if (Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY > edgeOffset && Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
                                 toCheck.Enqueue(Grid[dequeueTile.gridPosX + i, dequeueTile.gridPosY + ii]);
                             }
                         }
                     }
-                }
-                else if(Random.Range(0, 100) <= 80) {
+                } else if (Random.Range(0, 100)<= 80) {
                     toCheck.Enqueue(dequeueTile);
                 }
             }
         }
         List<Tile> phase2GrassTiles = new List<Tile>();
 
-        foreach(Tile t in grassTiles) {
-            for(int i = -1; i < 2; i++) {
-                for(int ii = -1; ii < 2; ii++) {
-                    if(i == 0 || ii == 0) {
-                        if(Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
-                            if(Random.Range(0, 100) <= 70) {
+        foreach (Tile t in grassTiles) {
+            for (int i = -1; i < 2; i++) {
+                for (int ii = -1; ii < 2; ii++) {
+                    if (i == 0 || ii == 0) {
+                        if (Grid[t.gridPosX + i, t.gridPosY + ii].currentState == GroundState.Water) {
+                            if (Random.Range(0, 100)<= 70) {
+                                t.myTimeLine.Clear();
                                 t.ChangeMaterial(GroundState.Sand, "Water Pushes The Small Rocks To Land Witch Formes Beaches");
                                 t.myTile.layer = LayerMask.NameToLayer("ground");
                             }
@@ -182,23 +180,23 @@ public class EcoManager : MonoBehaviour {
                     }
                 }
             }
-            if(Grid[t.gridPosX, t.gridPosY].currentState == GroundState.Grass) {
+            if (Grid[t.gridPosX, t.gridPosY].currentState == GroundState.Grass) {
                 phase2GrassTiles.Add(t);
             }
         }
 
-        for(int i = 0; i < toSpawnList.Count; i++) {
+        for (int i = 0; i < toSpawnList.Count; i++) {
             int localToSpawn = toSpawnList[i].amountToSpawn;
 
-            while(localToSpawn > 0) {
-                if(phase2GrassTiles.Count == 0) {
+            while (localToSpawn > 0) {
+                if (phase2GrassTiles.Count == 0) {
                     Debug.Log("Not enough space for trees");
                     return;
                 }
 
                 Tile toPlant = phase2GrassTiles[Random.Range(0, phase2GrassTiles.Count)];
 
-                toSpawnList[i].spawnedObjects.Add(Instantiate(toSpawnList[i].objectToSpawn, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(toSpawnList[i].x == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.x, toSpawnList[i].y == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.y, toSpawnList[i].z == true ? Random.Range(0, 360) : toSpawnList[i].objectToSpawn.transform.localEulerAngles.z))));
+                toSpawnList[i].spawnedObjects.Add(Instantiate(toSpawnList[i].objectToSpawn, toPlant.myTile.transform.position, Quaternion.Euler(new Vector3(toSpawnList[i].x == true ? Random.Range(0, 360): toSpawnList[i].objectToSpawn.transform.localEulerAngles.x, toSpawnList[i].y == true ? Random.Range(0, 360): toSpawnList[i].objectToSpawn.transform.localEulerAngles.y, toSpawnList[i].z == true ? Random.Range(0, 360): toSpawnList[i].objectToSpawn.transform.localEulerAngles.z))));
                 localToSpawn--;
 
                 phase2GrassTiles.Remove(toPlant);
@@ -209,18 +207,18 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void DestroyMap() {
-        for(int i = 0; i < toSpawnList.Count; i++) {
-            for(int ii = 0; ii < toSpawnList[i].spawnedObjects.Count; ii++) {
-                if(toSpawnList[i].spawnedObjects[ii] != null) {
+        for (int i = 0; i < toSpawnList.Count; i++) {
+            for (int ii = 0; ii < toSpawnList[i].spawnedObjects.Count; ii++) {
+                if (toSpawnList[i].spawnedObjects[ii] != null) {
                     DestroyImmediate(toSpawnList[i].spawnedObjects[ii]);
                 }
             }
             toSpawnList[i].spawnedObjects.Clear();
         }
 
-        if(Grid != null) {
-            foreach(Tile tile in Grid) {
-                if(tile.myTile != null) {
+        if (Grid != null) {
+            foreach (Tile tile in Grid) {
+                if (tile.myTile != null) {
                     DestroyImmediate(tile.myTile);
                 }
             }
@@ -272,15 +270,15 @@ public class EcoManager : MonoBehaviour {
         public string tileName;
     }
 
-    public void DryGrounds(Vector3 dryPosition){
+    public void DryGrounds(Vector3 dryPosition) {
 
     }
 
-    public void BurnGrounds(Vector3 burnPosition){
+    public void BurnGrounds(Vector3 burnPosition) {
 
     }
 
-    public void StartFire(Vector3 pos){
+    public void StartFire(Vector3 pos) {
 
     }
 }

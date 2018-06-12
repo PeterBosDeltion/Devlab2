@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float moveSpeed;
     public float rotateSpeed = 16;
     private NavMeshAgent agent;
+    public LayerMask moveLayermask;
 
     private bool mouseDown;
 	// Use this for initialization
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
         Move();
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 999))
+        if (Physics.Raycast(ray, out hit, 999,moveLayermask))
         {
             Vector3 lookPos = hit.point - transform.position;
             lookPos.y = 0;
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void ClickMove()
     {
-       
+
         RaycastHit hit;
         if (Input.GetMouseButton(1))
         {

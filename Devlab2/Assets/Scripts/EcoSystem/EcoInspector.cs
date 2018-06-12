@@ -50,7 +50,7 @@ public class EcoInspector : MonoBehaviour {
         int i = (int)currentlyInspected.myTimeLine[currentlySelected].state - 1;
 
         tileImage2.sprite = EcoManager.groundSprites[i];
-        mainTile.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[1].state];
+        mainTile.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[0].state - 1];
         description.text = EcoManager.groundDescription[i];
 
         reason.text = currentlyInspected.myTimeLine[currentlySelected].reason;

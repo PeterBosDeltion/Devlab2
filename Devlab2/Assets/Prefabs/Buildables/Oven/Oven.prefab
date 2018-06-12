@@ -229,7 +229,14 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 0
+  drysGround: 0
+  dryRadius: 0
+  burnsGround: 0
+  burnRadius: 0
   needsFuel: 0
+  PollutionToAdd: 0
+  myPartical: {fileID: 0}
+  myAnimator: {fileID: 0}
 --- !u!135 &135044170456224400
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -363,6 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4290107115391300}
   - component: {fileID: 135558997321616132}
+  - component: {fileID: 114984131841374704}
   m_Layer: 0
   m_Name: Interaction
   m_TagString: Interactable
@@ -1192,7 +1193,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875528793891688}
-  m_Mesh: {fileID: 4300006, guid: 055d32e9308430c42868af2c5b72aea9, type: 3}
+  m_Mesh: {fileID: 4300006, guid: d5333166124394f4494ef5738af606a2, type: 3}
 --- !u!33 &33667257393473032
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1492,6 +1493,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1.646}
   m_Center: {x: 0, y: -1.39, z: 0.8060001}
+--- !u!114 &114984131841374704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707974365063860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: Wind GrindStone
+  machineImage: {fileID: 21300000, guid: b97c91e8b348f3f4ebdc11f5c82182cd, type: 3}
+  isTurnedOn: 0
+  StartText: Start
+  stopText: Stop
+  validItems:
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  validFuelItems: []
+  craftSlots: []
+  productSlots: []
+  craftFuelSlots: []
+  productFuelSlots: []
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 0
+  drysGround: 0
+  dryRadius: 0
+  burnsGround: 0
+  burnRadius: 0
+  needsFuel: 0
+  PollutionToAdd: 0
+  myPartical: {fileID: 0}
+  myAnimator: {fileID: 0}
 --- !u!135 &135558997321616132
 SphereCollider:
   m_ObjectHideFlags: 1

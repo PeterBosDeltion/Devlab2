@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800861738870112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 171.9373, y: 21.448975, z: 201.4596}
+  m_LocalPosition: {x: 171.9373, y: 20.678974, z: 201.4596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4014282790672350}
@@ -270,7 +270,7 @@ MonoBehaviour:
     tileName: 
   - state: 6
     tex: {fileID: 2100000, guid: ed638012c7134a049a44ceb3e9e7193f, type: 2}
-    groundSprite: {fileID: 21300000, guid: 70a77abda853dd941a0c8debf1de9b04, type: 3}
+    groundSprite: {fileID: 21300000, guid: a221f4dd71488c84b8fe5a9d4ee9198c, type: 3}
     description: Dried Ground
     tileName: 
   edgeOffset: 1
@@ -332,7 +332,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    amountToSpawn: 50
+    amountToSpawn: 200
     objectToSpawn: {fileID: 1841819899240448, guid: 0adbc8ef1a572be4eb9e9648bce2ab89,
       type: 2}
     x: 0
@@ -360,21 +360,21 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    amountToSpawn: 50
+    amountToSpawn: 200
     objectToSpawn: {fileID: 1401980967065580, guid: d51e2438f996ad449a7104df4e59092e,
       type: 2}
     x: 0
     y: 1
     z: 0
   - spawnedObjects: []
-    amountToSpawn: 25
+    amountToSpawn: 200
     objectToSpawn: {fileID: 1436076333635662, guid: 21e3b10c77bf09d43865a015506b0e8b,
       type: 2}
     x: 0
     y: 1
     z: 0
   - spawnedObjects: []
-    amountToSpawn: 25
+    amountToSpawn: 200
     objectToSpawn: {fileID: 1852902008856240, guid: 939e22a5f2c5fb043b2033662e223875,
       type: 2}
     x: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
     autoExpand: 1
     startSize: 5
   - poolTag: Cabin Display
-    prefab: {fileID: 1612941149297684, guid: da869b8a7ebfff940bf82447046fc044, type: 2}
+    prefab: {fileID: 1366650430347356, guid: 382574b101af40746ae4f8a96baaaaa4, type: 2}
     autoExpand: 0
     startSize: 1
   - poolTag: Corn
@@ -490,6 +490,14 @@ MonoBehaviour:
     startSize: 3
   - poolTag: Oven Display
     prefab: {fileID: 1777574413600906, guid: 97b49a4d13992994f81b5ccb6d18c52e, type: 2}
+    autoExpand: 0
+    startSize: 1
+  - poolTag: WindMill
+    prefab: {fileID: 1271727131439908, guid: f0db1e4707383724eb942e48e6ed1753, type: 2}
+    autoExpand: 0
+    startSize: 1
+  - poolTag: WindMill Display
+    prefab: {fileID: 1989944702835348, guid: 0fbbff9860fe80643bb800cf9afa4ae8, type: 2}
     autoExpand: 0
     startSize: 1
 --- !u!114 &114760496888396196

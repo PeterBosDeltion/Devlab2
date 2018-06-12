@@ -31,9 +31,9 @@ public class Resource : MonoBehaviour {
                 int itemsInInv = 0;
                 foreach (Slot s in Inventory.Instance.theInventory)
                 {
-                    if(s.myItem == null)
+                    if(s.myItem == null && Inventory.Instance.AddItem(myResource))
                     {
-                        Inventory.Instance.AddItem(myResource); //Uncomment when there is inventory in scene pl0x
+                        //Inventory.Instance.AddItem(myResource); //Uncomment when there is inventory in scene pl0x
                         break;
                     }
                     else

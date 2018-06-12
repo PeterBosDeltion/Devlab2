@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -18538,13 +18538,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: edf711441da8c428bae528686532e5e4, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
 --- !u!222 &1720291213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20883,6 +20883,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: toSpawnList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4699845015043270, guid: b87454b98958af04eaaa102b71fb32ae, type: 2}
       propertyPath: m_LocalPosition.x
       value: 171.9373
@@ -20956,6 +20961,57 @@ Prefab:
       value: 
       objectReference: {fileID: 1705400395809640, guid: 146c24a3ab82c3d48998d629aabbabfb,
         type: 2}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[0].tileName
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[1].tileName
+      value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[2].tileName
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[3].tileName
+      value: Burned Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[4].tileName
+      value: Furtile Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[5].tileName
+      value: Dried Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: pollutionImage
+      value: 
+      objectReference: {fileID: 1720291212}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: toSpawnList.Array.data[4].amountToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: toSpawnList.Array.data[4].objectToSpawn
+      value: 
+      objectReference: {fileID: 1852902008856240, guid: 939e22a5f2c5fb043b2033662e223875,
+        type: 2}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: toSpawnList.Array.data[4].y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b87454b98958af04eaaa102b71fb32ae, type: 2}
   m_IsPrefabParent: 0

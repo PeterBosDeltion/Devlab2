@@ -160,7 +160,9 @@ public class CraftMachine : Machine {
 
         while (mySlot.fillImage.fillAmount >= 0.01f) {
             if (isTurnedOn == true) {
+                EcoManager.instance.AddPollution(Mathf.RoundToInt(PollutionToAdd * (ttimer / myResipe.timeToConvert)));
                 ttimer -= Time.deltaTime;
+                EcoManager.instance.AddPollution(-Mathf.RoundToInt(PollutionToAdd * (ttimer / myResipe.timeToConvert)));
                 if (Interactor.instance.myCraftingMachine == this) {
                     if (ttimer <= 0.01f) {
                         mySlot.fillImage.fillAmount = 0;

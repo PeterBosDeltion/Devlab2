@@ -6,13 +6,9 @@ public class DisplayBuild : MonoBehaviour {
     public BoxCollider myCollider;
 
     void OnEnable() {
-        if(Builder.instance != null)
-        {
-            if (Builder.instance.displayCollider != null)
-            {
-                Builder.instance.displayCollider = myCollider;
-            }
+        if (Builder.instance != null) {
+            Builder.instance.displayCollider = myCollider;
         }
-      
+
     }
 }

@@ -1,0 +1,72 @@
+fileFormatVersion: 2
+guid: 3f172fefc60b64e4898486f309bcb192
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: StylizedRoofTiles/StylizedRoofTiles
+    400000: StylizedRoofTiles/StylizedRoofTiles/Transform
+    2100000: mat.Stylized_Wood
+    2300000: StylizedRoofTiles/StylizedRoofTiles/MeshRenderer
+    2800000: Stylized_Wood_Base Color
+    2800002: Stylized_Wood_Normal
+    2800004: Stylized_Wood_Metallic
+    2800006: Stylized_Wood_Height
+    2800008: Stylized_Wood_AmbientOcclusion
+    3300000: StylizedRoofTiles/StylizedRoofTiles/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: StylizedRoofTiles/StylizedRoofTiles/SphereCollider
+    100100000: StylizedRoofTiles
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  mGraphInstanceData:
+  - graphLabel: Stylized_Wood
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Stylized_Wood\" label=\"\" >\n </sbspreset>\n"
+    shaderName: LightweightPipeline/Standard (Physically Based)
+    outputNames: Base Color,Normal,Metallic,Height,AmbientOcclusion
+    texturePackingList: []
+    colorSpaceList:
+    - outputName: Base Color
+      bLinear: 0
+    - outputName: Normal
+      bLinear: 1
+    - outputName: Roughness
+      bLinear: 1
+    - outputName: Metallic
+      bLinear: 1
+    - outputName: Height
+      bLinear: 1
+    - outputName: AmbientOcclusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: Standalone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    - label: iPhone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      loadBehavior: 0
+    material: {fileID: 2100000, guid: 3f172fefc60b64e4898486f309bcb192, type: 3}

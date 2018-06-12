@@ -11,10 +11,6 @@ public class AddPolution : MonoBehaviour {
     public Resource myResource;
     public Item burnedResource;
 
-    void Start() {
-        EcoManager.instance.AddPollution(pollution);
-    }
-
     void OnEnable() {
         if(EcoManager.instance != null) {
             EcoManager.instance.AddPollution(pollution);

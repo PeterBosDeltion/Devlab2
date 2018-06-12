@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EcoManager : MonoBehaviour {
     public static EcoManager instance;
     public int pollution;
+    public int basePollution;
     public int endGamePollution;
+    public Image pollutionImage;
 
     [System.Serializable]
     public enum GroundState {
@@ -17,6 +20,7 @@ public class EcoManager : MonoBehaviour {
         driedGround = 6
     }
 
+    [Header("Genorator")]
     public Tile[, ] Grid;
     GameObject[] treesInScene;
 
@@ -35,10 +39,18 @@ public class EcoManager : MonoBehaviour {
         }
 
         GenerateMap();
+
+        basePollution = pollution;
+        AddPollution(0);
     }
 
     public void AddPollution(int PollutionToAdd) {
         pollution += PollutionToAdd;
+
+        if (basePollution != 0) {
+            Debug.Log("s");
+            pollutionImage.fillAmount = pollution / basePollution;
+        }
 
         if (pollution >= endGamePollution) {
             //          ***EndGame

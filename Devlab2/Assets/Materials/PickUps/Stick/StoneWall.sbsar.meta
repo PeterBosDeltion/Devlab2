@@ -1,0 +1,84 @@
+fileFormatVersion: 2
+guid: 214e59701b5a00a49b47d44cd66a8268
+ScriptedImporter:
+  fileIDToRecycleName:
+    100000: StoneWall/StoneWall
+    400000: StoneWall/StoneWall/Transform
+    2100000: mat.Balloonatics Rocks
+    2300000: StoneWall/StoneWall/MeshRenderer
+    2800000: Balloonatics Rocks_Base Color
+    2800002: Balloonatics Rocks_Normal
+    2800004: Balloonatics Rocks_Metallic
+    2800006: Balloonatics Rocks_Height
+    2800008: Balloonatics Rocks_Ambient Occlusion
+    3300000: StoneWall/StoneWall/MeshFilter
+    11400000: sbsar
+    11400002: graph0
+    13500000: StoneWall/StoneWall/SphereCollider
+    100100000: StoneWall
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  mGraphInstanceData:
+  - graphLabel: Balloonatics Rocks
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://CartoonRocks\" label=\"\" >\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: Base Color,Normal,Metallic,Height,Ambient Occlusion
+    texturePackingList:
+    - outputName: Base Color
+      alphaSource: Base Color
+    - outputName: Normal
+      alphaSource: Normal
+    - outputName: Roughness
+      alphaSource: Roughness
+    - outputName: Metallic
+      alphaSource: Smoothness
+    - outputName: Height
+      alphaSource: Height
+    - outputName: Ambient Occlusion
+      alphaSource: Ambient Occlusion
+    colorSpaceList:
+    - outputName: Base Color
+      bLinear: 0
+    - outputName: Normal
+      bLinear: 1
+    - outputName: Roughness
+      bLinear: 1
+    - outputName: Metallic
+      bLinear: 1
+    - outputName: Height
+      bLinear: 1
+    - outputName: Ambient Occlusion
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      loadBehavior: 0
+    - label: Standalone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      loadBehavior: 0
+    - label: iPhone
+      bOverride: 0
+      bLockRatio: 1
+      bHighQuality: 0
+      textureWidth: 256
+      textureHeight: 256
+      textureFormat: 0
+      loadBehavior: 0
+    material: {instanceID: 0}

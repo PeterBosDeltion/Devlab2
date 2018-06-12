@@ -73,9 +73,14 @@ public class PlayerMovement : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 999,moveLayermask))
         {
             Vector3 lookPos = hit.point - transform.position;
-            lookPos.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+
+            if(Vector3.Distance(transform.position, hit.point) > 1.8F)
+            {
+                lookPos.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+
+            }
         }
     }
 

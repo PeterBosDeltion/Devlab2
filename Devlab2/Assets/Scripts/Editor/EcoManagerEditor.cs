@@ -5,7 +5,7 @@ using UnityEditor;
 
 [CustomEditor(typeof(EcoManager))]
 public class EcoManagerEditor : Editor {
-
+#if UNITY_EDITOR
     public EcoManager ecoMan;
 
     void OnEnable() {
@@ -22,4 +22,5 @@ public class EcoManagerEditor : Editor {
             ecoMan.DestroyMap();
         }
     }
+#endif
 }

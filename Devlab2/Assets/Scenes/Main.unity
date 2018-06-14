@@ -21012,6 +21012,11 @@ Prefab:
       propertyPath: toSpawnList.Array.data[4].y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114266430269699944, guid: b87454b98958af04eaaa102b71fb32ae,
+        type: 2}
+      propertyPath: groundTexturesInput.Array.data[2].tex
+      value: 
+      objectReference: {fileID: 2100000, guid: 99141149373e55e4a841459fe64d12ef, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b87454b98958af04eaaa102b71fb32ae, type: 2}
   m_IsPrefabParent: 0
@@ -22546,6 +22551,7 @@ MonoBehaviour:
   myType: 0
   slotAnimator: {fileID: 456162953}
   productSlot: 1
+  isChecked: 0
 --- !u!1 &2103958626
 GameObject:
   m_ObjectHideFlags: 0

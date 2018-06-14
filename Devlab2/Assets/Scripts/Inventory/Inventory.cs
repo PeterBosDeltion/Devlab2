@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Inventory : MonoBehaviour {
     public static Inventory Instance;
@@ -42,22 +42,21 @@ public class Inventory : MonoBehaviour {
     void Update() {
         CheckDropTimer();
 
-        if(currentlyDragged != null) {
+        if (currentlyDragged != null) {
             dragImage.transform.position = Input.mousePosition;
         }
 
-        if(toolBar[SelectedToolbarSlot].myItem != null) {
-            if(Input.GetButtonDown("Fire1")) {
-                if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Consumable)) {
+        if (toolBar[SelectedToolbarSlot].myItem != null) {
+            if (Input.GetButtonDown("Fire1")) {
+                if (toolBar[SelectedToolbarSlot].myItem.GetType()== typeof(Consumable)) {
                     ConsumeItem();
-                }
-                else if(toolBar[SelectedToolbarSlot].myItem.GetType() == typeof(Wearable)) {
+                } else if (toolBar[SelectedToolbarSlot].myItem.GetType()== typeof(Wearable)) {
                     EquipeItem();
                 }
             }
 
-            if(Input.GetButtonDown("DropItem")) {
-                if(toolBar[SelectedToolbarSlot].myItem.placaBle != true) {
+            if (Input.GetButtonDown("DropItem")) {
+                if (toolBar[SelectedToolbarSlot].myItem.placaBle != true) {
                     DropItem();
                 }
             }
@@ -69,19 +68,18 @@ public class Inventory : MonoBehaviour {
 
         Gather g = currentInspected.GetComponent<Gather>();
 
-        if(g != null) {
-            if(!g.beingUsed) {
+        if (g != null) {
+            if (!g.beingUsed) {
                 toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
                 Builder.instance.StopBuild();
-                if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
+                if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
                     Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
                 }
             }
-        }
-        else {
+        } else {
             toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
             Builder.instance.StopBuild();
-            if(toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
+            if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
                 Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
             }
         }
@@ -103,9 +101,9 @@ public class Inventory : MonoBehaviour {
 
     //Adds Given Item And Returns True If Posible Otherwise Returns False
     public bool AddItem(Item newItem) {
-        if(newItem != null) {
-            for(int i = 0; i < theInventory.Count; i++) {
-                if(theInventory[i].myItem == null) {
+        if (newItem != null) {
+            for (int i = 0; i < theInventory.Count; i++) {
+                if (theInventory[i].myItem == null) {
                     theInventory[i].SetItem(newItem);
                     return (true);
                 }
@@ -116,12 +114,12 @@ public class Inventory : MonoBehaviour {
 
     //Removes Given Item
     public void DropItem(Slot itemToDrop) {
-        if(itemToDrop != null && itemToDrop.myItem != null) {
+        if (itemToDrop != null && itemToDrop.myItem != null) {
             GameObject toDrop = ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Choosen Yet
             itemToDrop.RemoveItem();
             InspectorReset();
 
-            AddToDropTimer(itemToDrop.myItem.itemName,toDrop);
+            AddToDropTimer(itemToDrop.myItem.itemName, toDrop);
         }
 
     }
@@ -145,15 +143,14 @@ public class Inventory : MonoBehaviour {
 
     //Equipes Currently Inspected Item
     public void EquipeItem() {
-        for(int i = 0; i < characterSlots.Count; i++) {
-            if(characterSlots[i].myType == currentInspected.myItem.itemType) {
-                if(characterSlots[i].myItem != null) {
+        for (int i = 0; i < characterSlots.Count; i++) {
+            if (characterSlots[i].myType == currentInspected.myItem.itemType) {
+                if (characterSlots[i].myItem != null) {
                     Item localItem = characterSlots[i].myItem;
                     characterSlots[i].SetItem(currentInspected.myItem);
                     currentInspected.SetItem(localItem);
                     InspectorReset();
-                }
-                else {
+                } else {
                     characterSlots[i].SetItem(currentInspected.myItem);
                     currentInspected.RemoveItem();
                     InspectorReset();
@@ -183,13 +180,13 @@ public class Inventory : MonoBehaviour {
 
         inspectorItemImage.sprite = itemToInspect.myItem.item2D;
         inspectorItemImage.enabled = true;
-        for(int i = 0; i < buttons.Count; i++) {
+        for (int i = 0; i < buttons.Count; i++) {
             buttons[i].myButton.SetActive(false);
         }
 
-        for(int b = 0; b < itemToInspect.myItem.myButtons.Count; b++) {
-            for(int bb = 0; bb < buttons.Count; bb++) {
-                if(itemToInspect.myItem.myButtons[b] == buttons[bb].myTag) {
+        for (int b = 0; b < itemToInspect.myItem.myButtons.Count; b++) {
+            for (int bb = 0; bb < buttons.Count; bb++) {
+                if (itemToInspect.myItem.myButtons[b] == buttons[bb].myTag) {
                     buttons[bb].myButton.SetActive(true);
                     break;
                 }
@@ -199,7 +196,7 @@ public class Inventory : MonoBehaviour {
 
     //Reset The Inspector To Basic
     void InspectorReset() {
-        for(int i = 0; i < buttons.Count; i++) {
+        for (int i = 0; i < buttons.Count; i++) {
             buttons[i].myButton.SetActive(false);
         }
 
@@ -224,11 +221,11 @@ public class Inventory : MonoBehaviour {
     public CraftingSlot productSlot;
 
     void SortRecipes() {
-        for(int i = 0; i < CraftingRecipesList.Length; i++) {
+        for (int i = 0; i < CraftingRecipesList.Length; i++) {
             CraftingRecipesList[i] = new List<Recipe>();
         }
 
-        foreach(Recipe aRecipe in CraftingRecipes) {
+        foreach (Recipe aRecipe in CraftingRecipes) {
             CraftingRecipesList[aRecipe.ingredients.Count].Add(aRecipe);
         }
     }
@@ -238,19 +235,20 @@ public class Inventory : MonoBehaviour {
         productSlot.RemoveItem();
 
         int fullSlots = 0;
-        for(int r = 0; r < craftingSlots.Count; r++) {
-            if(craftingSlots[r].myItem != null) {
+        for (int r = 0; r < craftingSlots.Count; r++) {
+            if (craftingSlots[r].myItem != null) {
                 fullSlots++;
             }
         }
 
-        for(int rr = 0; rr < CraftingRecipesList[fullSlots].Count; rr++) {
+        for (int rr = 0; rr < CraftingRecipesList[fullSlots].Count; rr++) {
             int k = 0;
-            for(int r = 0; r < CraftingRecipesList[fullSlots][rr].ingredients.Count; r++) {
-                for(int ii = 0; ii < craftingSlots.Count; ii++) {
-                    if(craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r]) {
+            for (int r = 0; r < CraftingRecipesList[fullSlots][rr].ingredients.Count; r++) {
+                for (int ii = 0; ii < craftingSlots.Count; ii++) {
+                    if (craftingSlots[ii].isChecked == false && craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r]) {
                         k++;
-                        if(k == fullSlots) {
+                        craftingSlots[ii].isChecked = true;
+                        if (k == fullSlots + 1) {
                             productSlot.SetItem(Instantiate(CraftingRecipesList[fullSlots][rr].product));
                             return;
                         }
@@ -259,14 +257,18 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
+
+        for (int i = 0; i < craftingSlots.Count; i++) {
+            craftingSlots[i].isChecked = false;
+        }
     }
 
     //Crafts Product
     public void CraftProduct() {
-        if(productSlot.myItem != null && mouseOver != null) {
-            if(mouseOver.myItem == null) {
-                for(int c = 0; c < craftingSlots.Count; c++) {
-                    if(craftingSlots[c].myItem != null) {
+        if (productSlot.myItem != null && mouseOver != null) {
+            if (mouseOver.myItem == null) {
+                for (int c = 0; c < craftingSlots.Count; c++) {
+                    if (craftingSlots[c].myItem != null) {
                         craftingSlots[c].RemoveItem();
                     }
                 }
@@ -294,17 +296,16 @@ public class Inventory : MonoBehaviour {
     void CheckDropTimer() {
         currentDropTimer += Time.deltaTime;
 
-        if(currentDropTimer >= dropTimer) {
+        if (currentDropTimer >= dropTimer) {
             currentDropTimer = 0;
-            if(dropStage == false) {
-                for(int i = 0; i < stageOne.Count; i++) {
+            if (dropStage == false) {
+                for (int i = 0; i < stageOne.Count; i++) {
                     ObjectPooler.instance.AddToPool(stageOne[i].itemName, stageOne[i].itemObject);
                 }
 
                 stageOne.Clear();
-            }
-            else {
-                for(int i = 0; i < stageTwo.Count; i++) {
+            } else {
+                for (int i = 0; i < stageTwo.Count; i++) {
                     ObjectPooler.instance.AddToPool(stageTwo[i].itemName, stageTwo[i].itemObject);
                 }
 
@@ -314,16 +315,15 @@ public class Inventory : MonoBehaviour {
     }
 
     void AddToDropTimer(string itemName, GameObject toAdd) {
-        if(toAdd != null) {
+        if (toAdd != null) {
             Todrop newToDrop;
 
             newToDrop.itemName = itemName;
             newToDrop.itemObject = toAdd;
 
-            if(dropStage == false) {
+            if (dropStage == false) {
                 stageOne.Add(newToDrop);
-            }
-            else {
+            } else {
                 stageTwo.Add(newToDrop);
             }
         }

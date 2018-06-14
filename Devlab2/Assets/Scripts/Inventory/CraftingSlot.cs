@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CraftingSlot : Slot {
     public Animator slotAnimator;
     public bool productSlot;
+    public bool isChecked;
 
     public override void MouseEnter() {
         slotAnimator.SetBool("Enter", true);

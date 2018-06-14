@@ -48,7 +48,6 @@ public class EcoManager : MonoBehaviour {
         pollution += PollutionToAdd;
 
         if (basePollution != 0) {
-            Debug.Log("s");
             pollutionImage.fillAmount = pollution / basePollution;
         }
 

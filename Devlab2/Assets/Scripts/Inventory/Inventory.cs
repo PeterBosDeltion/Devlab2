@@ -248,18 +248,21 @@ public class Inventory : MonoBehaviour {
                     if (craftingSlots[ii].isChecked == false && craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r]) {
                         k++;
                         craftingSlots[ii].isChecked = true;
-                        if (k == fullSlots + 1) {
+
+                        if (k == fullSlots) {
                             productSlot.SetItem(Instantiate(CraftingRecipesList[fullSlots][rr].product));
+                            for (int i = 0; i < craftingSlots.Count; i++) {
+                                craftingSlots[i].isChecked = false;
+                            }
                             return;
                         }
                         break;
                     }
                 }
+                for (int i = 0; i < craftingSlots.Count; i++) {
+                    craftingSlots[i].isChecked = false;
+                }
             }
-        }
-
-        for (int i = 0; i < craftingSlots.Count; i++) {
-            craftingSlots[i].isChecked = false;
         }
     }
 

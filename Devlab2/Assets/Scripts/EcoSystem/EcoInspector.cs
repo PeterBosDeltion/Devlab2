@@ -14,6 +14,7 @@ public class EcoInspector : MonoBehaviour {
     public TextMeshProUGUI description;
     public TextMeshProUGUI reason;
     public TextMeshProUGUI tileName;
+    public
     int currentlySelected;
 
     private void Awake() {

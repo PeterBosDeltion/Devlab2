@@ -16,10 +16,18 @@ public class CraftMachine : Machine {
     public Item burnSlot;
     public Resipe burnSlotResipe;
     public int coolDownTime;
+    public int dryChance;
     public bool drysGround;
     public int dryRadius;
+    public string dryReason;
+    public string dryReason1;
+    public string dryReason2;
+    public int burnChance;
     public bool burnsGround;
     public int burnRadius;
+    public string burnReason;
+    public string burnReason1;
+    public string burnReason2;
     public bool needsFuel;
     public int PollutionToAdd;
     public ParticleSystem myPartical;
@@ -32,6 +40,7 @@ public class CraftMachine : Machine {
 
     public void TurnOff() {
         isTurnedOn = false;
+        StopCoroutine("EcoEffect");
     }
 
     public void CheckResipe() {
@@ -157,6 +166,7 @@ public class CraftMachine : Machine {
     public IEnumerator BurnProcessing(Resipe myResipe, MachineSlot mySlot) {
         float ttimer = myResipe.timeToConvert;
         mySlot.fillImage.fillAmount = 1;
+        StartCoroutine(EcoEffect(myResipe.timeToConvert / 2));
 
         while (mySlot.fillImage.fillAmount >= 0.01f) {
             if (isTurnedOn == true) {
@@ -189,6 +199,24 @@ public class CraftMachine : Machine {
             }
         }
         CheckResipe();
+    }
+
+    IEnumerator EcoEffect(float timeToWait) {
+        yield return new WaitForSeconds(timeToWait);
+        BurnGround();
+        DrysGround();
+    }
+
+    void BurnGround() {
+        if (burnsGround && Random.Range(0, 100) <= burnChance) {
+            EcoManager.instance.BurnGrounds(transform.position, burnRadius, burnReason, burnReason1, burnReason2);
+        }
+    }
+
+    void DrysGround() {
+        if (drysGround && Random.Range(0, 100) <= dryChance) {
+            EcoManager.instance.DryGrounds(transform.position, dryRadius, dryReason, dryReason1, dryReason2);
+        }
     }
 
     void OnTriggerStay(Collider other) {

@@ -99,7 +99,7 @@ public class Inventory : MonoBehaviour {
         dragImage.enabled = false;
     }
 
-    //Adds Given Item And Returns True If Posible Otherwise Returns False
+    //Adds Given Item And Returns True If Possible Otherwise Returns False
     public bool AddItem(Item newItem) {
         if (newItem != null) {
             for (int i = 0; i < theInventory.Count; i++) {
@@ -115,11 +115,11 @@ public class Inventory : MonoBehaviour {
     //Removes Given Item
     public void DropItem(Slot itemToDrop) {
         if (itemToDrop != null && itemToDrop.myItem != null) {
-            GameObject toDrop = ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Choosen Yet
+            GameObject ToDrop = ObjectPooler.instance.GetFromPool(itemToDrop.myItem.itemName, new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z), Quaternion.Euler(new Vector3())); //No Place Chosen Yet
             itemToDrop.RemoveItem();
             InspectorReset();
 
-            AddToDropTimer(itemToDrop.myItem.itemName, toDrop);
+            AddToDropTimer(itemToDrop.myItem.itemName, ToDrop);
         }
 
     }
@@ -141,7 +141,7 @@ public class Inventory : MonoBehaviour {
         DropItem(currentInspected);
     }
 
-    //Equipes Currently Inspected Item
+    //Equips Currently Inspected Item
     public void EquipeItem() {
         for (int i = 0; i < characterSlots.Count; i++) {
             if (characterSlots[i].myType == currentInspected.myItem.itemType) {
@@ -290,8 +290,8 @@ public class Inventory : MonoBehaviour {
     #endregion
 
     #region DropTimer
-    List<Todrop> stageOne = new List<Todrop>();
-    List<Todrop> stageTwo = new List<Todrop>();
+    List<ToDrop> stageOne = new List<ToDrop>();
+    List<ToDrop> stageTwo = new List<ToDrop>();
     bool dropStage;
     float currentDropTimer;
     public float dropTimer;
@@ -319,7 +319,7 @@ public class Inventory : MonoBehaviour {
 
     void AddToDropTimer(string itemName, GameObject toAdd) {
         if (toAdd != null) {
-            Todrop newToDrop;
+            ToDrop newToDrop;
 
             newToDrop.itemName = itemName;
             newToDrop.itemObject = toAdd;
@@ -332,7 +332,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    struct Todrop {
+    struct ToDrop {
         public string itemName;
         public GameObject itemObject;
     }

@@ -20,6 +20,6 @@ public class ThisTile : MonoBehaviour {
     }
 
     void Inspect() {
-        EcoInspector.instance.ChangeInspectorUI(EcoManager.instance.Grid[x,y]);
+        EcoInspector.instance.ChangeInspectorUI(EcoManager.instance.Grid[x].myArray[y]);
     }
 }

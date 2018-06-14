@@ -490,10 +490,18 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 15
+  dryChance: 100
   drysGround: 1
   dryRadius: 3
+  dryReason: 
+  dryReason1: 
+  dryReason2: 
+  burnChance: 100
   burnsGround: 1
   burnRadius: 2
+  burnReason: 
+  burnReason1: 
+  burnReason2: 
   needsFuel: 1
   PollutionToAdd: 15
   myPartical: {fileID: 0}

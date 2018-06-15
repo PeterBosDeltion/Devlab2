@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4684237236812784}
-  - component: {fileID: 65280466022748422}
   - component: {fileID: 114237799288054222}
   - component: {fileID: 208621284488559578}
+  - component: {fileID: 136288693096244368}
   m_Layer: 0
   m_Name: RockPrefab BigBoy
   m_TagString: Resource
@@ -115,18 +115,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469063121928728}
   m_Mesh: {fileID: 4300000, guid: d164b76799270bf4f86220bd1c0e3269, type: 3}
---- !u!65 &65280466022748422
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1372311025915138}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6378436, y: 9.789925, z: 2.4854279}
-  m_Center: {x: 0.16425061, y: 4.534562, z: -0.14158249}
 --- !u!114 &114237799288054222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +132,19 @@ MonoBehaviour:
   berries: 0
   berryChild: {fileID: 0}
   berryGrowTime: 7
+--- !u!136 &136288693096244368
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372311025915138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.2313955
+  m_Height: 11.936322
+  m_Direction: 1
+  m_Center: {x: 0.13741374, y: 4.643679, z: -0.053192377}
 --- !u!208 &208621284488559578
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -152,10 +153,10 @@ NavMeshObstacle:
   m_GameObject: {fileID: 1372311025915138}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.318922, y: 4.8949623, z: 1.242714}
+  m_Shape: 0
+  m_Extents: {x: 1.231395, y: 5.96816, z: 1.231395}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: 0.1642506, y: 4.534562, z: -0.1415825}
+  m_Center: {x: 0.1374137, y: 4.643679, z: -0.05319238}
   m_TimeToStationary: 0.1

@@ -119,10 +119,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4371098178929492}
-  - component: {fileID: 65306670071940118}
   - component: {fileID: 114275005379462396}
   - component: {fileID: 208134261063240720}
   - component: {fileID: 114896503432782662}
+  - component: {fileID: 136347876891436226}
   m_Layer: 0
   m_Name: Normal Tree
   m_TagString: Resource
@@ -437,18 +437,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729804430301118}
   m_Mesh: {fileID: 4300008, guid: 84aeb63f621cf8c429d666e8da4a7b09, type: 3}
---- !u!65 &65306670071940118
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841819899240448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 6.0000005, z: 1}
-  m_Center: {x: 0.55, y: 3.0000002, z: -0.55}
 --- !u!114 &114275005379462396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,6 +466,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pollution: -2
+  myPartical: {fileID: 0}
+  canBurn: 0
+  burnMin: 0
+  burnMax: 0
+  myResource: {fileID: 0}
+  burnedResource: {fileID: 0}
+--- !u!136 &136347876891436226
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841819899240448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.31633478
+  m_Height: 6.180215
+  m_Direction: 1
+  m_Center: {x: 0.54380745, y: 2.3638039, z: -0.5542769}
 --- !u!208 &208134261063240720
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -486,10 +493,10 @@ NavMeshObstacle:
   m_GameObject: {fileID: 1841819899240448}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 3.0000002, z: 0.5}
+  m_Shape: 0
+  m_Extents: {x: 0.3163348, y: 3.0901074, z: 0.3163348}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: 0.55, y: 3.0000002, z: -0.55}
+  m_Center: {x: 0.5438074, y: 2.363804, z: -0.5542769}
   m_TimeToStationary: 0.1

@@ -2240,7 +2240,7 @@ MonoBehaviour:
   - {fileID: 1463639666595784}
   - {fileID: 1130067661389664}
   - {fileID: 1297787333447132}
-  currentWeapon: {fileID: 0}
+  currentWeapon: {fileID: 114965038408950832}
   hungerInterval: 5
   thirstInterval: 5
   ateRecently: 0
@@ -2291,10 +2291,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.47293854
-  m_Height: 2.7862663
+  m_Radius: 0.29988098
+  m_Height: 2.5747304
   m_Direction: 1
-  m_Center: {x: 0, y: 1.3226337, z: 0.009605408}
+  m_Center: {x: 0, y: 1.2922351, z: 0.0017242432}
 --- !u!137 &137721036110535148
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2382,7 +2382,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1543637127848212}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2392,6 +2392,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: -0.06
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

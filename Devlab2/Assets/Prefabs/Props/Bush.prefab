@@ -56,7 +56,9 @@ GameObject:
   - component: {fileID: 208605688499824152}
   - component: {fileID: 114881576474657784}
   - component: {fileID: 114673482409085122}
-  - component: {fileID: 65008428374395836}
+  - component: {fileID: 136647043298748398}
+  - component: {fileID: 136089117686198774}
+  - component: {fileID: 136500162705021774}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Resource
@@ -302,7 +304,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401980967065580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 419.13214, y: -184.14922, z: -159.15799}
+  m_LocalPosition: {x: 12.960001, y: 0.77500004, z: 24.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4750634320410746}
@@ -729,18 +731,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736851537638522}
   m_Mesh: {fileID: 4300000, guid: bcb2a18419ac20b44acadaf15892ee2b, type: 3}
---- !u!65 &65008428374395836
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401980967065580}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.8, y: 2, z: 2.4}
-  m_Center: {x: 0.01, y: 1, z: 0}
 --- !u!114 &114673482409085122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -776,6 +766,45 @@ MonoBehaviour:
   berries: 1
   berryChild: {fileID: 1583724814002044}
   berryGrowTime: 15
+--- !u!136 &136089117686198774
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401980967065580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.85384727
+  m_Height: 7.5067387
+  m_Direction: 1
+  m_Center: {x: 0.5702765, y: 2.7724128, z: -0.05840206}
+--- !u!136 &136500162705021774
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401980967065580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6339803
+  m_Height: 7.021349
+  m_Direction: 1
+  m_Center: {x: -0.6080661, y: 2.6946173, z: -0.24047852}
+--- !u!136 &136647043298748398
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401980967065580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5893202
+  m_Height: 7.2139697
+  m_Direction: 1
+  m_Center: {x: -0.24734926, y: 2.8458946, z: 0.55653477}
 --- !u!208 &208605688499824152
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -784,10 +813,10 @@ NavMeshObstacle:
   m_GameObject: {fileID: 1401980967065580}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.4, y: 1, z: 1.2}
+  m_Shape: 0
+  m_Extents: {x: 1.19, y: 4.2, z: 1.19}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: 0.01, y: 1, z: 0}
+  m_Center: {x: 0, y: 2.82, z: 0}
   m_TimeToStationary: 0.1

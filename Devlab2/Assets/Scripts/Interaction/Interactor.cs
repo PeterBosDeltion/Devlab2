@@ -60,10 +60,37 @@ public class Interactor : MonoBehaviour {
             crafter.SetActive(true);
             crafterMachineUseImage.sprite = myMachine.machineImage;
             startText.text = myCraftingMachine.StartText;
-            if(myCraftingMachine.needsFuel == true){
-                fuelForCrafting.SetActive(true);
+
+            for (int i = 0; i < craftSlots.Count; i++) {
+                if (myCraftingMachine.craftSlots[craftSlots[i].myIndex] != null) {
+                    craftSlots[i].SetItem(myCraftingMachine.craftSlots[craftSlots[i].myIndex]);
+                }
             }
-            else{
+
+            for (int i = 0; i < productSlots.Count; i++) {
+                if (myCraftingMachine.productSlots[productSlots[i].myIndex] != null) {
+                    productSlots[i].SetItem(myCraftingMachine.productSlots[productSlots[i].myIndex]);
+                }
+            }
+
+            if (myCraftingMachine.needsFuel == true) {
+                for (int i = 0; i < craftFuelSlots.Count; i++) {
+                    if (myCraftingMachine.craftFuelSlots[craftFuelSlots[i].myIndex] != null) {
+                        craftFuelSlots[i].SetItem(myCraftingMachine.craftFuelSlots[craftFuelSlots[i].myIndex]);
+                    }
+                }
+
+                burnSlot.SetItem(myCraftingMachine.burnSlot);
+                burnSlot.fillImage.fillAmount = 1;
+
+                for (int i = 0; i < productFuelSlots.Count; i++) {
+                    if (myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex] != null) {
+                        productFuelSlots[i].SetItem(myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex]);
+                        productFuelSlots[i].fillImage.fillAmount = 1;
+                    }
+                }
+                fuelForCrafting.SetActive(true);
+            } else {
                 fuelForCrafting.SetActive(false);
             }
         } else {
@@ -84,10 +111,10 @@ public class Interactor : MonoBehaviour {
         if (myCraftingMachine != null) {
             if (myCraftingMachine.isTurnedOn == true) {
                 myCraftingMachine.TurnOff();
-            startText.text = myCraftingMachine.StartText;
+                startText.text = myCraftingMachine.StartText;
             } else {
                 myCraftingMachine.TurnOn();
-            startText.text = myCraftingMachine.stopText;
+                startText.text = myCraftingMachine.stopText;
             }
         }
     }

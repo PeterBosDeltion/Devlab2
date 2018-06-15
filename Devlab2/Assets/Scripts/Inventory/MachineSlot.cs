@@ -36,19 +36,23 @@ public class MachineSlot : Slot {
 
     public override void SetItem(Item newItem) {
         base.SetItem(newItem);
-
-        if (productSlot == true) {
-            if (fuelSlot == true) {
-                Interactor.instance.myCraftingMachine.productFuelSlots[myIndex] = myItem;
-            }
-        } else {
-            if (fuelSlot == true) {
-                Interactor.instance.myCraftingMachine.craftFuelSlots[myIndex] = myItem;
+        if (newItem != null) {
+            if (productSlot == true) {
+                if (fuelSlot == true) {
+                    Interactor.instance.myCraftingMachine.productFuelSlots[myIndex] = myItem;
+                }
             } else {
-                Interactor.instance.myCraftingMachine.craftSlots[myIndex] = myItem;
+                if (fuelSlot == true) {
+                    Interactor.instance.myCraftingMachine.craftFuelSlots[myIndex] = myItem;
+                } else {
+                    Interactor.instance.myCraftingMachine.craftSlots[myIndex] = myItem;
+                }
             }
+            Interactor.instance.myCraftingMachine.CheckResipe();
+        } else {
+            RemoveItem();
         }
-        Interactor.instance.myCraftingMachine.CheckResipe();
+
     }
 
     public override void StopItemDrag() {

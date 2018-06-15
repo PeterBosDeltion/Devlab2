@@ -773,8 +773,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271727131439908}
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 25.83, y: 0.77000237, z: -3.45}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 25.83, y: 0.77000237, z: -8.43}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4485035518589534}
   - {fileID: 4506408659695568}
@@ -1524,10 +1524,18 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 0
+  dryChance: 0
   drysGround: 0
   dryRadius: 0
+  dryReason: 
+  dryReason1: 
+  dryReason2: 
+  burnChance: 0
   burnsGround: 0
   burnRadius: 0
+  burnReason: 
+  burnReason1: 
+  burnReason2: 
   needsFuel: 0
   PollutionToAdd: 0
   myPartical: {fileID: 0}

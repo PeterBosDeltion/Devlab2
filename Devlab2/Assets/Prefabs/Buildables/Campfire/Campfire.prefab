@@ -496,12 +496,12 @@ MonoBehaviour:
   dryReason: 
   dryReason1: 
   dryReason2: 
-  burnChance: 100
+  burnChance: 10
   burnsGround: 1
   burnRadius: 2
-  burnReason: 
-  burnReason1: 
-  burnReason2: 
+  burnReason: A Campfire Nearby Was So Hot It Burbed This Tile.
+  burnReason1: A Campfire Nearby Was So Hot It Dried This Land.
+  burnReason2: The Ground Got Dried Out And Became Less Furtile.
   needsFuel: 1
   PollutionToAdd: 15
   myPartical: {fileID: 0}

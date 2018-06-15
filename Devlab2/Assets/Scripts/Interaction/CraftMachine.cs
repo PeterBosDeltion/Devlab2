@@ -186,11 +186,13 @@ public class CraftMachine : Machine {
 
         for (int x = 0; x < productFuelSlots.Count; x++) {
             if (productFuelSlots[x] == null) {
-                MachineSlot m = Interactor.instance.GetMachineSlot(true, x);
                 productFuelSlots[x] = Instantiate(burnSlotResipe.product);
-                m.SetItem(burnSlotResipe.product);
+                MachineSlot m = Interactor.instance.GetMachineSlot(true, x);
+                if (Interactor.instance.myCraftingMachine == this) {
+                    m.SetItem(burnSlotResipe.product);
+                    Interactor.instance.burnSlot.RemoveItem();
+                }
                 StartCoroutine(Processing(m));
-                Interactor.instance.burnSlot.RemoveItem();
                 burnSlot = null;
                 mySlot.fillImage.fillAmount = 1;
                 break;

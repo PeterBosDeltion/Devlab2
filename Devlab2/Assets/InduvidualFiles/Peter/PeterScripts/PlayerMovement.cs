@@ -11,11 +11,20 @@ public class PlayerMovement : MonoBehaviour {
     private NavMeshAgent agent;
     public LayerMask moveLayermask;
 
+    public bool walking;
+
+    public Animator anim;
+
     private bool mouseDown;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+
+        if(anim == null)
+        {
+            Debug.LogError("Player animator is null");
+        }
 	}
 
 	// Update is called once per frame
@@ -27,6 +36,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Move()
     {
+        
         if (Input.GetMouseButton(1))
         {
             mouseDown = true;
@@ -42,24 +52,40 @@ public class PlayerMovement : MonoBehaviour {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
+         
             transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
             transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
+
+            if (x != 0 || y != 0)
+            {
+                if (!walking)
+                {
+                    walking = true;
+                    anim.SetTrigger("Player_Walk");
+                }
+
+                agent.updatePosition = false;
+            }
+            else
+            {
+                if (walking)
+                {
+                    walking = false;
+                    anim.SetTrigger("Player_Walk");
+
+                }
+            }
+
+            if(Input.GetKeyUp("w") || Input.GetKeyUp("a" )|| Input.GetKeyUp("s") || Input.GetKeyUp("d"))
+            {
+                anim.ResetTrigger("Player_Walk");
+            }
+        }
 
             if(agent.nextPosition != transform.position)
             {
                 agent.nextPosition = transform.position; //Updates the agents position to the objects position
             }
-
-            if (x != 0 || y != 0)
-            {
-                agent.updatePosition = false;
-            }
-
-        }
-
-
-
-
 
 
     }

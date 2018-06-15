@@ -6,15 +6,17 @@ public class Gather : Weapon {
 
     public Equippable tool;
 
-    public Animator anim;
+
+    public PlayerMovement playerMov;
 
     public bool waiting;
+    public bool use;
 	// Use this for initialization
 	void Start () {
 
+        playerMov = FindObjectOfType<PlayerMovement>();
         tool = equippable;
         Inventory.itemInHand = tool;
-        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -29,7 +31,7 @@ public class Gather : Weapon {
     {
         //Debug.Log(col.name);
 
-        if (anim.GetBool("using"))
+        if (use)
         {
             if (col.transform.tag == "Resource")
             {
@@ -46,7 +48,19 @@ public class Gather : Weapon {
        
         if (!waiting)
         {
-            anim.SetBool("using", true);
+            use = true;
+
+            if(Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
+            {
+                playerMov.anim.ResetTrigger("Player_AxeStop");
+                playerMov.anim.SetTrigger("Player_Axe");
+                playerMov.anim.SetBool("Player_AxeSwing", true);
+            }
+            else
+            {
+                playerMov.anim.SetTrigger("Player_Grab");
+            }
+          
             beingUsed = true;
             StartCoroutine(WaitForAnim());
         }
@@ -56,8 +70,19 @@ public class Gather : Weapon {
     private IEnumerator WaitForAnim()
     {
         waiting = true;
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        anim.SetBool("using", false);
+        yield return new WaitForSeconds(playerMov.anim.GetCurrentAnimatorStateInfo(0).length);
+        use = false;
+        if (Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
+        {
+            playerMov.anim.SetBool("Player_AxeSwing", false);
+            playerMov.anim.SetTrigger("Player_AxeStop");
+            playerMov.anim.ResetTrigger("Player_Axe");
+        }
+        else
+        {
+            playerMov.anim.ResetTrigger("Player_Grab");
+        }
+          
         beingUsed = false;
         waiting = false;
     }

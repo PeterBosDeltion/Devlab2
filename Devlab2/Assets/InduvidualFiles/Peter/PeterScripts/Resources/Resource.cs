@@ -23,7 +23,7 @@ public class Resource : MonoBehaviour {
             }
             else
             {
-                g.anim.SetBool("using", false);
+                g.use = false;
                 g.beingUsed = false;
                 g.waiting = false;
 

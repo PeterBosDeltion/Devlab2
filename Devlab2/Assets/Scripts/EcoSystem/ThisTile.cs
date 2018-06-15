@@ -18,6 +18,16 @@ public class ThisTile : MonoBehaviour {
                 }
             }
         }
+        else
+        {
+            foreach (Transform t in transform)
+            {
+                if (t.name == "WaterCollider")
+                {
+                    t.transform.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     void OnMouseDown(){

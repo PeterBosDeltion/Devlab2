@@ -12,22 +12,36 @@ public class SettingsMenu : MonoBehaviour {
     public bool inSettings;
     public GameObject settingsMenu;
 
+    public GameObject mainMenu;
+
+    public Camera mainCam = Camera.main;
+    public Camera settingsCam;
+    public Camera startCam;
+
     Resolution[] resolutions;
     private void Start()
     {
         LoadResolutions();
+        settingsCam.enabled = false;
+        startCam.enabled = false;
     }
 
     public void LoadSettings()
     {
         if (!inSettings)
         {
+            mainMenu.SetActive(false);
             settingsMenu.SetActive(true);
+            settingsCam.enabled = true;
+            mainCam.enabled = false;
             inSettings = true;
         }
         else
         {
             settingsMenu.SetActive(false);
+            mainCam.enabled = true;
+            mainMenu.SetActive(true);
+            settingsCam.enabled = false;
             inSettings = false;
         }
     }

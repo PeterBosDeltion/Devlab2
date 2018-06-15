@@ -7,9 +7,14 @@ public class SceneLoader : MonoBehaviour {
 
     public GameObject startPanel;
     public TMP_Dropdown sizeDropdown;
+    public SettingsMenu sm;
 
     public void StartTheGame()
     {
+        sm.mainMenu.SetActive(false);
+        sm.mainCam.enabled = false;
+        sm.settingsCam.enabled = false;
+        sm.startCam.enabled = true;
         startPanel.SetActive(true);
         GameManager.worldWidth = 128;
         GameManager.worldHeight = 128;

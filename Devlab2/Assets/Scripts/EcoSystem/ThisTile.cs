@@ -10,6 +10,13 @@ public class ThisTile : MonoBehaviour {
     private void Start() {
         if(gameObject.layer == LayerMask.NameToLayer("Water")) {
             myObstavle.enabled = true;
+            foreach (Transform t in transform)
+            {
+                if(t.name == "WaterCollider")
+                {
+                    t.transform.gameObject.SetActive(true);
+                }
+            }
         }
     }
 

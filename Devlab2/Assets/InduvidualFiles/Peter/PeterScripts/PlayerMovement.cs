@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
 
             if(Input.GetKeyUp("w") || Input.GetKeyUp("a" )|| Input.GetKeyUp("s") || Input.GetKeyUp("d"))
             {
-                anim.ResetTrigger("Player_Walk");
+                anim.SetTrigger("Player_Walk");
             }
         }
 

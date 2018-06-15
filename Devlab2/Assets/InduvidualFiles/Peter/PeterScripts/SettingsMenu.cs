@@ -32,16 +32,16 @@ public class SettingsMenu : MonoBehaviour {
         {
             mainMenu.SetActive(false);
             settingsMenu.SetActive(true);
-            settingsCam.enabled = true;
             mainCam.enabled = false;
+            settingsCam.enabled = true;
             inSettings = true;
         }
         else
         {
             settingsMenu.SetActive(false);
-            mainCam.enabled = true;
             mainMenu.SetActive(true);
             settingsCam.enabled = false;
+            mainCam.enabled = true;
             inSettings = false;
         }
     }

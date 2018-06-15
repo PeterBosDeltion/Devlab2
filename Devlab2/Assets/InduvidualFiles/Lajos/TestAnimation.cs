@@ -17,11 +17,6 @@ public class TestAnimation : MonoBehaviour {
 		
 	}
 
-    public void PlayerIdle()
-    {
-        anim.SetTrigger("Player_Idle");
-    }
-
     public void PlayerWalk()
     {
         anim.SetTrigger("Player_Walk");
@@ -34,7 +29,13 @@ public class TestAnimation : MonoBehaviour {
 
     public void PlayerSwing()
     {
-        anim.SetTrigger("Player_Swing");
+        anim.SetBool("Player_AxeSwing", true);
+    }
+
+    public void PlayerStopSwing()
+    {
+        anim.SetBool("Player_AxeSwing", false);
+        anim.SetTrigger("Player_AxeStop");
     }
 
     public void PlayerGrab()

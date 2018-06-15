@@ -208,13 +208,13 @@ public class CraftMachine : Machine {
     }
 
     void BurnGround() {
-        if (burnsGround && Random.Range(0, 100) <= burnChance) {
+        if (burnsGround && Random.Range(0, 100)<= burnChance) {
             EcoManager.instance.BurnGrounds(transform.position, burnRadius, burnReason, burnReason1, burnReason2);
         }
     }
 
     void DrysGround() {
-        if (drysGround && Random.Range(0, 100) <= dryChance) {
+        if (drysGround && Random.Range(0, 100)<= dryChance) {
             EcoManager.instance.DryGrounds(transform.position, dryRadius, dryReason, dryReason1, dryReason2);
         }
     }

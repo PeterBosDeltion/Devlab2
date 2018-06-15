@@ -491,7 +491,7 @@ MonoBehaviour:
     timeToConvert: 0
   coolDownTime: 15
   dryChance: 100
-  drysGround: 1
+  drysGround: 0
   dryRadius: 3
   dryReason: 
   dryReason1: 

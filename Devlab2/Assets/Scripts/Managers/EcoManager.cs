@@ -81,7 +81,7 @@ public class EcoManager : MonoBehaviour {
     }
 
     public Tile GetTile(Vector3 pos) {
-        return (Grid[Mathf.RoundToInt(pos.x / xStepSize)].myArray[Mathf.RoundToInt(pos.z / yStepSize)]);
+        return (Grid[Mathf.RoundToInt(pos.x / xStepSize)].myArray[Mathf.RoundToInt(pos.z / yStepSize) / 2]);
     }
 
     #region Tile Genorator
@@ -175,6 +175,26 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void GenorateIsland() {
+        groundTextures = new Material[groundTexturesInput.Count];
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
+            groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;
+        }
+
+        groundSprites = new Sprite[groundTexturesInput.Count];
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
+            groundSprites[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].groundSprite;
+        }
+
+        groundDescription = new string[groundTexturesInput.Count];
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
+            groundDescription[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].description;
+        }
+
+        groundName = new string[groundTexturesInput.Count];
+        for (int i = 0; i < groundTexturesInput.Count; i++) {
+            groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
+        }
+
         if (islandSize > xSize * ySize - (edgeOffset * 4)) {
 
             Debug.Log("The Size Of The Island Is To Big For The Map Size");
@@ -324,7 +344,6 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void DryGrounds(Vector3 dryPosition, int radius, string reason, string downgradeReason, string downgradeReason2) {
-        Debug.Log(GetTile(dryPosition));
         Tile tileToEdit = GetTile(dryPosition);
 
         Grid[tileToEdit.gridPosX].myArray[tileToEdit.gridPosY].ChangeMaterial(GroundState.driedGround, reason);
@@ -351,7 +370,6 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void BurnGrounds(Vector3 burnPosition, int radius, string reason, string downgradeReason, string downgradeReason2) {
-        Debug.Log(GetTile(burnPosition));
         Tile tileToEdit = GetTile(burnPosition);
 
         Grid[tileToEdit.gridPosX].myArray[tileToEdit.gridPosY].ChangeMaterial(GroundState.burned, reason);

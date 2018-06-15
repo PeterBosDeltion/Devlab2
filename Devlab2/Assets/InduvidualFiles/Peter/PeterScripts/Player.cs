@@ -24,7 +24,6 @@ public class Player : MonoBehaviour {
     public Image thirstBar;
     public Image healthBar;
 
-
     private bool dorst;
     private bool honger;
 
@@ -34,15 +33,15 @@ public class Player : MonoBehaviour {
     private Entity myEnt;
 
     private KeyCode[] keyCodes = {
-         KeyCode.Alpha1,
-         KeyCode.Alpha2,
-         KeyCode.Alpha3,
-         KeyCode.Alpha4,
-         KeyCode.Alpha5,
-         KeyCode.Alpha6,
-         KeyCode.Alpha7,
-         KeyCode.Alpha8,
-     };
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5,
+        KeyCode.Alpha6,
+        KeyCode.Alpha7,
+        KeyCode.Alpha8,
+    };
 
     private void Awake() {
         instance = this;
@@ -56,12 +55,12 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKeyDown("v")) //Eat cheat button
+        if (Input.GetKeyDown("v"))//Eat cheat button
         {
             Eat(20);
         }
 
-        if(Input.GetKeyDown("b")) //Drink cheat button
+        if (Input.GetKeyDown("b"))//Drink cheat button
         {
             Drink(20);
         }
@@ -81,24 +80,20 @@ public class Player : MonoBehaviour {
     }
 
     private void InvokeSurvival() {
-        if(!dorst) {
+        if (!dorst) {
             StartCoroutine(GetThirsty());
         }
 
-        if(!honger) {
+        if (!honger) {
             StartCoroutine(GetHungry());
         }
     }
 
     private void ChangeEquip() {
-        for (int i = 0; i < keyCodes.Length; i++)
-        {
-            if (!currentWeapon.beingUsed)
-            {
-                if (Input.GetKeyDown(keyCodes[i]))
-                {
+        for (int i = 0; i < keyCodes.Length; i++) {
+            if (currentWeapon != null && !currentWeapon.beingUsed) {
+                if (Input.GetKeyDown(keyCodes[i])) {
                     int numberPressed = i + 1;
-
 
                     Inventory.Instance.SelectedToolbarSlot = numberPressed - 1;
 
@@ -111,53 +106,44 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void EquipHand()
-    {
+    public void EquipHand() {
         Inventory.itemInHand = hand;
         Debug.Log(Inventory.itemInHand);
     }
 
     public void ChangeEquippedItem(int i) { //Item's listIndex variable must be equal to its place in the item list in this script
 
-        if (i <Inventory.Instance.toolBar.Count) {
+        if (i < Inventory.Instance.toolBar.Count) {
             Inventory.Instance.SelectedToolbarSlot = i;
         }
 
-        if(!currentWeapon.beingUsed) {
-           
-            if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
-            {
+        if (!currentWeapon.beingUsed) {
+
+            if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null) {
                 //Debug.Log(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem);
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
                 Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
                 currentWeapon = items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].GetComponent<Weapon>();
-            }
-            else
-            {
+            } else {
                 Inventory.itemInHand = hand;
 
                 items[4].SetActive(true); //Hand index
                 currentWeapon = items[4].GetComponent<Weapon>();
-                foreach (GameObject n in items)
-                {
-                    if(n != items[4])
-                    {
+                foreach (GameObject n in items) {
+                    if (n != items[4]) {
                         n.SetActive(false);
                     }
                 }
             }
 
-            foreach (GameObject n in items)
-            {
+            foreach (GameObject n in items) {
 
-                if(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
-                {
-                    if (items.IndexOf(n) != Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex)
-                    {
+                if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null) {
+                    if (items.IndexOf(n)!= Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex) {
                         n.SetActive(false);
                     }
                 }
-              
+
             }
         }
 
@@ -167,7 +153,7 @@ public class Player : MonoBehaviour {
 
     public IEnumerator GetHungry() {
         honger = true;
-        if(!ateRecently) {
+        if (!ateRecently) {
             hunger--;
         }
         yield return new WaitForSeconds(hungerInterval);
@@ -185,7 +171,7 @@ public class Player : MonoBehaviour {
         dorst = true;
         yield return new WaitForSeconds(thirstInterval);
 
-        if(!drankRecently) {
+        if (!drankRecently) {
             thirst--;
         }
 
@@ -200,13 +186,13 @@ public class Player : MonoBehaviour {
     }
 
     public void Eat(float nutrition) {
-        if(hunger < 100) {
+        if (hunger < 100) {
             hunger += nutrition;
         }
-        if(hunger > 100) {
+        if (hunger > 100) {
             hunger = 100;
             ateRecently = true;
-            if(!ate) {
+            if (!ate) {
                 StartCoroutine(TimeUntilHungryAgain());
             }
         }
@@ -214,13 +200,13 @@ public class Player : MonoBehaviour {
     }
 
     public void Drink(float nutrition) {
-        if(thirst < 100) {
+        if (thirst < 100) {
             thirst += nutrition;
         }
-        if(thirst > 100) {
+        if (thirst > 100) {
             thirst = 100;
             drankRecently = true;
-            if(!drank) {
+            if (!drank) {
                 StartCoroutine(TimeUntilThirstyAgain());
             }
         }

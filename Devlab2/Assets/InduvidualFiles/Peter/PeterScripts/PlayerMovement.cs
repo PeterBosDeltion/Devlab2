@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour {
     public Animator anim;
 
     private bool mouseDown;
+
+    private bool usingNavmesh;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -27,12 +29,36 @@ public class PlayerMovement : MonoBehaviour {
         }
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-        Move();
+    private void Update()
+    {
+        if (usingNavmesh)
+        {
+            if (transform.position == agent.destination)
+            {
+                usingNavmesh = false;
+                anim.SetBool("Playerwalk", false);
+            }
+        }
+
+        
+       
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         LookAtMouse();
-        ClickMove();
-	}
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Idle"))
+        {
+            Move();
+            ClickMove();
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Walking"))
+        {
+            Move();
+            ClickMove();
+
+        }
+    }
 
     public void Move()
     {
@@ -58,27 +84,38 @@ public class PlayerMovement : MonoBehaviour {
 
             if (x != 0 || y != 0)
             {
-                if (!walking)
+                usingNavmesh = false;
+
+                //if (!walking)
+                //{
+                //    walking = true;
+                //    anim.SetTrigger("Player_Walk");
+                //}
+
+                if (!anim.GetBool("Playerwalk"))
                 {
-                    walking = true;
-                    anim.SetTrigger("Player_Walk");
+                    anim.SetBool("Playerwalk", true);
                 }
 
                 agent.updatePosition = false;
             }
             else
             {
-                if (walking)
+                if (!usingNavmesh)
                 {
-                    walking = false;
-                    anim.SetTrigger("Player_Walk");
-
+                    anim.SetBool("Playerwalk", false);
                 }
+                //if (walking)
+                //{
+                //    walking = false;
+                //    anim.SetTrigger("Player_Walk");
+
+                //}
             }
 
             if(Input.GetKeyUp("w") || Input.GetKeyUp("a" )|| Input.GetKeyUp("s") || Input.GetKeyUp("d"))
             {
-                anim.SetTrigger("Player_Walk");
+                anim.SetBool("Playerwalk", false);
             }
         }
 
@@ -120,9 +157,16 @@ public class PlayerMovement : MonoBehaviour {
             {
                 agent.updatePosition = true;
 
+                anim.SetBool("Playerwalk", true);
+
                 agent.SetDestination(hit.point);
+                usingNavmesh = true;
             }
         }
+
+       
+
+
     }
 
 }

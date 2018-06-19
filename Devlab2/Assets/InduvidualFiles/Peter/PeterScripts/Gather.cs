@@ -21,7 +21,7 @@ public class Gather : Weapon {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && playerMov.anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Idle"))
         {
             Use();
         }
@@ -52,13 +52,16 @@ public class Gather : Weapon {
 
             if(Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
             {
-                playerMov.anim.ResetTrigger("Player_AxeStop");
-                playerMov.anim.SetTrigger("Player_Axe");
+                playerMov.anim.SetBool("Playeraxestop", false);
+                playerMov.anim.SetBool("Playeraxe", true);
                 playerMov.anim.SetBool("Player_AxeSwing", true);
             }
             else
             {
-                playerMov.anim.SetTrigger("Player_Grab");
+                if (!playerMov.anim.GetBool("Playergrab"))
+                {
+                    playerMov.anim.SetBool("Playergrab", true);
+                }
             }
           
             beingUsed = true;
@@ -75,12 +78,12 @@ public class Gather : Weapon {
         if (Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
         {
             playerMov.anim.SetBool("Player_AxeSwing", false);
-            playerMov.anim.SetTrigger("Player_AxeStop");
-            playerMov.anim.ResetTrigger("Player_Axe");
+            playerMov.anim.SetBool("Playeraxestop", true);
+            playerMov.anim.SetBool("Playeraxe", false);
         }
         else
         {
-            playerMov.anim.ResetTrigger("Player_Grab");
+            playerMov.anim.SetBool("Playergrab", false);
         }
           
         beingUsed = false;

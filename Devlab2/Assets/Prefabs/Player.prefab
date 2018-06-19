@@ -387,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1389219448450860
 GameObject:
   m_ObjectHideFlags: 1
@@ -2240,7 +2240,7 @@ MonoBehaviour:
   - {fileID: 1463639666595784}
   - {fileID: 1130067661389664}
   - {fileID: 1297787333447132}
-  currentWeapon: {fileID: 0}
+  currentWeapon: {fileID: 114965038408950832}
   hungerInterval: 5
   thirstInterval: 5
   ateRecently: 0

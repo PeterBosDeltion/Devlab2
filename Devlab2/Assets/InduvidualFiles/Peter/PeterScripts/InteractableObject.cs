@@ -6,7 +6,7 @@ public class InteractableObject : MonoBehaviour {
 
     private bool waiting;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.tag == "Player" && Input.GetButtonDown("Interact"))
         {
@@ -18,8 +18,8 @@ public class InteractableObject : MonoBehaviour {
                 StartCoroutine(WaitForAnimation(anim));
             }
 
-            Interact intr = other.GetComponent<Interact>();
-            StartInteract(intr);
+           // Interact intr = other.GetComponent<Interact>();
+           // StartInteract(intr);
         }
     }
 

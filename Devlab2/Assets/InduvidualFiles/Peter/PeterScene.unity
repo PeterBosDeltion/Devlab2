@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11301,11 +11301,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114835548365904200, guid: a3b4075c71baf454b97f483c25e66197,
-        type: 2}
-      propertyPath: currentWeapon
-      value: 
-      objectReference: {fileID: 144382401}
     - target: {fileID: 114835548365904200, guid: a3b4075c71baf454b97f483c25e66197,
         type: 2}
       propertyPath: hungerBar

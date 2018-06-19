@@ -45,6 +45,7 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         instance = this;
+       
     }
 
     // Use this for initialization
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour {
     }
 
     private void ChangeEquip() {
+
         for (int i = 0; i < keyCodes.Length; i++) {
             if (currentWeapon != null && !currentWeapon.beingUsed) {
                 if (Input.GetKeyDown(keyCodes[i])) {

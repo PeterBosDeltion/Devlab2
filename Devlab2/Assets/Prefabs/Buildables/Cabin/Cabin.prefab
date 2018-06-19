@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 33571447490648700}
   - component: {fileID: 23966193460315048}
   - component: {fileID: 65638652956935564}
+  - component: {fileID: 114962193372966582}
   m_Layer: 16
   m_Name: Roof
   m_TagString: Untagged
@@ -497,6 +498,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.49615815, y: 2.148163, z: 2.7733765}
   m_Center: {x: 3.7802567, y: 1.1234977, z: 1.1955409}
+--- !u!114 &114962193372966582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444046621181556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5404d86cd4bc4a0408abf2a9906dc6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!208 &208121679630280878
 NavMeshObstacle:
   m_ObjectHideFlags: 1

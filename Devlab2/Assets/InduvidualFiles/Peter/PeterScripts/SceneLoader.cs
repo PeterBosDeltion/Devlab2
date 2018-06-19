@@ -17,7 +17,6 @@ public class SceneLoader : MonoBehaviour {
         sm.startCam.enabled = true;
         startPanel.SetActive(true);
         GameManager.worldWidth = 128;
-        GameManager.worldHeight = 128;
     }
 
     public void LoadNextIndexScene()
@@ -30,7 +29,7 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene(index);
     }
 
-   
+
 
     public void ExitGame()
     {
@@ -42,17 +41,14 @@ public class SceneLoader : MonoBehaviour {
         if(index == 0)
         {
             GameManager.worldWidth = 128;
-            GameManager.worldHeight = 128;
         }
         else if(index == 1)
         {
             GameManager.worldWidth = 328;
-            GameManager.worldHeight = 328;
         }
         else if(index == 2)
         {
             GameManager.worldWidth = 648;
-            GameManager.worldHeight = 648;
         }
     }
 }

@@ -10,6 +10,7 @@ public class EcoManager : MonoBehaviour {
     public int basePollution;
     public int endGamePollution;
     public Image pollutionImage;
+    public float polutionCheck;
 
     public int burnChance;
 
@@ -61,7 +62,9 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
         }
+        StartCoroutine(PollutionCheck());
 
+        islandSize = GameManager.worldWidth;
         GenorateIsland();
 
         basePollution = pollution;
@@ -81,16 +84,28 @@ public class EcoManager : MonoBehaviour {
     }
 
     public Tile GetTile(Vector3 pos) {
-        return (Grid[Mathf.RoundToInt(pos.x / xStepSize)].myArray[Mathf.RoundToInt(pos.z / yStepSize) / 2]);
+        return (Grid[Mathf.RoundToInt(pos.x / xStepSize)].myArray[Mathf.RoundToInt(pos.z / yStepSize)/ 2]);
     }
 
     #region Tile Genorator
-    public int edgeOffset;
     public int islandSize;
     public int xSize, ySize;
     public float xStepSize, yStepSize;
     public GameObject tile;
     public List<ToSpawn> toSpawnList = new List<ToSpawn>();
+    public int islandLakesChance;
+    public int percentOfFurtileGround;
+    public int percentOfBurnedGround;
+    public int percentOfDriedGround;
+    List<Tile> grassTiles = new List<Tile>();
+    List<Tile> sandTiles = new List<Tile>();
+    List<Tile> driedTiles = new List<Tile>();
+    List<Tile> burnedTiles = new List<Tile>();
+    List<Tile> furtileTiles = new List<Tile>();
+    List<Tile> tiles = new List<Tile>();
+    public List<Tile> lowDryChance = new List<Tile>();
+    public List<Tile> midDryChance = new List<Tile>();
+    public List<Tile> highDryChance = new List<Tile>();
 
     [System.Serializable]
     public class ToSpawn {
@@ -195,30 +210,23 @@ public class EcoManager : MonoBehaviour {
             groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
         }
 
-        if (islandSize > xSize * ySize - (edgeOffset * 4)) {
+        grassTiles.Clear();
+        driedTiles.Clear();
+        furtileTiles.Clear();
+        sandTiles.Clear();
+        burnedTiles.Clear();
+        tiles.Clear();
+
+        if (islandSize > xSize * ySize) {
 
             Debug.Log("The Size Of The Island Is To Big For The Map Size");
             return;
         }
 
-        Tile startTile = Grid[xSize / 2].myArray[ySize / 2];
-        startTile.myTimeLine.Clear();
-        startTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
-
         Queue<Tile> toCheck = new Queue<Tile>();
-        List<Tile> grassTiles = new List<Tile>();
 
-        for (int i = -1; i < 2; i++) {
-            for (int ii = -1; ii < 2; ii++) {
-                if (Grid[startTile.gridPosX + i].myArray[startTile.gridPosY + ii].gridPosX > edgeOffset &&
-                    Grid[startTile.gridPosX + i].myArray[startTile.gridPosY + ii].gridPosX < xSize - edgeOffset &&
-                    Grid[startTile.gridPosX + i].myArray[startTile.gridPosY + ii].gridPosY > edgeOffset &&
-                    Grid[startTile.gridPosX + i].myArray[startTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
-
-                    toCheck.Enqueue(Grid[startTile.gridPosX + i].myArray[startTile.gridPosY + ii]);
-                }
-            }
-        }
+        Tile startTile = Grid[xSize / 2].myArray[ySize / 2];
+        toCheck.Enqueue(startTile);
 
         int landAmounts = 0;
 
@@ -235,22 +243,27 @@ public class EcoManager : MonoBehaviour {
                     dequeueTile.myTimeLine.Clear();
                     dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
                     dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
+                    tiles.Add(dequeueTile);
 
                     grassTiles.Add(dequeueTile);
                     landAmounts++;
 
                     for (int i = -1; i < 2; i++) {
                         for (int ii = -1; ii < 2; ii++) {
-                            if (Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX > edgeOffset && Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX < xSize - edgeOffset && Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY > edgeOffset && Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY < ySize - edgeOffset) {
+                            if (Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX > 0 &&
+                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX < xSize &&
+                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY > 0 &&
+                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY < ySize) {
                                 toCheck.Enqueue(Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii]);
                             }
                         }
                     }
-                } else if (Random.Range(0, 100)<= 80) {
+                } else if (Random.Range(0, 100)<= islandLakesChance) {
                     toCheck.Enqueue(dequeueTile);
                 }
             }
         }
+
         List<Tile> phase2GrassTiles = new List<Tile>();
 
         foreach (Tile t in grassTiles) {
@@ -262,6 +275,7 @@ public class EcoManager : MonoBehaviour {
                                 t.myTimeLine.Clear();
                                 t.ChangeMaterial(GroundState.Sand, "Water Pushes The Small Rocks To Land Witch Formes Beaches");
                                 t.myTile.layer = LayerMask.NameToLayer("ground");
+                                sandTiles.Add(t);
                             }
                             break;
                         }
@@ -271,6 +285,10 @@ public class EcoManager : MonoBehaviour {
             if (Grid[t.gridPosX].myArray[t.gridPosY].currentState == GroundState.Grass) {
                 phase2GrassTiles.Add(t);
             }
+        }
+
+        foreach (Tile t in tiles) {
+            Check(t);
         }
 
         for (int i = 0; i < toSpawnList.Count; i++) {
@@ -290,8 +308,33 @@ public class EcoManager : MonoBehaviour {
                 phase2GrassTiles.Remove(toPlant);
             }
         }
+    }
 
-        grassTiles = phase2GrassTiles;
+    void Check(Tile t) {
+        bool midRange = false;
+
+        for (int i = -1; i < 2; i++) {
+            for (int ii = -1; ii < 2; ii++) {
+                if (Grid[t.gridPosX + i].myArray[t.gridPosY + ii].currentState == GroundState.Water) {
+                    lowDryChance.Add(t);
+                    return;
+                }
+                for (int r = -1; r < 2; r++) {
+                    for (int rr = -1; rr < 2; rr++) {
+                        if (Grid[t.gridPosX + r].myArray[t.gridPosY + rr].currentState == GroundState.Water) {
+                            midRange = true;
+                        }
+                    }
+                }
+            }
+        }
+        if (midRange == true) {
+            midDryChance.Add(t);
+
+        } else {
+            highDryChance.Add(t);
+        }
+
     }
 
     #endregion
@@ -308,7 +351,6 @@ public class EcoManager : MonoBehaviour {
         public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
             myTile = newTile;
             myRenderer = myTile.GetComponent<Renderer>();
-            Debug.Log(myRenderer);
             ChangeMaterial(newState, "How Did This Get Here.");
             gridPosX = gridX;
             gridPosY = gridY;
@@ -415,5 +457,18 @@ public class EcoManager : MonoBehaviour {
     [System.Serializable]
     public struct ArraySlot {
         public Tile[] myArray;
+    }
+
+    public IEnumerator PollutionCheck() {
+
+        yield return new WaitForSeconds(polutionCheck);
+
+
+                        //***Fixxxxx
+        for (int i = 0; i < basePollution / pollution * 2; i++){
+
+        }
+
+        StartCoroutine(PollutionCheck());
     }
 }

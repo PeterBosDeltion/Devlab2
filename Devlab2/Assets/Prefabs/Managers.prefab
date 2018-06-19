@@ -51558,7 +51558,6 @@ MonoBehaviour:
     groundSprite: {fileID: 21300000, guid: a221f4dd71488c84b8fe5a9d4ee9198c, type: 3}
     description: Dried Ground
     tileName: Dried Ground
-  edgeOffset: 1
   islandSize: 2000
   xSize: 80
   ySize: 80
@@ -51594,6 +51593,10 @@ MonoBehaviour:
     x: 0
     y: 1
     z: 0
+  islandLakesChance: 80
+  percentOfFurtileGround: 0
+  percentOfBurnedGround: 0
+  percentOfDriedGround: 0
 --- !u!114 &114499717643460190
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -183,9 +183,7 @@ public class EcoManager : MonoBehaviour {
                         DestroyImmediate(tile.myTile);
                     }
                 }
-
             }
-
         }
     }
 
@@ -463,10 +461,46 @@ public class EcoManager : MonoBehaviour {
 
         yield return new WaitForSeconds(polutionCheck);
 
+        //Grass Ground
+        for (int i = 0; i < -pollution / -basePollution * 20; i++) {
+            if (driedTiles.Count - 1 > 0) {
+                int selected = Random.Range(0, driedTiles.Count - 1);
+                driedTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                grassTiles.Add(driedTiles[selected]);
+                driedTiles.RemoveAt(selected);
+            }
+        }
 
-                        //***Fixxxxx
-        for (int i = 0; i < basePollution / pollution * 2; i++){
+        //Furtile Ground
+        for (int i = 0; i < -pollution / -basePollution * 10; i++) {
+            if (burnedTiles.Count - 1 > 0) {
+                int selected = Random.Range(0, burnedTiles.Count - 1);
+                burnedTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                furtileTiles.Add(burnedTiles[selected]);
+                burnedTiles.RemoveAt(selected);
+            }
+        }
 
+        //Dried Ground
+        for (int i = 0; i < -basePollution / -pollution * 2; i++) {
+            if (grassTiles.Count - 1 > 0) {
+                int selected = Random.Range(0, grassTiles.Count - 1);
+                grassTiles[selected].myTile.layer = LayerMask.NameToLayer("ground");
+                grassTiles[selected].ChangeMaterial(GroundState.driedGround, "Air Is To Dry.");
+                driedTiles.Add(grassTiles[selected]);
+                grassTiles.RemoveAt(selected);
+            }
+        }
+
+        //Burned Ground
+        for (int i = 0; i < -basePollution / -pollution * 1; i++) {
+            if (grassTiles.Count - 1 > 0) {
+                int selected = Random.Range(0, grassTiles.Count - 1);
+                grassTiles[selected].myTile.layer = LayerMask.NameToLayer("ground");
+                grassTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                burnedTiles.Add(grassTiles[selected]);
+                grassTiles.RemoveAt(selected);
+            }
         }
 
         StartCoroutine(PollutionCheck());

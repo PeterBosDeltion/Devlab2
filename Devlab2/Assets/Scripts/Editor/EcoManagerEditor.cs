@@ -23,6 +23,10 @@ public class EcoManagerEditor : Editor {
             ecoMan.DestroyMap();
         }
 
+        if (GUILayout.Button("Serialize")) {
+            ecoMan.Serialize();
+        }
+
         if (GUILayout.Button("Generate Island")) {
             ecoMan.GenorateIsland();
         }

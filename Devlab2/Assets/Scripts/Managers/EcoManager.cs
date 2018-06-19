@@ -103,9 +103,8 @@ public class EcoManager : MonoBehaviour {
     List<Tile> burnedTiles = new List<Tile>();
     List<Tile> furtileTiles = new List<Tile>();
     List<Tile> tiles = new List<Tile>();
-    public List<Tile> lowDryChance = new List<Tile>();
-    public List<Tile> midDryChance = new List<Tile>();
-    public List<Tile> highDryChance = new List<Tile>();
+    List<Tile> lowDryChance = new List<Tile>();
+    List<Tile> highDryChance = new List<Tile>();
 
     [System.Serializable]
     public class ToSpawn {
@@ -309,8 +308,6 @@ public class EcoManager : MonoBehaviour {
     }
 
     void Check(Tile t) {
-        bool midRange = false;
-
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
                 if (Grid[t.gridPosX + i].myArray[t.gridPosY + ii].currentState == GroundState.Water) {
@@ -319,20 +316,12 @@ public class EcoManager : MonoBehaviour {
                 }
                 for (int r = -1; r < 2; r++) {
                     for (int rr = -1; rr < 2; rr++) {
-                        if (Grid[t.gridPosX + r].myArray[t.gridPosY + rr].currentState == GroundState.Water) {
-                            midRange = true;
-                        }
+                        if (Grid[t.gridPosX + r].myArray[t.gridPosY + rr].currentState == GroundState.Water) {}
                     }
                 }
             }
         }
-        if (midRange == true) {
-            midDryChance.Add(t);
-
-        } else {
-            highDryChance.Add(t);
-        }
-
+        highDryChance.Add(t);
     }
 
     #endregion

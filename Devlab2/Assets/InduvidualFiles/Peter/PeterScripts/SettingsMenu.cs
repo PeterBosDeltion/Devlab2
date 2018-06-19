@@ -14,7 +14,7 @@ public class SettingsMenu : MonoBehaviour {
 
     public GameObject mainMenu;
 
-    public Camera mainCam = Camera.main;
+    public Camera mainCam;
     public Camera settingsCam;
     public Camera startCam;
 
@@ -22,6 +22,7 @@ public class SettingsMenu : MonoBehaviour {
     private void Start()
     {
         LoadResolutions();
+        mainCam = Camera.main;
         settingsCam.enabled = false;
         startCam.enabled = false;
     }

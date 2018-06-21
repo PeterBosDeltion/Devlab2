@@ -22,8 +22,11 @@ ScriptedImporter:
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://Grass_Ground\" label=\"\" >\n </sbspreset>\n"
-    shaderName: Standard
+    preset: " <sbspreset pkgurl=\"pkg://Grass_Ground\" label=\"\" >\n  <presetinput
+      identifier=\"$randomseed\" uid=\"2520400282\" type=\"4\" value=\"1680\" />\n
+      \ <presetinput identifier=\"Grass_GroundColor\" uid=\"3042796827\" type=\"3\"
+      value=\"0,0.641509,0.1545,1\" />\n </sbspreset>\n"
+    shaderName: LightweightPipeline/Standard (Physically Based)
     outputNames: Base Color
     texturePackingList:
     - outputName: Base Color
@@ -61,4 +64,4 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       loadBehavior: 0
-    material: {instanceID: 0}
+    material: {fileID: 2100000, guid: ba6ab0128d0bf1c46a3b5e7c401bda76, type: 3}

@@ -62,7 +62,6 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundName[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tileName;
         }
-        StartCoroutine(PollutionCheck());
 
         islandSize = GameManager.worldWidth;
 
@@ -72,6 +71,8 @@ public class EcoManager : MonoBehaviour {
 
     void Start() {
         GenorateIsland();
+        basePollution = pollution;
+        StartCoroutine(PollutionCheck());
     }
 
     public void AddPollution(int PollutionToAdd) {
@@ -226,7 +227,36 @@ public class EcoManager : MonoBehaviour {
         Queue<Tile> toCheck = new Queue<Tile>();
 
         Tile startTile = Grid[xSize / 2].myArray[ySize / 2];
-        toCheck.Enqueue(startTile);
+        startTile.myTile.myTimeLine.Clear();
+        startTile.myTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
+        startTile.myTile.myTile.layer = LayerMask.NameToLayer("ground");
+        tiles.Add(startTile);
+
+        for (int i = -1; i < 2; i++) {
+            for (int ii = -1; ii < 2; ii++) {
+                if (Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.gridPosX > 0 &&
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.gridPosX < xSize &&
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.gridPosY > 0 &&
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.gridPosY < ySize) {
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.myTimeLine.Clear();
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
+                    Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii].myTile.myTile.layer = LayerMask.NameToLayer("ground");
+                    tiles.Add(Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii]);
+
+                    for (int l = -1; l < 2; l++) {
+                        for (int ll = -1; ll < 2; ll++) {
+                            if (Grid[startTile.myTile.gridPosX + i + l].myArray[startTile.myTile.gridPosY + ii + ll].myTile.gridPosX > 0 &&
+                                Grid[startTile.myTile.gridPosX + i + l].myArray[startTile.myTile.gridPosY + ii + ll].myTile.gridPosX < xSize &&
+                                Grid[startTile.myTile.gridPosX + i + l].myArray[startTile.myTile.gridPosY + ii + ll].myTile.gridPosY > 0 &&
+                                Grid[startTile.myTile.gridPosX + i + l].myArray[startTile.myTile.gridPosY + ii + ll].myTile.gridPosY < ySize) {
+                                toCheck.Enqueue(Grid[startTile.myTile.gridPosX + i + l].myArray[startTile.myTile.gridPosY + ii + ll]);
+                            }
+                        }
+                    }
+                    toCheck.Enqueue(Grid[startTile.myTile.gridPosX + i].myArray[startTile.myTile.gridPosY + ii]);
+                }
+            }
+        }
 
         int landAmounts = 0;
 
@@ -429,7 +459,7 @@ public class EcoManager : MonoBehaviour {
         Debug.Log("Check");
 
         //Grass Ground
-        for (int i = 0; i < -pollution / -basePollution * 20; i++) {
+        for (int i = 0; i < -pollution / -basePollution * 10; i++) {
             if (driedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, driedTiles.Count - 1);
                 driedTiles[selected].myTile.ChangeMaterial(GroundState.Grass, "No Water Nearby To Stop The Fire");
@@ -439,7 +469,7 @@ public class EcoManager : MonoBehaviour {
         }
 
         //Furtile Ground
-        for (int i = 0; i < -pollution / -basePollution * 10; i++) {
+        for (int i = 0; i < -pollution / -basePollution * 5; i++) {
             if (burnedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, burnedTiles.Count - 1);
                 burnedTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Because It Has Been Burned Lately");
@@ -454,7 +484,7 @@ public class EcoManager : MonoBehaviour {
         }
 
         //Dried Ground
-        for (int i = 0; i < -basePollution / -pollution * 2; i++) {
+        for (int i = 0; i < -basePollution / -pollution * 0.5; i++) {
             if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
                 grassTiles[selected].myTile.myTile.layer = LayerMask.NameToLayer("ground");
@@ -465,7 +495,7 @@ public class EcoManager : MonoBehaviour {
         }
 
         //Burned Ground
-        for (int i = 0; i < -basePollution / -pollution * 1; i++) {
+        for (int i = 0; i < -basePollution / -pollution * 0.25; i++) {
             if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
                 grassTiles[selected].myTile.myTile.layer = LayerMask.NameToLayer("ground");

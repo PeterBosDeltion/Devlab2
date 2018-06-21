@@ -426,12 +426,13 @@ public class EcoManager : MonoBehaviour {
     public IEnumerator PollutionCheck() {
 
         yield return new WaitForSeconds(polutionCheck);
+        Debug.Log("Check");
 
         //Grass Ground
         for (int i = 0; i < -pollution / -basePollution * 20; i++) {
             if (driedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, driedTiles.Count - 1);
-                driedTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                driedTiles[selected].myTile.ChangeMaterial(GroundState.Grass, "No Water Nearby To Stop The Fire");
                 grassTiles.Add(driedTiles[selected]);
                 driedTiles.RemoveAt(selected);
             }
@@ -441,9 +442,14 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < -pollution / -basePollution * 10; i++) {
             if (burnedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, burnedTiles.Count - 1);
-                burnedTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                burnedTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Because It Has Been Burned Lately");
                 furtileTiles.Add(burnedTiles[selected]);
                 burnedTiles.RemoveAt(selected);
+            } else if (grassTiles.Count - 1 > 0) {
+                int selected = Random.Range(0, grassTiles.Count - 1);
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Because It Is Close Enough To A Water Source Or The Ground Is Moist Enough.");
+                furtileTiles.Add(grassTiles[selected]);
+                grassTiles.RemoveAt(selected);
             }
         }
 
@@ -463,7 +469,7 @@ public class EcoManager : MonoBehaviour {
             if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
                 grassTiles[selected].myTile.myTile.layer = LayerMask.NameToLayer("ground");
-                grassTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.burned, "No Water Nearby To Stop The Fire");
                 burnedTiles.Add(grassTiles[selected]);
                 grassTiles.RemoveAt(selected);
             }

@@ -75,9 +75,18 @@ public class Player : MonoBehaviour {
 
     private void UpdateUIValues() {
 
-        hungerBar.fillAmount = hunger / 100F;
-        thirstBar.fillAmount = thirst / 100F;
-        healthBar.fillAmount = myEnt.hp / 100F;
+
+        if(hungerBar != null && thirstBar != null && healthBar != null)
+        {
+            hungerBar.fillAmount = hunger / 100F;
+            thirstBar.fillAmount = thirst / 100F;
+            healthBar.fillAmount = myEnt.hp / 100F;
+        }
+        else
+        {
+            Debug.Log("Hunger/Thirst/Healthbar is null");
+        }
+      
     }
 
     private void InvokeSurvival() {

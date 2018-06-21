@@ -43,7 +43,7 @@ public class Hoe : Weapon {
         {
             use = true;
 
-            if (Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
+            if (Inventory.itemInHand != playerMov.player.GetComponent<Player>().hand)
             {
                 playerMov.anim.SetBool("Playeraxestop", false);
                 playerMov.anim.SetBool("Playeraxe", true);
@@ -67,7 +67,7 @@ public class Hoe : Weapon {
         waiting = true;
         yield return new WaitForSeconds(playerMov.anim.GetCurrentAnimatorStateInfo(0).length);
         use = false;
-        if (Inventory.itemInHand != playerMov.GetComponent<Player>().hand)
+        if (Inventory.itemInHand != playerMov.player.GetComponent<Player>().hand)
         {
             playerMov.anim.SetBool("Player_AxeSwing", false);
             playerMov.anim.SetBool("Playeraxestop", true);

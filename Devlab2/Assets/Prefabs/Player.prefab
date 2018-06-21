@@ -2176,6 +2176,7 @@ MonoBehaviour:
     m_Bits: 1040
   walking: 0
   anim: {fileID: 95551297722821814}
+  player: {fileID: 0}
 --- !u!114 &114296876038645494
 MonoBehaviour:
   m_ObjectHideFlags: 1

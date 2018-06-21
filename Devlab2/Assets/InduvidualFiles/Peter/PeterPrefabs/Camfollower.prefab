@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4930030099248868}
   - component: {fileID: 114491005606711562}
+  - component: {fileID: 114702716152155726}
   m_Layer: 0
   m_Name: Camfollower
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 20248189778654390}
   - component: {fileID: 124374083487929314}
   - component: {fileID: 81910948590943104}
+  - component: {fileID: 114023214093471096}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -64,14 +66,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654320708031988}
-  m_LocalRotation: {x: 0.08682406, y: -0.08683267, z: 0.007596878, w: 0.99240315}
-  m_LocalPosition: {x: 190.15152, y: 1.0833325, z: 302.64142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.823288, y: 0.63, z: -7.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4328303023657302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10, y: -10.001, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!20 &20248189778654390
 Camera:
   m_ObjectHideFlags: 1
@@ -115,6 +117,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790278854663668}
   m_Enabled: 1
+--- !u!114 &114023214093471096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790278854663668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5404d86cd4bc4a0408abf2a9906dc6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114491005606711562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +144,25 @@ MonoBehaviour:
   rotSpeed: 60
   zOffset: 0
   rotateOffset: 0
+--- !u!114 &114702716152155726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654320708031988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2615d2e427d96eb48bd3d8976a991dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotateSpeed: 8
+  moveLayermask:
+    serializedVersion: 2
+    m_Bits: 1040
+  walking: 0
+  anim: {fileID: 0}
+  player: {fileID: 0}
 --- !u!124 &124374083487929314
 Behaviour:
   m_ObjectHideFlags: 1

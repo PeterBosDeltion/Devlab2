@@ -121,12 +121,15 @@ public class Player : MonoBehaviour {
 
         if (!currentWeapon.beingUsed) {
 
-            if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null) {
+            if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
+            {
                 //Debug.Log(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem);
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
                 Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
                 currentWeapon = items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].GetComponent<Weapon>();
-            } else {
+            }
+            else
+            {
                 Inventory.itemInHand = hand;
 
                 items[4].SetActive(true); //Hand index
@@ -148,7 +151,20 @@ public class Player : MonoBehaviour {
 
             }
         }
+        else if(currentWeapon == null && Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem == null)
+        {
+            Inventory.itemInHand = hand;
 
+            items[4].SetActive(true); //Hand index
+            currentWeapon = items[4].GetComponent<Weapon>();
+            foreach (GameObject n in items)
+            {
+                if (n != items[4])
+                {
+                    n.SetActive(false);
+                }
+            }
+        }
         //Debug.Log(Inventory.itemInHand);
 
     }

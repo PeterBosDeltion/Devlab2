@@ -79,8 +79,8 @@ public class PlayerMovement : MonoBehaviour {
             float y = Input.GetAxis("Vertical");
 
          
-            transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
-            transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.right * x * moveSpeed * Time.deltaTime, Space.Self);
+            transform.Translate(Vector3.forward * y * moveSpeed * Time.deltaTime, Space.Self);
 
             if (x != 0 || y != 0)
             {
@@ -96,6 +96,24 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     anim.SetBool("Playerwalk", true);
                 }
+
+                if(x == 1)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 90, transform.rotation.z);
+                }
+                else if(x == -1)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, -90, transform.rotation.z);
+                }
+                else if (x > 0 && y > 0)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 30, transform.rotation.z);
+                }
+                else if (x < 0 && y < 0)
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, -30, transform.rotation.z);
+                }
+
 
                 agent.updatePosition = false;
             }

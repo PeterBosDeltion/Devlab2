@@ -14,7 +14,7 @@ public class Resource : MonoBehaviour {
     public float berryGrowTime = 7;
     public void Harvest(Gather g)
     {
-        if(Inventory.itemInHand.myGathering == type && canGather)
+        if(Inventory.itemInHand != null && Inventory.itemInHand.myGathering == type && canGather)
         {
 
             if(toughness > 0)
@@ -33,7 +33,7 @@ public class Resource : MonoBehaviour {
                 {
                     if(s.myItem == null && Inventory.Instance.AddItem(myResource))
                     {
-                        //Inventory.Instance.AddItem(myResource); //Uncomment when there is inventory in scene pl0x
+                        //Inventory.Instance.AddItem(myResource); //Un comment when there is inventory in scene pl0x
                         break;
                     }
                     else
@@ -44,7 +44,7 @@ public class Resource : MonoBehaviour {
 
                 if(itemsInInv >= Inventory.Instance.theInventory.Count)
                 {
-                    ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Choosen Yet
+                    ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Chosen Yet
                     //Drop resource on floor
                 }
                 if (!berries)

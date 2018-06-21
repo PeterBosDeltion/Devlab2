@@ -16,7 +16,7 @@ public class SceneLoader : MonoBehaviour {
         sm.settingsCam.enabled = false;
         sm.startCam.enabled = true;
         startPanel.SetActive(true);
-        GameManager.worldWidth = 128;
+        GameManager.worldWidth = 1000;
     }
 
     public void LoadNextIndexScene()
@@ -40,15 +40,15 @@ public class SceneLoader : MonoBehaviour {
     {
         if(index == 0)
         {
-            GameManager.worldWidth = 128;
+            GameManager.worldWidth = 1000;
         }
         else if(index == 1)
         {
-            GameManager.worldWidth = 328;
+            GameManager.worldWidth = 2000;
         }
         else if(index == 2)
         {
-            GameManager.worldWidth = 648;
+            GameManager.worldWidth = 4000;
         }
     }
 }

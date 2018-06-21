@@ -65,10 +65,13 @@ public class EcoManager : MonoBehaviour {
         StartCoroutine(PollutionCheck());
 
         islandSize = GameManager.worldWidth;
-        GenorateIsland();
 
         basePollution = pollution;
         AddPollution(0);
+    }
+
+    void Start() {
+        GenorateIsland();
     }
 
     public void AddPollution(int PollutionToAdd) {

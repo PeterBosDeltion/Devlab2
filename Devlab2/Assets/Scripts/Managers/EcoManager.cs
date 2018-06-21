@@ -153,9 +153,9 @@ public class EcoManager : MonoBehaviour {
 
                 GameObject newTile = Instantiate(tile, positionInWorld, tile.transform.rotation, parent);
                 ThisTile t = newTile.GetComponent<ThisTile>();
-                t.x = x;
-                t.y = y;
-                Grid[x].myArray[y] = new Tile(newTile, GroundState.Water, x, y);
+                t.SetThis(GroundState.Water, x, y);
+                Grid[x].myArray[y] = new Tile();
+                Grid[x].myArray[y].myTile = t;
             }
             pos = !pos;
         }
@@ -179,7 +179,7 @@ public class EcoManager : MonoBehaviour {
             for (int i = 0; i < Grid.Length; i++) {
                 foreach (Tile tile in Grid[i].myArray) {
                     if (tile.myTile != null) {
-                        DestroyImmediate(tile.myTile);
+                        DestroyImmediate(tile.myTile.myTile);
                     }
                 }
             }
@@ -236,10 +236,10 @@ public class EcoManager : MonoBehaviour {
             }
 
             if (dequeueTile != null) {
-                if (dequeueTile.currentState == GroundState.Water && Random.Range(0, 100)<= 10) {
-                    dequeueTile.myTimeLine.Clear();
-                    dequeueTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
-                    dequeueTile.myTile.layer = LayerMask.NameToLayer("ground");
+                if (dequeueTile.myTile.currentState == GroundState.Water && Random.Range(0, 100)<= 10) {
+                    dequeueTile.myTile.myTimeLine.Clear();
+                    dequeueTile.myTile.ChangeMaterial(GroundState.Grass, "Grass Is A Fast Growing Plant Witch Can Grow If There Is Enough Water Around.");
+                    dequeueTile.myTile.myTile.layer = LayerMask.NameToLayer("ground");
                     tiles.Add(dequeueTile);
 
                     grassTiles.Add(dequeueTile);
@@ -247,11 +247,11 @@ public class EcoManager : MonoBehaviour {
 
                     for (int i = -1; i < 2; i++) {
                         for (int ii = -1; ii < 2; ii++) {
-                            if (Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX > 0 &&
-                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosX < xSize &&
-                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY > 0 &&
-                                Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii].gridPosY < ySize) {
-                                toCheck.Enqueue(Grid[dequeueTile.gridPosX + i].myArray[dequeueTile.gridPosY + ii]);
+                            if (Grid[dequeueTile.myTile.gridPosX + i].myArray[dequeueTile.myTile.gridPosY + ii].myTile.gridPosX > 0 &&
+                                Grid[dequeueTile.myTile.gridPosX + i].myArray[dequeueTile.myTile.gridPosY + ii].myTile.gridPosX < xSize &&
+                                Grid[dequeueTile.myTile.gridPosX + i].myArray[dequeueTile.myTile.gridPosY + ii].myTile.gridPosY > 0 &&
+                                Grid[dequeueTile.myTile.gridPosX + i].myArray[dequeueTile.myTile.gridPosY + ii].myTile.gridPosY < ySize) {
+                                toCheck.Enqueue(Grid[dequeueTile.myTile.gridPosX + i].myArray[dequeueTile.myTile.gridPosY + ii]);
                             }
                         }
                     }
@@ -267,11 +267,11 @@ public class EcoManager : MonoBehaviour {
             for (int i = -1; i < 2; i++) {
                 for (int ii = -1; ii < 2; ii++) {
                     if (i == 0 || ii == 0) {
-                        if (Grid[t.gridPosX + i].myArray[t.gridPosY + ii].currentState == GroundState.Water) {
+                        if (Grid[t.myTile.gridPosX + i].myArray[t.myTile.gridPosY + ii].myTile.currentState == GroundState.Water) {
                             if (Random.Range(0, 100)<= 70) {
-                                t.myTimeLine.Clear();
-                                t.ChangeMaterial(GroundState.Sand, "Water Pushes The Small Rocks To Land Witch Formes Beaches");
-                                t.myTile.layer = LayerMask.NameToLayer("ground");
+                                t.myTile.myTimeLine.Clear();
+                                t.myTile.ChangeMaterial(GroundState.Sand, "Water Pushes The Small Rocks To Land Witch Formes Beaches");
+                                t.myTile.myTile.layer = LayerMask.NameToLayer("ground");
                                 sandTiles.Add(t);
                             }
                             break;
@@ -279,7 +279,7 @@ public class EcoManager : MonoBehaviour {
                     }
                 }
             }
-            if (Grid[t.gridPosX].myArray[t.gridPosY].currentState == GroundState.Grass) {
+            if (Grid[t.myTile.gridPosX].myArray[t.myTile.gridPosY].myTile.currentState == GroundState.Grass) {
                 phase2GrassTiles.Add(t);
             }
         }
@@ -310,13 +310,13 @@ public class EcoManager : MonoBehaviour {
     void Check(Tile t) {
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
-                if (Grid[t.gridPosX + i].myArray[t.gridPosY + ii].currentState == GroundState.Water) {
+                if (Grid[t.myTile.gridPosX + i].myArray[t.myTile.gridPosY + ii].myTile.currentState == GroundState.Water) {
                     lowDryChance.Add(t);
                     return;
                 }
                 for (int r = -1; r < 2; r++) {
                     for (int rr = -1; rr < 2; rr++) {
-                        if (Grid[t.gridPosX + r].myArray[t.gridPosY + rr].currentState == GroundState.Water) {}
+                        if (Grid[t.myTile.gridPosX + r].myArray[t.myTile.gridPosY + rr].myTile.currentState == GroundState.Water) {}
                     }
                 }
             }
@@ -328,33 +328,7 @@ public class EcoManager : MonoBehaviour {
 
     [System.Serializable]
     public class Tile {
-        public List<State> myTimeLine = new List<State>();
-        public GroundState currentState;
-        public int gridPosX, gridPosY;
-        public GameObject myTile;
-        Renderer myRenderer;
-        public AddPolution myOccupant;
-
-        public Tile(GameObject newTile, GroundState newState, int gridX, int gridY) {
-            myTile = newTile;
-            myRenderer = myTile.GetComponent<Renderer>();
-            ChangeMaterial(newState, "How Did This Get Here.");
-            gridPosX = gridX;
-            gridPosY = gridY;
-        }
-
-        public void ChangeMaterial(GroundState newState, string newReason) {
-            State s = new State();
-            s.state = newState;
-            s.reason = newReason;
-
-            myTimeLine.Add(s);
-            currentState = newState;
-            if (myRenderer == null) {
-                myRenderer = myTile.GetComponent<Renderer>();
-            }
-            myRenderer.material = groundTextures[(int)newState - 1];
-        }
+        public ThisTile myTile;
     }
 
     [System.Serializable]
@@ -375,24 +349,24 @@ public class EcoManager : MonoBehaviour {
     public void DryGrounds(Vector3 dryPosition, int radius, string reason, string downgradeReason, string downgradeReason2) {
         Tile tileToEdit = GetTile(dryPosition);
 
-        Grid[tileToEdit.gridPosX].myArray[tileToEdit.gridPosY].ChangeMaterial(GroundState.driedGround, reason);
+        Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.ChangeMaterial(GroundState.driedGround, reason);
 
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
-                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].currentState <= (int)GroundState.Grass) {
-                    Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.driedGround, reason);
+                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
+                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
 
                     for (int z = -1; z < 2; z++) {
                         for (int zz = -1; zz < 2; zz++) {
-                            if (Random.Range(0, 100)< 20 && (int)Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState <= (int)GroundState.Grass) {
-                                Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.driedGround, reason);
-                            } else if (Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState == GroundState.fertile) {
-                                Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].ChangeMaterial(GroundState.Grass, downgradeReason2);
+                            if (Random.Range(0, 100)< 20 && (int)Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState <= (int)GroundState.Grass) {
+                                Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
+                            } else if (Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState == GroundState.fertile) {
+                                Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
                             }
                         }
                     }
-                } else if (Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].currentState == GroundState.fertile) {
-                    Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.Grass, downgradeReason2);
+                } else if (Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState == GroundState.fertile) {
+                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
                 }
             }
         }
@@ -401,32 +375,32 @@ public class EcoManager : MonoBehaviour {
     public void BurnGrounds(Vector3 burnPosition, int radius, string reason, string downgradeReason, string downgradeReason2) {
         Tile tileToEdit = GetTile(burnPosition);
 
-        Grid[tileToEdit.gridPosX].myArray[tileToEdit.gridPosY].ChangeMaterial(GroundState.burned, reason);
-        StartFire(Grid[tileToEdit.gridPosX].myArray[tileToEdit.gridPosY].myTile.transform.position);
+        Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.ChangeMaterial(GroundState.burned, reason);
+        StartFire(Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.transform.position);
 
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
-                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].currentState <= (int)GroundState.Grass) {
-                    Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.burned, reason);
-                    StartFire(Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].myTile.transform.position);
+                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
+                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.burned, reason);
+                    StartFire(Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.transform.position);
 
                     for (int z = -1; z < 2; z++) {
                         for (int zz = -1; zz < 2; zz++) {
-                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState <= (int)GroundState.Grass) {
-                                Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.driedGround, reason);
-                            } else if (Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState == GroundState.fertile) {
-                                Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].ChangeMaterial(GroundState.Grass, downgradeReason2);
+                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState <= (int)GroundState.Grass) {
+                                Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
+                            } else if (Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState == GroundState.fertile) {
+                                Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
                             }
                         }
                     }
-                } else if ((int)Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].currentState <= (int)GroundState.Grass) {
-                    Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.driedGround, downgradeReason2);
+                } else if ((int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
+                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, downgradeReason2);
                     for (int z = -1; z < 2; z++) {
                         for (int zz = -1; zz < 2; zz++) {
-                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState <= (int)GroundState.Grass) {
-                                Grid[tileToEdit.gridPosX + i].myArray[tileToEdit.gridPosY + ii].ChangeMaterial(GroundState.driedGround, reason);
-                            } else if (Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].currentState == GroundState.fertile) {
-                                Grid[tileToEdit.gridPosX + i + z].myArray[tileToEdit.gridPosY + ii + zz].ChangeMaterial(GroundState.Grass, downgradeReason2);
+                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState <= (int)GroundState.Grass) {
+                                Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
+                            } else if (Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState == GroundState.fertile) {
+                                Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
                             }
                         }
                     }
@@ -454,7 +428,7 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < -pollution / -basePollution * 20; i++) {
             if (driedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, driedTiles.Count - 1);
-                driedTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                driedTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
                 grassTiles.Add(driedTiles[selected]);
                 driedTiles.RemoveAt(selected);
             }
@@ -464,7 +438,7 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < -pollution / -basePollution * 10; i++) {
             if (burnedTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, burnedTiles.Count - 1);
-                burnedTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                burnedTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
                 furtileTiles.Add(burnedTiles[selected]);
                 burnedTiles.RemoveAt(selected);
             }
@@ -474,8 +448,8 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < -basePollution / -pollution * 2; i++) {
             if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
-                grassTiles[selected].myTile.layer = LayerMask.NameToLayer("ground");
-                grassTiles[selected].ChangeMaterial(GroundState.driedGround, "Air Is To Dry.");
+                grassTiles[selected].myTile.myTile.layer = LayerMask.NameToLayer("ground");
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "Air Is To Dry.");
                 driedTiles.Add(grassTiles[selected]);
                 grassTiles.RemoveAt(selected);
             }
@@ -485,8 +459,8 @@ public class EcoManager : MonoBehaviour {
         for (int i = 0; i < -basePollution / -pollution * 1; i++) {
             if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
-                grassTiles[selected].myTile.layer = LayerMask.NameToLayer("ground");
-                grassTiles[selected].ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
+                grassTiles[selected].myTile.myTile.layer = LayerMask.NameToLayer("ground");
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.driedGround, "No Water Nearby To Stop The Fire");
                 burnedTiles.Add(grassTiles[selected]);
                 grassTiles.RemoveAt(selected);
             }

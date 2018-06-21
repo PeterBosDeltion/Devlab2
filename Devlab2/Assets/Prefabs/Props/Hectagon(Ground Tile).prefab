@@ -172,8 +172,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myObstavle: {fileID: 208176765196764398}
-  x: 0
-  y: 0
+  myTimeLine: []
+  currentState: 4
+  gridPosX: 0
+  gridPosY: 0
+  myTile: {fileID: 1802327301417490}
+  myRenderer: {fileID: 23317192042047840}
+  myOccupant: {fileID: 0}
 --- !u!136 &136277414741308290
 CapsuleCollider:
   m_ObjectHideFlags: 1

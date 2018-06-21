@@ -27,7 +27,7 @@ public class EcoInspector : MonoBehaviour {
     }
 
     public void ButtonRight() {
-        if(currentlyInspected.myTimeLine.Count - 1 != currentlySelected) {
+        if(currentlyInspected.myTile.myTimeLine.Count - 1 != currentlySelected) {
             currentlySelected++;
             UpdateUI();
         }
@@ -48,27 +48,27 @@ public class EcoInspector : MonoBehaviour {
     }
 
     void UpdateUI() {
-        int i = (int)currentlyInspected.myTimeLine[currentlySelected].state - 1;
+        int i = (int)currentlyInspected.myTile.myTimeLine[currentlySelected].state - 1;
 
         tileImage2.sprite = EcoManager.groundSprites[i];
-        mainTile.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[0].state - 1];
+        mainTile.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTile.myTimeLine[0].state - 1];
         description.text = EcoManager.groundDescription[i];
 
-        reason.text = currentlyInspected.myTimeLine[currentlySelected].reason;
+        reason.text = currentlyInspected.myTile.myTimeLine[currentlySelected].reason;
         tileName.text = EcoManager.groundName[i];
 
         if(currentlySelected == 0) {
             tileImage1.sprite = x;
         }
         else {
-            tileImage3.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[currentlySelected - 1].state];
+            tileImage3.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTile.myTimeLine[currentlySelected - 1].state];
         }
 
-        if(currentlySelected == currentlyInspected.myTimeLine.Count - 1) {
+        if(currentlySelected == currentlyInspected.myTile.myTimeLine.Count - 1) {
             tileImage3.sprite = x;
         }
         else {
-            tileImage3.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTimeLine[currentlySelected + 1].state];
+            tileImage3.sprite = EcoManager.groundSprites[(int)currentlyInspected.myTile.myTimeLine[currentlySelected + 1].state];
         }
     }
 }

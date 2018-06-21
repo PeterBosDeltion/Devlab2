@@ -14,7 +14,7 @@ public class AddPolution : MonoBehaviour {
     void OnEnable() {
         if(EcoManager.instance != null) {
             EcoManager.instance.AddPollution(pollution);
-            EcoManager.instance.GetTile(transform.position).myOccupant = this;
+            EcoManager.instance.GetTile(transform.position).myTile.myOccupant = this;
         }
     }
 

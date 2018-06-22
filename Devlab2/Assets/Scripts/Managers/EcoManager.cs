@@ -191,6 +191,10 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void GenorateIsland() {
+        islandSize = GameManager.worldWidth;
+
+        Debug.Log(Grid);
+
         groundTextures = new Material[groundTexturesInput.Count];
         for (int i = 0; i < groundTexturesInput.Count; i++) {
             groundTextures[(int)groundTexturesInput[i].state - 1] = groundTexturesInput[i].tex;

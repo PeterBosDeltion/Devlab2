@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = player.GetComponent<Rigidbody>();
         agent = player.GetComponent<NavMeshAgent>();
+        anim = player.GetComponentInChildren<Animator>();
 
         if(anim == null)
         {

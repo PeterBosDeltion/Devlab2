@@ -20,5 +20,5 @@ MonoBehaviour:
   myButtons:
   - Drop
   itemDiscription: Made Of The Tears Of Cows.
-  equippable: {fileID: 0}
+  equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   itemType: 0

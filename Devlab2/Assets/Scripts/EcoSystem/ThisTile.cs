@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ThisTile : MonoBehaviour {
     public GameObject waterObstacle;
+    public GameObject grass;
     public List<EcoManager.State> myTimeLine = new List<EcoManager.State>();
     public EcoManager.GroundState currentState;
     public int gridPosX, gridPosY;
@@ -33,6 +34,11 @@ public class ThisTile : MonoBehaviour {
         if (newState == EcoManager.GroundState.Water) {
             waterObstacle.SetActive(true);
         } else {
+            if (currentState == EcoManager.GroundState.Grass || currentState == EcoManager.GroundState.fertile) {
+                grass.SetActive(true);
+            } else {
+                grass.SetActive(false);
+            }
             waterObstacle.SetActive(false);
         }
     }

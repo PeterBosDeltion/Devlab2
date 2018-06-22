@@ -21,7 +21,7 @@ MonoBehaviour:
   - Drop
   - Consume
   itemDiscription: Made Of Animals.
-  equippable: {fileID: 0}
+  equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   itemType: 0
   food: 10
   water: -5

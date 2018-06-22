@@ -50,11 +50,16 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
-        LookAtMouse();
+        if (!anim.GetBool("Playerwalk"))
+        {
+            LookAtMouse();
+        }
+
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Idle"))
         {
             Move();
+
             //ClickMove();
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Walking"))
@@ -94,9 +99,9 @@ public class PlayerMovement : MonoBehaviour {
             {
                 Vector3 movement = new Vector3(x, 0.0F, y);
 
-                Vector3 moveRel = transform.TransformDirection(movement);    
+                Vector3 moveRel = transform.TransformDirection(movement);
 
-                player.transform.rotation = Quaternion.LookRotation(moveRel);
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(moveRel), rotateSpeed * Time.deltaTime);
 
             if (!anim.GetBool("Playerwalk"))
             {
@@ -158,7 +163,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     lookPos.y = 0;
                     Quaternion rotation = Quaternion.LookRotation(lookPos);
-                    player.transform.rotation = Quaternion.Lerp(player.transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+                    player.transform.rotation = Quaternion.Lerp(player.transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
                 }
             }

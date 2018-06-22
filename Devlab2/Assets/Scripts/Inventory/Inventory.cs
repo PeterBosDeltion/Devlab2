@@ -76,7 +76,9 @@ public class Inventory : MonoBehaviour {
                     Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
                 }
             }
-        } else {
+        }
+        else
+        {
             toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
             Builder.instance.StopBuild();
             if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {

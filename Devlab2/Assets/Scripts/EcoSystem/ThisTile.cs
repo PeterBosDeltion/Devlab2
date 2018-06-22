@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class ThisTile : MonoBehaviour {
-    public NavMeshObstacle myObstavle;
-    public CapsuleCollider myCollider;
+    public GameObject waterObstacle;
     public List<EcoManager.State> myTimeLine = new List<EcoManager.State>();
     public EcoManager.GroundState currentState;
     public int gridPosX, gridPosY;
@@ -30,23 +29,19 @@ public class ThisTile : MonoBehaviour {
             myRenderer = myTile.GetComponent<Renderer>();
         }
         myRenderer.material = EcoManager.groundTextures[(int)newState - 1];
+
+        if (newState == EcoManager.GroundState.Water) {
+            waterObstacle.SetActive(true);
+        } else {
+            waterObstacle.SetActive(false);
+        }
     }
 
-    private void Start() {
+    void Start() {
         if (gameObject.layer == LayerMask.NameToLayer("Water")) {
-            myObstavle.enabled = true;
-            myCollider.enabled = true;
-            foreach (Transform t in transform) {
-                if (t.name == "WaterCollider") {
-                    t.transform.gameObject.SetActive(true);
-                }
-            }
+            waterObstacle.SetActive(true);
         } else {
-            foreach (Transform t in transform) {
-                if (t.name == "WaterCollider") {
-                    t.transform.gameObject.SetActive(false);
-                }
-            }
+            waterObstacle.SetActive(false);
         }
     }
 

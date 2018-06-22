@@ -19,9 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4736050270339550}
-  - component: {fileID: 33516129302697344}
-  - component: {fileID: 23505973448314860}
   - component: {fileID: 136407249430190616}
+  - component: {fileID: 208634812959112562}
   m_Layer: 0
   m_Name: WaterCollider
   m_TagString: Untagged
@@ -40,7 +39,6 @@ GameObject:
   - component: {fileID: 33633570314500368}
   - component: {fileID: 23317192042047840}
   - component: {fileID: 114040549344180868}
-  - component: {fileID: 208176765196764398}
   - component: {fileID: 136277414741308290}
   m_Layer: 4
   m_Name: Hectagon(Ground Tile)
@@ -111,48 +109,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23505973448314860
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035479453666966}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33516129302697344
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035479453666966}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33633570314500368
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -171,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302900d0c6681d44b87f4586e72d8c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myObstavle: {fileID: 208176765196764398}
+  waterObstacle: {fileID: 1035479453666966}
   myTimeLine: []
   currentState: 4
   gridPosX: 0
@@ -205,13 +161,13 @@ CapsuleCollider:
   m_Height: 19.19
   m_Direction: 2
   m_Center: {x: 0.06028991, y: 0, z: -5.57}
---- !u!208 &208176765196764398
+--- !u!208 &208634812959112562
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1802327301417490}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1035479453666966}
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
   m_Extents: {x: 0.5, y: 0.43300003, z: 0.5}

@@ -51,6 +51,9 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start() {
         myEnt = GetComponent<Entity>();
+        ChangeEquippedItem(4);
+        EquipHand();
+        Inventory.Instance.ChangeToolBarSelected();
     }
 
     // Update is called once per frame
@@ -119,7 +122,7 @@ public class Player : MonoBehaviour {
 
     public void EquipHand() {
         Inventory.itemInHand = hand;
-        Debug.Log(Inventory.itemInHand);
+        //Debug.Log(Inventory.itemInHand);
     }
 
     public void ChangeEquippedItem(int i) { //Item's listIndex variable must be equal to its place in the item list in this script

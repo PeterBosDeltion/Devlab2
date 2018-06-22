@@ -8,22 +8,22 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody rb;
     public float moveSpeed;
     public float rotateSpeed = 16;
-    private NavMeshAgent agent;
+   // private NavMeshAgent agent;
     public LayerMask moveLayermask;
 
     public bool walking;
 
     public Animator anim;
 
-    private bool mouseDown;
+   // private bool mouseDown;
 
-    private bool usingNavmesh;
+   // private bool usingNavmesh;
     public GameObject player;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = player.GetComponent<Rigidbody>();
-        agent = player.GetComponent<NavMeshAgent>();
+       // agent = player.GetComponent<NavMeshAgent>();
         anim = player.GetComponentInChildren<Animator>();
 
         if(anim == null)
@@ -34,14 +34,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
-        if (usingNavmesh)
-        {
-            if (player.transform.position == agent.destination)
-            {
-                usingNavmesh = false;
-                anim.SetBool("Playerwalk", false);
-            }
-        }
+        //if (usingNavmesh)
+        //{
+        //    if (player.transform.position == agent.destination)
+        //    {
+        //        usingNavmesh = false;
+        //        anim.SetBool("Playerwalk", false);
+        //    }
+        //}
 
         
        
@@ -49,16 +49,23 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-        LookAtMouse();
+
+        if (!anim.GetBool("Playerwalk"))
+        {
+            LookAtMouse();
+        }
+
+
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Idle"))
         {
             Move();
-            ClickMove();
+
+            //ClickMove();
         }
         else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Walking"))
         {
             Move();
-            ClickMove();
+            //ClickMove();
 
         }
     }
@@ -66,18 +73,18 @@ public class PlayerMovement : MonoBehaviour {
     public void Move()
     {
         
-        if (Input.GetMouseButton(1))
-        {
-            mouseDown = true;
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            mouseDown = false;
-        }
+        //if (Input.GetMouseButton(1))
+        //{
+        //    mouseDown = true;
+        //}
+        //else if (Input.GetMouseButtonUp(1))
+        //{
+        //    mouseDown = false;
+        //}
 
 
-        if (!mouseDown)
-        {
+       
+        
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
@@ -85,36 +92,45 @@ public class PlayerMovement : MonoBehaviour {
             player.transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
             player.transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
 
-       
+          
 
 
             if (x != 0 || y != 0)
             {
-                usingNavmesh = false;
-                Vector3 movement = new Vector3(x, 0.0f, y);
+                Vector3 movement = new Vector3(x, 0.0F, y);
 
-                player.transform.rotation = Quaternion.LookRotation(Vector3.Lerp(player.transform.rotation.eulerAngles, movement, rotateSpeed * Time.deltaTime));
-                //if (!walking)
-                //{
-                //    walking = true;
-                //    anim.SetTrigger("Player_Walk");
-                //}
+                Vector3 moveRel = transform.TransformDirection(movement);
 
-                if (!anim.GetBool("Playerwalk"))
-                {
-                    anim.SetBool("Playerwalk", true);
-                }
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(moveRel), rotateSpeed * Time.deltaTime);
 
-
-
-                agent.updatePosition = false;
-            }
-            else
+            if (!anim.GetBool("Playerwalk"))
             {
-                if (!usingNavmesh)
+                anim.SetBool("Playerwalk", true);
+            }
+
+            //usingNavmesh = false;
+
+            //if (!walking)
+            //{
+            //    walking = true;
+            //    anim.SetTrigger("Player_Walk");
+        }
+
+
+        // agent.updatePosition = false;
+        else
+            {
+
+
+                if (anim.GetBool("Playerwalk"))
                 {
                     anim.SetBool("Playerwalk", false);
                 }
+
+                //if (!usingNavmesh)
+                //{
+                //    anim.SetBool("Playerwalk", false);
+                //}
                 //if (walking)
                 //{
                 //    walking = false;
@@ -129,54 +145,53 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-            if(agent.nextPosition != transform.position)
-            {
-                agent.nextPosition = transform.position; //Updates the agents position to the objects position
-            }
-
-
-    }
-
-    public void LookAtMouse()
-    {
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 999,moveLayermask))
+            //if(agent.nextPosition != transform.position)
+            //{
+            //    agent.nextPosition = transform.position; //Updates the agents position to the objects position
+            //}
+        public void LookAtMouse()
         {
-            Vector3 lookPos = hit.point - player.transform.position;
 
-            if(Vector3.Distance(player.transform.position, hit.point) > 1.8F)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 999, moveLayermask))
             {
-                lookPos.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
-                player.transform.rotation = Quaternion.Lerp(player.transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+                Vector3 lookPos = hit.point - player.transform.position;
 
+                if (Vector3.Distance(player.transform.position, hit.point) > 1.8F)
+                {
+                    lookPos.y = 0;
+                    Quaternion rotation = Quaternion.LookRotation(lookPos);
+                    player.transform.rotation = Quaternion.Lerp(player.transform.rotation, rotation, rotateSpeed * Time.deltaTime);
+
+                }
             }
         }
-    }
 
-    public void ClickMove()
-    {
+}
 
-        RaycastHit hit;
-        if (Input.GetMouseButton(1))
-        {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-            {
-                agent.updatePosition = true;
+  
 
-                anim.SetBool("Playerwalk", true);
 
-                agent.SetDestination(hit.point);
-                usingNavmesh = true;
-            }
-        }
+    //public void ClickMove()
+    //{
+
+    //    RaycastHit hit;
+    //    if (Input.GetMouseButton(1))
+    //    {
+    //        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+    //        {
+    //            agent.updatePosition = true;
+
+    //            anim.SetBool("Playerwalk", true);
+
+    //            agent.SetDestination(hit.point);
+    //            usingNavmesh = true;
+    //        }
+    //    }
 
        
 
 
-    }
-
-}
+    //}

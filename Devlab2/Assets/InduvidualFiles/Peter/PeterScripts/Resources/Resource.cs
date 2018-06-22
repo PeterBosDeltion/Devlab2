@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Resource : MonoBehaviour {
-    public Item myResource;
+    public Item myResource; //Still exists so we don't need to re-add everything
+    public List<Item> resourceDrops = new List<Item>();
     public Equippable.CanGather type;
     public int toughness = 1;
 
@@ -12,6 +13,15 @@ public class Resource : MonoBehaviour {
     public bool berries;
     public GameObject berryChild;
     public float berryGrowTime = 7;
+
+    private void Start()
+    {
+        if (!resourceDrops.Contains(myResource))
+        {
+            resourceDrops.Add(myResource);
+        }
+    }
+
     public void Harvest(Gather g)
     {
         if(Inventory.itemInHand != null && Inventory.itemInHand.myGathering == type && canGather)
@@ -31,15 +41,23 @@ public class Resource : MonoBehaviour {
                 int itemsInInv = 0;
                 foreach (Slot s in Inventory.Instance.theInventory)
                 {
-                    if(s.myItem == null && Inventory.Instance.AddItem(myResource))
+
+                    if (s.myItem == null)
                     {
-                        //Inventory.Instance.AddItem(myResource); //Un comment when there is inventory in scene pl0x
+                        foreach (Item i in resourceDrops)
+                        {
+                            Inventory.Instance.AddItem(i); //Un comment when there is inventory in scene pl0x
+
+                        }
+
                         break;
                     }
                     else
                     {
                         itemsInInv++;
                     }
+                   
+                  
                 }
 
                 if(itemsInInv >= Inventory.Instance.theInventory.Count)

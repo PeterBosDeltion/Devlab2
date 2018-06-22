@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
   type: 1
-  toughness: 5
+  toughness: 4
   berries: 0
   berryChild: {fileID: 0}
   berryGrowTime: 7

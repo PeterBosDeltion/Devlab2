@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class ThisTile : MonoBehaviour {
     public NavMeshObstacle myObstavle;
+    public CapsuleCollider myCollider;
     public List<EcoManager.State> myTimeLine = new List<EcoManager.State>();
     public EcoManager.GroundState currentState;
     public int gridPosX, gridPosY;
@@ -34,6 +35,7 @@ public class ThisTile : MonoBehaviour {
     private void Start() {
         if (gameObject.layer == LayerMask.NameToLayer("Water")) {
             myObstavle.enabled = true;
+            myCollider.enabled = true;
             foreach (Transform t in transform) {
                 if (t.name == "WaterCollider") {
                     t.transform.gameObject.SetActive(true);

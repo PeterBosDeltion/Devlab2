@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 114040549344180868}
   - component: {fileID: 136277414741308290}
   m_Layer: 4
-  m_Name: Hectagon(Ground Tile)
+  m_Name: Hectagon(Ground Tile)1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

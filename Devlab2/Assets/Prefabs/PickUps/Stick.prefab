@@ -36,9 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4406269220340802}
+  - component: {fileID: 208887144176078070}
+  - component: {fileID: 65789184858214424}
   m_Layer: 0
   m_Name: Stick
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,8 +65,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1895422488239784}
   m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: 3.713, y: 0.092, z: 7.943}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalPosition: {x: -0.27, y: 0.862, z: 9.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4259600800563384}
   m_Father: {fileID: 0}
@@ -112,3 +114,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1092863029212408}
   m_Mesh: {fileID: 4300000, guid: c5827d6b26ec91745b6239bb3d5bb77f, type: 3}
+--- !u!65 &65789184858214424
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895422488239784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5772996, y: 1, z: 1}
+  m_Center: {x: 1.2886498, y: -4.2632564e-14, z: 0}
+--- !u!208 &208887144176078070
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895422488239784}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.16}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

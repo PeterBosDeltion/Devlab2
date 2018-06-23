@@ -76,4 +76,4 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       loadBehavior: 0
-    material: {instanceID: 0}
+    material: {fileID: 2100000, guid: a02464089982cca4e866dc18618e1e93, type: 3}

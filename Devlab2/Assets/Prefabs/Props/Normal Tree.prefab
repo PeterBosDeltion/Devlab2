@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4207244606946038}
+  - component: {fileID: 95692292849004646}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -104,6 +105,7 @@ GameObject:
   - component: {fileID: 4758375848215168}
   - component: {fileID: 33253663317505106}
   - component: {fileID: 23859135875322464}
+  - component: {fileID: 95351729161114920}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -123,6 +125,7 @@ GameObject:
   - component: {fileID: 208134261063240720}
   - component: {fileID: 114896503432782662}
   - component: {fileID: 136347876891436226}
+  - component: {fileID: 95309444955637072}
   m_Layer: 0
   m_Name: Normal Tree
   m_TagString: Resource
@@ -150,8 +153,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572848909377226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.84000015, y: -0.15000004, z: -0.11999893}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.05, y: -0.18750209, z: -0.02}
+  m_LocalScale: {x: 1.7850336, y: 1.2500138, z: 1.8157794}
   m_Children:
   - {fileID: 4189443853390272}
   - {fileID: 4860871962239864}
@@ -169,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 1841819899240448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.18, y: 0.92, z: 20.22}
-  m_LocalScale: {x: 1.7850336, y: 1.2500138, z: 1.8157794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4207244606946038}
   m_Father: {fileID: 0}
@@ -437,6 +440,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729804430301118}
   m_Mesh: {fileID: 4300008, guid: 84aeb63f621cf8c429d666e8da4a7b09, type: 3}
+--- !u!95 &95309444955637072
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841819899240448}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19de6c79654446b46a7c4239ebbf72cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95351729161114920
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829503163256800}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e15ae7dedf2f4724594f5e957358d273, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95692292849004646
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572848909377226}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114275005379462396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,8 +506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: ebd7fb140edfa5f438ed4027a7c2ebd9, type: 2}
+  resourceDrops: []
   type: 0
   toughness: 1
+  myAnimator: {fileID: 95309444955637072}
   berries: 0
   berryChild: {fileID: 0}
   berryGrowTime: 7
@@ -481,10 +540,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.31633478
+  m_Radius: 0.6158073
   m_Height: 6.180215
   m_Direction: 1
-  m_Center: {x: 0.54380745, y: 2.3638039, z: -0.5542769}
+  m_Center: {x: 0.5438075, y: 2.3638039, z: -0.8537495}
 --- !u!208 &208134261063240720
 NavMeshObstacle:
   m_ObjectHideFlags: 1
@@ -494,9 +553,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 0.3163348, y: 3.0901074, z: 0.3163348}
+  m_Extents: {x: 0.6158073, y: 3.0901074, z: 0.6158073}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: 0.5438074, y: 2.363804, z: -0.5542769}
+  m_Center: {x: 0.5438075, y: 2.363804, z: -0.8537495}
   m_TimeToStationary: 0.1

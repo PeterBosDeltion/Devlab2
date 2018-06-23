@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 136647043298748398}
   - component: {fileID: 136089117686198774}
   - component: {fileID: 136500162705021774}
+  - component: {fileID: 95761154147325774}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Resource
@@ -731,6 +732,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736851537638522}
   m_Mesh: {fileID: 4300000, guid: bcb2a18419ac20b44acadaf15892ee2b, type: 3}
+--- !u!95 &95761154147325774
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1401980967065580}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19de6c79654446b46a7c4239ebbf72cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114673482409085122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,8 +780,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: e456fa2056a84354895ce00374f3f062, type: 2}
+  resourceDrops: []
   type: 3
   toughness: 0
+  myAnimator: {fileID: 0}
   berries: 1
   berryChild: {fileID: 1583724814002044}
   berryGrowTime: 15

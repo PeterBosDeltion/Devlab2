@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114237799288054222}
   - component: {fileID: 208621284488559578}
   - component: {fileID: 136288693096244368}
+  - component: {fileID: 95342375722140174}
   m_Layer: 0
   m_Name: RockPrefab BigBoy
   m_TagString: Resource
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1372311025915138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.773978, y: 0.77500004, z: 20.451721}
+  m_LocalPosition: {x: -2.1594357, y: 5.4009867, z: 22.837345}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4334057246789386}
@@ -115,6 +116,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469063121928728}
   m_Mesh: {fileID: 4300000, guid: d164b76799270bf4f86220bd1c0e3269, type: 3}
+--- !u!95 &95342375722140174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372311025915138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19de6c79654446b46a7c4239ebbf72cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114237799288054222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,8 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
+  resourceDrops: []
   type: 1
   toughness: 4
+  myAnimator: {fileID: 95342375722140174}
   berries: 0
   berryChild: {fileID: 0}
   berryGrowTime: 7

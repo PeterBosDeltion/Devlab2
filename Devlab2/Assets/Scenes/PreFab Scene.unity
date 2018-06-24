@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -406,9 +406,85 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 65816276895939122, guid: 63520d5e1db5f31478f72642d9dd511c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716861101984100, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716861101984100, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114043619395372938, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
+    - {fileID: 65816276895939122, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 63520d5e1db5f31478f72642d9dd511c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &145762580 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1716861101984100, guid: 63520d5e1db5f31478f72642d9dd511c,
+    type: 2}
+  m_PrefabInternal: {fileID: 145762579}
+--- !u!114 &145762581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 145762580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: Furnace
+  machineImage: {fileID: 0}
+  isTurnedOn: 0
+  StartText: 
+  stopText: 
+  validItems: []
+  validFuelItems: []
+  craftSlots: []
+  productSlots: []
+  craftFuelSlots: []
+  productFuelSlots: []
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 0
+  dryChance: 0
+  drysGround: 0
+  dryRadius: 0
+  dryReason: 
+  dryReason1: 
+  dryReason2: 
+  burnChance: 0
+  burnsGround: 0
+  burnRadius: 0
+  burnReason: 
+  burnReason1: 
+  burnReason2: 
+  needsFuel: 0
+  PollutionToAdd: 0
+  myPartical: {fileID: 0}
+  myAnimator: {fileID: 0}
+--- !u!135 &145762582
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 145762580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.37749
+  m_Center: {x: -0.33877277, y: -0.036602497, z: 0.60421395}
 --- !u!1001 &163542621
 Prefab:
   m_ObjectHideFlags: 0
@@ -5190,21 +5266,6 @@ Prefab:
     - target: {fileID: 4457537817764386, guid: 368855ea60907da449c7fb6dfc1b108b, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824521710017542, guid: 368855ea60907da449c7fb6dfc1b108b,
-        type: 2}
-      propertyPath: needsFuel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824521710017542, guid: 368855ea60907da449c7fb6dfc1b108b,
-        type: 2}
-      propertyPath: StartText
-      value: Ignite
-      objectReference: {fileID: 0}
-    - target: {fileID: 114824521710017542, guid: 368855ea60907da449c7fb6dfc1b108b,
-        type: 2}
-      propertyPath: stopText
-      value: Put Out
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 368855ea60907da449c7fb6dfc1b108b, type: 2}

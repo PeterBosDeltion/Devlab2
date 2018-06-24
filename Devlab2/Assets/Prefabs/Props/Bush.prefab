@@ -780,7 +780,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: e456fa2056a84354895ce00374f3f062, type: 2}
-  resourceDrops: []
+  resourceDrops:
+  - {fileID: 11400000, guid: fbc0ffb3d4870d34e96350009c638129, type: 2}
   type: 3
   toughness: 0
   myAnimator: {fileID: 0}

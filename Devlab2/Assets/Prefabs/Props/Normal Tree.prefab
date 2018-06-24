@@ -506,7 +506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: ebd7fb140edfa5f438ed4027a7c2ebd9, type: 2}
-  resourceDrops: []
+  resourceDrops:
+  - {fileID: 11400000, guid: fbc0ffb3d4870d34e96350009c638129, type: 2}
   type: 0
   toughness: 1
   myAnimator: {fileID: 95309444955637072}

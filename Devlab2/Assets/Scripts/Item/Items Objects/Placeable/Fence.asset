@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Name: Fence
   m_EditorClassIdentifier: 
   itemName: Fence
-  item2D: {fileID: 21300000, guid: 5d9ba4e7d0964044ea54abe409d81dfd, type: 3}
+  item2D: {fileID: 21300000, guid: 30774dd2e5ede804899c2d36d2f34930, type: 3}
   itemListIndex: 4
   placaBle: 1
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons: []
   itemDiscription: It's just sticks that've been taped together.
+  equippable: {fileID: 0}
   itemType: 0

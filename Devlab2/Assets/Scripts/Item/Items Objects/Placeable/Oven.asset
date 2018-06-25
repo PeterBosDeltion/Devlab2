@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Oven
   m_EditorClassIdentifier: 
   itemName: Oven
-  item2D: {fileID: 21300000, guid: 649bb1d070f154b409bfec5dd53766d7, type: 3}
+  item2D: {fileID: 21300000, guid: d5743441d386be749bb65b7470d4ce1e, type: 3}
   itemListIndex: 4
   placaBle: 1
   placeAbleYoffset: 0

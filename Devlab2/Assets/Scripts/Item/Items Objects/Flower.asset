@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Flower
   m_EditorClassIdentifier: 
   itemName: 
-  item2D: {fileID: 0}
+  item2D: {fileID: 21300000, guid: ba88f63430df6c84392aec88c6603e51, type: 3}
   itemListIndex: 0
   placaBle: 0
   placeAbleYoffset: 0

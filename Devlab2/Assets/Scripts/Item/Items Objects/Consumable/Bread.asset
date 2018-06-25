@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   itemName: Bread
-  item2D: {fileID: 0}
+  item2D: {fileID: 21300000, guid: efb687d56c1c9b647a5ab5075a486d2a, type: 3}
   itemListIndex: 4
   placaBle: 0
   placeAbleYoffset: 0

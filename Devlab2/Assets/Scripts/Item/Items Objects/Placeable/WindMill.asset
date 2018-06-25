@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: WindMill
   m_EditorClassIdentifier: 
   itemName: WindMill
-  item2D: {fileID: 21300000, guid: 0e123cfdc54a3ca4684816a34167a566, type: 3}
+  item2D: {fileID: 21300000, guid: bedc22086e7e14b439fcb8fc0c0c74c2, type: 3}
   itemListIndex: 4
   placaBle: 1
   placeAbleYoffset: 0

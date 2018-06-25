@@ -15,6 +15,9 @@ MonoBehaviour:
   item2D: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
   itemListIndex: 4
   placaBle: 1
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons: []
   itemDiscription: Ground for farming.
+  equippable: {fileID: 0}
   itemType: 0

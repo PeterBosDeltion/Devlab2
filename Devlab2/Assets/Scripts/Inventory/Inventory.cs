@@ -26,6 +26,10 @@ public class Inventory : MonoBehaviour {
     public List<InspectorButton> buttons = new List<InspectorButton>();
     public Slot currentInspected;
 
+    [Header("ResipeDisplay")]
+    public ResipeImages[] resipeDisplay;
+    public int currentResipe;
+
     [Header("Animations")]
     public Animator craftInspectAnimator;
 
@@ -37,6 +41,7 @@ public class Inventory : MonoBehaviour {
 
     void Start() {
         dragImage.enabled = false;
+        ResipeUIUpdate();
     }
 
     void Update() {
@@ -76,9 +81,7 @@ public class Inventory : MonoBehaviour {
                     Builder.instance.StartBuilder(toolBar[SelectedToolbarSlot].myItem);
                 }
             }
-        }
-        else
-        {
+        } else {
             toolBarSelectedImage.rectTransform.position = toolBar[SelectedToolbarSlot].ToolbarImage.rectTransform.position;
             Builder.instance.StopBuild();
             if (toolBar[SelectedToolbarSlot].myItem != null && toolBar[SelectedToolbarSlot].myItem.placaBle == true) {
@@ -247,7 +250,7 @@ public class Inventory : MonoBehaviour {
             int k = 0;
             for (int r = 0; r < CraftingRecipesList[fullSlots][rr].ingredients.Count; r++) {
                 for (int ii = 0; ii < craftingSlots.Count; ii++) {
-                    if (craftingSlots[ii].isChecked == false && craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r]) {
+                    if (craftingSlots[ii].isChecked == false && craftingSlots[ii].myItem != null && craftingSlots[ii].myItem.itemName == CraftingRecipesList[fullSlots][rr].ingredients[r].itemName) {
                         k++;
                         craftingSlots[ii].isChecked = true;
 
@@ -285,7 +288,7 @@ public class Inventory : MonoBehaviour {
     //Recipe To Check
     [System.Serializable]
     public class Recipe {
-        public List<string> ingredients = new List<string>();
+        public List<Item> ingredients = new List<Item>();
         public Item product;
         public int amount;
     }
@@ -339,4 +342,40 @@ public class Inventory : MonoBehaviour {
         public GameObject itemObject;
     }
     #endregion
+
+    public void ResipeBookUp() {
+        if (currentResipe > 0) {
+            currentResipe--;
+            ResipeUIUpdate();
+        }
+    }
+
+    public void ResipeBookDown() {
+        if (currentResipe < CraftingRecipes.Count - 10) {
+            currentResipe++;
+            ResipeUIUpdate();
+        }
+    }
+
+    public void ResipeUIUpdate() {
+        for (int i = 0; i < resipeDisplay.Length; i++) {
+            resipeDisplay[i].Product.sprite = CraftingRecipes[currentResipe + i].product.item2D;
+
+            for (int ii = 0; ii < 5; ii++) {
+                if (ii < CraftingRecipes[i + currentResipe].ingredients.Count) {
+                    resipeDisplay[i].craft[ii].enabled = true;
+                    resipeDisplay[i].craft[ii].sprite = CraftingRecipes[i + currentResipe].ingredients[ii].item2D;
+                } else {
+                    resipeDisplay[i].craft[ii].enabled = false;
+                }
+            }
+        }
+    }
+
+    [System.Serializable]
+    public struct ResipeImages {
+        public Image[] craft;
+
+        public Image Product;
+    }
 }

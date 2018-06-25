@@ -15,8 +15,11 @@ MonoBehaviour:
   item2D: {fileID: 21300000, guid: 0c7c4852673b1fa4db16b596a6d45c7f, type: 3}
   itemListIndex: 4
   placaBle: 0
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons: []
   itemDiscription: If only I could pop it.
+  equippable: {fileID: 0}
   itemType: 0
   food: 15
   water: 1

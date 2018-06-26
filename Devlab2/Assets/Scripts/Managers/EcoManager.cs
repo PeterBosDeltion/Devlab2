@@ -167,7 +167,9 @@ public class EcoManager : MonoBehaviour {
     }
 
     public void Serialize() {
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
     }
 
     public void DestroyMap() {

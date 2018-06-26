@@ -70,8 +70,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1205407473608120}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.8992552, z: 0.14068146}
+  m_LocalRotation: {x: -0.49999997, y: -0.50000006, z: -0.50000006, w: 0.49999997}
+  m_LocalPosition: {x: -0.14068222, y: 0.8992553, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277850892789722}
@@ -83,23 +83,23 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354036978649454}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 25.79, y: 0.77, z: -7.99}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.79, y: 0.77, z: -18.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4108203326658128}
   - {fileID: 4536280972313570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4536280972313570
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1344777434850048}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.49999997, y: -0.50000006, z: -0.50000006, w: 0.49999997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4277850892789722}
@@ -120,7 +120,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 83983b829365a8440a3eb72455e4ba6c, type: 3}
+  - {fileID: 2100000, guid: 8fb0fe11647d5e64b80426f56489bed5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,7 +155,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 83983b829365a8440a3eb72455e4ba6c, type: 3}
+  - {fileID: 2100000, guid: 8fb0fe11647d5e64b80426f56489bed5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineName: 
+  machineName: Oven
   machineImage: {fileID: 0}
   isTurnedOn: 0
   StartText: 
@@ -229,10 +229,18 @@ MonoBehaviour:
     ingredient: {fileID: 0}
     timeToConvert: 0
   coolDownTime: 0
+  dryChance: 0
   drysGround: 0
   dryRadius: 0
+  dryReason: 
+  dryReason1: 
+  dryReason2: 
+  burnChance: 0
   burnsGround: 0
   burnRadius: 0
+  burnReason: 
+  burnReason1: 
+  burnReason2: 
   needsFuel: 0
   PollutionToAdd: 0
   myPartical: {fileID: 0}

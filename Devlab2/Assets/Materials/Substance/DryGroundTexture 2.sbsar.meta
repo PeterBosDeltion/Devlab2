@@ -2,19 +2,19 @@ fileFormatVersion: 2
 guid: 8e48b01f86bde3449b9257e34b793a81
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: DryGroundTexture/DryGroundTexture
-    400000: DryGroundTexture/DryGroundTexture/Transform
+    100002: DryGroundTexture 2/DryGroundTexture 2
+    400002: DryGroundTexture 2/DryGroundTexture 2/Transform
     2100000: mat.StoneGenTest
-    2300000: DryGroundTexture/DryGroundTexture/MeshRenderer
+    2300002: DryGroundTexture 2/DryGroundTexture 2/MeshRenderer
     2800000: StoneGenTest_Base Color
     2800002: StoneGenTest_Normal
     2800004: StoneGenTest_Metallic
     2800006: StoneGenTest_Height
-    3300000: DryGroundTexture/DryGroundTexture/MeshFilter
+    3300002: DryGroundTexture 2/DryGroundTexture 2/MeshFilter
     11400000: sbsar
     11400002: graph0
-    13500000: DryGroundTexture/DryGroundTexture/SphereCollider
-    100100000: DryGroundTexture
+    13500002: DryGroundTexture 2/DryGroundTexture 2/SphereCollider
+    100100002: DryGroundTexture 2
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -76,4 +76,4 @@ ScriptedImporter:
       textureHeight: 0
       textureFormat: 0
       loadBehavior: 0
-    material: {fileID: 2100000, guid: 4c3d62ff29bf46b49ab2920424c381ce, type: 3}
+    material: {fileID: 2100000, guid: 8e48b01f86bde3449b9257e34b793a81, type: 3}

@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour {
 
     public void LoadNextIndexScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Main Level");
     }
 
     public void LoadSpecificIndexScene(int index)

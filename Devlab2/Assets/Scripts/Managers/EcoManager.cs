@@ -319,12 +319,8 @@ public class EcoManager : MonoBehaviour {
             }
         }
 
-        foreach (Tile t in tiles) {
-            Check(t);
-        }
-
         for (int i = 0; i < toSpawnList.Count; i++) {
-            int localToSpawn = toSpawnList[i].amountToSpawn;
+            int localToSpawn = toSpawnList[i].amountToSpawn * (islandSize / 1000);
 
             while (localToSpawn > 0) {
                 if (phase2GrassTiles.Count == 0) {

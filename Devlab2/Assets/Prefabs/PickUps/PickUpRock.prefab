@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65972297342287412}
   m_Layer: 0
   m_Name: PickUpRock
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1025877609990912}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3245976, y: -3.4800068e-16, z: 15.672557}
-  m_LocalScale: {x: 0.30191454, y: 0.30191454, z: 0.30191454}
+  m_LocalPosition: {x: -0.0730001, y: 0.77, z: 12.137}
+  m_LocalScale: {x: 0.24087504, y: 0.24087502, z: 0.24087502}
   m_Children:
   - {fileID: 4892440195030760}
   m_Father: {fileID: 0}
@@ -88,7 +88,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8fb0fe11647d5e64b80426f56489bed5, type: 2}
+  - {fileID: 2100000, guid: 45ef7963a61a8aa47adf0ef643cfc6de, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,8 +139,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
+  resourceDrops: []
   type: 1
   toughness: 1
+  myAnimator: {fileID: 0}
+  berries: 0
+  berryChild: {fileID: 0}
+  berryGrowTime: 7
 --- !u!208 &208304087625668462
 NavMeshObstacle:
   m_ObjectHideFlags: 1

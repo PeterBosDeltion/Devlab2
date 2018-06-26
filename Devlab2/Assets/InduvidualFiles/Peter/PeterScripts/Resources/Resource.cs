@@ -7,6 +7,7 @@ public class Resource : MonoBehaviour {
     public List<Item> resourceDrops = new List<Item>();
     public Equippable.CanGather type;
     public int toughness = 1;
+    public Animator myAnimator;
 
     private bool isGrowing;
     private bool canGather = true;
@@ -14,66 +15,48 @@ public class Resource : MonoBehaviour {
     public GameObject berryChild;
     public float berryGrowTime = 7;
 
-    private void Start()
-    {
-        if (!resourceDrops.Contains(myResource))
-        {
+    private void Start() {
+        if (!resourceDrops.Contains(myResource)) {
             resourceDrops.Add(myResource);
         }
     }
 
-    public void Harvest(Gather g)
-    {
-        if(Inventory.itemInHand != null && Inventory.itemInHand.myGathering == type && canGather)
-        {
+    public void Harvest(Gather g) {
+        if (Inventory.itemInHand != null && Inventory.itemInHand.myGathering == type && canGather) {
 
-            if(toughness > 0)
-            {
+            if (toughness > 0) {
                 toughness--;
-            }
-            else
-            {
+                myAnimator.SetTrigger("Harvest");
+            } else {
                 g.use = false;
                 g.beingUsed = false;
                 g.waiting = false;
 
-
                 int itemsInInv = 0;
-                foreach (Slot s in Inventory.Instance.theInventory)
-                {
+                foreach (Slot s in Inventory.Instance.theInventory) {
 
-                    if (s.myItem == null)
-                    {
-                        foreach (Item i in resourceDrops)
-                        {
+                    if (s.myItem == null) {
+                        foreach (Item i in resourceDrops) {
                             Inventory.Instance.AddItem(i); //Un comment when there is inventory in scene pl0x
 
                         }
 
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         itemsInInv++;
                     }
-                   
-                  
+
                 }
 
-                if(itemsInInv >= Inventory.Instance.theInventory.Count)
-                {
+                if (itemsInInv >= Inventory.Instance.theInventory.Count) {
                     ObjectPooler.instance.GetFromPool(myResource.itemName, transform.position, Quaternion.Euler(new Vector3())); //No Place Chosen Yet
                     //Drop resource on floor
                 }
-                if (!berries)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
+                if (!berries) {
+                    myAnimator.SetBool("Stop", true);
+                } else {
                     berryChild.SetActive(false);
-                    if (!isGrowing)
-                    {
+                    if (!isGrowing) {
                         StartCoroutine(RegrowBerries());
                         canGather = false;
                     }
@@ -82,8 +65,11 @@ public class Resource : MonoBehaviour {
         }
     }
 
-    private IEnumerator RegrowBerries()
-    {
+    public void DestroyResource() {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator RegrowBerries() {
         isGrowing = true;
         yield return new WaitForSeconds(berryGrowTime);
         berryChild.SetActive(true);

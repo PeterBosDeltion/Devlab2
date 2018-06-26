@@ -28,7 +28,19 @@ ScriptedImporter:
     preset: " <sbspreset pkgurl=\"pkg://Water\" label=\"\" >\n </sbspreset>\n"
     shaderName: LightweightPipeline/Standard (Physically Based)
     outputNames: Base Color,Normal,Metallic,Height
-    texturePackingList: []
+    texturePackingList:
+    - outputName: Base Color
+      alphaSource: Base Color
+    - outputName: Normal
+      alphaSource: Normal
+    - outputName: Roughness
+      alphaSource: Roughness
+    - outputName: Metallic
+      alphaSource: Metallic
+    - outputName: Height
+      alphaSource: Height
+    - outputName: Opacity
+      alphaSource: Opacity
     colorSpaceList:
     - outputName: Base Color
       bLinear: 0
@@ -48,8 +60,8 @@ ScriptedImporter:
       bOverride: 0
       bLockRatio: 1
       bHighQuality: 0
-      textureWidth: 0
-      textureHeight: 0
+      textureWidth: 32
+      textureHeight: 32
       textureFormat: 0
       loadBehavior: 0
     - label: Standalone

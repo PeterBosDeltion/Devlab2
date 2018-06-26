@@ -30,17 +30,38 @@ public class CraftMachine : Machine {
     public string burnReason2;
     public bool needsFuel;
     public int PollutionToAdd;
-    public ParticleSystem myPartical;
+    public GameObject myPartical;
     public Animator myAnimator;
+
+    void Start() {
+        if (myPartical != null) {
+            myPartical.SetActive(false);
+        }
+        if (myAnimator != null) {
+            myAnimator.SetBool("On", false);
+        }
+    }
 
     public void TurnOn() {
         isTurnedOn = true;
         CheckResipe();
+        if (myPartical != null) {
+            myPartical.SetActive(true);
+        }
+        if (myAnimator != null) {
+            myAnimator.SetBool("On", true);
+        }
     }
 
     public void TurnOff() {
         isTurnedOn = false;
         StopCoroutine("EcoEffect");
+        if (myPartical != null) {
+            myPartical.SetActive(false);
+        }
+        if (myAnimator != null) {
+            myAnimator.SetBool("On", false);
+        }
     }
 
     public void CheckResipe() {

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23174899919100636}
   m_Layer: 0
   m_Name: Coal
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,9 +68,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4465908871359348}
+  - component: {fileID: 208631655458022092}
+  - component: {fileID: 65417968496989702}
   m_Layer: 0
   m_Name: Char Coal
-  m_TagString: Untagged
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,3 +347,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072586247609034}
   m_Mesh: {fileID: 4300000, guid: c18ff3a49fce93e4b99f0a7aabd45d32, type: 3}
+--- !u!65 &65417968496989702
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674707781274928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.986513, z: 1}
+  m_Center: {x: 0, y: 1.9932566, z: 0}
+--- !u!208 &208631655458022092
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674707781274928}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.25, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0.09}
+  m_TimeToStationary: 0.5

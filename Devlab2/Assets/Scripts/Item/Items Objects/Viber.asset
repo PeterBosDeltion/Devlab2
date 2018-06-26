@@ -15,7 +15,10 @@ MonoBehaviour:
   item2D: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
   itemListIndex: 4
   placaBle: 0
+  placeAbleYoffset: 0
+  furniture: 0
   myButtons:
   - Drop
   itemDiscription: Made Of Things
+  equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   itemType: 0

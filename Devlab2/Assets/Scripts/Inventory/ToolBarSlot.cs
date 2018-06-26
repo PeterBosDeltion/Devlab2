@@ -23,7 +23,7 @@ public class ToolBarSlot : InventorySlot {
         if(myItem != null) {
             if(Inventory.mouseOver != null) {
                 if(Inventory.mouseOver.myItem != null) {
-                    if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType) {
+                    if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) && GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myItem.itemType == myItem.itemType || Inventory.mouseOver.GetType()== typeof(StorageSlot)&& myItem.itemName == Interactor.instance.myStorage.storageItem.itemName) {
                         Item otherItem = Instantiate(Inventory.mouseOver.myItem);
 
                         Inventory.mouseOver.SetItem(myItem);
@@ -34,7 +34,7 @@ public class ToolBarSlot : InventorySlot {
                         ToolbarImage.gameObject.SetActive(true);
                     }
                 }
-                else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType) {
+                else if(Inventory.mouseOver.GetType() != typeof(CharacterSlot) || Inventory.mouseOver.GetType() == typeof(CharacterSlot) && Inventory.mouseOver.myType == myItem.itemType || Inventory.mouseOver.GetType()== typeof(StorageSlot)&& myItem.itemName == Interactor.instance.myStorage.storageItem.itemName) {
                     Inventory.mouseOver.SetItem(Instantiate(myItem));
                     RemoveItem();
                 }

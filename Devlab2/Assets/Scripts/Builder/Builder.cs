@@ -48,7 +48,7 @@ public class Builder : MonoBehaviour {
                 buildRotation += Input.GetButtonDown("Fire3") == true ? 90 : 0;
                 buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * scrollweelSpeed);
 
-                DisplayBuild(new Vector3(0, buildRotation, 0), new Vector3(rayHit.point.x, rayHit.point.y + CurrentlyBuilding.placeAbleYoffset, rayHit.point.z));
+                DisplayBuild(new Vector3(0, buildRotation, 0), new Vector3(rayHit.point.x,0, rayHit.point.z));
 
                 if(Physics.CheckBox(displayCollider.bounds.center, displayCollider.bounds.size / 2, CurrentBuild.transform.rotation, instance.buildCollisionMask)) {
                     displayMaterial.color = Color.red + new Color(0, 0, 0, -0.5f);

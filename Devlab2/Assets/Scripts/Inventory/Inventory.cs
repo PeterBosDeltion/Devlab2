@@ -222,7 +222,6 @@ public class Inventory : MonoBehaviour {
     public List<CraftingSlot> craftingSlots = new List<CraftingSlot>();
     public List<Recipe> CraftingRecipes = new List<Recipe>();
     List<Recipe>[] CraftingRecipesList = new List<Recipe>[5];
-    //List<List<Recipe>> CraftingRecipesList = new List<List<Recipe>>();
     public CraftingSlot productSlot;
 
     void SortRecipes() {
@@ -264,9 +263,9 @@ public class Inventory : MonoBehaviour {
                         break;
                     }
                 }
-                for (int i = 0; i < craftingSlots.Count; i++) {
-                    craftingSlots[i].isChecked = false;
-                }
+            }
+            for (int i = 0; i < craftingSlots.Count; i++) {
+                craftingSlots[i].isChecked = false;
             }
         }
     }

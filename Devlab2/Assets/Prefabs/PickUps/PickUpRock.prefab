@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
   resourceDrops: []
-  type: 1
+  type: 3
   toughness: 1
   myAnimator: {fileID: 0}
   berries: 0

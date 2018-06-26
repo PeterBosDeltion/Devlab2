@@ -75,7 +75,7 @@ public class MachineSlot : Slot {
             if (Inventory.mouseOver != null) {
                 if (Inventory.mouseOver.myItem != null) {
                     itemImage.gameObject.SetActive(true);
-                } else if (Inventory.mouseOver.GetType()!= typeof(CharacterSlot)|| Inventory.mouseOver.GetType()== typeof(CharacterSlot)) {
+                } else if (Inventory.mouseOver.GetType()!= typeof(CharacterSlot)|| Inventory.mouseOver.GetType()== typeof(CharacterSlot)|| Inventory.mouseOver.GetType()== typeof(StorageSlot)&& myItem.itemName == Interactor.instance.myStorage.storageItem.itemName) {
                     if (Inventory.mouseOver.GetType()!= typeof(CraftingSlot)) {
                         Inventory.mouseOver.SetItem(Instantiate(myItem));
                         RemoveItem();
@@ -83,7 +83,7 @@ public class MachineSlot : Slot {
                         itemImage.gameObject.SetActive(true);
                     }
                 }
-                if (Inventory.mouseOver.GetType()== typeof(CraftingSlot)|| GetType()== typeof(CraftingSlot)) {}
+                if (Inventory.mouseOver.GetType()== typeof(CraftingSlot)|| GetType()== typeof(CraftingSlot) || Inventory.mouseOver.GetType()== typeof(StorageSlot)&& myItem.itemName == Interactor.instance.myStorage.storageItem.itemName) {}
             } else {
                 itemImage.gameObject.SetActive(true);
             }

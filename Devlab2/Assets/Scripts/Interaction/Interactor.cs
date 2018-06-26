@@ -9,6 +9,7 @@ public class Interactor : MonoBehaviour {
 
     public Machine myMachine;
     public CraftMachine myCraftingMachine;
+    public Storage myStorage;
     public TextMeshProUGUI machineName;
     public Image machineImage;
 
@@ -27,6 +28,11 @@ public class Interactor : MonoBehaviour {
     public GameObject crafter;
     public TextMeshProUGUI startText;
     public GameObject fuelForCrafting;
+
+    [Header("Storage")]
+    public List<StorageSlot> storage = new List<StorageSlot>();
+    public GameObject storageUI;
+
     #endregion
 
     private void Awake() {
@@ -44,6 +50,10 @@ public class Interactor : MonoBehaviour {
         for (int i = 0; i < productFuelSlots.Count; i++) {
             productFuelSlots[i].myIndex = i;
         }
+
+        for (int i = 0; i < storage.Count; i++) {
+            storage[i].mySlot = i;
+        }
     }
 
     public void ChangeInteractor(Machine newMachine) {
@@ -54,6 +64,7 @@ public class Interactor : MonoBehaviour {
 
         Basic.SetActive(false);
         crafter.SetActive(false);
+        storageUI.SetActive(false);
 
         if (myMachine.GetType()== typeof(CraftMachine)) {
             myCraftingMachine = ((CraftMachine)newMachine);
@@ -93,6 +104,10 @@ public class Interactor : MonoBehaviour {
             } else {
                 fuelForCrafting.SetActive(false);
             }
+        } else if (myMachine.GetType()== typeof(Storage)) {
+            myStorage = ((Storage)newMachine);
+            UpdateStorage();
+            storageUI.SetActive(true);
         } else {
             Basic.SetActive(true);
             basicMachineUseImage.sprite = myMachine.machineImage;
@@ -115,6 +130,27 @@ public class Interactor : MonoBehaviour {
             } else {
                 myCraftingMachine.TurnOn();
                 startText.text = myCraftingMachine.stopText;
+            }
+        }
+    }
+
+    public void UpdateStorage() {
+        for (int i = 0; i < storage.Count; i++) {
+            if (myStorage.Inventory[i] == null) {
+                storage[i].RemoveItem();
+            } else {
+                storage[i].SetItem(myStorage.Inventory[i]);
+            }
+        }
+    }
+
+    public void setStorageItem(int newIndex) {
+        if (myStorage != null) {
+            myStorage.Inventory[newIndex] = storage[newIndex].myItem;
+            if (storage[newIndex].myItem != null) {
+                myStorage.itemGameObjects[newIndex].SetActive(true);
+            } else {
+                myStorage.itemGameObjects[newIndex].SetActive(false);
             }
         }
     }

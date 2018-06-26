@@ -16,6 +16,8 @@ public class Resource : MonoBehaviour {
     public float berryGrowTime = 7;
 
     private void Start() {
+
+        myAnimator = GetComponent<Animator>();
         if (!resourceDrops.Contains(myResource)) {
             resourceDrops.Add(myResource);
         }

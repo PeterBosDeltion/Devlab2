@@ -70,6 +70,7 @@ public class EcoManager : MonoBehaviour {
     }
 
     void Start() {
+        GenerateMap();
         GenorateIsland();
         basePollution = pollution;
         StartCoroutine(PollutionCheck());

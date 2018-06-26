@@ -91,10 +91,10 @@ public class PlayerMovement : MonoBehaviour {
             Vector3 movement = new Vector3(x, 0.0F, y);
 
 
-            //player.transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
-            //player.transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
+            player.transform.Translate(transform.right * x * moveSpeed * Time.deltaTime, Space.World);
+            player.transform.Translate(transform.forward * y * moveSpeed * Time.deltaTime, Space.World);
 
-            player.transform.Translate(Vector3.ClampMagnitude(movement, moveSpeed * Time.deltaTime), Space.World);
+            //player.transform.Translate(Vector3.ClampMagnitude(movement, moveSpeed * Time.deltaTime), Space.World);
 
 
             if (x != 0 || y != 0)

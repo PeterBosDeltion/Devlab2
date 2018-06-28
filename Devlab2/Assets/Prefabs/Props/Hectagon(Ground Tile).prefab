@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4736050270339550}
   - component: {fileID: 208634812959112562}
   - component: {fileID: 65154138228857468}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaterCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -52,7 +52,7 @@ public class ThisTile : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)&& (int)UIManager.instance.currentUI <= 0) {
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift)) {
             Inspect();
         }
     }

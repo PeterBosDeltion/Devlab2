@@ -75,12 +75,18 @@ public class Interactor : MonoBehaviour {
             for (int i = 0; i < craftSlots.Count; i++) {
                 if (myCraftingMachine.craftSlots[craftSlots[i].myIndex] != null) {
                     craftSlots[i].SetItem(myCraftingMachine.craftSlots[craftSlots[i].myIndex]);
+                } else {
+                    craftSlots[i].RemoveItem();
                 }
             }
 
             for (int i = 0; i < productSlots.Count; i++) {
+                productSlots[i].fillImage.fillAmount = 1;
+
                 if (myCraftingMachine.productSlots[productSlots[i].myIndex] != null) {
                     productSlots[i].SetItem(myCraftingMachine.productSlots[productSlots[i].myIndex]);
+                } else {
+                    productSlots[i].RemoveItem();
                 }
             }
 
@@ -88,6 +94,8 @@ public class Interactor : MonoBehaviour {
                 for (int i = 0; i < craftFuelSlots.Count; i++) {
                     if (myCraftingMachine.craftFuelSlots[craftFuelSlots[i].myIndex] != null) {
                         craftFuelSlots[i].SetItem(myCraftingMachine.craftFuelSlots[craftFuelSlots[i].myIndex]);
+                    } else {
+                        craftFuelSlots[i].RemoveItem();
                     }
                 }
 
@@ -95,9 +103,11 @@ public class Interactor : MonoBehaviour {
                 burnSlot.fillImage.fillAmount = 1;
 
                 for (int i = 0; i < productFuelSlots.Count; i++) {
+                    productFuelSlots[i].fillImage.fillAmount = 1;
                     if (myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex] != null) {
                         productFuelSlots[i].SetItem(myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex]);
-                        productFuelSlots[i].fillImage.fillAmount = 1;
+                    } else {
+                        productFuelSlots[i].RemoveItem();
                     }
                 }
                 fuelForCrafting.SetActive(true);

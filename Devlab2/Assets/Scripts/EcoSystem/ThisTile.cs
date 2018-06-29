@@ -34,6 +34,10 @@ public class ThisTile : MonoBehaviour {
         if (newState == EcoManager.GroundState.Water) {
             waterObstacle.SetActive(true);
         } else {
+            if (newState == EcoManager.GroundState.burned) {
+                burn();
+            }
+
             if (currentState == EcoManager.GroundState.Grass || currentState == EcoManager.GroundState.fertile) {
                 grass.SetActive(true);
             } else {
@@ -52,12 +56,18 @@ public class ThisTile : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetMouseButtonDown(0)&& Input.GetKey(KeyCode.LeftShift)) {
             Inspect();
         }
     }
 
     void Inspect() {
         EcoInspector.instance.ChangeInspectorUI(EcoManager.instance.Grid[gridPosX].myArray[gridPosY]);
+    }
+
+    public void burn() {
+        if (myOccupant != null && myOccupant.canBurn == true) {
+            StartCoroutine(myOccupant.Burning());
+        }
     }
 }

@@ -81,12 +81,13 @@ public class Interactor : MonoBehaviour {
             }
 
             for (int i = 0; i < productSlots.Count; i++) {
-                productSlots[i].fillImage.fillAmount = 1;
 
                 if (myCraftingMachine.productSlots[productSlots[i].myIndex] != null) {
                     productSlots[i].SetItem(myCraftingMachine.productSlots[productSlots[i].myIndex]);
+                    productSlots[i].fillImage.fillAmount = 1;
                 } else {
                     productSlots[i].RemoveItem();
+                    productSlots[i].fillImage.fillAmount = 0;
                 }
             }
 
@@ -103,11 +104,12 @@ public class Interactor : MonoBehaviour {
                 burnSlot.fillImage.fillAmount = 1;
 
                 for (int i = 0; i < productFuelSlots.Count; i++) {
-                    productFuelSlots[i].fillImage.fillAmount = 1;
                     if (myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex] != null) {
                         productFuelSlots[i].SetItem(myCraftingMachine.productFuelSlots[productFuelSlots[i].myIndex]);
+                        productFuelSlots[i].fillImage.fillAmount = 1;
                     } else {
                         productFuelSlots[i].RemoveItem();
+                        productSlots[i].fillImage.fillAmount = 0;
                     }
                 }
                 fuelForCrafting.SetActive(true);

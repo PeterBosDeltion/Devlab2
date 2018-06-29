@@ -30,8 +30,6 @@ public class Builder : MonoBehaviour {
 
     void Update() {
 
-        //Debug.Log(LayerMask.GetMask("Building"));
-
         if(CurrentlyBuilding != null) {
 
             if(CurrentlyBuilding.itemType == Item.TypeOffItem.Crop)
@@ -45,7 +43,6 @@ public class Builder : MonoBehaviour {
 
             RaycastHit rayHit;
             if(Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out rayHit, 10000, buildRayMask)) {
-                buildRotation += Input.GetButtonDown("Fire3") == true ? 90 : 0;
                 buildRotation += Mathf.RoundToInt(Input.GetAxis("Mouse ScrollWheell") * Time.deltaTime * scrollweelSpeed);
 
                 DisplayBuild(new Vector3(0, buildRotation, 0), new Vector3(rayHit.point.x,0, rayHit.point.z));
@@ -54,7 +51,7 @@ public class Builder : MonoBehaviour {
                     displayMaterial.color = Color.red + new Color(0, 0, 0, -0.5f);
                 }
                 else {
-                    displayMaterial.color = Color.green + new Color(0, 0, 0, -0.5f);
+                    displayMaterial.color = Color.blue + new Color(0, 0, 0, -0.5f);
                     if(Input.GetButtonDown("Fire1")) {
                         PlaceBuild();
                     }

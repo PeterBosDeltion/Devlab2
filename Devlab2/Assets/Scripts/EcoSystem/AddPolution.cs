@@ -12,6 +12,7 @@ public class AddPolution : MonoBehaviour {
     public Item burnedResource;
     public Renderer myRenderer;
     public GameObject toDestroy;
+    public Animator myAnimation;
 
     void OnEnable() {
         if (EcoManager.instance != null) {
@@ -25,7 +26,9 @@ public class AddPolution : MonoBehaviour {
     }
 
     void OnDestroy() {
-        EcoManager.instance.AddPollution(-pollution);
+        if (canBurn == true) {
+            EcoManager.instance.AddPollution(-pollution);
+        }
     }
 
     public void Burn() {
@@ -36,23 +39,24 @@ public class AddPolution : MonoBehaviour {
 
     public IEnumerator Burning() {
         myResource.myResource = burnedResource;
+        canBurn = false;
         float time = Random.Range(burnMin, burnMax);
+
         float baseTime = time;
         float wait = time;
         myPartical.SetActive(true);
+        myAnimation.SetTrigger("Burn");
 
-        while (time <= 0) {
+        while (time >= 0) {
             time -= Time.deltaTime;
-            myRenderer.material.color = myRenderer.material.color - new Color(255 * time / baseTime, 255 * time / baseTime, 255 * time / baseTime, 255 * time / baseTime);
 
             if (Random.Range(1, 1000)== 1) {
-                EcoManager.instance.StartFire(transform.position);
+                EcoManager.instance.BurnGrounds(transform.position, 1, "Burned Because Fire Spread", "Burned Because Fire Spread", "Burned Because Fire Spread");
             }
             yield return null;
         }
 
-        Destroy(toDestroy);
-
+        EcoManager.instance.AddPollution(-pollution);
         myPartical.SetActive(false);
     }
 }

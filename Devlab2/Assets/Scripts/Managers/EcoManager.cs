@@ -387,7 +387,7 @@ public class EcoManager : MonoBehaviour {
 
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
-                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
+                if (Random.Range(0, 100)<= 3 && (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
                     Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
 
                     for (int z = -1; z < 2; z++) {
@@ -410,42 +410,17 @@ public class EcoManager : MonoBehaviour {
         Tile tileToEdit = GetTile(burnPosition);
 
         Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.ChangeMaterial(GroundState.burned, reason);
-        StartFire(Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.transform.position);
+        Grid[tileToEdit.myTile.gridPosX].myArray[tileToEdit.myTile.gridPosY].myTile.burn();
 
         for (int i = -1; i < 2; i++) {
             for (int ii = -1; ii < 2; ii++) {
-                if (Random.Range(0, 100)<= 70 && (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
-                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.burned, reason);
-                    StartFire(Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.transform.position);
-
-                    for (int z = -1; z < 2; z++) {
-                        for (int zz = -1; zz < 2; zz++) {
-                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState <= (int)GroundState.Grass) {
-                                Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
-                            } else if (Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState == GroundState.fertile) {
-                                Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
-                            }
-                        }
-                    }
-                } else if ((int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState <= (int)GroundState.Grass) {
-                    Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, downgradeReason2);
-                    for (int z = -1; z < 2; z++) {
-                        for (int zz = -1; zz < 2; zz++) {
-                            if (Random.Range(0, 100)<= 20 && (int)Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState <= (int)GroundState.Grass) {
-                                Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.driedGround, reason);
-                            } else if (Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.currentState == GroundState.fertile) {
-                                Grid[tileToEdit.myTile.gridPosX + i + z].myArray[tileToEdit.myTile.gridPosY + ii + zz].myTile.ChangeMaterial(GroundState.Grass, downgradeReason2);
-                            }
-                        }
+                if (Random.Range(0, 100)<= 3) {
+                    if ((int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState == (int)GroundState.Grass || (int)Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.currentState == (int)GroundState.fertile) {
+                        Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.ChangeMaterial(GroundState.burned, reason);
+                        Grid[tileToEdit.myTile.gridPosX + i].myArray[tileToEdit.myTile.gridPosY + ii].myTile.burn();
                     }
                 }
             }
-        }
-    }
-
-    public void StartFire(Vector3 pos) {
-        if (Random.Range(0, 100)<= burnChance) {
-            //burn plz
         }
     }
 
@@ -477,7 +452,7 @@ public class EcoManager : MonoBehaviour {
                 burnedTiles.RemoveAt(selected);
             } else if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
-                grassTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Because It Is Close Enough To A Water Source Or The Ground Is Moist Enough.");
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Becau se It Is Close Enough To A Water Source Or The Ground Is Moist Enough.");
                 furtileTiles.Add(grassTiles[selected]);
                 grassTiles.RemoveAt(selected);
             }

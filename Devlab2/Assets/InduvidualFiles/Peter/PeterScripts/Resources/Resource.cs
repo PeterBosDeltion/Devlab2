@@ -15,6 +15,8 @@ public class Resource : MonoBehaviour {
     public GameObject berryChild;
     public float berryGrowTime = 7;
 
+   
+
     private void Start() {
 
         myAnimator = GetComponent<Animator>();
@@ -24,8 +26,21 @@ public class Resource : MonoBehaviour {
     }
 
     public void Harvest(Gather g) {
+
+        SoundPlayer sp = GetComponent<SoundPlayer>();
+
+
         if (Inventory.itemInHand != null && Inventory.itemInHand.myGathering == type && canGather) {
 
+            if(sp != null)
+            {
+                sp.ResourcePlay();
+
+            }
+            else
+            {
+                Debug.LogError("Piece of shit can't find soundplayer");
+            }
             if (toughness > 0) {
                 toughness--;
                 myAnimator.SetTrigger("Harvest");

@@ -28,18 +28,14 @@ public class EcoInspector : MonoBehaviour {
     }
 
     public void ButtonRight() {
-            Debug.Log("1");
         if (currentlyInspected.myTile.myTimeLine.Count - 1 != currentlySelected) {
-            Debug.Log("2");
             currentlySelected++;
             UpdateUI();
         }
     }
 
     public void ButtonLeft() {
-            Debug.Log("3");
         if (currentlySelected != 0) {
-            Debug.Log("4");
             currentlySelected--;
             UpdateUI();
         }

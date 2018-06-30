@@ -117,15 +117,19 @@ public class PlayerMovement : MonoBehaviour {
             //{
             //    walking = true;
             //    anim.SetTrigger("Player_Walk");
-        }
+            }
 
 
         // agent.updatePosition = false;
         else
             {
 
-
-                if (anim.GetBool("Playerwalk"))
+            
+            if(rb.velocity != Vector3.zero)
+            {
+                rb.velocity = Vector3.zero;
+            }
+            if (anim.GetBool("Playerwalk"))
                 {
                     anim.SetBool("Playerwalk", false);
                 }

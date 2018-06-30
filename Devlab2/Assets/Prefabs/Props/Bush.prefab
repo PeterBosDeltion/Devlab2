@@ -859,6 +859,7 @@ MonoBehaviour:
   myRenderer: {fileID: 23566063770454460}
   toDestroy: {fileID: 1462471000857580}
   myAnimation: {fileID: 95761154147325774}
+  fullDestroy: 1
 --- !u!114 &114881576474657784
 MonoBehaviour:
   m_ObjectHideFlags: 1

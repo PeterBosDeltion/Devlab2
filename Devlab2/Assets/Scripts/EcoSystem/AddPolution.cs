@@ -13,6 +13,7 @@ public class AddPolution : MonoBehaviour {
     public Renderer myRenderer;
     public GameObject toDestroy;
     public Animator myAnimation;
+    public bool fullDestroy;
 
     void OnEnable() {
         if (EcoManager.instance != null) {
@@ -57,6 +58,11 @@ public class AddPolution : MonoBehaviour {
         }
 
         EcoManager.instance.AddPollution(-pollution);
+
+        if (fullDestroy == true) {
+            Destroy(gameObject);
+        }
+
         myPartical.SetActive(false);
     }
 }

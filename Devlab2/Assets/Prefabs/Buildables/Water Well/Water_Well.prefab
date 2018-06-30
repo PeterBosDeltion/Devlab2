@@ -38,9 +38,11 @@ GameObject:
   - component: {fileID: 4264633956155882}
   - component: {fileID: 136392212799721850}
   - component: {fileID: 208057051972656680}
+  - component: {fileID: 114610168089195710}
+  - component: {fileID: 135245525483292108}
   m_Layer: 0
   m_Name: Water_Well
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1516369149518214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.3, y: 0.75, z: -40.47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 27.28, y: 0.75, z: -51.77}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4743960427671622}
   - {fileID: 4725119490710906}
@@ -187,6 +189,77 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256472413252380}
   m_Mesh: {fileID: 4300000, guid: a646586fcfd119644b345b4102ec189f, type: 3}
+--- !u!114 &114610168089195710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516369149518214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  machineName: Water Well
+  machineImage: {fileID: 21300000, guid: 35adad77320a4a44a847dbbc642d321b, type: 3}
+  isTurnedOn: 0
+  StartText: Start
+  stopText: Stop
+  validItems:
+  - product: {fileID: 11400000, guid: a9919089768c3f64eb4d28c5d7d100a2, type: 2}
+    ingredient: {fileID: 11400000, guid: fc01d3294126e5a459340d04f546409b, type: 2}
+    timeToConvert: 5
+  validFuelItems: []
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  craftFuelSlots: []
+  productFuelSlots: []
+  burnSlot: {fileID: 0}
+  burnSlotResipe:
+    product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  coolDownTime: 0
+  dryChance: 0
+  drysGround: 0
+  dryRadius: 0
+  dryReason: 
+  dryReason1: 
+  dryReason2: 
+  burnChance: 0
+  burnsGround: 0
+  burnRadius: 0
+  burnReason: 
+  burnReason1: 
+  burnReason2: 
+  needsFuel: 0
+  PollutionToAdd: 0
+  myPartical: {fileID: 0}
+  myAnimator: {fileID: 0}
+--- !u!135 &135245525483292108
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516369149518214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.41003
+  m_Center: {x: 0.29130888, y: 0, z: 0}
 --- !u!136 &136392212799721850
 CapsuleCollider:
   m_ObjectHideFlags: 1

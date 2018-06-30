@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myResource: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
-  resourceDrops: []
+  resourceDrops:
+  - {fileID: 11400000, guid: 8efd9f738c43e5041a6e0df9f8e9088e, type: 2}
   type: 1
   toughness: 4
   myAnimator: {fileID: 95342375722140174}

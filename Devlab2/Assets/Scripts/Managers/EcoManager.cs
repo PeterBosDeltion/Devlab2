@@ -38,6 +38,7 @@ public class EcoManager : MonoBehaviour {
     public static string[] groundName;
     public List<Ground> groundTexturesInput = new List<Ground>();
     public TextMeshProUGUI myText;
+    public GameObject interactorImage;
 
     IEnumerator myDays() {
         yield return new WaitForSeconds(secondsPerDay);
@@ -47,6 +48,7 @@ public class EcoManager : MonoBehaviour {
     }
 
     void Awake() {
+        interactorImage.SetActive(false);
         StartCoroutine(myDays());
         if (instance == null) {
             instance = this;

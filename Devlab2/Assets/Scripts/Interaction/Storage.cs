@@ -8,11 +8,18 @@ public class Storage : Machine {
     public List<GameObject> itemGameObjects = new List<GameObject>();
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "Player" && Input.GetButtonDown("Interact")) {
-            Interactor.instance.ChangeInteractor(this);
-            UIManager.instance.SetCanvas(UIManager.UIState.Inventory);
-            UIManager.instance.tileInspector.SetBool("Inspector", false);
-            UIManager.instance.tileInspector.SetBool("Interactor", true);
+        if (other.tag == "Player") {
+            EcoManager.instance.interactorImage.SetActive(true);
+            if (Input.GetButtonDown("Interact")) {
+                Interactor.instance.ChangeInteractor(this);
+                UIManager.instance.SetCanvas(UIManager.UIState.Inventory);
+                UIManager.instance.tileInspector.SetBool("Inspector", false);
+                UIManager.instance.tileInspector.SetBool("Interactor", true);
+            }
         }
+    }
+
+    void OnTriggerExit(Collider other) {
+        EcoManager.instance.interactorImage.SetActive(false);
     }
 }

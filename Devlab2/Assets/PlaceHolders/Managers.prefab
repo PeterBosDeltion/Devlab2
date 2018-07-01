@@ -10382,6 +10382,7 @@ MonoBehaviour:
     description: Dried Ground
     tileName: Dried Ground
   myText: {fileID: 0}
+  interactorImage: {fileID: 0}
   islandSize: 1000
   xSize: 100
   ySize: 100

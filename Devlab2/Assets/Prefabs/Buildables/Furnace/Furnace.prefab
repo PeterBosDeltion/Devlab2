@@ -177,8 +177,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716861101984100}
   m_LocalRotation: {x: -0.49999976, y: -0.5000003, z: -0.50000024, w: 0.49999973}
-  m_LocalPosition: {x: 25.71, y: 0.77, z: -20.58}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 25.71, y: 0.77, z: -22.14}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4109154818531352}
   m_Father: {fileID: 0}
@@ -337,14 +337,47 @@ MonoBehaviour:
   machineName: Furnace
   machineImage: {fileID: 0}
   isTurnedOn: 0
-  StartText: 
-  stopText: 
-  validItems: []
-  validFuelItems: []
-  craftSlots: []
-  productSlots: []
-  craftFuelSlots: []
-  productFuelSlots: []
+  StartText: Ignite
+  stopText: extinguish
+  validItems:
+  - product: {fileID: 11400000, guid: d3208cce7ed7cc6428d942ce0b365c75, type: 2}
+    ingredient: {fileID: 11400000, guid: 8efd9f738c43e5041a6e0df9f8e9088e, type: 2}
+    timeToConvert: 50
+  validFuelItems:
+  - product: {fileID: 0}
+    ingredient: {fileID: 11400000, guid: ef3d3184382b84e4697540f1368c9e18, type: 2}
+    timeToConvert: 20
+  - product: {fileID: 0}
+    ingredient: {fileID: 11400000, guid: 0541fb7249f7971449b0b880da727173, type: 2}
+    timeToConvert: 40
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  craftFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   burnSlot: {fileID: 0}
   burnSlotResipe:
     product: {fileID: 0}
@@ -352,19 +385,19 @@ MonoBehaviour:
     timeToConvert: 0
   coolDownTime: 0
   dryChance: 0
-  drysGround: 0
-  dryRadius: 0
-  dryReason: 
-  dryReason1: 
-  dryReason2: 
+  drysGround: 1
+  dryRadius: 5
+  dryReason: Furnace To Hot.
+  dryReason1: To Close To A Furnace
+  dryReason2: Furnace In The Area.
   burnChance: 0
-  burnsGround: 0
-  burnRadius: 0
-  burnReason: 
-  burnReason1: 
-  burnReason2: 
-  needsFuel: 0
-  PollutionToAdd: 0
+  burnsGround: 1
+  burnRadius: 5
+  burnReason: Furnace To Hot.
+  burnReason1: To Close To A Furnace
+  burnReason2: Furnace In The Area.
+  needsFuel: 1
+  PollutionToAdd: 100
   myPartical: {fileID: 1524852041445026}
   myAnimator: {fileID: 0}
 --- !u!135 &135033425288162640

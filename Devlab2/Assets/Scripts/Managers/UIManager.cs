@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,15 +31,22 @@ public class UIManager : MonoBehaviour {
         SetCanvas(UIState.BaseCanvas);
     }
 
+    public Animator endGameAnimator;
+    public TextMeshProUGUI myText;
+    public void EndGame() {
+        endGameAnimator.SetTrigger("EndGame");
+        Time.timeScale = 0;
+        myText.text =  "Days Survived:" + EcoManager.instance.daysSurvived.ToString();
+    }
+
     void Update() {
-        if(Input.GetButtonDown("Cancel")) {
+        if (Input.GetButtonDown("Cancel")) {
             SetCanvas(CancelCanvas());
         }
-        if(Input.GetButtonDown("Inventory")) {
-            if(currentUI == UIState.Inventory) {
+        if (Input.GetButtonDown("Inventory")) {
+            if (currentUI == UIState.Inventory) {
                 SetCanvas(CancelCanvas());
-            }
-            else {
+            } else {
                 SetCanvas(UIState.Inventory);
             }
         }
@@ -46,32 +54,32 @@ public class UIManager : MonoBehaviour {
 
     //Steps Back A Canvas When Cancel Button Is Pressed
     UIState CancelCanvas() {
-        switch(currentUI) {
+        switch (currentUI) {
             case UIState.BaseCanvas:
-            return (UIState.PauseMenu);
+                return (UIState.PauseMenu);
             default:
-            return (UIState.BaseCanvas);
+                return (UIState.BaseCanvas);
         }
     }
 
     //Changes Current Canvas
     public void SetCanvas(UIState newState) {
-        switch(newState) {
+        switch (newState) {
             case UIState.BaseCanvas:
-            tileInspector.SetBool("Interactor", false);
-            break;
+                tileInspector.SetBool("Interactor", false);
+                break;
             case UIState.Inventory:
-            tileInspector.SetBool("Inspector", false);
-            break;
+                tileInspector.SetBool("Inspector", false);
+                break;
             case UIState.PauseMenu:
-            tileInspector.SetBool("Interactor", false);
-            tileInspector.SetBool("Inspector", false);
-            break;
+                tileInspector.SetBool("Interactor", false);
+                tileInspector.SetBool("Inspector", false);
+                break;
             default:
-            break;
+                break;
         }
 
         currentUI = newState;
-        CanvasAnimator.SetInteger("UIState", (int)currentUI < 0 ? 0: (int)currentUI);
+        CanvasAnimator.SetInteger("UIState", (int)currentUI < 0 ? 0 : (int)currentUI);
     }
 }

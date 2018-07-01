@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
         instance = this;
-       
+
     }
 
     // Use this for initialization
@@ -78,18 +78,17 @@ public class Player : MonoBehaviour {
 
     private void UpdateUIValues() {
 
-
-        if(hungerBar != null && thirstBar != null && healthBar != null)
-        {
+        if (hungerBar != null && thirstBar != null && healthBar != null) {
             hungerBar.fillAmount = hunger / 100F;
             thirstBar.fillAmount = thirst / 100F;
             healthBar.fillAmount = myEnt.hp / 100F;
-        }
-        else
-        {
+            if (hunger <= 0 || thirst <= 0 || myEnt.hp <= 0) {
+                UIManager.instance.EndGame();
+            }
+        } else {
             Debug.Log("Hunger/Thirst/Healthbar is null");
         }
-      
+
     }
 
     private void InvokeSurvival() {
@@ -133,15 +132,12 @@ public class Player : MonoBehaviour {
 
         if (!currentWeapon.beingUsed) {
 
-            if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null)
-            {
+            if (Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem != null) {
                 //Debug.Log(Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem);
                 items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].SetActive(true);
                 Inventory.itemInHand = Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.equippable;
                 currentWeapon = items[Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem.itemListIndex].GetComponent<Weapon>();
-            }
-            else
-            {
+            } else {
                 Inventory.itemInHand = hand;
 
                 items[4].SetActive(true); //Hand index
@@ -162,22 +158,17 @@ public class Player : MonoBehaviour {
                 }
 
             }
-        }
-        else if(currentWeapon == null && Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem == null)
-        {
+        } else if (currentWeapon == null && Inventory.Instance.toolBar[Inventory.Instance.SelectedToolbarSlot].myItem == null) {
             Inventory.itemInHand = hand;
 
             items[4].SetActive(true); //Hand index
             currentWeapon = items[4].GetComponent<Weapon>();
-            foreach (GameObject n in items)
-            {
-                if (n != items[4])
-                {
+            foreach (GameObject n in items) {
+                if (n != items[4]) {
                     n.SetActive(false);
                 }
             }
         }
-        //Debug.Log(Inventory.itemInHand);
 
     }
 

@@ -9,16 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13bcdb4910d28b240a968312044de3cd, type: 3}
-  m_Name: Viber
+  m_Name: Anvil
   m_EditorClassIdentifier: 
-  itemName: Viber
-  item2D: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
+  itemName: Anvil
+  item2D: {fileID: 21300000, guid: 5f1b50a63e2bc48459e4f61667ae0fa4, type: 3}
   itemListIndex: 4
-  placaBle: 0
+  placaBle: 1
   placeAbleYoffset: 0
   furniture: 0
   myButtons:
-  - Drop
-  itemDiscription: Made Of Things
+  - Place
+  itemDiscription: This Is A Anvil.
   equippable: {fileID: 11400000, guid: 9f7910d8b54dcab428f40dabd65c8f17, type: 2}
   itemType: 0

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class EcoManager : MonoBehaviour {
     public int endGamePollution;
     public Image pollutionImage;
     public float polutionCheck;
+    public int daysSurvived;
+    public int secondsPerDay;
 
     public int burnChance;
 
@@ -34,8 +37,17 @@ public class EcoManager : MonoBehaviour {
     public static string[] groundDescription;
     public static string[] groundName;
     public List<Ground> groundTexturesInput = new List<Ground>();
+    public TextMeshProUGUI myText;
+
+    IEnumerator myDays() {
+        yield return new WaitForSeconds(secondsPerDay);
+        daysSurvived++;
+        myText.text = "Day: " + daysSurvived.ToString();
+        StartCoroutine(myDays());
+    }
 
     void Awake() {
+        StartCoroutine(myDays());
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(this);
@@ -80,11 +92,11 @@ public class EcoManager : MonoBehaviour {
         pollution += PollutionToAdd;
 
         if (basePollution != 0) {
-            pollutionImage.fillAmount = pollution / basePollution;
+            pollutionImage.fillAmount = basePollution - (pollution / basePollution);
         }
 
         if (pollution >= endGamePollution) {
-            //          ***EndGame
+            UIManager.instance.EndGame();
         }
     }
 
@@ -452,7 +464,7 @@ public class EcoManager : MonoBehaviour {
                 burnedTiles.RemoveAt(selected);
             } else if (grassTiles.Count - 1 > 0) {
                 int selected = Random.Range(0, grassTiles.Count - 1);
-                grassTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Becau se It Is Close Enough To A Water Source Or The Ground Is Moist Enough.");
+                grassTiles[selected].myTile.ChangeMaterial(GroundState.fertile, "This Ground Is Furtile Because It Is Close Enough To A Water Source Or The Ground Is Moist Enough.");
                 furtileTiles.Add(grassTiles[selected]);
                 grassTiles.RemoveAt(selected);
             }

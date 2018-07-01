@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Berries
   m_EditorClassIdentifier: 
   itemName: Berries
-  item2D: {fileID: 21300000, guid: 634bfd3434d14f9408d36a07e8753fa7, type: 3}
+  item2D: {fileID: 21300000, guid: 96112c4a9a5ae414fbf56c95b83b5af1, type: 3}
   itemListIndex: 4
   placaBle: 0
   placeAbleYoffset: 0

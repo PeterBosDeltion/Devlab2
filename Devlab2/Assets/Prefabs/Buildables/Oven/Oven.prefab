@@ -200,8 +200,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1354036978649454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.79, y: 0.7819998, z: -18.64}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 25.79, y: 0.7819998, z: -19.37}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4108203326658128}
   - {fileID: 4536280972313570}
@@ -535,36 +535,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineName: Oven
-  machineImage: {fileID: 0}
+  machineImage: {fileID: 21300000, guid: d5743441d386be749bb65b7470d4ce1e, type: 3}
   isTurnedOn: 0
-  StartText: 
-  stopText: 
-  validItems: []
-  validFuelItems: []
-  craftSlots: []
-  productSlots: []
-  craftFuelSlots: []
-  productFuelSlots: []
+  StartText: Ignite
+  stopText: Extinguish
+  validItems:
+  - product: {fileID: 11400000, guid: 810d7b50b6dc0a64dae2e29e13fcdad4, type: 2}
+    ingredient: {fileID: 11400000, guid: ea49b342b5b18e44ea59349be267b892, type: 2}
+    timeToConvert: 10
+  - product: {fileID: 11400000, guid: 03f0933f3102a3d42b436481613e2108, type: 2}
+    ingredient: {fileID: 11400000, guid: 47b634956854f8f4a9485645a2c30cf0, type: 2}
+    timeToConvert: 10
+  validFuelItems:
+  - product: {fileID: 0}
+    ingredient: {fileID: 11400000, guid: ef3d3184382b84e4697540f1368c9e18, type: 2}
+    timeToConvert: 20
+  - product: {fileID: 0}
+    ingredient: {fileID: 11400000, guid: 0541fb7249f7971449b0b880da727173, type: 2}
+    timeToConvert: 40
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  craftFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   burnSlot: {fileID: 0}
   burnSlotResipe:
     product: {fileID: 0}
     ingredient: {fileID: 0}
     timeToConvert: 0
-  coolDownTime: 0
+  coolDownTime: 10
   dryChance: 0
-  drysGround: 0
-  dryRadius: 0
-  dryReason: 
-  dryReason1: 
-  dryReason2: 
+  drysGround: 1
+  dryRadius: 10
+  dryReason: Close To A Oven.
+  dryReason1: Close To A Oven.
+  dryReason2: Oven Nearby.
   burnChance: 0
-  burnsGround: 0
-  burnRadius: 0
-  burnReason: 
-  burnReason1: 
-  burnReason2: 
-  needsFuel: 0
-  PollutionToAdd: 0
+  burnsGround: 1
+  burnRadius: 1
+  burnReason: Close To A Oven.
+  burnReason1: Close To A Oven.
+  burnReason2: Oven Nearby.
+  needsFuel: 1
+  PollutionToAdd: 100
   myPartical: {fileID: 1538548669103710}
   myAnimator: {fileID: 0}
 --- !u!135 &135044170456224400

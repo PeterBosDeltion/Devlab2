@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310648038541594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.79, y: 0.7819998, z: -16.14}
+  m_LocalPosition: {x: 25.8, y: 0.7819998, z: -16.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4079173817150532}
@@ -140,14 +140,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineName: Anvil
-  machineImage: {fileID: 0}
-  isTurnedOn: 0
-  StartText: 
-  stopText: 
+  machineImage: {fileID: 21300000, guid: 5f1b50a63e2bc48459e4f61667ae0fa4, type: 3}
+  isTurnedOn: 1
+  StartText: Hit it
+  stopText: Stop hitting me.
   validItems: []
   validFuelItems: []
-  craftSlots: []
-  productSlots: []
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   craftFuelSlots: []
   productFuelSlots: []
   burnSlot: {fileID: 0}

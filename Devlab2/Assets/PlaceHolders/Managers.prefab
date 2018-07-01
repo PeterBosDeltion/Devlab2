@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e993e82d3468c3942bda7c9cc952e5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pollution: -347
-  basePollution: -351
+  pollution: -1
+  basePollution: 0
   endGamePollution: 0
   pollutionImage: {fileID: 0}
   polutionCheck: 10
@@ -10836,10 +10836,6 @@ MonoBehaviour:
     prefab: {fileID: 1125165067146702, guid: 5da87542b1fc2eb40b3db11c2bfe401d, type: 2}
     autoExpand: 0
     startSize: 1
-  - poolTag: Berries
-    prefab: {fileID: 1024127971081672, guid: dccf20c322ad5744dacae58cbeaa627e, type: 2}
-    autoExpand: 1
-    startSize: 2
   - poolTag: Stone
     prefab: {fileID: 1025877609990912, guid: b921e348d4c47cb4bac564a4f300621c, type: 2}
     autoExpand: 1
@@ -10936,20 +10932,12 @@ MonoBehaviour:
     prefab: {fileID: 1989944702835348, guid: 0fbbff9860fe80643bb800cf9afa4ae8, type: 2}
     autoExpand: 0
     startSize: 1
-  - poolTag: Table
-    prefab: {fileID: 1004288604218540, guid: 8215213fb99dd5a42893fceab1135bea, type: 2}
-    autoExpand: 1
-    startSize: 3
-  - poolTag: Table Display
-    prefab: {fileID: 1449815217139874, guid: 64a95160f71f9604c918fa3d1fff794b, type: 2}
-    autoExpand: 0
-    startSize: 1
   - poolTag: SteamPowered GrindStone
-    prefab: {fileID: 1866372828716896, guid: f011f6a65fd1e54488ab72408d4a1d7b, type: 2}
+    prefab: {fileID: 1914482535136628, guid: f011f6a65fd1e54488ab72408d4a1d7b, type: 2}
     autoExpand: 0
     startSize: 3
   - poolTag: SteamPowered GrindStone Display
-    prefab: {fileID: 1052580607194456, guid: 653731e94b7bacb408fca60cb59b32f8, type: 2}
+    prefab: {fileID: 1171041019283912, guid: 653731e94b7bacb408fca60cb59b32f8, type: 2}
     autoExpand: 0
     startSize: 1
   - poolTag: Viber
@@ -11019,14 +11007,6 @@ MonoBehaviour:
   - poolTag: Flower Pot
     prefab: {fileID: 1191197919490996, guid: ed0d366693a1b3b41be925224b6d7aec, type: 2}
     autoExpand: 1
-    startSize: 1
-  - poolTag: SteamPowered GrindStone
-    prefab: {fileID: 1914482535136628, guid: f011f6a65fd1e54488ab72408d4a1d7b, type: 2}
-    autoExpand: 1
-    startSize: 1
-  - poolTag: SteamPowered GrindStone Display
-    prefab: {fileID: 1171041019283912, guid: 653731e94b7bacb408fca60cb59b32f8, type: 2}
-    autoExpand: 0
     startSize: 1
   - poolTag: Beam
     prefab: {fileID: 1589470288066934, guid: f6dfde6d0e7895548a3824259d055c58, type: 2}

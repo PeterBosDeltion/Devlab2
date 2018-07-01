@@ -245,8 +245,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4604593950594434}
-  - component: {fileID: 33367508637162030}
-  - component: {fileID: 23523577895408256}
   m_Layer: 0
   m_Name: Base-House
   m_TagString: Untagged
@@ -843,42 +841,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 45ef7963a61a8aa47adf0ef643cfc6de, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23523577895408256
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1475869874607168}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 2100000, guid: 45ef7963a61a8aa47adf0ef643cfc6de, type: 3}
+  - {fileID: 2100000, guid: 9891d271c2cb0824c9466fe012398a4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -913,7 +876,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3e43f303817132e44bc7124a43dcffca, type: 3}
+  - {fileID: 2100000, guid: 3f172fefc60b64e4898486f309bcb192, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -989,13 +952,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788335676362864}
   m_Mesh: {fileID: 4300002, guid: 3e43f303817132e44bc7124a43dcffca, type: 3}
---- !u!33 &33367508637162030
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1475869874607168}
-  m_Mesh: {fileID: 4300006, guid: d5333166124394f4494ef5738af606a2, type: 3}
 --- !u!33 &33796457562109682
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1275,7 +1231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineName: Wind GrindStone
   machineImage: {fileID: 21300000, guid: b97c91e8b348f3f4ebdc11f5c82182cd, type: 3}
-  isTurnedOn: 0
+  isTurnedOn: 1
   StartText: Start
   stopText: Stop
   validItems:

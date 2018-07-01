@@ -88,6 +88,12 @@ public class EcoManager : MonoBehaviour {
         StartCoroutine(PollutionCheck());
     }
 
+    private void Update() {
+        if (Input.GetKeyDown("x")) {
+            AddPollution(100);
+        }
+    }
+
     public void AddPollution(int PollutionToAdd) {
         pollution += PollutionToAdd;
 

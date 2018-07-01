@@ -212,7 +212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877965040349574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.93, y: 0.77, z: -25.65}
+  m_LocalPosition: {x: 25.93, y: 0.77, z: -27.185879}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4377949520389084}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineName: CampFire
   machineImage: {fileID: 21300000, guid: 8451371996a6c5045829084fa06e15af, type: 3}
-  isTurnedOn: 0
+  isTurnedOn: 1
   StartText: Ignite
   stopText: Extinguish
   validItems:

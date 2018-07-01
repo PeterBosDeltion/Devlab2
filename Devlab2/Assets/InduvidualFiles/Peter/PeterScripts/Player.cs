@@ -57,6 +57,7 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
+    public GameObject mega;
     void Update() {
 
         if (Input.GetKeyDown("v"))//Eat cheat button
@@ -72,6 +73,10 @@ public class Player : MonoBehaviour {
         ChangeEquip();
         UpdateUIValues();
         InvokeSurvival();
+
+        if (Input.GetKeyDown("m")) {
+            Instantiate(mega, transform.position, transform.rotation);
+        }
 
         //        Debug.Log(hunger);
     }

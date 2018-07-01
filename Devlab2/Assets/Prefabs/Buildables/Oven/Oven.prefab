@@ -536,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineName: Oven
   machineImage: {fileID: 21300000, guid: d5743441d386be749bb65b7470d4ce1e, type: 3}
-  isTurnedOn: 0
+  isTurnedOn: 1
   StartText: Ignite
   stopText: Extinguish
   validItems:

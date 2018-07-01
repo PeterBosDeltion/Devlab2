@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 4975520570432252}
   - component: {fileID: 33885011906665210}
   - component: {fileID: 23641623521144132}
+  - component: {fileID: 65223437019687506}
   m_Layer: 0
   m_Name: Steam_PoweredGrind (1)
   m_TagString: Untagged
@@ -177,7 +178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4219984155408654
 Transform:
   m_ObjectHideFlags: 1
@@ -485,6 +486,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866372828716896}
   m_Mesh: {fileID: 4300000, guid: 3422625164baa6e4a9f9a5d099eed7e5, type: 3}
+--- !u!65 &65223437019687506
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1866372828716896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0992168, y: 2.6439724, z: 1.4882504}
+  m_Center: {x: -0.04960851, y: 0.36700228, z: 0.7441253}
 --- !u!108 &108179993794145774
 Light:
   m_ObjectHideFlags: 1
@@ -532,17 +545,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ac88d80bca35048964ee4a18f7f387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineName: Oven
-  machineImage: {fileID: 0}
-  isTurnedOn: 0
-  StartText: 
-  stopText: 
-  validItems: []
-  validFuelItems: []
-  craftSlots: []
-  productSlots: []
-  craftFuelSlots: []
-  productFuelSlots: []
+  machineName: Steam Powered GrindStone
+  machineImage: {fileID: 21300000, guid: 551d2a4b0d0e194459ed63c994a9a11d, type: 3}
+  isTurnedOn: 1
+  StartText: Ignite
+  stopText: extinguish
+  validItems:
+  - product: {fileID: 11400000, guid: ea49b342b5b18e44ea59349be267b892, type: 2}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  validFuelItems:
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  - product: {fileID: 0}
+    ingredient: {fileID: 0}
+    timeToConvert: 0
+  craftSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  craftFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  productFuelSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   burnSlot: {fileID: 0}
   burnSlotResipe:
     product: {fileID: 0}
@@ -561,7 +619,7 @@ MonoBehaviour:
   burnReason: 
   burnReason1: 
   burnReason2: 
-  needsFuel: 0
+  needsFuel: 1
   PollutionToAdd: 0
   myPartical: {fileID: 1929106236404942}
   myAnimator: {fileID: 0}

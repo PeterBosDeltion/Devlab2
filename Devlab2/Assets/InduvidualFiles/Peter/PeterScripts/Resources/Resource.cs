@@ -15,7 +15,7 @@ public class Resource : MonoBehaviour {
     public GameObject berryChild;
     public float berryGrowTime = 7;
 
-   
+
 
     private void Start() {
 
@@ -36,10 +36,6 @@ public class Resource : MonoBehaviour {
             {
                 sp.ResourcePlay();
 
-            }
-            else
-            {
-                Debug.LogError("Piece of shit can't find soundplayer");
             }
             if (toughness > 0) {
                 toughness--;
